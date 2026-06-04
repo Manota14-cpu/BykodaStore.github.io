@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Card Minimalista</title>
+  <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="imagenes/logo.png" type="image/x-icon">
+</head>
+<body>
+  <article class="product-card">
+    <img class="product-card__image" src="imagenes/JEAN-ancla-ADELANTE.webp" alt="Jean Ancla">
+
+    <div class="product-card__body">
+      <h2 class="product-card__title">Jean Ancla</h2>
+
+      <div class="product-card__controls">
+        <label class="product-card__field">
+          <span class="sr-only">Seleccionar talle</span>
+          <select class="product-card__select" aria-label="Seleccionar talle">
+            <option value="s">S</option>
+            <option value="m">M</option>
+            <option value="l">L</option>
+            <option value="xl">XL</option>
+          </select>
+          <span class="product-card__select-icon">▾</span>
+        </label>
+
+        <div class="product-card__quantity" aria-label="Selector de cantidad">
+          <button type="button" aria-label="Disminuir cantidad">−</button>
+          <input type="number" min="1" value="1" aria-label="Cantidad" />
+          <button type="button" aria-label="Aumentar cantidad">+</button>
+        </div>
+      </div>
+
+      <button class="product-card__action" type="button">Agregar al carrito</button>
+    </div>
+  </article>
+</body>
+</html>

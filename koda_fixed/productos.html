@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- ── SEO ── -->
+  <title>Catálogo | KODA Studio — Ropa Urbana Premium</title>
+  <meta name="description" content="Explorá todo el catálogo de KODA Studio: jeans, hoodies, buzos, sweaters, remeras, pantalones baggy y camperas. Streetwear argentino premium.">
+  <meta name="keywords" content="catalogo koda, ropa urbana, jeans streetwear, hoodies, buzos, remeras, pantalones baggy argentina">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.bykoda.store/productos.html">
+
+  <meta property="og:title" content="Catálogo | KODA Studio">
+  <meta property="og:description" content="Jeans, hoodies, buzos, sweaters, remeras y más. Streetwear argentino premium.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.koda.com.ar/productos.html">
+  <meta property="og:image" content="https://www.bykoda.store/imagenes/og-cover.jpg">
+
+    <link rel="icon" href="imagenes/logo.png" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="carrito.js" defer></script>
+  <script src="loader.js"></script>
+</head>
+
+<body class="pagina-productos">
+  <a class="skip-link" href="#main-content">Saltar al contenido</a>
+
+  <header class="header">
+    <div class="logo"><img src="imagenes/logo.png" alt="Logo Koda"></div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <nav class="nav">
+      <a href="index.html">Inicio</a>
+      <a href="Faqs.html">FAQs</a>
+      <a href="carrito.html" id="carrito-link">Carrito (<span id="contador-carrito">0</span>)</a>
+    </nav>
+    <div class="nav-panel" id="navPanel" aria-hidden="true">
+      <button class="nav-panel-close" id="navPanelClose" aria-label="Cerrar menú">✕</button>
+      <a href="index.html">Inicio</a>
+      <a href="Faqs.html">FAQs</a>
+      <a href="carrito.html">Carrito (<span id="contador-carrito-mobile">0</span>)</a>
+    </div>
+    <div class="nav-panel-overlay" id="navPanelOverlay"></div>
+  </header>
+
+  <main id="main-content">
+    <!-- SIDEBAR FILTROS -->
+    <div class="sidebar reveal" id="sidebar">
+      <h3>Filtrar</h3>
+      <button onclick="filtrar('todos', this)" class="activo">Todos</button>
+      <button onclick="filtrar('pantalon', this)">Pantalones</button>
+      <button onclick="filtrar('remera', this)">Remeras</button>
+      <button onclick="filtrar('buzo', this)">Buzos / Camperas</button>
+
+      <div class="precio-filter">
+        <h4>Precio máximo</h4>
+        <div class="precio-slider-wrap">
+          <input type="range" id="precio-slider" min="0" max="120000" step="1000" value="120000" class="precio-slider">
+          <div class="precio-slider-labels">
+            <span>$0</span>
+            <span id="precio-slider-val">Todos</span>
+          </div>
+        </div>
+        <button class="precio-reset" id="precio-reset" onclick="resetPrecioFiltro()">Limpiar filtro</button>
+      </div>
+    </div>
+
+    <!-- GRILLA DE PRODUCTOS -->
+    <section class="productos">
+      <h2>Nuestros Productos</h2>
+
+      <!-- Buscador -->
+      <div class="buscador-wrap">
+        <input type="search" id="buscador" placeholder="Buscar producto..." autocomplete="off">
+        <span class="ico-search">🔍</span>
+      </div>
+
+      <div class="orden-wrap">
+        <label for="orden-select">Ordenar por:</label>
+        <select id="orden-select">
+          <option value="default">Relevancia</option>
+          <option value="precio-asc">Precio: menor a mayor</option>
+          <option value="precio-desc">Precio: mayor a menor</option>
+          <option value="az">A → Z</option>
+          <option value="za">Z → A</option>
+        </select>
+      </div>
+
+      <div class="grid" id="grid-productos">
+
+        <!-- Cargando productos desde stock.json... -->
+        <!-- Sin resultados -->
+        <p class="no-results" id="no-results">No se encontraron productos para tu búsqueda.</p>
+
+      </div><!-- /grid -->
+    </section>
+  </main>
+
+
+  <!-- ── Modal de producto ── -->
+  <div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true">
+    <div class="modal-box" id="modal-box">
+      <button class="modal-cerrar" id="modal-cerrar" aria-label="Cerrar">✕</button>
+
+      <!-- Galería -->
+      <div class="modal-galeria">
+        <div class="modal-thumbnails" id="modal-thumbnails"></div>
+        <div class="modal-imagen-principal">
+          <img id="modal-img-principal" src="" alt="">
+        </div>
+      </div>
+
+      <!-- Info -->
+      <div class="modal-info">
+        <div class="modal-breadcrumb">Koda <span>·</span> <span id="modal-categoria"></span></div>
+        <h2 class="modal-nombre" id="modal-nombre"></h2>
+        <div>
+          <div class="modal-precio" id="modal-precio"></div>
+          <div class="modal-precio-sub">Envío gratis a todo el país</div>
+        </div>
+        <div class="modal-divider"></div>
+        <div id="modal-color-section" style="display:none;margin-bottom:14px">
+          <div class="modal-label" style="margin-bottom:8px">Color: <strong id="modal-color-label">—</strong></div>
+          <div class="color-swatches" id="modal-color-swatches" style="margin-bottom:0"></div>
+        </div>
+        <div>
+          <div class="modal-label">Talle: <strong id="talle-seleccionado-label">—</strong> <a href="#" class="link-guia-talles">¿Cuál es mi talle?</a></div>
+          <div class="modal-talles" id="modal-talles">
+            <button class="talle-btn" data-talle="S">S</button>
+            <button class="talle-btn" data-talle="M">M</button>
+            <button class="talle-btn" data-talle="L">L</button>
+            <button class="talle-btn" data-talle="XL">XL</button>
+            <button class="talle-btn" data-talle="XXL">XXL</button>
+          </div>
+        </div>
+        <div class="modal-divider"></div>
+        <div class="modal-acciones">
+          <div class="modal-qty">
+            <button id="qty-menos" aria-label="Reducir">−</button>
+            <input type="number" id="modal-qty-input" value="1" min="1" max="10" readonly>
+            <button id="qty-mas" aria-label="Aumentar">+</button>
+          </div>
+          <button class="modal-btn-agregar" id="modal-btn-agregar">Agregar al carrito</button>
+        </div>
+        <div class="modal-envio">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h11a2 2 0 012 2v3"/>
+            <rect x="9" y="11" width="14" height="10" rx="2"/>
+            <circle cx="12" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+          </svg>
+          Envío gratis a todo el país en compras desde $50.000
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- ── Modal Guía de Talles ── -->
+  <div class="talle-guide-overlay" id="talle-guide-overlay" role="dialog" aria-modal="true" aria-label="Guía de talles">
+    <div class="talle-guide-box">
+      <button class="talle-guide-cerrar" id="talle-guide-cerrar" aria-label="Cerrar">✕</button>
+      <h2 class="talle-guide-titulo">Guía de Talles</h2>
+      <p class="talle-guide-sub">Medidas en centímetros. Medite con ropa interior, en posición normal.</p>
+
+      <div class="talle-guide-tabs">
+        <button class="tg-tab activo" data-cat="ropa">Ropa</button>
+        <button class="tg-tab" data-cat="jeans">Jeans</button>
+      </div>
+
+      <!-- Ropa (remeras, buzos) -->
+      <div class="tg-panel" id="tg-ropa">
+        <table class="talle-table">
+          <thead>
+            <tr><th>Talle</th><th>Pecho</th><th>Hombros</th><th>Largo</th><th>Cintura</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>S</strong></td><td>86–92</td><td>42–44</td><td>68</td><td>72–78</td></tr>
+            <tr><td><strong>M</strong></td><td>92–100</td><td>44–46</td><td>70</td><td>78–84</td></tr>
+            <tr><td><strong>L</strong></td><td>100–108</td><td>46–48</td><td>72</td><td>84–92</td></tr>
+            <tr><td><strong>XL</strong></td><td>108–118</td><td>48–50</td><td>74</td><td>92–100</td></tr>
+            <tr><td><strong>XXL</strong></td><td>118–130</td><td>50–53</td><td>76</td><td>100–110</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Jeans -->
+      <div class="tg-panel" id="tg-jeans" style="display:none">
+        <table class="talle-table">
+          <thead>
+            <tr><th>Talle</th><th>Cintura</th><th>Cadera</th><th>Entrepierna</th><th>Equivalencia</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>S / 28</strong></td><td>72–76</td><td>90–94</td><td>78</td><td>XS–S</td></tr>
+            <tr><td><strong>M / 30</strong></td><td>76–82</td><td>94–100</td><td>79</td><td>S–M</td></tr>
+            <tr><td><strong>L / 32</strong></td><td>82–88</td><td>100–106</td><td>80</td><td>M–L</td></tr>
+            <tr><td><strong>XL / 34</strong></td><td>88–96</td><td>106–114</td><td>81</td><td>L–XL</td></tr>
+            <tr><td><strong>XXL / 36</strong></td><td>96–106</td><td>114–122</td><td>82</td><td>XL–XXL</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="talle-guide-tip">
+        <span>💡</span>
+        <p>Si estás entre dos talles, elegí el más grande para mayor comodidad. Nuestros modelos miden 1.80 m y usan talle M.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── WhatsApp flotante ── -->
+  <a class="whatsapp-btn" href="https://wa.me/5493492301333" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+      <path d="M16 2C8.268 2 2 8.268 2 16c0 2.48.676 4.8 1.852 6.788L2 30l7.404-1.824A13.936 13.936 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm0 25.6a11.56 11.56 0 01-5.896-1.612l-.42-.252-4.396 1.084 1.112-4.272-.276-.44A11.554 11.554 0 014.4 16C4.4 9.592 9.592 4.4 16 4.4S27.6 9.592 27.6 16 22.408 27.6 16 27.6zm6.34-8.664c-.348-.176-2.06-1.016-2.38-1.132-.32-.116-.552-.176-.784.176-.232.348-.9 1.132-1.104 1.364-.2.232-.404.26-.752.084-.348-.176-1.468-.54-2.796-1.724-1.032-.924-1.728-2.064-1.932-2.412-.2-.348-.02-.536.152-.708.156-.156.348-.404.524-.608.176-.2.232-.348.348-.58.116-.232.06-.436-.028-.612-.088-.176-.784-1.892-1.076-2.592-.284-.68-.572-.588-.784-.596l-.668-.012c-.232 0-.608.088-.928.436-.316.348-1.212 1.184-1.212 2.888s1.24 3.352 1.412 3.584c.176.232 2.44 3.728 5.916 5.228.828.356 1.472.568 1.976.728.832.264 1.588.228 2.184.14.668-.1 2.06-.844 2.348-1.66.292-.816.292-1.516.204-1.664-.084-.148-.316-.232-.664-.408z"/>
+    </svg>
+  </a>
+
+  <footer class="footer reveal">
+    <div class="footer-container">
+      <div class="footer-col">
+        <h3>UNITE A KODA</h3>
+        <p>Registrate y recibí nuestras ofertas.</p>
+        <form class="newsletter">
+          <input type="email" placeholder="Ingresá tu email..." required>
+          <button type="submit">Enviar</button>
+        </form>
+      </div>
+      <div class="footer-col">
+        <h4>Menú</h4>
+        <ul>
+          <li><a href="productos.html">Shop</a></li>
+          <li></li>
+          <li><a href="Faqs.html">FAQs</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Cambios</h4>
+        <ul>
+          <li><a href="#" class="link-guia-talles">Guía de Talles</a></li>
+          <li><a href="Faqs.html">Cómo Comprar</a></li>
+          <li><a href="Faqs.html">Política de Cambios</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contactanos</h4>
+        <p><strong>Cel:</strong> +54 3492 301-333</p>
+        <p><strong>Email:</strong> admin@bykoda.store</p>
+        <div class="social">
+          <a href="https://www.instagram.com/__bykoda/" target="_blank" rel="noopener noreferrer">
+            <img src="imagenes/icon-instagram.png" alt="Instagram">
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Koda - Derechos Reservados</p>
+    </div>
+  </footer>
+
+  <script>
+    /* ── Buscador + Filtros (unificado) ── */
+    (function() {
+      const buscador = document.getElementById('buscador');
+      const noResults = document.getElementById('no-results');
+
+      function getProductos() {
+        return document.querySelectorAll('.producto');
+      }
+
+      window.aplicarFiltros = function() {
+        const texto = (buscador?.value || '').toLowerCase().trim();
+        const categoriaActiva = document.querySelector('.sidebar button.activo')?.dataset?.cat || 'todos';
+        const maxPrecio = (typeof window.precioMax !== 'undefined') ? window.precioMax : Infinity;
+        let visibles = 0;
+
+        getProductos().forEach(p => {
+          if (p.dataset.varianteOculta) { p.style.display = 'none'; return; }
+          const nombre = (p.dataset.nombre || '').toLowerCase();
+          const cat    = p.dataset.categoria || '';
+          const precio = parseInt(p.dataset.precio || '0') || 0;
+
+          const ok =
+            (categoriaActiva === 'todos' || cat === categoriaActiva) &&
+            (!texto || nombre.includes(texto)) &&
+            (maxPrecio === Infinity || precio === 0 || precio <= maxPrecio);
+
+          p.style.display = ok ? '' : 'none';
+          if (ok) visibles++;
+        });
+
+        if (noResults) noResults.style.display = visibles === 0 ? 'block' : 'none';
+      };
+
+      if (buscador) {
+        buscador.addEventListener('input', window.aplicarFiltros);
+        buscador.addEventListener('keydown', e => {
+          if (e.key === 'Escape') { buscador.value = ''; window.aplicarFiltros(); }
+        });
+      }
+
+      /* filtrar() llamada desde los botones del sidebar */
+      window.filtrar = function(categoria, btn) {
+        document.querySelectorAll('.sidebar button').forEach(b => b.classList.remove('activo'));
+        btn.classList.add('activo');
+        btn.dataset.cat = categoria;
+        window.aplicarFiltros();
+      };
+
+      /* Asignar data-cat a los botones del sidebar */
+      document.querySelectorAll('.sidebar button').forEach(btn => {
+        const oc = btn.getAttribute('onclick') || '';
+        const m  = oc.match(/filtrar\('([^']+)'/);
+        if (m) btn.dataset.cat = m[1];
+      });
+    })();
+  </script>
+
+
+
+
+
+
+
+  <script>
+  /* ═══════════════════════════════════════════════════════════
+     KODA — Renderizador dinámico desde stock.json
+     Genera las cards, aplica stock, precios y filtro de precio.
+  ═══════════════════════════════════════════════════════════ */
+  (function () {
+
+    /* ── Helpers ── */
+    function fmtPrecio(n) {
+      return '$' + n.toLocaleString('es-AR');
+    }
+
+    function pct(original, sale) {
+      return Math.round((1 - sale / original) * 100);
+    }
+
+    /* ── Generar HTML de una card ── */
+    function buildCard(p) {
+      const div = document.createElement('div');
+      div.className = 'producto';
+      div.dataset.categoria = p.categoria;
+      div.dataset.nombre    = p.nombre.toLowerCase();
+      div.dataset.id        = p.id;
+      div.dataset.precio    = p.precio;
+
+      /* Imagen(es) */
+      const imgs = p.imagenes || [];
+      const hasFlip = imgs.length >= 2;
+      let imgHtml = `<button class="btn-fav" aria-label="Agregar a favoritos">♡</button>`;
+      imgHtml += `<img class="img-adelante" src="${imgs[0] || ''}" loading="lazy" alt="${p.nombre} adelante" onerror="this.src='imagenes/logo%20png.png'">`;
+      if (hasFlip) {
+        imgHtml += `<img class="img-atras" src="${imgs[1]}" loading="lazy" alt="${p.nombre} atrás" onerror="this.src='imagenes/logo%20png.png'">`;
+        imgHtml += `<span class="flip-hint">↩ VER REVERSO</span>`;
+      }
+
+      /* Badge de sale */
+      let precioHtml;
+      if (p.precio === 0) {
+        precioHtml = `<p class="price consultar">Consultar</p>`;
+      } else if (p.precio_original && p.precio_original > p.precio) {
+        const descPct = pct(p.precio_original, p.precio);
+        precioHtml = `<div class="price-wrap">
+          <span class="price-original">${fmtPrecio(p.precio_original)}</span>
+          <span class="price-sale">${fmtPrecio(p.precio)}</span>
+          <span class="badge-sale">-${descPct}%</span>
+        </div>`;
+      } else {
+        precioHtml = `<p class="price">${fmtPrecio(p.precio)}</p>`;
+      }
+
+      /* Talles */
+      const talles = p.talles || ['S','M','L','XL','XXL'];
+      const tallesHtml = `<div class="talles-grupo">
+        ${talles.map(t => `<button class="talle-btn" data-talle="${t}">${t}</button>`).join('\n        ')}
+      </div>`;
+
+      /* Variantes de color */
+      let swatchHtml = '';
+      if (p.variantes && p.variantes.length > 1) {
+        const varJson = JSON.stringify(p.variantes).replace(/"/g, '&quot;');
+        const swatches = p.variantes.map((v, i) =>
+          `<button class="color-swatch${i === 0 ? ' swatch-activo' : ''}" data-idx="${i}" style="background:${v.color}" title="${v.label}" aria-label="Color ${v.label}"></button>`
+        ).join('\n            ');
+        swatchHtml = `<div class="color-swatches" data-variantes="${varJson}">
+            ${swatches}
+          </div>`;
+      }
+
+      /* Precio para el botón agregar (puede cambiar con variante activa) */
+      const btnPrecio = p.variantes ? p.variantes[0].precio : p.precio;
+      const btnNombre = p.variantes ? p.variantes[0].nombre : p.cartNombre || p.nombre;
+
+      div.innerHTML = `
+        <div class="img-flip">
+          ${imgHtml}
+        </div>
+        <h3>${p.nombre}</h3>
+        ${precioHtml}
+        ${swatchHtml}
+        ${tallesHtml}
+        <div class="controls">
+          <input type="number" min="1" value="1" class="qty">
+          <button onclick="agregarConCantidad(this, '${btnNombre.replace(/'/g,"\\'")}', ${btnPrecio})">Agregar</button>
+        </div>`;
+
+      return div;
+    }
+
+    /* ── Aplicar estado de stock ── */
+    function aplicarEstadoStock(card, stock) {
+      card.querySelector('.badge-producto')?.remove();
+      const imgWrap = card.querySelector('.img-flip');
+
+      if (stock === 'sin-stock') {
+        const badge = document.createElement('span');
+        badge.className = 'badge-producto badge-sin-stock';
+        badge.textContent = 'Sin stock';
+        imgWrap?.appendChild(badge);
+        card.querySelectorAll('.controls button').forEach(b => {
+          b.disabled = true; b.textContent = 'Sin stock'; b.style.opacity = '0.45';
+        });
+      } else if (stock === 'ultimas') {
+        const badge = document.createElement('span');
+        badge.className = 'badge-producto badge-ultimas';
+        badge.textContent = '¡Últimas!';
+        imgWrap?.appendChild(badge);
+      }
+    }
+
+    /* ── Hacer imagen clickeable → producto.html ── */
+    function bindImageClick(card, id) {
+      const imgWrap = card.querySelector('.img-flip');
+      if (!imgWrap || !id) return;
+      imgWrap.style.cursor = 'pointer';
+      imgWrap.addEventListener('click', e => {
+        if (e.target.closest('.btn-fav') || e.target.closest('.color-swatch')) return;
+        window.location.href = 'producto.html?id=' + id;
+      });
+    }
+
+    /* ── Renderizar la grilla ── */
+    function renderGrid(stockData) {
+      const grid = document.getElementById('grid-productos');
+      const noResults = document.getElementById('no-results');
+      if (!grid) return;
+
+      // Vaciar contenido existente (excepto #no-results)
+      Array.from(grid.children).forEach(c => {
+        if (c.id !== 'no-results') c.remove();
+      });
+
+      stockData.forEach(p => {
+        const card = buildCard(p);
+        aplicarEstadoStock(card, p.stock || 'disponible');
+        bindImageClick(card, p.id);
+        grid.insertBefore(card, noResults);
+      });
+
+      // Re-inicializar talles, favoritos y variantes tras renderizado
+      if (typeof initTalles    === 'function') initTalles();
+      if (typeof initFavoritos === 'function') initFavoritos();
+      initColorSwatches();
+      initModalListeners();
+
+      // Aplicar filtros activos
+      if (typeof window.aplicarFiltros === 'function') window.aplicarFiltros();
+    }
+
+    /* ── Re-inicializar variantes de color post-render ── */
+    function initColorSwatches() {
+      document.querySelectorAll('.color-swatches').forEach(container => {
+        const producto = container.closest('.producto');
+        if (!producto) return;
+        let variantes;
+        try { variantes = JSON.parse(container.dataset.variantes); } catch(e) { return; }
+
+        const imgAd    = producto.querySelector('.img-adelante');
+        const imgAt    = producto.querySelector('.img-atras');
+        const h3       = producto.querySelector('h3');
+        const priceEl  = producto.querySelector('.price, .price-sale');
+        const btnAg    = producto.querySelector('.controls button');
+
+        container.querySelectorAll('.color-swatch').forEach(btn => {
+          btn.addEventListener('click', e => {
+            e.stopPropagation();
+            const v = variantes[parseInt(btn.dataset.idx)];
+            if (!v) return;
+            if (imgAd && v.imgs[0]) {
+              imgAd.style.opacity = '0';
+              setTimeout(() => { imgAd.src = v.imgs[0]; imgAd.alt = v.nombre + ' adelante'; imgAd.style.opacity = '1'; }, 150);
+            }
+            if (imgAt && v.imgs[1]) { imgAt.src = v.imgs[1]; imgAt.alt = v.nombre + ' atrás'; }
+            if (h3)    h3.textContent = v.nombre;
+            if (priceEl && v.precio > 0) priceEl.textContent = fmtPrecio(v.precio);
+            if (btnAg) btnAg.onclick = function() { agregarConCantidad(this, v.nombre, v.precio); };
+            container.querySelectorAll('.color-swatch').forEach(b => b.classList.remove('swatch-activo'));
+            btn.classList.add('swatch-activo');
+          });
+        });
+      });
+    }
+
+    /* ── Re-inicializar listeners del modal post-render ── */
+    function initModalListeners() {
+      const overlay  = document.getElementById('modal-overlay');
+      if (!overlay) return;
+      const imgPpal  = document.getElementById('modal-img-principal');
+      const thumbsEl = document.getElementById('modal-thumbnails');
+      const nombreEl = document.getElementById('modal-nombre');
+      const catEl    = document.getElementById('modal-categoria');
+      const precioEl = document.getElementById('modal-precio');
+      const tallesEl = document.getElementById('modal-talles');
+      const talleLabel = document.getElementById('talle-seleccionado-label');
+      const qtyInput = document.getElementById('modal-qty-input');
+      const btnAgregar = document.getElementById('modal-btn-agregar');
+
+      const CAT_LABELS = { pantalon: 'Pantalones', remera: 'Remeras', buzo: 'Buzos / Camperas' };
+      let talleActual = null, nombreActual = '', precioActual = 0;
+
+      // Remove old listeners by cloning
+      const newBtnAg = btnAgregar.cloneNode(true);
+      btnAgregar.parentNode.replaceChild(newBtnAg, btnAgregar);
+
+      document.querySelectorAll('.producto').forEach(card => {
+        // Remove stale listeners by cloning
+        const newCard = card.cloneNode(true);
+        card.parentNode.replaceChild(newCard, card);
+
+        newCard.addEventListener('click', e => {
+          if (e.target.closest('.controls') || e.target.closest('.color-swatch') || e.target.closest('.btn-fav') || e.target.closest('.img-flip')) return;
+          const nombre    = newCard.querySelector('h3')?.textContent || '';
+          const priceEl2  = newCard.querySelector('.price-sale, .price');
+          const precioTxt = priceEl2?.textContent || '0';
+          const categoria = newCard.dataset.categoria || '';
+          const imgs = [];
+          const ad = newCard.querySelector('.img-adelante, .img-simple');
+          const at = newCard.querySelector('.img-atras');
+          if (ad) imgs.push(ad.src);
+          if (at && at.src !== ad?.src) imgs.push(at.src);
+
+          let variantes = null;
+          const sc = newCard.querySelector('.color-swatches');
+          if (sc?.dataset.variantes) { try { variantes = JSON.parse(sc.dataset.variantes); } catch(e){} }
+
+          nombreActual = nombre;
+          precioActual = parseInt(precioTxt.replace(/[^0-9]/g, '')) || 0;
+          talleActual  = null;
+
+          if (nombreEl)   nombreEl.textContent  = nombre;
+          if (precioEl)   precioEl.textContent  = precioTxt;
+          if (catEl)      catEl.textContent     = CAT_LABELS[categoria] || 'Productos';
+          if (talleLabel) talleLabel.textContent = '—';
+          if (qtyInput)   qtyInput.value = 1;
+
+          // Color swatches en modal
+          const colorSec = document.getElementById('modal-color-section');
+          const mSwatches = document.getElementById('modal-color-swatches');
+          const mColorLabel = document.getElementById('modal-color-label');
+          if (variantes && variantes.length > 1 && colorSec && mSwatches) {
+            colorSec.style.display = '';
+            mSwatches.innerHTML = '';
+            let activeIdx = variantes.findIndex(v => v.nombre === nombre);
+            if (activeIdx < 0) activeIdx = 0;
+            if (mColorLabel) mColorLabel.textContent = variantes[activeIdx].label;
+            variantes.forEach((v, i) => {
+              const sBtn = document.createElement('button');
+              sBtn.className = 'color-swatch' + (i === activeIdx ? ' swatch-activo' : '');
+              sBtn.style.background = v.color; sBtn.title = v.label;
+              sBtn.setAttribute('aria-label', 'Color ' + v.label);
+              sBtn.addEventListener('click', () => {
+                nombreActual = v.nombre; precioActual = v.precio;
+                if (nombreEl)    nombreEl.textContent  = v.nombre;
+                if (precioEl)    precioEl.textContent  = fmtPrecio(v.precio);
+                if (mColorLabel) mColorLabel.textContent = v.label;
+                if (imgPpal && v.imgs[0]) { imgPpal.style.opacity='0'; setTimeout(()=>{imgPpal.src=v.imgs[0];imgPpal.style.opacity='1';},150); }
+                thumbsEl.innerHTML = '';
+                v.imgs.forEach((src, ti) => {
+                  const tImg = document.createElement('img');
+                  tImg.src=src; tImg.alt=v.nombre; tImg.className='modal-thumb'+(ti===0?' activa':'');
+                  tImg.addEventListener('click',()=>{ imgPpal.style.opacity='0'; setTimeout(()=>{imgPpal.src=src;imgPpal.style.opacity='1';},150); thumbsEl.querySelectorAll('.modal-thumb').forEach(t=>t.classList.remove('activa')); tImg.classList.add('activa'); });
+                  thumbsEl.appendChild(tImg);
+                });
+                mSwatches.querySelectorAll('.color-swatch').forEach(b=>b.classList.remove('swatch-activo'));
+                sBtn.classList.add('swatch-activo');
+              });
+              mSwatches.appendChild(sBtn);
+            });
+          } else if (colorSec) {
+            colorSec.style.display = 'none';
+          }
+
+          registrarVisto(nombre, precioActual, imgs[0] || '');
+          if (imgPpal) { imgPpal.src = imgs[0] || ''; imgPpal.alt = nombre; }
+          thumbsEl.innerHTML = '';
+          imgs.forEach((src, i) => {
+            const tImg = document.createElement('img');
+            tImg.src=src; tImg.alt=nombre+' '+(i===0?'adelante':'atrás');
+            tImg.className='modal-thumb'+(i===0?' activa':'');
+            tImg.addEventListener('click',()=>{ imgPpal.style.opacity='0'; setTimeout(()=>{imgPpal.src=src;imgPpal.style.opacity='1';},150); thumbsEl.querySelectorAll('.modal-thumb').forEach(t=>t.classList.remove('activa')); tImg.classList.add('activa'); });
+            thumbsEl.appendChild(tImg);
+          });
+          if (tallesEl) tallesEl.querySelectorAll('.talle-btn').forEach(b=>b.classList.remove('seleccionado'));
+          overlay.classList.add('activo');
+          document.body.style.overflow = 'hidden';
+        });
+
+        // Re-bind img-flip click (image → producto.html)
+        const imgWrap = newCard.querySelector('.img-flip');
+        if (imgWrap) {
+          imgWrap.style.cursor = 'pointer';
+          imgWrap.addEventListener('click', e => {
+            if (e.target.closest('.btn-fav') || e.target.closest('.color-swatch')) return;
+            window.location.href = 'producto.html?id=' + newCard.dataset.id;
+          });
+        }
+        // Re-bind talle buttons
+        newCard.querySelectorAll('.talle-btn').forEach(tb => {
+          if (tb.classList.contains('sin-stock')) return;
+          tb.addEventListener('click', function() {
+            newCard.querySelectorAll('.talle-btn').forEach(b=>b.classList.remove('activo'));
+            this.classList.add('activo');
+          });
+        });
+        // Re-bind fav
+        const favBtn = newCard.querySelector('.btn-fav');
+        if (favBtn) {
+          const nombre2 = favBtn.dataset.nombre || newCard.querySelector('h3')?.textContent?.trim() || '';
+          if (nombre2) {
+            favBtn.dataset.nombre = nombre2;
+            const favs = (function(){ try{return JSON.parse(localStorage.getItem('koda_favoritos'))||[];}catch{return [];} })();
+            favBtn.textContent = favs.includes(nombre2) ? '♥' : '♡';
+            if (favs.includes(nombre2)) favBtn.classList.add('fav-activo');
+            favBtn.addEventListener('click', e => { e.stopPropagation(); toggleFavorito(nombre2, favBtn); });
+          }
+        }
+      });
+
+      // Talles modal
+      if (tallesEl) {
+        tallesEl.addEventListener('click', e => {
+          const tb = e.target.closest('.talle-btn');
+          if (!tb || tb.classList.contains('sin-stock')) return;
+          tallesEl.querySelectorAll('.talle-btn').forEach(b=>b.classList.remove('seleccionado'));
+          tb.classList.add('seleccionado');
+          talleActual = tb.dataset.talle;
+          if (talleLabel) talleLabel.textContent = talleActual;
+        });
+      }
+
+      // Agregar desde modal
+      const newBtnAg2 = document.getElementById('modal-btn-agregar');
+      if (newBtnAg2) {
+        newBtnAg2.addEventListener('click', () => {
+          const qty = parseInt(qtyInput?.value) || 1;
+          const hayTalles = tallesEl?.querySelectorAll('.talle-btn:not(.sin-stock)').length > 0;
+          if (hayTalles && !talleActual) {
+            showToast('¡Seleccioná un talle antes de agregar!', 'error');
+            tallesEl.style.outline = '1px solid rgba(255,80,80,0.6)';
+            setTimeout(() => tallesEl.style.outline = '', 1500);
+            return;
+          }
+          const label = talleActual ? ` (Talle ${talleActual})` : '';
+          const nombreConTalle = nombreActual + label;
+          const carrito = getCarrito();
+          const ex = carrito.find(x => x.nombre === nombreConTalle);
+          if (ex) ex.cantidad += qty; else carrito.push({ nombre: nombreConTalle, precio: precioActual, cantidad: qty });
+          setCarrito(carrito);
+          actualizarContadorCarrito();
+          showToast(precioActual > 0 ? nombreConTalle + ' agregado al carrito.' : nombreConTalle + ' agregado. Precio a consultar.', 'success');
+          newBtnAg2.textContent = '¡Agregado! ✓';
+          newBtnAg2.style.background = '#2ecc71';
+          newBtnAg2.style.color = '#fff';
+          setTimeout(() => {
+            newBtnAg2.textContent = 'Agregar al carrito';
+            newBtnAg2.style.background = ''; newBtnAg2.style.color = '';
+            overlay.classList.remove('activo'); document.body.style.overflow = '';
+          }, 1000);
+        });
+      }
+    }
+
+    /* ── Filtro de precio ── */
+    window.precioMax = Infinity;
+    const slider    = document.getElementById('precio-slider');
+    const sliderVal = document.getElementById('precio-slider-val');
+
+    function aplicarFiltroPrecio() {
+      const max = parseInt(slider.value);
+      window.precioMax = (max >= parseInt(slider.max)) ? Infinity : max;
+      sliderVal.textContent = window.precioMax === Infinity ? 'Todos' : '$' + max.toLocaleString('es-AR');
+      if (typeof window.aplicarFiltros === 'function') window.aplicarFiltros();
+    }
+
+    window.resetPrecioFiltro = function() {
+      slider.value = slider.max;
+      window.precioMax = Infinity;
+      sliderVal.textContent = 'Todos';
+      if (typeof window.aplicarFiltros === 'function') window.aplicarFiltros();
+    };
+
+    slider?.addEventListener('input', aplicarFiltroPrecio);
+
+    /* ── Fetch y renderizar ── */
+    fetch('stock.json?v=' + Date.now())
+      .then(r => r.json())
+      .then(data => {
+        renderGrid(data);
+      })
+      .catch(err => {
+        console.warn('stock.json no disponible:', err);
+        document.getElementById('no-results').style.display = 'block';
+        document.getElementById('no-results').textContent = 'No se pudieron cargar los productos. Intentá recargar la página.';
+      });
+
+  })();
+  </script>
+
+
+  <script>
+    /* ── Guía de Talles ── */
+    (function() {
+      const overlay = document.getElementById('talle-guide-overlay');
+      const cerrar  = document.getElementById('talle-guide-cerrar');
+      if (!overlay) return;
+
+      function abrirGuia() {
+        overlay.classList.add('activo');
+        document.body.style.overflow = 'hidden';
+      }
+      function cerrarGuia() {
+        overlay.classList.remove('activo');
+        document.body.style.overflow = '';
+      }
+
+      cerrar.addEventListener('click', cerrarGuia);
+      overlay.addEventListener('click', e => { if (e.target === overlay) cerrarGuia(); });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') cerrarGuia(); });
+
+      window.abrirGuiaTalles = abrirGuia;
+
+      document.querySelectorAll('.tg-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+          document.querySelectorAll('.tg-tab').forEach(t => t.classList.remove('activo'));
+          tab.classList.add('activo');
+          document.querySelectorAll('.tg-panel').forEach(p => p.style.display = 'none');
+          const panel = document.getElementById('tg-' + tab.dataset.cat);
+          if (panel) panel.style.display = '';
+        });
+      });
+
+      document.querySelectorAll('.link-guia-talles').forEach(el => {
+        el.addEventListener('click', e => { e.preventDefault(); abrirGuia(); });
+      });
+    })();
+  </script>
+</body>
+</html>

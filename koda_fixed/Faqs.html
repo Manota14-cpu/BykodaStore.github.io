@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Preguntas Frecuentes | KODA Studio</title>
+  <meta name="description" content="Respondemos tus dudas sobre envíos, talles, cambios y más en KODA Studio.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.bykoda.store/Faqs.html">
+  <meta property="og:title" content="Preguntas Frecuentes | KODA Studio">
+  <meta property="og:description" content="Respondemos tus dudas sobre envíos, talles, cambios y más en KODA Studio.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="imagenes/logo.png" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="loader.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Saltar al contenido</a>
+
+  <header class="header">
+    <div class="logo"><img src="imagenes/logo.png" alt="Logo Koda"></div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+    <nav class="nav">
+      <a href="index.html">Inicio</a>
+      <a href="productos.html">Catalogo</a>
+      <a href="carrito.html" id="carrito-link">Carrito (<span id="contador-carrito">0</span>)</a>
+    </nav>
+    <div class="nav-panel" id="navPanel" aria-hidden="true"><button class="nav-panel-close" id="navPanelClose" aria-label="Cerrar menú">✕</button>
+      <a href="index.html">Inicio</a>
+      <a href="productos.html">Catalogo</a>
+      <a href="carrito.html">Carrito (<span id="contador-carrito-mobile">0</span>)</a>
+    </div>
+  <div class="nav-panel-overlay" id="navPanelOverlay"></div>
+  </header>
+
+  <!-- ───────── CONTACTO ───────── -->
+  <main id="main-content" class="contacto reveal">
+    <div class="section-head">
+      <span class="eyebrow">Contacto</span>
+      <h2>Formulario de Contacto</h2>
+    </div>
+    <form id="contact-form">
+      <label for="nombre">Nombre</label>
+      <input id="nombre" name="nombre" type="text" placeholder="Tu nombre completo" required>
+
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" placeholder="ejemplo@correo.com" required>
+
+      <label for="telefono">Número de teléfono</label>
+      <input id="telefono" name="telefono" type="tel" placeholder="+54 9 ...">
+
+      <button type="submit" class="btn btn-primary">Enviar</button>
+      <p id="form-message" class="small"></p>
+    </form>
+  </main>
+
+  <!-- ───────── POLÍTICAS ───────── -->
+  <section class="politicas reveal">
+    <div class="section-head">
+      <span class="eyebrow">Información</span>
+      <h2>Políticas & Pagos</h2>
+    </div>
+
+    <div class="accordion">
+
+      <!-- Política de la tienda -->
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">
+          <span>Política de la Tienda</span>
+          <span class="icon">+</span>
+        </button>
+        <div class="accordion-body">
+          <p>En <strong>Koda</strong> queremos que tu experiencia de compra sea simple, transparente y sin sorpresas. Al realizar un pedido aceptás las siguientes condiciones:</p>
+          <ul>
+            <li>Los precios publicados incluyen IVA y están expresados en pesos argentinos (ARS).</li>
+            <li>Los productos están sujetos a disponibilidad de stock. En caso de agotarse un artículo después de tu compra, te avisamos de inmediato y te ofrecemos cambio o reintegro.</li>
+            <li>Los tiempos de preparación son de <strong>1 a 3 días hábiles</strong> desde la confirmación del pago.</li>
+            <li>Las fotos de los productos representan fielmente el artículo; pueden existir pequeñas variaciones de color por calibración de pantalla.</li>
+            <li>Koda se reserva el derecho de modificar precios y disponibilidad sin previo aviso.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Política de devolución -->
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">
+          <span>Política de Devolución</span>
+          <span class="icon">+</span>
+        </button>
+        <div class="accordion-body">
+          <p>Tenés <strong>7 días corridos</strong> desde la recepción del pedido para solicitar un cambio o devolución, siempre que el producto esté en perfectas condiciones: sin uso, con etiquetas originales y en su empaque.</p>
+          <ul>
+            <li><strong>Cambio de talle o color:</strong> coordinamos el retiro y envío sin costo adicional para vos.</li>
+            <li><strong>Producto con defecto de fábrica:</strong> reposición inmediata o reintegro total, a tu elección.</li>
+            <li><strong>Arrepentimiento de compra:</strong> aceptamos la devolución dentro del plazo; el costo de envío de retorno corre por cuenta del cliente.</li>
+            <li>No se aceptan devoluciones de prendas lavadas, usadas o con signos de manipulación.</li>
+            <li>Para iniciar el proceso escribinos a <strong>admin@bykoda.store</strong> o por Instagram indicando número de pedido.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Métodos de pago -->
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">
+          <span>Métodos de Pago</span>
+          <span class="icon">+</span>
+        </button>
+        <div class="accordion-body">
+          <p>Aceptamos los siguientes medios de pago. Todos los pagos son procesados de forma segura:</p>
+          <div class="pagos-grid">
+            <div class="pago-card">
+              <div class="pago-icon">💳</div>
+              <span>Tarjeta de Crédito</span>
+            </div>
+            <div class="pago-card">
+              <div class="pago-icon">🏦</div>
+              <span>Transferencia Bancaria</span>
+            </div>
+            <div class="pago-card">
+              <div class="pago-icon">📱</div>
+              <span>Mercado Pago</span>
+            </div>
+            <div class="pago-card">
+              <div class="pago-icon">💵</div>
+              <span>Efectivo</span>
+            </div>
+            <div class="pago-card">
+              <div class="pago-icon">🔄</div>
+              <span>Cuotas sin interés</span>
+            </div>
+          </div>
+          <p style="margin-top:18px;">Para pagos en cuotas consultanos disponibilidad según banco y promociones vigentes.</p>
+        </div>
+      </div>
+
+      <!-- Guía de Talles -->
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">
+          <span>Guía de Talles</span>
+          <span class="icon">+</span>
+        </button>
+        <div class="accordion-body">
+          <p>Usá esta tabla para encontrar tu talle ideal. Las medidas están en centímetros.</p>
+          <div style="overflow-x:auto; margin-top:16px;">
+            <img src="https://d1a9qnv764bsoo.cloudfront.net/stores/007/229/147/rte/Tabla%20de%20talles.png"
+                 alt="Tabla de talles KODA"
+                 style="max-width:100%; border-radius:10px; display:block; margin:0 auto;">
+          </div>
+          <p style="margin-top:16px;">¿Tenés dudas sobre tu talle? Escribinos por WhatsApp y te ayudamos a elegir.</p>
+        </div>
+      </div>
+
+      <!-- Sobre KODA -->
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">
+          <span>Sobre KODA</span>
+          <span class="icon">+</span>
+        </button>
+        <div class="accordion-body">
+          <p>Bienvenidos a KODA, una tienda de ropa streetwear creada para quienes buscan vestir con estilo, personalidad y autenticidad.</p>
+          <p style="margin-top:12px;">KODA nace con una idea simple: ofrecer las mejores prendas al mejor precio, brindando una experiencia de compra confiable, cercana y de calidad. Creemos que la moda urbana es una forma de expresión, por eso seleccionamos cuidadosamente cada producto para acercarte las últimas tendencias sin que tengas que pagar de más.</p>
+          <p style="margin-top:12px;">Nuestro objetivo es que cada cliente encuentre prendas que representen su identidad y se sienta parte de una comunidad que comparte la pasión por el streetwear.</p>
+          <p style="margin-top:12px;">Detrás de KODA se encuentra un equipo comprometido formado por <strong>Mateo Arnaudo</strong> y <strong>Joaquín Manota</strong>, quienes trabajan día a día para hacer crecer el proyecto, mejorar el servicio y ofrecer productos de calidad.</p>
+          <p style="margin-top:12px;font-style:italic;">Más que ropa, una forma de expresarte.</p>
+        </div>
+      </div>
+
+      <!-- Cambios y Devoluciones -->
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">
+          <span>Cambios y Devoluciones</span>
+          <span class="icon">+</span>
+        </button>
+        <div class="accordion-body">
+          <p>En KODA trabajamos para garantizar que recibás tus productos en perfectas condiciones. Te recomendamos revisar la tabla de talles antes de comprar.</p>
+
+          <h4 style="margin-top:16px; margin-bottom:8px; font-size:0.95rem; letter-spacing:0.05em;">Devoluciones</h4>
+          <p>Las devoluciones se aceptan <strong>únicamente</strong> si el producto presenta fallas de fabricación o llegó dañado. Tenés <strong>5 días corridos</strong> desde la recepción para contactarnos enviando fotos del problema a <strong>admin@bykoda.store</strong>. Si se aprueba, KODA cubre los costos del proceso.</p>
+
+          <h4 style="margin-top:16px; margin-bottom:8px; font-size:0.95rem; letter-spacing:0.05em;">Cambio de talle</h4>
+          <p>Si el producto llegó en perfectas condiciones pero el talle no es el adecuado, podés solicitar un cambio sujeto a disponibilidad. Los costos de envío del cambio corren por cuenta del cliente. El producto debe estar sin uso, con etiquetas originales.</p>
+
+          <h4 style="margin-top:16px; margin-bottom:8px; font-size:0.95rem; letter-spacing:0.05em;">Importante</h4>
+          <ul>
+            <li>No se realizan devoluciones por error en la elección del talle.</li>
+            <li>No se realizan devoluciones por cambio de opinión.</li>
+            <li>Los cambios están sujetos a disponibilidad de stock.</li>
+            <li>Las prendas deben estar sin uso, limpias y en perfecto estado.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Cómo Comprar -->
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">
+          <span>¿Cómo Comprar?</span>
+          <span class="icon">+</span>
+        </button>
+        <div class="accordion-body">
+          <ol style="padding-left:1.2rem; line-height:2;">
+            <li><strong>Elegí el producto</strong> — Navegá el catálogo y seleccioná lo que te interese.</li>
+            <li><strong>Agregá al carrito</strong> — Hacé clic en "Agregar al carrito".</li>
+            <li><strong>Iniciá la compra</strong> — Hacé clic en "Iniciar compra" cuando termines de elegir.</li>
+            <li><strong>Completá tus datos</strong> — Nombre, email y teléfono de contacto.</li>
+            <li><strong>Dirección de envío</strong> — Revisá que esté correcta para evitar problemas.</li>
+            <li><strong>Elegí el envío</strong> — Seleccioná la opción que prefieras según costo y tiempo.</li>
+            <li><strong>Medio de pago</strong> — Tarjeta, transferencia o Mercado Pago.</li>
+            <li><strong>Confirmá la compra</strong> — Revisá los datos y confirmá.</li>
+            <li><strong>Confirmación por email</strong> — Te mandamos el comprobante al instante.</li>
+            <li><strong>Enviamos tu pedido</strong> — Lo preparamos y despachamos en 1 a 3 días hábiles.</li>
+          </ol>
+          <p style="margin-top:14px;">¿Alguna duda? Escribinos por WhatsApp y te ayudamos en el momento.</p>
+        </div>
+      </div>
+
+    </div><!-- /accordion -->
+  </section>
+
+  <!-- ───────── FOOTER ───────── -->
+  <footer class="footer reveal">
+    <div class="footer-container">
+      <div class="footer-col">
+        <h3>UNITE A KODA</h3>
+        <p>Registrate y recibí nuestras ofertas.</p>
+        <form class="newsletter">
+          <input type="email" placeholder="Ingresá tu email..." required>
+          <button type="submit">Enviar</button>
+        </form>
+      </div>
+      <div class="footer-col">
+        <h4>Menú</h4>
+        <ul>
+          <li><a href="productos.html">Shop</a></li>
+          <li><a href="#">New In</a></li>
+          <li><a href="#">Stores</a></li>
+          <li><a href="#">FAQs</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Cambios</h4>
+        <ul>
+          <li><a href="#">Guía de Talles</a></li>
+          <li><a href="#">Cómo Comprar</a></li>
+          <li><a href="#">Preguntas Frecuentes</a></li>
+          <li><a href="#">Política de Cambios</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contactanos</h4>
+        <p><strong>Cel:</strong> +54 3492 301-333</p>
+        <p><strong>Email:</strong> admin@bykoda.store</p>
+        <div class="social">
+          <a href="https://www.instagram.com/__bykoda/" target="_blank" rel="noopener noreferrer">
+            <img src="imagenes/icon-instagram.png" alt="Instagram">
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Koda - Derechos Reservados</p>
+    </div>
+  </footer>
+
+  <script src="carrito.js" defer></script>
+  <script>
+    /* ── Acordeón ── */
+    document.querySelectorAll('.accordion-header').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.accordion-item');
+        const isOpen = item.classList.contains('open');
+        // cerrar todos
+        document.querySelectorAll('.accordion-item').forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.accordion-header').setAttribute('aria-expanded', 'false');
+        });
+        // abrir el clickeado si estaba cerrado
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    /* ── Formulario de contacto (simulado) ── */
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const msg = document.getElementById('form-message');
+      msg.textContent = '¡Mensaje enviado! Nos pondremos en contacto a la brevedad.';
+      msg.style.color = '#a3e4a3';
+      this.reset();
+    });
+
+    /* ── Reveal on scroll ── */
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+  <!-- WhatsApp flotante -->
+  <a class="whatsapp-btn" href="https://wa.me/5493492301333" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16 2C8.268 2 2 8.268 2 16c0 2.48.676 4.8 1.852 6.788L2 30l7.404-1.824A13.936 13.936 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm0 25.6a11.56 11.56 0 01-5.896-1.612l-.42-.252-4.396 1.084 1.112-4.272-.276-.44A11.554 11.554 0 014.4 16C4.4 9.592 9.592 4.4 16 4.4S27.6 9.592 27.6 16 22.408 27.6 16 27.6zm6.34-8.664c-.348-.176-2.06-1.016-2.38-1.132-.32-.116-.552-.176-.784.176-.232.348-.9 1.132-1.104 1.364-.2.232-.404.26-.752.084-.348-.176-1.468-.54-2.796-1.724-1.032-.924-1.728-2.064-1.932-2.412-.2-.348-.02-.536.152-.708.156-.156.348-.404.524-.608.176-.2.232-.348.348-.58.116-.232.06-.436-.028-.612-.088-.176-.784-1.892-1.076-2.592-.284-.68-.572-.588-.784-.596l-.668-.012c-.232 0-.608.088-.928.436-.316.348-1.212 1.184-1.212 2.888s1.24 3.352 1.412 3.584c.176.232 2.44 3.728 5.916 5.228.828.356 1.472.568 1.976.728.832.264 1.588.228 2.184.14.668-.1 2.06-.844 2.348-1.66.292-.816.292-1.516.204-1.664-.084-.148-.316-.232-.664-.408z"/></svg>
+  </a>
+</body>
+</html>
