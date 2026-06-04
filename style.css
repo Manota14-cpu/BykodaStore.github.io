@@ -165,7 +165,7 @@ button {
  background: rgba(5,5,5,0.98);
  backdrop-filter: blur(20px);
  -webkit-backdrop-filter: blur(20px);
- padding: 100px 32px 40px;
+ padding: 70px 24px 40px;
  display: flex;
  flex-direction: column;
  gap: 6px;
@@ -1846,8 +1846,18 @@ main {
   .menu-toggle { display: inline-flex; }
 
   /* Nav panel responsive */
-  .nav-panel { padding-top: 80px; }
-  .nav-panel { padding-left: 24px; padding-right: 24px; }
+  .nav-panel {
+    padding-top: 60px;
+    padding-left: 20px;
+    padding-right: 20px;
+    gap: 2px;
+  }
+  .nav-panel-close {
+    width: 36px;
+    height: 36px;
+    top: 18px;
+    right: 16px;
+  }
 }
 
 /* ── Catálogo: sidebar colapsa en mobile ─── */
