@@ -2273,3 +2273,15 @@ main {
   .prod-layout { grid-template-columns: 1fr; gap: 28px; }
   .banner-content { padding: 36px; max-width: 400px; }
 }
+
+/* Premium mobile improvements */
+.menu-toggle{touch-action:manipulation}
+.nav-panel{width:min(90vw,400px);overscroll-behavior:contain;z-index:9999}
+.nav-panel-overlay{z-index:9998}
+.product-card,.producto-card{
+ transition:transform .25s ease, box-shadow .25s ease;
+}
+.product-card:hover,.producto-card:hover{
+ transform:translateY(-4px);
+}
+img{content-visibility:auto}

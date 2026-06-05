@@ -1,4 +1,4 @@
-<script>
+
   const toggle = document.getElementById('menuToggle');
   const panel  = document.getElementById('navPanel');
   const overlay = document.getElementById('navPanelOverlay');
@@ -32,4 +32,3 @@
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') cerrarMenu();
   });
-</script>
