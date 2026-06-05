@@ -1,0 +1,55 @@
+{
+  "_instrucciones": "Editá este archivo para gestionar tus cupones de descuento.",
+  "_campos": {
+    "codigo": "El código que escribe el cliente (insensible a mayúsculas)",
+    "descuento": "Porcentaje de descuento (ej: 10 = 10%)",
+    "tipo": "porcentaje (único tipo por ahora)",
+    "activo": "true = funciona | false = desactivado sin borrar",
+    "usos_max": "Máximo de usos (-1 = ilimitado)",
+    "usos": "Contador de usos (NO tocar, se actualiza solo)",
+    "vence": "Fecha de vencimiento en formato YYYY-MM-DD o null para sin vencimiento",
+    "descripcion": "Nota interna tuya, el cliente no la ve"
+  },
+  "cupones": [
+    {
+      "codigo": "KODA10",
+      "descuento": 10,
+      "tipo": "porcentaje",
+      "activo": true,
+      "usos_max": -1,
+      "usos": 0,
+      "vence": null,
+      "descripcion": "Cupón general 10% off"
+    },
+    {
+      "codigo": "KODA15",
+      "descuento": 15,
+      "tipo": "porcentaje",
+      "activo": true,
+      "usos_max": -1,
+      "usos": 0,
+      "vence": "2026-12-31",
+      "descripcion": "Cupón especial 15% — limitado a 50 usos"
+    },
+    {
+      "codigo": "BIENVENIDO",
+      "descuento": 20,
+      "tipo": "porcentaje",
+      "activo": true,
+      "usos_max": 1,
+      "usos": 0,
+      "vence": null,
+      "descripcion": "20% para primera compra — 1 uso por persona"
+    },
+    {
+      "codigo": "PROMO25",
+      "descuento": 25,
+      "tipo": "porcentaje",
+      "activo": true,
+      "usos_max": 10,
+      "usos": 10,
+      "vence": null,
+      "descripcion": "Reservado para promociones especiales — desactivado"
+    }
+  ]
+}
