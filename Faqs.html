@@ -10,8 +10,11 @@
   <meta property="og:title" content="Preguntas Frecuentes | KODA Studio">
   <meta property="og:description" content="Respondemos tus dudas sobre envíos, talles, cambios y más en KODA Studio.">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.bykoda.store/Faqs.html">
+  <meta property="og:site_name" content="KODA Studio">
+  <meta property="og:locale" content="es_AR">
   <link rel="icon" href="imagenes/logo.png" type="image/png">
-  <link rel="preload" as="image" href="imagenes/iconlogo.png">
+  <link rel="preload" as="image" href="imagenes/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
@@ -22,20 +25,15 @@
   <a class="skip-link" href="#main-content">Saltar al contenido</a>
 
   <header class="header">
-    <div class="logo"><img loading="lazy" decoding="async" src="imagenes/logo.png" alt="Logo Koda"></div>
-    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
-    <nav class="nav">
-      <a href="index.html">Inicio</a>
-      <a href="productos.html">Catalogo</a>
-      <a href="carrito.html" id="carrito-link">Carrito (<span id="contador-carrito">0</span>)</a>
-    </nav>
-    <div class="nav-panel" id="navPanel" aria-hidden="true"><button class="nav-panel-close" id="navPanelClose" aria-label="Cerrar menú">✕</button>
-      <a href="index.html">Inicio</a>
-      <a href="productos.html">Catalogo</a>
-      <a href="carrito.html">Carrito (<span id="contador-carrito-mobile">0</span>)</a>
+    <div class="header-inner">
+      <div class="logo"><a href="index.html"><img loading="lazy" decoding="async" src="imagenes/logo.png" alt="Koda Store"></a></div>
+      <nav class="nav">
+        <a href="index.html" class="nav-link">Inicio</a>
+        <a href="productos.html" class="nav-link">Catálogo</a>
+        <a href="Faqs.html" class="nav-link">FAQs</a>
+        <a href="carrito.html" class="nav-link nav-link--cart">Carrito (<span id="contador-carrito">0</span>)</a>
+      </nav>
     </div>
-  </div>
-<div class="nav-panel-overlay" id="navPanelOverlay"></div>
   </header>
 
   <!-- ───────── CONTACTO ───────── -->
@@ -44,19 +42,24 @@
       <span class="eyebrow">Contacto</span>
       <h2>Formulario de Contacto</h2>
     </div>
-    <form id="contact-form">
-      <label for="nombre">Nombre</label>
-      <input id="nombre" name="nombre" type="text" placeholder="Tu nombre completo" required>
-
-      <label for="email">Email</label>
-      <input id="email" name="email" type="email" placeholder="ejemplo@correo.com" required>
-
-      <label for="telefono">Número de teléfono</label>
-      <input id="telefono" name="telefono" type="tel" placeholder="+54 9 ...">
-
-      <button type="submit" class="btn btn-primary">Enviar</button>
-      <p id="form-message" class="small"></p>
-    </form>
+    <div class="contacto-card">
+      <form id="contact-form" class="contacto-form">
+        <div class="contacto-field">
+          <label for="nombre">Nombre</label>
+          <input id="nombre" name="nombre" type="text" placeholder="Tu nombre completo" required>
+        </div>
+        <div class="contacto-field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="ejemplo@correo.com" required>
+        </div>
+        <div class="contacto-field">
+          <label for="telefono">Número de teléfono</label>
+          <input id="telefono" name="telefono" type="tel" placeholder="+54 9 ...">
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+        <p id="form-message" class="small"></p>
+      </form>
+    </div>
   </main>
 
   <!-- ───────── POLÍTICAS ───────── -->
@@ -114,27 +117,24 @@
           <p>Aceptamos los siguientes medios de pago. Todos los pagos son procesados de forma segura:</p>
           <div class="pagos-grid">
             <div class="pago-card">
-              <div class="pago-icon">💳</div>
-              <span>Tarjeta de Crédito</span>
-            </div>
-            <div class="pago-card">
-              <div class="pago-icon">🏦</div>
+              <div class="pago-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
+              </div>
               <span>Transferencia Bancaria</span>
             </div>
             <div class="pago-card">
-              <div class="pago-icon">📱</div>
+              <div class="pago-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              </div>
               <span>Mercado Pago</span>
             </div>
             <div class="pago-card">
-              <div class="pago-icon">💵</div>
+              <div class="pago-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+              </div>
               <span>Efectivo</span>
             </div>
-            <div class="pago-card">
-              <div class="pago-icon">🔄</div>
-              <span>Cuotas sin interés</span>
-            </div>
           </div>
-          <p style="margin-top:18px;">Para pagos en cuotas consultanos disponibilidad según banco y promociones vigentes.</p>
         </div>
       </div>
 
@@ -147,9 +147,38 @@
         <div class="accordion-body">
           <p>Usá esta tabla para encontrar tu talle ideal. Las medidas están en centímetros.</p>
           <div style="overflow-x:auto; margin-top:16px;">
-            <img loading="lazy" decoding="async" src="https://d1a9qnv764bsoo.cloudfront.net/stores/007/229/147/rte/Tabla%20de%20talles.png"
-                 alt="Tabla de talles KODA"
-                 style="max-width:100%; border-radius:10px; display:block; margin:0 auto;">
+            <h4 style="margin-bottom:8px;font-size:.85rem;letter-spacing:.05em;">Ropa (remeras, buzos)</h4>
+            <table class="talle-table">
+              <thead>
+                <tr><th>Talle</th><th>Pecho</th><th>Hombros</th><th>Largo</th><th>Cintura</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>S</strong></td><td>86–92</td><td>42–44</td><td>68</td><td>72–78</td></tr>
+                <tr><td><strong>M</strong></td><td>92–100</td><td>44–46</td><td>70</td><td>78–84</td></tr>
+                <tr><td><strong>L</strong></td><td>100–108</td><td>46–48</td><td>72</td><td>84–92</td></tr>
+                <tr><td><strong>XL</strong></td><td>108–118</td><td>48–50</td><td>74</td><td>92–100</td></tr>
+                <tr><td><strong>XXL</strong></td><td>118–130</td><td>50–53</td><td>76</td><td>100–110</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div style="overflow-x:auto; margin-top:20px;">
+            <h4 style="margin-bottom:8px;font-size:.85rem;letter-spacing:.05em;">Jeans</h4>
+            <table class="talle-table">
+              <thead>
+                <tr><th>Talle</th><th>Cintura</th><th>Cadera</th><th>Entrepierna</th><th>Equivalencia</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>S / 28</strong></td><td>72–76</td><td>90–94</td><td>78</td><td>XS–S</td></tr>
+                <tr><td><strong>M / 30</strong></td><td>76–82</td><td>94–100</td><td>79</td><td>S–M</td></tr>
+                <tr><td><strong>L / 32</strong></td><td>82–88</td><td>100–106</td><td>80</td><td>M–L</td></tr>
+                <tr><td><strong>XL / 34</strong></td><td>88–96</td><td>106–114</td><td>81</td><td>L–XL</td></tr>
+                <tr><td><strong>XXL / 36</strong></td><td>96–106</td><td>114–122</td><td>82</td><td>XL–XXL</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="talle-guide-tip">
+            <span>💡</span>
+            <p>Si estás entre dos talles, elegí el más grande para mayor comodidad. Nuestros modelos miden 1.80 m y usan talle M.</p>
           </div>
           <p style="margin-top:16px;">¿Tenés dudas sobre tu talle? Escribinos por WhatsApp y te ayudamos a elegir.</p>
         </div>
@@ -235,19 +264,17 @@
       <div class="footer-col">
         <h4>Menú</h4>
         <ul>
-          <li><a href="productos.html">Shop</a></li>
-          <li><a href="#">New In</a></li>
-          <li><a href="#">Stores</a></li>
-          <li><a href="#">FAQs</a></li>
+          <li><a href="productos.html">Tienda</a></li>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="Faqs.html">FAQs</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Cambios</h4>
+        <h4>Ayuda</h4>
         <ul>
           <li><a href="#">Guía de Talles</a></li>
-          <li><a href="#">Cómo Comprar</a></li>
-          <li><a href="#">Preguntas Frecuentes</a></li>
-          <li><a href="#">Política de Cambios</a></li>
+          <li><a href="Faqs.html">Cómo Comprar</a></li>
+          <li><a href="Faqs.html">Política de Cambios</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -295,22 +322,12 @@
       this.reset();
     });
 
-    /* ── Reveal on scroll ── */
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
   <!-- WhatsApp flotante -->
   <a class="whatsapp-btn" href="https://wa.me/5493492301333" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
     <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16 2C8.268 2 2 8.268 2 16c0 2.48.676 4.8 1.852 6.788L2 30l7.404-1.824A13.936 13.936 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm0 25.6a11.56 11.56 0 01-5.896-1.612l-.42-.252-4.396 1.084 1.112-4.272-.276-.44A11.554 11.554 0 014.4 16C4.4 9.592 9.592 4.4 16 4.4S27.6 9.592 27.6 16 22.408 27.6 16 27.6zm6.34-8.664c-.348-.176-2.06-1.016-2.38-1.132-.32-.116-.552-.176-.784.176-.232.348-.9 1.132-1.104 1.364-.2.232-.404.26-.752.084-.348-.176-1.468-.54-2.796-1.724-1.032-.924-1.728-2.064-1.932-2.412-.2-.348-.02-.536.152-.708.156-.156.348-.404.524-.608.176-.2.232-.348.348-.58.116-.232.06-.436-.028-.612-.088-.176-.784-1.892-1.076-2.592-.284-.68-.572-.588-.784-.596l-.668-.012c-.232 0-.608.088-.928.436-.316.348-1.212 1.184-1.212 2.888s1.24 3.352 1.412 3.584c.176.232 2.44 3.728 5.916 5.228.828.356 1.472.568 1.976.728.832.264 1.588.228 2.184.14.668-.1 2.06-.844 2.348-1.66.292-.816.292-1.516.204-1.664-.084-.148-.316-.232-.664-.408z"/></svg>
   </a>
 
-<script src="menu.js" defer></script>
+
 </body>
 </html>

@@ -2,75 +2,6 @@
    KODA SHOP — carrito.js  (v3 — lógica mejorada + bugs corregidos)
    ================================================================ */
 
-/* ─── Carrusel ─────────────────────────────────────────────────── */
-let currentSlide = 0;
-let totalSlides   = 0;
-let autoplayTimer = null;
-
-function getSlidesCount() {
-  return document.querySelectorAll('.carrusel-slide').length;
-}
-
-function moverCarrusel(direction) {
-  totalSlides = getSlidesCount();
-  if (totalSlides === 0) return;
-  currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
-  actualizarCarrusel();
-  resetAutoplay();
-}
-
-function actualizarCarrusel() {
-  const track = document.getElementById('track');
-  if (track) track.style.transform = `translateX(-${currentSlide * 100}%)`;
-  actualizarDots();
-}
-
-function actualizarDots() {
-  totalSlides = getSlidesCount();
-  const dotsContainer = document.getElementById('dots');
-  if (!dotsContainer) return;
-  dotsContainer.innerHTML = '';
-  for (let i = 0; i < totalSlides; i++) {
-    const dot = document.createElement('span');
-    dot.className = i === currentSlide ? 'active' : '';
-    dot.setAttribute('aria-label', `Slide ${i + 1}`);
-    dot.onclick = () => { currentSlide = i; actualizarCarrusel(); resetAutoplay(); };
-    dotsContainer.appendChild(dot);
-  }
-}
-
-function startAutoplay() {
-  stopAutoplay();
-  autoplayTimer = setInterval(() => moverCarrusel(1), 4500);
-}
-
-function stopAutoplay() {
-  if (autoplayTimer) { clearInterval(autoplayTimer); autoplayTimer = null; }
-}
-
-function resetAutoplay() {
-  stopAutoplay();
-  startAutoplay();
-}
-
-function initCarousel() {
-  totalSlides  = getSlidesCount();
-  if (totalSlides === 0) return;
-  currentSlide = 0;
-  actualizarCarrusel();
-  if (totalSlides > 1) startAutoplay();
-
-  // Swipe táctil
-  const contenedor = document.querySelector('.carrusel-contenedor');
-  if (!contenedor) return;
-  let startX = 0;
-  contenedor.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
-  contenedor.addEventListener('touchend',   e => {
-    const diff = startX - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 40) moverCarrusel(diff > 0 ? 1 : -1);
-  }, { passive: true });
-}
-
 /* ─── Toast ────────────────────────────────────────────────────── */
 function showToast(message, type = 'default') {
   let toast = document.querySelector('.toast');
@@ -83,6 +14,35 @@ function showToast(message, type = 'default') {
   toast.className = 'toast show' + (type === 'error' ? ' toast-error' : type === 'success' ? ' toast-success' : '');
   clearTimeout(window.kodaToastTimer);
   window.kodaToastTimer = setTimeout(() => toast.classList.remove('show'), 2600);
+}
+
+/* ─── Transiciones aparición/desaparición ────────────────────── */
+function show(el, displayType = 'block') {
+  if (!el) return;
+  if (el.style.display !== 'none' && el.style.display !== '' && !el.classList.contains('is-hidden')) return;
+  el.style.display = displayType;
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(6px)';
+  void el.offsetHeight;
+  el.style.transition = 'opacity 0.5s var(--ease-smooth, cubic-bezier(0.22,1,0.36,1)), transform 0.5s var(--ease-smooth, cubic-bezier(0.22,1,0.36,1))';
+  el.style.opacity = '1';
+  el.style.transform = 'translateY(0)';
+  const clear = () => { el.style.transition = ''; el.removeEventListener('transitionend', clear); };
+  el.addEventListener('transitionend', clear, { once: true });
+}
+
+function hide(el) {
+  if (!el) return;
+  if (el.style.display === 'none') return;
+  el.style.transition = 'opacity 0.4s var(--ease-smooth, cubic-bezier(0.22,1,0.36,1)), transform 0.4s var(--ease-smooth, cubic-bezier(0.22,1,0.36,1))';
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(4px)';
+  el.addEventListener('transitionend', () => {
+    el.style.display = 'none';
+    el.style.transition = '';
+    el.style.transform = '';
+    el.style.opacity = '';
+  }, { once: true });
 }
 
 /* ─── Carrito ──────────────────────────────────────────────────── */
@@ -98,17 +58,16 @@ function setCarrito(carrito) {
 function actualizarContadorCarrito() {
   const carrito      = getCarrito();
   const totalCantidad = carrito.reduce((sum, item) => sum + item.cantidad, 0);
-  document.querySelectorAll('#contador-carrito, #contador-carrito-mobile')
-          .forEach(el => {
-            const prev = parseInt(el.textContent) || 0;
-            el.textContent = totalCantidad;
-            // Animar badge si aumentó
-            if (totalCantidad > prev) {
-              el.classList.remove('badge-bump');
-              void el.offsetWidth; // reflow
-              el.classList.add('badge-bump');
-            }
-          });
+  const el = document.getElementById('contador-carrito');
+  if (el) {
+    const prev = parseInt(el.textContent) || 0;
+    el.textContent = totalCantidad;
+    if (totalCantidad > prev) {
+      el.classList.remove('badge-bump');
+      void el.offsetWidth;
+      el.classList.add('badge-bump');
+    }
+  }
 }
 
 function agregarCarrito(nombre, precio) {
@@ -194,7 +153,7 @@ function mostrarCarrito() {
         <div class="carrito-vacio-icon">🛍️</div>
         <h4>Tu carrito está vacío</h4>
         <p>Añadí productos para comenzar tu compra.</p>
-        <a href="productos.html" class="btn btn-primary" style="margin-top:16px;display:inline-block">Ver catálogo</a>
+        <a href="productos.html" class="btn btn-primary" style="margin-top:16px">Ver catálogo</a>
       </div>`;
     const totalEl = document.getElementById('total');
     if (totalEl) totalEl.textContent = '$0';
@@ -284,6 +243,13 @@ function finalizarCompra() {
 function abrirModalCheckout() {
   let overlay = document.getElementById('checkout-overlay');
   if (!overlay) return;
+  const carrito = getCarrito();
+  const total = carrito.reduce((s, i) => i.precio > 0 ? s + i.precio * i.cantidad : s, 0);
+  const cant = carrito.reduce((s, i) => s + i.cantidad, 0);
+  const resumen = document.getElementById('checkout-resumen');
+  if (resumen) {
+    resumen.textContent = `${cant} artículo${cant !== 1 ? 's' : ''} · Total: $${total.toLocaleString('es-AR')}`;
+  }
   overlay.classList.add('activo');
   document.body.style.overflow = 'hidden';
   document.getElementById('checkout-nombre')?.focus();
@@ -302,28 +268,32 @@ function confirmarPedidoWhatsApp() {
   const direccion = document.getElementById('checkout-direccion')?.value.trim();
   const nota      = document.getElementById('checkout-nota')?.value.trim();
 
-  // Validaciones
-  const errNombre = document.getElementById('err-nombre');
-  const errTel    = document.getElementById('err-telefono');
+  const fieldNombre   = document.getElementById('checkout-nombre')?.closest('.checkout-field');
+  const fieldTel      = document.getElementById('checkout-telefono')?.closest('.checkout-field');
   let ok = true;
 
+  // Clear errors
+  document.querySelectorAll('.checkout-field').forEach(f => f.classList.remove('error', 'shake'));
+
   if (!nombre) {
-    if (errNombre) errNombre.style.display = 'block';
+    if (fieldNombre) { fieldNombre.classList.add('error', 'shake'); }
     document.getElementById('checkout-nombre')?.focus();
     ok = false;
-  } else {
-    if (errNombre) errNombre.style.display = 'none';
   }
 
   if (!telefono) {
-    if (errTel) errTel.style.display = 'block';
+    if (fieldTel) { fieldTel.classList.add('error', 'shake'); }
     if (ok) document.getElementById('checkout-telefono')?.focus();
     ok = false;
-  } else {
-    if (errTel) errTel.style.display = 'none';
   }
 
   if (!ok) return;
+
+  // Disable button + loading state
+  const btn = document.getElementById('checkout-confirmar');
+  const originalText = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = '<span class="btn-spinner"></span> Enviando...';
 
   const carrito = getCarrito();
   let mensaje = `🛍️ *Nuevo pedido KODA*\n`;
@@ -353,12 +323,16 @@ function confirmarPedidoWhatsApp() {
   mensaje += `\n¡Hola! Quiero confirmar este pedido y coordinar el pago 🙌`;
 
   const url = `https://wa.me/5493492301333?text=${encodeURIComponent(mensaje)}`;
-  cerrarModalCheckout();
-  window.open(url, '_blank');
 
-  // Limpiar form
-  ['checkout-nombre','checkout-telefono','checkout-direccion','checkout-nota']
-    .forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
+  setTimeout(() => {
+    cerrarModalCheckout();
+    window.open(url, '_blank');
+    btn.disabled = false;
+    btn.innerHTML = originalText;
+    // Limpiar form
+    ['checkout-nombre','checkout-telefono','checkout-direccion','checkout-nota']
+      .forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
+  }, 400);
 }
 
 /* ─── Favoritos ─────────────────────────────────────────────────── */
@@ -458,10 +432,9 @@ function filtrar(categoria, button) {
   let visibles = 0;
 
   productos.forEach(producto => {
-    if (producto.dataset.varianteOculta) { producto.style.display = 'none'; return; }
+    if (producto.dataset.varianteOculta) { hide(producto); return; }
     const matchCategoria = categoria === 'todos' || producto.dataset.categoria === categoria;
     const matchBusqueda  = !busqueda || (producto.dataset.nombre || '').toLowerCase().includes(busqueda);
-    // Price filter: read from data-precio attr or parse from .price text
     let precioNum = parseInt(producto.dataset.precio || '0');
     if (!precioNum) {
       const saleEl = producto.querySelector('.price-sale');
@@ -471,8 +444,12 @@ function filtrar(categoria, button) {
     }
     const matchPrecio = maxPrecio === Infinity || precioNum <= maxPrecio;
     const visible = matchCategoria && matchBusqueda && matchPrecio;
-    producto.style.display = visible ? '' : 'none';
-    if (visible) visibles++;
+    if (visible) {
+      show(producto, 'block');
+      visibles++;
+    } else {
+      hide(producto);
+    }
   });
 
   document.querySelectorAll('.sidebar button:not(.precio-reset)').forEach(btn =>
@@ -493,9 +470,9 @@ function actualizarContadorResultados(visibles, hayFiltro) {
   }
   if (hayFiltro) {
     counter.textContent = `${visibles} resultado${visibles !== 1 ? 's' : ''}`;
-    counter.style.display = '';
+    show(counter);
   } else {
-    counter.style.display = 'none';
+    hide(counter);
   }
 }
 
@@ -521,39 +498,6 @@ function initBuscador() {
   });
 }
 
-/* ─── Menú móvil ───────────────────────────────────────────────── */
-function initMenuToggle() {
-  const toggle   = document.getElementById('menuToggle');
-  const panel    = document.getElementById('navPanel');
-  const overlay  = document.getElementById('navPanelOverlay');
-  const closeBtn = document.getElementById('navPanelClose');
-
-  function openMenu() {
-    if (!panel) return;
-    panel.classList.add('open');
-    overlay?.classList.add('active');
-    toggle?.classList.add('open');
-    toggle?.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeMenu() {
-    if (!panel) return;
-    panel.classList.remove('open');
-    overlay?.classList.remove('active');
-    toggle?.classList.remove('open');
-    toggle?.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-  }
-
-  toggle?.addEventListener('click', () =>
-    panel?.classList.contains('open') ? closeMenu() : openMenu());
-  overlay?.addEventListener('click', closeMenu);
-  closeBtn?.addEventListener('click', closeMenu);
-  panel?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
-}
-
 /* ─── Reveal scroll ────────────────────────────────────────────── */
 function initReveal() {
   const observer = new IntersectionObserver((entries, obs) => {
@@ -563,8 +507,8 @@ function initReveal() {
         obs.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  }, { threshold: 0.05, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal, .reveal-children').forEach(el => observer.observe(el));
 }
 
 /* ─── Newsletter ───────────────────────────────────────────────── */
@@ -722,19 +666,20 @@ function removerCupon() {
   const errEl     = document.getElementById('cupon-error');
   const okEl      = document.getElementById('cupon-ok');
   const removerBtn = document.getElementById('cupon-remover');
-  if (errEl)      errEl.style.display     = 'none';
-  if (okEl)       okEl.style.display      = 'none';
-  if (removerBtn) removerBtn.style.display = 'none';
+  hide(errEl);
+  hide(okEl);
+  hide(removerBtn);
   recalcularTotal();
   showToast('Cupón removido.', 'default');
 }
 
 function mostrarCuponMsg(showEl, msg, hideEl) {
-  if (showEl) { showEl.textContent = msg; showEl.style.display = 'block'; }
-  if (hideEl) hideEl.style.display = 'none';
+  if (showEl) { showEl.textContent = msg; show(showEl); }
+  hide(hideEl);
   // Mostrar/ocultar botón "Quitar cupón" según si hay cupón aplicado
   const removerBtn = document.getElementById('cupon-remover');
-  if (removerBtn) removerBtn.style.display = cuponAplicado ? 'inline-block' : 'none';
+  if (cuponAplicado) show(removerBtn, 'inline-block');
+  else hide(removerBtn);
 }
 
 function recalcularTotal() {
@@ -750,27 +695,96 @@ function recalcularTotal() {
     const descuento = Math.round(total * cuponAplicado.descuento / 100);
     const totalFinal = total - descuento;
     if (descEl) {
-      descEl.style.display = 'flex';
       document.getElementById('descuento-monto').textContent = `−$${descuento.toLocaleString('es-AR')} (${cuponAplicado.descuento}%)`;
+      show(descEl, 'flex');
     }
-    if (totalOrigEl) { totalOrigEl.textContent = '$' + total.toLocaleString('es-AR'); totalOrigEl.style.display = 'block'; }
+    if (totalOrigEl) { totalOrigEl.textContent = '$' + total.toLocaleString('es-AR'); show(totalOrigEl); }
     if (totalEl) totalEl.textContent = hayConsulta ? '$' + totalFinal.toLocaleString('es-AR') + ' + a consultar' : '$' + totalFinal.toLocaleString('es-AR');
   } else {
-    if (descEl) descEl.style.display = 'none';
-    if (totalOrigEl) totalOrigEl.style.display = 'none';
+    hide(descEl);
+    hide(totalOrigEl);
     if (totalEl) totalEl.textContent = hayConsulta && total === 0 ? 'Consultar' : `$${total.toLocaleString('es-AR')}${hayConsulta ? ' + a consultar' : ''}`;
   }
 }
 
+/* ─── Checkout validation en tiempo real ──────────────────────── */
+function initCheckoutValidation() {
+  document.querySelectorAll('.checkout-field input, .checkout-field textarea').forEach(el => {
+    el.addEventListener('blur', () => {
+      const field = el.closest('.checkout-field');
+      if (!field) return;
+      const hasError = field.querySelector('.checkout-error');
+      if (hasError && !el.value.trim()) {
+        field.classList.add('error');
+      } else {
+        field.classList.remove('error');
+      }
+    });
+    el.addEventListener('input', () => {
+      const field = el.closest('.checkout-field');
+      if (!field) return;
+      field.classList.remove('error', 'shake');
+    });
+  });
+}
+
+/* ─── Ripple effect en botones ─────────────────────────────────── */
+function initRipple() {
+  document.querySelectorAll('.btn').forEach(btn => {
+    btn.addEventListener('click', function (e) {
+      const rect = this.getBoundingClientRect();
+      const ripple = document.createElement('span');
+      ripple.className = 'ripple';
+      const size = Math.max(rect.width, rect.height);
+      ripple.style.width = ripple.style.height = size + 'px';
+      ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+      ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+      this.appendChild(ripple);
+      ripple.addEventListener('animationend', () => ripple.remove());
+    });
+  });
+}
+
+/* ─── Header scroll effect + hero parallax ────────────────────── */
+function initHeaderScroll() {
+  const header = document.querySelector('.header');
+  if (!header) return;
+  const hero = document.querySelector('.hero-swiper');
+  const sentinel = document.querySelector('.hero-lookbook') || hero || document.body;
+  const observer = new IntersectionObserver(([entry]) => {
+    header.classList.toggle('scrolled', !entry.isIntersecting);
+  }, { threshold: 0, rootMargin: '-1px 0px 0px 0px' });
+  observer.observe(sentinel);
+
+  // Parallax muy sutil en hero slides (sobre .swiper-slide para no pisar scale de img)
+  if (!hero) return;
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        const rect = hero.getBoundingClientRect();
+        const offset = rect.top * 0.08;
+        const clamped = Math.round(Math.min(Math.max(offset, -15), 15));
+        hero.querySelectorAll('.swiper-slide').forEach(slide => {
+          slide.style.setProperty('--parallax-y', `${clamped}px`);
+        });
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+}
+
 /* ─── Arranque ─────────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
+  initHeaderScroll();
+  initRipple();
   actualizarContadorCarrito();
   mostrarCarrito();
-  initMenuToggle();
   initReveal();
   initNewsletterForms();
+  initCheckoutValidation();
   initContactForm();
-  initCarousel();
   initBuscador();
   initCarritoPage();
   initTalles();

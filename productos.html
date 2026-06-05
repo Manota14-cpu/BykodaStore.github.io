@@ -14,9 +14,9 @@
   <meta property="og:title" content="Catálogo | KODA Studio">
   <meta property="og:description" content="Jeans, hoodies, buzos, sweaters, remeras y más. Streetwear argentino premium.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.koda.com.ar/productos.html">
+  <meta property="og:url" content="https://www.bykoda.store/productos.html">
   <meta property="og:image" content="https://www.bykoda.store/imagenes/og-cover.jpg">
-  <link rel="icon" href="imagenes/iconlogo.png" type="image/png">
+  <link rel="icon" href="imagenes/logo.png" type="image/png">
   <link rel="preload" as="image" href="imagenes/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,25 +30,15 @@
   <a class="skip-link" href="#main-content">Saltar al contenido</a>
 
   <header class="header">
-    <div class="logo"><img loading="lazy" decoding="async" src="imagenes/logo.png" alt="Logo Koda"></div>
-    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
-    </button>
-    <nav class="nav">
-      <a href="index.html">Inicio</a>
-      <a href="Faqs.html">FAQs</a>
-      <a href="carrito.html" id="carrito-link">Carrito (<span id="contador-carrito">0</span>)</a>
-    </nav>
-    <div class="nav-panel" id="navPanel" aria-hidden="true">
-      <button class="nav-panel-close" id="navPanelClose" aria-label="Cerrar menú">✕</button>
-      <a href="index.html">Inicio</a>
-      <a href="Faqs.html">FAQs</a>
-      <a href="carrito.html">Carrito (<span id="contador-carrito-mobile">0</span>)</a>
+    <div class="header-inner">
+      <div class="logo"><a href="index.html"><img loading="lazy" decoding="async" src="imagenes/logo.png" alt="Koda Store"></a></div>
+      <nav class="nav">
+        <a href="index.html" class="nav-link">Inicio</a>
+        <a href="productos.html" class="nav-link">Catálogo</a>
+        <a href="Faqs.html" class="nav-link">FAQs</a>
+        <a href="carrito.html" class="nav-link nav-link--cart">Carrito (<span id="contador-carrito">0</span>)</a>
+      </nav>
     </div>
-    </div>
-<div class="nav-panel-overlay" id="navPanelOverlay"></div>
   </header>
 
   <main id="main-content">
@@ -234,13 +224,13 @@
       <div class="footer-col">
         <h4>Menú</h4>
         <ul>
-          <li><a href="productos.html">Shop</a></li>
-          <li></li>
+          <li><a href="productos.html">Tienda</a></li>
+          <li><a href="index.html">Inicio</a></li>
           <li><a href="Faqs.html">FAQs</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Cambios</h4>
+        <h4>Ayuda</h4>
         <ul>
           <li><a href="#" class="link-guia-talles">Guía de Talles</a></li>
           <li><a href="Faqs.html">Cómo Comprar</a></li>
@@ -763,6 +753,6 @@
     })();
   </script>
 
-<script src="menu.js" defer></script>
+
 </body>
 </html>

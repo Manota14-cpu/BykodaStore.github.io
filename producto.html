@@ -6,8 +6,15 @@
   <title>Producto | KODA Studio</title>
   <meta name="description" content="KODA Studio — Ropa urbana y streetwear premium argentino.">
   <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.bykoda.store/producto.html">
+  <meta property="og:title" content="Producto | KODA Studio">
+  <meta property="og:description" content="KODA Studio — Ropa urbana y streetwear premium argentino.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.bykoda.store/producto.html">
+  <meta property="og:site_name" content="KODA Studio">
+  <meta property="og:locale" content="es_AR">
   <link rel="icon" href="imagenes/logo.png" type="image/png">
-  <link rel="preload" as="image" href="imagenes/iconlogo.png">
+  <link rel="preload" as="image" href="imagenes/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
@@ -19,27 +26,15 @@
   <a class="skip-link" href="#main-content">Saltar al contenido</a>
 
   <header class="header">
-    <div class="logo"><img loading="lazy" decoding="async" src="imagenes/logo.png" alt="Logo Koda"></div>
-    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">
-      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-    </button>
-    <nav class="nav">
-      <a href="index.html">Inicio</a>
-      <a href="productos.html">Catálogo</a>
-      <a href="calzado.html">Calzado</a>
-      <a href="Faqs.html">FAQs</a>
-      <a href="carrito.html" id="carrito-link">Carrito (<span id="contador-carrito">0</span>)</a>
-    </nav>
-    <div class="nav-panel" id="navPanel" aria-hidden="true">
-      <button class="nav-panel-close" id="navPanelClose" aria-label="Cerrar menú">✕</button>
-      <a href="index.html">Inicio</a>
-      <a href="productos.html">Catálogo</a>
-      <a href="calzado.html">Calzado</a>
-      <a href="Faqs.html">FAQs</a>
-      <a href="carrito.html">Carrito (<span id="contador-carrito-mobile">0</span>)</a>
+    <div class="header-inner">
+      <div class="logo"><a href="index.html"><img loading="lazy" decoding="async" src="imagenes/logo.png" alt="Koda Store"></a></div>
+      <nav class="nav">
+        <a href="index.html" class="nav-link">Inicio</a>
+        <a href="productos.html" class="nav-link">Catálogo</a>
+        <a href="Faqs.html" class="nav-link">FAQs</a>
+        <a href="carrito.html" class="nav-link nav-link--cart">Carrito (<span id="contador-carrito">0</span>)</a>
+      </nav>
     </div>
-    </div>
-<div class="nav-panel-overlay" id="navPanelOverlay"></div>
   </header>
 
   <main id="main-content" class="producto-page reveal">
@@ -57,7 +52,7 @@
     <div id="producto-error" class="producto-state" style="display:none">
       <p style="font-size:2rem">😕</p>
       <p>Producto no encontrado.</p>
-      <a href="productos.html" class="btn btn-primary" style="margin-top:20px;display:inline-block">Ver catálogo</a>
+      <a href="productos.html" class="btn btn-primary" style="margin-top:20px">Ver catálogo</a>
     </div>
 
     <!-- Main content (hidden until loaded) -->
@@ -147,19 +142,32 @@
       <div class="footer-col">
         <h4>Menú</h4>
         <ul>
-          <li><a href="productos.html">Shop</a></li>
-          <li><a href="calzado.html">Calzado</a></li>
+          <li><a href="productos.html">Tienda</a></li>
+          <li><a href="index.html">Inicio</a></li>
           <li><a href="Faqs.html">FAQs</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Ayuda</h4>
+        <ul>
+          <li><a href="#">Guía de Talles</a></li>
+          <li><a href="Faqs.html">Cómo Comprar</a></li>
+          <li><a href="Faqs.html">Política de Cambios</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Contactanos</h4>
         <p><strong>Cel:</strong> +54 3492 301-333</p>
         <p><strong>Email:</strong> admin@bykoda.store</p>
+        <div class="social">
+          <a href="https://www.instagram.com/__bykoda/" target="_blank" rel="noopener noreferrer">
+            <img loading="lazy" decoding="async" src="imagenes/icon-instagram.png" alt="Instagram">
+          </a>
+        </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 Koda - Derechos Reservados</p>
+      <p>© 2026 Koda - Derechos Reservados</p>
     </div>
   </footer>
 
@@ -191,8 +199,8 @@
       .catch(() => showError());
 
     function showError() {
-      elLoading.style.display = 'none';
-      elError.style.display   = 'flex';
+      hide(elLoading);
+      show(elError, 'flex');
     }
 
     function renderProducto(prod, todos) {
@@ -204,11 +212,11 @@
       if (prod.stock === 'sin-stock') {
         badge.textContent = 'Sin stock';
         badge.className = 'prod-badge badge-sin-stock';
-        badge.style.display = 'block';
+        show(badge);
       } else if (prod.stock === 'ultimas') {
         badge.textContent = '¡Últimas unidades!';
         badge.className = 'prod-badge badge-ultimas';
-        badge.style.display = 'block';
+        show(badge);
       }
 
       // Categoría
@@ -221,7 +229,7 @@
       const descEl = document.getElementById('prod-descripcion');
       if (prod.descripcion) {
         descEl.textContent = prod.descripcion;
-        descEl.style.display = 'block';
+        show(descEl);
       }
 
       // Galería
@@ -248,7 +256,7 @@
       });
 
       // Ocultar thumbnails si sólo hay 1 imagen
-      if (imagenes.length <= 1) thumbsEl.style.display = 'none';
+      if (imagenes.length <= 1) hide(thumbsEl);
 
       // Talles
       const tallesEl = document.getElementById('prod-talles');
@@ -310,9 +318,9 @@
         if (existente) { existente.cantidad += qty; }
         else { carrito.push({ nombre: key, precio: prod.precio, cantidad: qty }); }
         localStorage.setItem('carrito', JSON.stringify(carrito));
-        // Actualizar contador
         const total = carrito.reduce((s, i) => s + i.cantidad, 0);
-        document.querySelectorAll('#contador-carrito, #contador-carrito-mobile').forEach(el => el.textContent = total);
+        const contadorEl = document.getElementById('contador-carrito');
+        if (contadorEl) contadorEl.textContent = total;
         // Feedback
         ctaBtn.textContent = '✓ Agregado';
         ctaBtn.classList.add('btn-added');
@@ -335,12 +343,12 @@
         'https://wa.me/?text=' + encodeURIComponent('Mirá este producto de KODA: ' + prod.nombre + ' — ' + pageUrl);
    
       // Show
-      elLoading.style.display = 'none';
-      elContenido.style.display = 'block';
+      hide(elLoading);
+      show(elContenido, 'block');
     }
   })();
   </script>
 
-<script src="menu.js" defer></script>
+
 </body>
 </html>

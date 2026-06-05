@@ -12,7 +12,7 @@
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      transition: opacity 0.45s ease, visibility 0.45s ease;
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
     #koda-loader.oculto {
       opacity: 0;
@@ -22,7 +22,6 @@
     #koda-loader img {
       width: 140px;
       max-width: 40vw;
-      animation: koda-pulse 1.4s ease-in-out infinite;
     }
     #koda-loader .koda-barra-wrap {
       margin-top: 32px;
@@ -38,10 +37,6 @@
       background: #fff;
       border-radius: 2px;
       animation: koda-fill 0.6s ease forwards;
-    }
-    @keyframes koda-pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50%       { opacity: 0.6; transform: scale(0.96); }
     }
     @keyframes koda-fill {
       to { width: 100%; }
