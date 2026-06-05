@@ -76,6 +76,15 @@
 
           <p class="prod-descripcion" id="prod-descripcion"></p>
 
+          <!-- Color -->
+          <div class="prod-color-wrap" id="prod-color-wrap" style="display:none">
+            <div class="prod-color-header">
+              <span class="prod-label">Color</span>
+              <span id="prod-color-label" class="prod-color-sel">—</span>
+            </div>
+            <div class="prod-colors" id="prod-colors"></div>
+          </div>
+
           <!-- Talles -->
           <div class="prod-talles-wrap" id="prod-talles-wrap">
             <div class="prod-talles-header">
@@ -235,28 +244,66 @@
       // Galería
       const mainImg   = document.getElementById('prod-img-main');
       const thumbsEl  = document.getElementById('prod-thumbnails');
-      const imagenes  = prod.imagenes && prod.imagenes.length ? prod.imagenes : [''];
+
+      // Variantes de color
+      const colorWrap = document.getElementById('prod-color-wrap');
+      const colorSelLabel = document.getElementById('prod-color-label');
+      const colorsEl = document.getElementById('prod-colors');
+      let varianteActiva = null;
+
+      function renderThumbs(imgs, baseName) {
+        thumbsEl.innerHTML = '';
+        imgs.forEach((src, i) => {
+          const btn = document.createElement('button');
+          btn.className = 'prod-thumb' + (i === 0 ? ' activa' : '');
+          btn.setAttribute('aria-label', 'Ver foto ' + (i + 1));
+          const img = document.createElement('img');
+          img.src = src; img.alt = baseName + ' foto ' + (i + 1); img.loading = 'lazy';
+          btn.appendChild(img);
+          btn.addEventListener('click', () => {
+            mainImg.src = src;
+            thumbsEl.querySelectorAll('.prod-thumb').forEach(t => t.classList.remove('activa'));
+            btn.classList.add('activa');
+          });
+          thumbsEl.appendChild(btn);
+        });
+        if (imgs.length <= 1) hide(thumbsEl); else show(thumbsEl);
+      }
+
+      let imagenes;
+      if (prod.variantes && prod.variantes.length > 0) {
+        varianteActiva = prod.variantes[0];
+        imagenes = varianteActiva.imgs && varianteActiva.imgs.length ? varianteActiva.imgs : [''];
+        colorWrap.style.display = '';
+        colorsEl.innerHTML = '';
+        colorSelLabel.textContent = varianteActiva.label;
+        prod.variantes.forEach((v, i) => {
+          const btn = document.createElement('button');
+          btn.className = 'color-swatch' + (i === 0 ? ' swatch-activo' : '');
+          btn.style.background = v.color;
+          btn.title = v.label;
+          btn.setAttribute('aria-label', 'Color ' + v.label);
+          btn.addEventListener('click', () => {
+            varianteActiva = v;
+            colorSelLabel.textContent = v.label;
+            document.getElementById('prod-nombre').textContent = v.nombre;
+            document.getElementById('prod-precio').textContent = '$' + v.precio.toLocaleString('es-AR');
+            const vImgs = v.imgs && v.imgs.length ? v.imgs : [''];
+            mainImg.src = vImgs[0];
+            renderThumbs(vImgs, v.nombre);
+            colorsEl.querySelectorAll('.color-swatch').forEach(b => b.classList.remove('swatch-activo'));
+            btn.classList.add('swatch-activo');
+            actualizarCTA();
+          });
+          colorsEl.appendChild(btn);
+        });
+      } else {
+        imagenes = prod.imagenes && prod.imagenes.length ? prod.imagenes : [''];
+      }
 
       mainImg.src = imagenes[0];
       mainImg.alt = prod.nombre;
-
-      imagenes.forEach((src, i) => {
-        const btn = document.createElement('button');
-        btn.className = 'prod-thumb' + (i === 0 ? ' activa' : '');
-        btn.setAttribute('aria-label', 'Ver foto ' + (i + 1));
-        const img = document.createElement('img');
-        img.src = src; img.alt = prod.nombre + ' foto ' + (i + 1); img.loading = 'lazy';
-        btn.appendChild(img);
-        btn.addEventListener('click', () => {
-          mainImg.src = src;
-          thumbsEl.querySelectorAll('.prod-thumb').forEach(t => t.classList.remove('activa'));
-          btn.classList.add('activa');
-        });
-        thumbsEl.appendChild(btn);
-      });
-
-      // Ocultar thumbnails si sólo hay 1 imagen
-      if (imagenes.length <= 1) hide(thumbsEl);
+      renderThumbs(imagenes, prod.nombre);
 
       // Talles
       const tallesEl = document.getElementById('prod-talles');
@@ -312,11 +359,13 @@
       ctaBtn.addEventListener('click', () => {
         if (!talleElegido) return;
         const qty = parseInt(qtyInput.value) || 1;
-        const key = prod.cartNombre + ' (' + talleElegido + ')';
+        const nombreBase = varianteActiva ? varianteActiva.nombre : prod.cartNombre;
+        const precioFinal = varianteActiva ? varianteActiva.precio : prod.precio;
+        const key = nombreBase + ' (Talle ' + talleElegido + ')';
         const carrito = JSON.parse(localStorage.getItem('carrito') || '[]');
         const existente = carrito.find(p => p.nombre === key);
         if (existente) { existente.cantidad += qty; }
-        else { carrito.push({ nombre: key, precio: prod.precio, cantidad: qty }); }
+        else { carrito.push({ nombre: key, precio: precioFinal, cantidad: qty }); }
         localStorage.setItem('carrito', JSON.stringify(carrito));
         const total = carrito.reduce((s, i) => s + i.cantidad, 0);
         const contadorEl = document.getElementById('contador-carrito');

@@ -455,11 +455,11 @@
         grid.insertBefore(card, noResults);
       });
 
-      // Re-inicializar talles, favoritos y variantes tras renderizado
+      // Re-inicializar talles, favoritos, modal y variantes tras renderizado
       if (typeof initTalles    === 'function') initTalles();
       if (typeof initFavoritos === 'function') initFavoritos();
-      initColorSwatches();
       initModalListeners();
+      initColorSwatches();
 
       // Aplicar filtros activos
       if (typeof window.aplicarFiltros === 'function') window.aplicarFiltros();
