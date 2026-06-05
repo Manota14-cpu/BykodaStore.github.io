@@ -2105,9 +2105,9 @@ main {
   /* Ocultar CUALQUIER elemento extra a la derecha del header
      que no sea el logo y el botón hamburguesa.
      Ajustá los selectores si tenés badges de carrito, íconos, etc. */
-  .header > *:not(.logo):not(.menu-toggle):not(.main-container) {
-    display: none !important;
-  }
+@media (max-width: 760px) {
+  .header > .nav { display: none !important; }
+}
 
   /* Nav panel full width en mobile */
   .nav-panel {
