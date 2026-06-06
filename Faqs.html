@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
+  <meta name="theme-color" content="#000000">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Preguntas Frecuentes | KODA Studio</title>
   <meta name="description" content="Respondemos tus dudas sobre envíos, talles, cambios y más en KODA Studio.">
@@ -14,15 +15,67 @@
   <meta property="og:site_name" content="KODA Studio">
   <meta property="og:locale" content="es_AR">
   <link rel="icon" href="imagenes/logo.png" type="image/png">
+  <link rel="apple-touch-icon" href="imagenes/logo.png">
   <link rel="preload" as="image" href="imagenes/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+
   <script src="loader.js"></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Cómo puedo hacer un pedido?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Podés hacer tu pedido directamente desde la tienda online o contactarnos por WhatsApp o Instagram."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuánto tarda el envío?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Los envíos a todo el país tardan entre 4 y 8 días hábiles desde que se confirma el pago."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Puedo cambiar mi talla?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí, aceptamos cambios de talla dentro de los 30 días de recibido el producto, siempre que esté sin uso y con etiquetas."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
+  <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
   <a class="skip-link" href="#main-content">Saltar al contenido</a>
+
+  <!-- ── Announcement Bar ── -->
+  <div class="announcement-bar" aria-label="Anuncios">
+    <div class="announcement-bar__track">
+      <span class="announcement-bar__item">Envíos a todo el país en 4–8 días hábiles</span>
+      <span class="announcement-bar__item">Ediciones limitadas — Una vez que se van, no vuelven</span>
+      <span class="announcement-bar__item">Diseño argentino, calidad sin compromisos</span>
+      <span class="announcement-bar__item">Atención directa por WhatsApp e Instagram</span>
+      <span class="announcement-bar__item">Envíos a todo el país en 4–8 días hábiles</span>
+      <span class="announcement-bar__item">Ediciones limitadas — Una vez que se van, no vuelven</span>
+      <span class="announcement-bar__item">Diseño argentino, calidad sin compromisos</span>
+      <span class="announcement-bar__item">Atención directa por WhatsApp e Instagram</span>
+    </div>
+  </div>
+
+
 
   <header class="header">
     <div class="header-inner">
@@ -33,34 +86,79 @@
         <a href="Faqs.html" class="nav-link">FAQs</a>
         <a href="carrito.html" class="nav-link nav-link--cart">Carrito (<span id="contador-carrito">0</span>)</a>
       </nav>
+      <button class="hamburger" id="hamburger" aria-label="Menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
+  <nav class="nav-mobile-overlay" id="nav-mobile" aria-label="Navegación móvil">
+    <a href="index.html" class="nav-link">Inicio</a>
+    <a href="productos.html" class="nav-link">Catálogo</a>
+    <a href="Faqs.html" class="nav-link">FAQs</a>
+    <a href="carrito.html" class="nav-link nav-link--cart">Carrito</a>
+  </nav>
 
   <!-- ───────── CONTACTO ───────── -->
   <main id="main-content" class="contacto reveal">
     <div class="section-head">
       <span class="eyebrow">Contacto</span>
-      <h2>Formulario de Contacto</h2>
+      <h2>¿Tenés alguna consulta?</h2>
     </div>
     <div class="contacto-card">
-      <form id="contact-form" class="contacto-form">
-        <div class="contacto-field">
-          <label for="nombre">Nombre</label>
-          <input id="nombre" name="nombre" type="text" placeholder="Tu nombre completo" required>
-        </div>
-        <div class="contacto-field">
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" placeholder="ejemplo@correo.com" required>
-        </div>
-        <div class="contacto-field">
-          <label for="telefono">Número de teléfono</label>
-          <input id="telefono" name="telefono" type="tel" placeholder="+54 9 ...">
-        </div>
-        <button type="submit" class="btn btn-primary">Enviar mensaje</button>
-        <p id="form-message" class="small"></p>
-      </form>
+      <p class="contacto-intro">Completá el formulario y te respondemos por WhatsApp a la brevedad.</p>
+      <div class="contacto-opciones">
+        <button class="btn btn-primary contacto-abrir-modal" id="contacto-abrir-btn">
+          <svg width="18" height="18" viewBox="0 0 32 32" fill="currentColor"><path d="M16 2C8.268 2 2 8.268 2 16c0 2.48.676 4.8 1.852 6.788L2 30l7.404-1.824A13.936 13.936 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm0 25.6a11.56 11.56 0 01-5.896-1.612l-.42-.252-4.396 1.084 1.112-4.272-.276-.44A11.554 11.554 0 014.4 16C4.4 9.592 9.592 4.4 16 4.4S27.6 9.592 27.6 16 22.408 27.6 16 27.6zm6.34-8.664c-.348-.176-2.06-1.016-2.38-1.132-.32-.116-.552-.176-.784.176-.232.348-.9 1.132-1.104 1.364-.2.232-.404.26-.752.084-.348-.176-1.468-.54-2.796-1.724-1.032-.924-1.728-2.064-1.932-2.412-.2-.348-.02-.536.152-.708.156-.156.348-.404.524-.608.176-.2.232-.348.348-.58.116-.232.06-.436-.028-.612-.088-.176-.784-1.892-1.076-2.592-.284-.68-.572-.588-.784-.596l-.668-.012c-.232 0-.608.088-.928.436-.316.348-1.212 1.184-1.212 2.888s1.24 3.352 1.412 3.584c.176.232 2.44 3.728 5.916 5.228.828.356 1.472.568 1.976.728.832.264 1.588.228 2.184.14.668-.1 2.06-.844 2.348-1.66.292-.816.292-1.516.204-1.664-.084-.148-.316-.232-.664-.408z"/></svg>
+          Enviar consulta por WhatsApp
+        </button>
+      </div>
     </div>
   </main>
+
+  <!-- ───────── MODAL CONTACTO WA ───────── -->
+  <div class="checkout-overlay" id="contacto-overlay" role="dialog" aria-modal="true" aria-labelledby="contacto-modal-titulo">
+    <div class="checkout-box">
+      <button class="checkout-cerrar" id="contacto-cerrar" aria-label="Cerrar">✕</button>
+      <div class="checkout-header">
+        <span class="checkout-icon">💬</span>
+        <h2 id="contacto-modal-titulo">Envianos tu consulta</h2>
+        <p>Completá los datos y te abrimos WhatsApp con todo listo.</p>
+      </div>
+      <div class="checkout-form">
+        <div class="checkout-field" id="cf-nombre">
+          <label for="contacto-nombre">Nombre *</label>
+          <input id="contacto-nombre" type="text" placeholder="Tu nombre" autocomplete="name">
+          <span class="checkout-error">Por favor ingresá tu nombre</span>
+        </div>
+        <div class="checkout-field" id="cf-telefono">
+          <label for="contacto-telefono">Teléfono *</label>
+          <input id="contacto-telefono" type="tel" placeholder="+54 9 3492 000000" autocomplete="tel">
+          <span class="checkout-error">Por favor ingresá tu teléfono</span>
+        </div>
+        <div class="checkout-field">
+          <label for="contacto-asunto">¿Sobre qué querés consultar?</label>
+          <select id="contacto-asunto" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:12px;color:#f5f5f5;padding:14px 16px;font-size:0.9rem;font-family:inherit;outline:none;appearance:none;cursor:pointer;">
+            <option value="pedido" style="background:#111">Mi pedido / envío</option>
+            <option value="talle" style="background:#111">Guía de talles</option>
+            <option value="producto" style="background:#111">Consulta sobre un producto</option>
+            <option value="cambio" style="background:#111">Cambio o devolución</option>
+            <option value="otro" style="background:#111">Otro</option>
+          </select>
+        </div>
+        <div class="checkout-field">
+          <label for="contacto-mensaje">Mensaje (opcional)</label>
+          <textarea id="contacto-mensaje" rows="3" placeholder="Contanos más sobre tu consulta..."></textarea>
+        </div>
+      </div>
+      <div class="checkout-actions">
+        <button class="btn btn-secondary" id="contacto-cancelar">Cancelar</button>
+        <button class="btn btn-whatsapp" id="contacto-confirmar">
+          <svg width="18" height="18" viewBox="0 0 32 32" fill="currentColor"><path d="M16 2C8.268 2 2 8.268 2 16c0 2.48.676 4.8 1.852 6.788L2 30l7.404-1.824A13.936 13.936 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm0 25.6a11.56 11.56 0 01-5.896-1.612l-.42-.252-4.396 1.084 1.112-4.272-.276-.44A11.554 11.554 0 014.4 16C4.4 9.592 9.592 4.4 16 4.4S27.6 9.592 27.6 16 22.408 27.6 16 27.6zm6.34-8.664c-.348-.176-2.06-1.016-2.38-1.132-.32-.116-.552-.176-.784.176-.232.348-.9 1.132-1.104 1.364-.2.232-.404.26-.752.084-.348-.176-1.468-.54-2.796-1.724-1.032-.924-1.728-2.064-1.932-2.412-.2-.348-.02-.536.152-.708.156-.156.348-.404.524-.608.176-.2.232-.348.348-.58.116-.232.06-.436-.028-.612-.088-.176-.784-1.892-1.076-2.592-.284-.68-.572-.588-.784-.596l-.668-.012c-.232 0-.608.088-.928.436-.316.348-1.212 1.184-1.212 2.888s1.24 3.352 1.412 3.584c.176.232 2.44 3.728 5.916 5.228.828.356 1.472.568 1.976.728.832.264 1.588.228 2.184.14.668-.1 2.06-.844 2.348-1.66.292-.816.292-1.516.204-1.664-.084-.148-.316-.232-.664-.408z"/></svg>
+          Abrir WhatsApp
+        </button>
+      </div>
+    </div>
+  </div>
 
   <!-- ───────── POLÍTICAS ───────── -->
   <section class="politicas reveal">
@@ -256,7 +354,7 @@
       <div class="footer-col">
         <h3>UNITE A KODA</h3>
         <p>Registrate y recibí nuestras ofertas.</p>
-        <form class="newsletter">
+        <form class="newsletter" id="newsletter-form-faqs">
           <input type="email" placeholder="Ingresá tu email..." required>
           <button type="submit">Enviar</button>
         </form>
@@ -314,7 +412,7 @@
     });
 
     /* ── Formulario de contacto (simulado) ── */
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
+    const contactFormEl = document.getElementById('contact-form'); contactFormEl && contactFormEl.addEventListener('submit', function(e) {
       e.preventDefault();
       const msg = document.getElementById('form-message');
       msg.textContent = '¡Mensaje enviado! Nos pondremos en contacto a la brevedad.';
@@ -329,5 +427,153 @@
   </a>
 
 
+<script>
+(function() {
+  var btn = document.getElementById('hamburger');
+  var overlay = document.getElementById('nav-mobile');
+  if (btn && overlay) {
+    btn.addEventListener('click', function() {
+      var open = overlay.classList.toggle('open');
+      btn.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    overlay.querySelectorAll('.nav-link').forEach(function(link) {
+      link.addEventListener('click', function() {
+        overlay.classList.remove('open');
+        btn.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && overlay.classList.contains('open')) {
+        overlay.classList.remove('open');
+        btn.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+  // Scroll top
+  var scrollBtn = document.createElement('button');
+  scrollBtn.className = 'scroll-top';
+  scrollBtn.setAttribute('aria-label', 'Volver arriba');
+  scrollBtn.innerHTML = '↑';
+  document.body.appendChild(scrollBtn);
+  window.addEventListener('scroll', function() {
+    scrollBtn.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+  scrollBtn.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  // Header scrolled
+  var header = document.querySelector('.header');
+  window.addEventListener('scroll', function() {
+    if (header) header.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+  // Lazy img
+  document.querySelectorAll('img[loading="lazy"]').forEach(function(img) {
+    if (img.complete) img.classList.add('loaded');
+    else img.addEventListener('load', function() { img.classList.add('loaded'); });
+  });
+})();
+</script>
+<script>
+// ── Modal de contacto WhatsApp ──
+(function() {
+  var overlay  = document.getElementById('contacto-overlay');
+  var abrirBtn = document.getElementById('contacto-abrir-btn');
+  var cerrarBtn= document.getElementById('contacto-cerrar');
+  var cancelar = document.getElementById('contacto-cancelar');
+  var confirmar= document.getElementById('contacto-confirmar');
+
+  function abrirModal() {
+    overlay.classList.add('activo');
+    document.body.style.overflow = 'hidden';
+    setTimeout(function(){ document.getElementById('contacto-nombre').focus(); }, 100);
+  }
+  function cerrarModal() {
+    overlay.classList.remove('activo');
+    document.body.style.overflow = '';
+  }
+
+  abrirBtn  && abrirBtn.addEventListener('click', abrirModal);
+  cerrarBtn && cerrarBtn.addEventListener('click', cerrarModal);
+  cancelar  && cancelar.addEventListener('click', cerrarModal);
+  overlay   && overlay.addEventListener('click', function(e){ if(e.target===overlay) cerrarModal(); });
+  document.addEventListener('keydown', function(e){
+    if(e.key==='Escape' && overlay && overlay.classList.contains('activo')) cerrarModal();
+  });
+
+  confirmar && confirmar.addEventListener('click', function() {
+    var nombre   = document.getElementById('contacto-nombre').value.trim();
+    var telefono = document.getElementById('contacto-telefono').value.trim();
+    var asunto   = document.getElementById('contacto-asunto').value;
+    var mensaje  = document.getElementById('contacto-mensaje').value.trim();
+
+    ['cf-nombre','cf-telefono'].forEach(function(id){
+      var f=document.getElementById(id); if(f) f.classList.remove('error','shake');
+    });
+
+    var ok = true;
+    if (!nombre) {
+      document.getElementById('cf-nombre').classList.add('error','shake');
+      document.getElementById('contacto-nombre').focus();
+      ok = false;
+    }
+    if (!telefono) {
+      document.getElementById('cf-telefono').classList.add('error','shake');
+      if(ok) document.getElementById('contacto-telefono').focus();
+      ok = false;
+    }
+    if (!ok) return;
+
+    var asuntoTexto = {
+      pedido:'📦 Mi pedido / envío', talle:'📐 Guía de talles',
+      producto:'👕 Consulta sobre un producto', cambio:'🔄 Cambio o devolución', otro:'💬 Otro'
+    }[asunto] || asunto;
+
+    var texto = '💬 *Consulta KODA Studio*\n━━━━━━━━━━━━━━━━━━━\n\n';
+    texto += '👤 *Nombre:* ' + nombre + '\n';
+    texto += '📱 *Teléfono:* ' + telefono + '\n';
+    texto += '📌 *Tema:* ' + asuntoTexto + '\n';
+    if (mensaje) texto += '\n📝 *Mensaje:*\n' + mensaje + '\n';
+    texto += '\n¡Hola! Quiero hacer una consulta 🙌';
+
+    var btn = document.getElementById('contacto-confirmar');
+    btn.disabled = true;
+    btn.innerHTML = '<span class="btn-spinner" style="border-top-color:#000"></span> Abriendo...';
+
+    setTimeout(function() {
+      window.open('https://wa.me/5493492301333?text=' + encodeURIComponent(texto), '_blank');
+      cerrarModal();
+      btn.disabled = false;
+      btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 32 32" fill="currentColor"><path d="M16 2C8.268 2 2 8.268 2 16c0 2.48.676 4.8 1.852 6.788L2 30l7.404-1.824A13.936 13.936 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm0 25.6a11.56 11.56 0 01-5.896-1.612l-.42-.252-4.396 1.084 1.112-4.272-.276-.44A11.554 11.554 0 014.4 16C4.4 9.592 9.592 4.4 16 4.4S27.6 9.592 27.6 16 22.408 27.6 16 27.6zm6.34-8.664c-.348-.176-2.06-1.016-2.38-1.132-.32-.116-.552-.176-.784.176-.232.348-.9 1.132-1.104 1.364-.2.232-.404.26-.752.084-.348-.176-1.468-.54-2.796-1.724-1.032-.924-1.728-2.064-1.932-2.412-.2-.348-.02-.536.152-.708.156-.156.348-.404.524-.608.176-.2.232-.348.348-.58.116-.232.06-.436-.028-.612-.088-.176-.784-1.892-1.076-2.592-.284-.68-.572-.588-.784-.596l-.668-.012c-.232 0-.608.088-.928.436-.316.348-1.212 1.184-1.212 2.888s1.24 3.352 1.412 3.584c.176.232 2.44 3.728 5.916 5.228.828.356 1.472.568 1.976.728.832.264 1.588.228 2.184.14.668-.1 2.06-.844 2.348-1.66.292-.816.292-1.516.204-1.664-.084-.148-.316-.232-.664-.408z"/></svg> Abrir WhatsApp';
+      ['contacto-nombre','contacto-telefono','contacto-mensaje'].forEach(function(id){
+        var el=document.getElementById(id); if(el) el.value='';
+      });
+      document.getElementById('contacto-asunto').value='pedido';
+    }, 400);
+  });
+})();
+</script>
+<script>
+(function(){
+  // IntersectionObserver reveal
+  var ro = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add("visible"); ro.unobserve(e.target); }
+    });
+  },{threshold:0.12,rootMargin:"0px 0px -40px 0px"});
+  document.querySelectorAll(".reveal,.reveal-left,.reveal-right,.reveal-children").forEach(function(el){ro.observe(el);});
+  // Ripple en btns
+  document.querySelectorAll(".btn").forEach(function(btn){
+    btn.addEventListener("click",function(e){
+      var rect=this.getBoundingClientRect(),size=Math.max(rect.width,rect.height)*1.6;
+      var x=e.clientX-rect.left-size/2,y=e.clientY-rect.top-size/2;
+      var r=document.createElement("span");r.className="ripple";
+      r.style.cssText="width:"+size+"px;height:"+size+"px;left:"+x+"px;top:"+y+"px;";
+      this.appendChild(r);r.addEventListener("animationend",function(){r.remove();});
+    });
+  });
+})();
+</script>
 </body>
 </html>

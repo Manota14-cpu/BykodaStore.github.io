@@ -2,12 +2,14 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
+  <meta name="theme-color" content="#000000">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Carrito | KODA Studio</title>
   <meta name="description" content="Revisá tu pedido y finalizá tu compra en KODA Studio. Ropa urbana y streetwear premium.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.bykoda.store/carrito.html">
   <link rel="icon" href="imagenes/logo.png" type="image/png">
+  <link rel="apple-touch-icon" href="imagenes/logo.png">
   <link rel="preload" as="image" href="imagenes/logo.png">
   <meta property="og:title" content="Carrito | KODA Studio">
   <meta property="og:description" content="Revisá tu pedido y finalizá tu compra en KODA Studio. Ropa urbana y streetwear premium.">
@@ -16,9 +18,11 @@
   <meta property="og:site_name" content="KODA Studio">
   <meta property="og:locale" content="es_AR">
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+
   <script src="loader.js"></script>
 
   <script type="application/ld+json">
@@ -37,7 +41,22 @@
   </script>
 </head>
 <body>
+  <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
   <a class="skip-link" href="#main-content">Saltar al contenido</a>
+
+  <div class="announcement-bar" aria-label="Anuncios">
+    <div class="announcement-bar__track">
+      <span class="announcement-bar__item">Envíos a todo el país en 4–8 días hábiles</span>
+      <span class="announcement-bar__item">Ediciones limitadas — Una vez que se van, no vuelven</span>
+      <span class="announcement-bar__item">Diseño argentino, calidad sin compromisos</span>
+      <span class="announcement-bar__item">Atención directa por WhatsApp e Instagram</span>
+      <span class="announcement-bar__item">Envíos a todo el país en 4–8 días hábiles</span>
+      <span class="announcement-bar__item">Ediciones limitadas — Una vez que se van, no vuelven</span>
+      <span class="announcement-bar__item">Diseño argentino, calidad sin compromisos</span>
+      <span class="announcement-bar__item">Atención directa por WhatsApp e Instagram</span>
+    </div>
+  </div>
+
   <header class="header">
     <div class="header-inner">
       <div class="logo"><a href="index.html"><img loading="lazy" decoding="async" src="imagenes/logo.png" alt="Koda Store"></a></div>
@@ -47,14 +66,26 @@
         <a href="Faqs.html" class="nav-link">FAQs</a>
         <a href="carrito.html" class="nav-link nav-link--cart">Carrito (<span id="contador-carrito">0</span>)</a>
       </nav>
+      <button class="hamburger" id="hamburger" aria-label="Menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
+  <nav class="nav-mobile-overlay" id="nav-mobile" aria-label="Navegación móvil">
+    <a href="index.html" class="nav-link">Inicio</a>
+    <a href="productos.html" class="nav-link">Catálogo</a>
+    <a href="Faqs.html" class="nav-link">FAQs</a>
+    <a href="carrito.html" class="nav-link nav-link--cart">Carrito</a>
+  </nav>
 
   <main id="main-content" class="carrito reveal">
     <section class="carrito-hero">
-      <span class="eyebrow">Carrito</span>
-      <h2>Tu pedido en una experiencia premium.</h2>
-      <p>Revisa los productos, ajusta cantidades y finaliza la compra con estilo.</p>
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px;">
+        <span class="eyebrow">Carrito</span>
+        <span id="carrito-badge-count" style="font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.35);"></span>
+      </div>
+      <h2>Tu pedido</h2>
+      <p>Revisá los productos, ajustá cantidades y finalizá tu compra.</p>
     </section>
 
     <section class="carrito-panel reveal">
@@ -89,23 +120,37 @@
             <button id="vaciar-carrito" class="btn btn-secondary">Vaciar carrito</button>
             <button id="finalizar-compra" class="btn btn-primary">✓ Finalizar por WhatsApp</button>
           </div>
-          <a href="productos.html" class="seguir-comprando">← Seguir comprando</a>
+
+          <a href="productos.html" class="seguir-comprando" style="display:block;text-align:center;margin-top:14px;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);text-decoration:none;transition:color 0.3s;" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">← Seguir comprando</a>
+
+          <!-- Trust badges -->
+          <div style="margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.07);display:flex;flex-direction:column;gap:10px;">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:rgba(255,255,255,0.3);flex-shrink:0;"><path d="M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h11a2 2 0 012 2v3"/><rect x="9" y="11" width="14" height="10" rx="2"/><circle cx="12" cy="21" r="1"/><circle cx="20" cy="21" r="1"/></svg>
+              <span style="font-size:0.72rem;color:rgba(255,255,255,0.35);letter-spacing:0.05em;">Envíos a todo el país · 4–8 días</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:rgba(255,255,255,0.3);flex-shrink:0;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+              <span style="font-size:0.72rem;color:rgba(255,255,255,0.35);letter-spacing:0.05em;">Pago coordinado directo y seguro</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:rgba(255,255,255,0.3);flex-shrink:0;"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+              <span style="font-size:0.72rem;color:rgba(255,255,255,0.35);letter-spacing:0.05em;">Atención por WhatsApp e Instagram</span>
+            </div>
+          </div>
         </aside>
     </section>
   </main>
-
-  <section class="vistos-section reveal">
-    <p class="section-label">Tu historial</p>
-    <h2 class="section-title">Visto recientemente</h2>
-    <div class="vistos-grid" id="vistos-recientemente"></div>
-  </section>
-
-  <footer class="footer reveal">
+<footer class="footer reveal">
     <div class="footer-container">
       <div class="footer-col">
+        <div class="footer-logo-area">
+          <img src="imagenes/logo.png" alt="KODA Studio" loading="lazy">
+          <p class="footer-tagline">Más que ropa,<br>una forma de expresarte.</p>
+        </div>
         <h3>UNITE A KODA</h3>
         <p>Registrate y recibí nuestras ofertas.</p>
-        <form class="newsletter">
+        <form class="newsletter" id="newsletter-form-carrito">
           <input type="email" placeholder="Ingresá tu email..." required>
           <button type="submit">Enviar</button>
         </form>
@@ -138,7 +183,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2026 Koda - Derechos Reservados</p>
+      <p>&copy; 2026 Koda Studio — Derechos Reservados</p>
     </div>
   </footer>
 
@@ -189,5 +234,87 @@
   </a>
 
 
+<script>
+(function() {
+  var btn = document.getElementById('hamburger');
+  var overlay = document.getElementById('nav-mobile');
+  if (btn && overlay) {
+    btn.addEventListener('click', function() {
+      var open = overlay.classList.toggle('open');
+      btn.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    overlay.querySelectorAll('.nav-link').forEach(function(link) {
+      link.addEventListener('click', function() {
+        overlay.classList.remove('open');
+        btn.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && overlay.classList.contains('open')) {
+        overlay.classList.remove('open');
+        btn.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+  // Scroll top
+  var scrollBtn = document.createElement('button');
+  scrollBtn.className = 'scroll-top';
+  scrollBtn.setAttribute('aria-label', 'Volver arriba');
+  scrollBtn.innerHTML = '↑';
+  document.body.appendChild(scrollBtn);
+  window.addEventListener('scroll', function() {
+    scrollBtn.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+  scrollBtn.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  // Header scrolled
+  var header = document.querySelector('.header');
+  window.addEventListener('scroll', function() {
+    if (header) header.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+  // Lazy img
+  document.querySelectorAll('img[loading="lazy"]').forEach(function(img) {
+    if (img.complete) img.classList.add('loaded');
+    else img.addEventListener('load', function() { img.classList.add('loaded'); });
+  });
+})();
+</script>
+<script>
+(function(){
+  // IntersectionObserver reveal
+  var ro = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add("visible"); ro.unobserve(e.target); }
+    });
+  },{threshold:0.12,rootMargin:"0px 0px -40px 0px"});
+  document.querySelectorAll(".reveal,.reveal-left,.reveal-right,.reveal-children").forEach(function(el){ro.observe(el);});
+  // Ripple en btns
+  document.querySelectorAll(".btn").forEach(function(btn){
+    btn.addEventListener("click",function(e){
+      var rect=this.getBoundingClientRect(),size=Math.max(rect.width,rect.height)*1.6;
+      var x=e.clientX-rect.left-size/2,y=e.clientY-rect.top-size/2;
+      var r=document.createElement("span");r.className="ripple";
+      r.style.cssText="width:"+size+"px;height:"+size+"px;left:"+x+"px;top:"+y+"px;";
+      this.appendChild(r);r.addEventListener("animationend",function(){r.remove();});
+    });
+  });
+})();
+</script>
+
+<script>
+(function() {
+  try {
+    var carrito = JSON.parse(localStorage.getItem('carrito') || '[]');
+    var total = carrito.reduce(function(s, i) { return s + i.cantidad; }, 0);
+    var badge = document.getElementById('carrito-badge-count');
+    if (badge && total > 0) {
+      badge.textContent = total + (total === 1 ? ' producto' : ' productos');
+    }
+  } catch(e) {}
+})();
+</script>
 </body>
 </html>

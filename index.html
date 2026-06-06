@@ -15,6 +15,8 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.bykoda.store/">
   <meta property="og:image" content="https://www.bykoda.store/imagenes/og-cover.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:site_name" content="KODA Studio">
   <meta property="og:locale" content="es_AR">
 
@@ -24,12 +26,16 @@
   <meta name="twitter:image" content="https://www.bykoda.store/imagenes/og-cover.jpg">
 
   <link rel="icon" href="imagenes/logo.png" type="image/png">
+  <link rel="apple-touch-icon" href="imagenes/logo.png">
   <link rel="preload" as="image" href="imagenes/logo.png">
+  <link rel="preload" as="image" href="imagenes/chat1.png" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
   <link rel="stylesheet" href="style.css">
+
   <script src="loader.js"></script>
 
   <script type="application/ld+json">
@@ -59,7 +65,23 @@
   </script>
 </head>
 <body>
+  <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
   <a class="skip-link" href="#main-content">Saltar al contenido</a>
+
+  <!-- ── Announcement Bar ── -->
+  <div class="announcement-bar" aria-label="Anuncios">
+    <div class="announcement-bar__track">
+      <!-- Duplicado para loop infinito -->
+      <span class="announcement-bar__item">Envíos a todo el país en 4–8 días hábiles</span>
+      <span class="announcement-bar__item">Ediciones limitadas — Una vez que se van, no vuelven</span>
+      <span class="announcement-bar__item">Diseño argentino, calidad sin compromisos</span>
+      <span class="announcement-bar__item">Atención directa por WhatsApp e Instagram</span>
+      <span class="announcement-bar__item">Envíos a todo el país en 4–8 días hábiles</span>
+      <span class="announcement-bar__item">Ediciones limitadas — Una vez que se van, no vuelven</span>
+      <span class="announcement-bar__item">Diseño argentino, calidad sin compromisos</span>
+      <span class="announcement-bar__item">Atención directa por WhatsApp e Instagram</span>
+    </div>
+  </div>
 
   <header class="header">
     <div class="header-inner">
@@ -69,31 +91,67 @@
         <a href="Faqs.html" class="nav-link">FAQs</a>
         <a href="carrito.html" class="nav-link nav-link--cart">Carrito (<span id="contador-carrito">0</span>)</a>
       </nav>
+      <button class="hamburger" id="hamburger" aria-label="Menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
+  <nav class="nav-mobile-overlay" id="nav-mobile" aria-label="Navegación móvil">
+    <a href="index.html" class="nav-link">Inicio</a>
+    <a href="productos.html" class="nav-link">Catálogo</a>
+    <a href="Faqs.html" class="nav-link">FAQs</a>
+    <a href="carrito.html" class="nav-link nav-link--cart">Carrito</a>
+  </nav>
 
 <main id="main-content">
 
-  <section class="hero-lookbook">
+  <!-- ── HERO ── -->
+  <section class="hero-lookbook" aria-label="Lookbook principal">
     <div class="swiper hero-swiper">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
           <picture>
             <source srcset="imagenes/chat1.png" media="(min-width: 768px)">
-            <img src="imagenes/chat1.png" alt="Koda Look 1" class="hero-slide-img">
+            <img src="imagenes/chat1.png" alt="Koda Look 1" class="hero-slide-img" fetchpriority="high" decoding="async">
           </picture>
+          <div class="hero-pattern-overlay"></div>
+          <div class="hero-slide-content">
+            <span class="hero-slide-eyebrow">Nueva colección 2026</span>
+            <h1 class="hero-slide-title">Define<br>tu look</h1>
+            <p class="hero-slide-desc">Streetwear premium. Diseño argentino, calidad sin compromisos.</p>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+              <a href="productos.html" class="btn btn-primary">Ver colección</a>
+              <a href="https://www.instagram.com/__bykoda/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="gap:8px;display:inline-flex;align-items:center;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zM17.5 6.5h.01"/></svg>
+                @__bykoda
+              </a>
+            </div>
+          </div>
         </div>
         <div class="swiper-slide">
           <picture>
             <source srcset="imagenes/chat2.png" media="(min-width: 768px)">
             <img src="imagenes/chat2.png" alt="Koda Look 2" class="hero-slide-img">
           </picture>
+          <div class="hero-pattern-overlay"></div>
+          <div class="hero-slide-content">
+            <span class="hero-slide-eyebrow">Buzos & Camperas</span>
+            <h1 class="hero-slide-title">El frío<br>también<br>es look</h1>
+            <a href="productos.html" class="btn btn-primary">Ver buzos</a>
+          </div>
         </div>
         <div class="swiper-slide">
           <picture>
             <source srcset="imagenes/chat3.png" media="(min-width: 768px)">
-            <img src="imagenes/cha3.png" alt="Koda Look 3" class="hero-slide-img">
+            <img src="imagenes/chat3.png" alt="Koda Look 3" class="hero-slide-img">
           </picture>
+          <div class="hero-pattern-overlay"></div>
+          <div class="hero-slide-content">
+            <span class="hero-slide-eyebrow">Envíos a todo el país</span>
+            <h1 class="hero-slide-title">Vestite<br>diferente</h1>
+            <p class="hero-slide-desc">Ediciones limitadas. Una vez que se van, no vuelven.</p>
+            <a href="productos.html" class="btn btn-primary">Explorar</a>
+          </div>
         </div>
       </div>
       <div class="swiper-pagination hero-swiper-pagination"></div>
@@ -102,6 +160,7 @@
     </div>
   </section>
 
+  <!-- ── PERKS ── -->
   <div class="perks-section reveal">
     <div class="perks-inner">
       <div class="perk">
@@ -128,8 +187,54 @@
     </div>
   </div>
 
+  <!-- ── NUEVO INGRESO ── -->
+  <section class="nuevo-ingreso-section reveal">
+    <div class="nuevo-ingreso-header">
+      <div>
+        <p class="section-label">Novedades</p>
+        <h2 class="section-title">Nuevo Ingreso</h2>
+      </div>
+      <a href="productos.html" class="btn btn-secondary" style="font-size:0.75rem;min-height:44px;padding:0 24px;">Ver todo</a>
+    </div>
+    <div class="nuevo-ingreso-grid reveal-children">
+      <a href="productos.html" class="nuevo-card">
+        <span class="nuevo-card__badge">Nuevo</span>
+        <img src="imagenes/Remeras/remera-yanke-negra-frente.webp" alt="Remera Yankee" class="nuevo-card__img" loading="lazy">
+        <div class="nuevo-card__info">
+          <p class="nuevo-card__name">Remera Yankee</p>
+          <p class="nuevo-card__price">$31.999</p>
+        </div>
+      </a>
+      <a href="productos.html" class="nuevo-card">
+        <span class="nuevo-card__badge">Nuevo</span>
+        <img src="imagenes/Abrigos/buzo-feel-the-pulse-negro-frente.webp" alt="Buzo Feel The Pulse" class="nuevo-card__img" loading="lazy">
+        <div class="nuevo-card__info">
+          <p class="nuevo-card__name">Buzo Feel The Pulse</p>
+          <p class="nuevo-card__price">$65.000</p>
+        </div>
+      </a>
+      <a href="productos.html" class="nuevo-card">
+        <span class="nuevo-card__badge">Nuevo</span>
+        <img src="imagenes/Pantalones/pantalon-oversize-bronx-beige.webp" alt="Pantalón Bronx" class="nuevo-card__img" loading="lazy">
+        <div class="nuevo-card__info">
+          <p class="nuevo-card__name">Pantalón Bronx Beige</p>
+          <p class="nuevo-card__price">$50.000</p>
+        </div>
+      </a>
+      <a href="productos.html" class="nuevo-card">
+        <span class="nuevo-card__badge">Nuevo</span>
+        <img src="imagenes/Remeras/remera-trust-god-negra.webp" alt="Remera Trust God" class="nuevo-card__img" loading="lazy">
+        <div class="nuevo-card__info">
+          <p class="nuevo-card__name">Remera Trust God</p>
+          <p class="nuevo-card__price">$31.999</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ── EDITORIAL ── -->
   <section class="editorial-grid reveal">
-    <article class="editorial-card editorial-card--large">
+    <article class="editorial-card editorial-card--large" aria-label="Editorial Lookbook 2026">
       <picture>
         <source srcset="imagenes/chat5.png" media="(min-width: 768px)">
         <img loading="lazy" decoding="async" src="imagenes/chat5.png" alt="Koda Editorial">
@@ -143,25 +248,45 @@
     </article>
   </section>
 
+  <!-- ── CATEGORÍAS ── -->
   <section class="categories-section reveal">
     <p class="section-label">Explorá</p>
     <h2 class="section-title">Categorías</h2>
     <div class="categories-grid reveal-children">
-      <a href="productos.html" class="cat-card">
-        <img src="imagenes/New folder/remera-company-blanca.webp" loading="lazy" alt="Remeras">
+      <a href="productos.html#cat=remera" class="cat-card">
+        <img src="imagenes/Remeras/remera-company-blanca.webp" loading="lazy" alt="Remeras">
         <span class="cat-card__label">Remeras<span class="cat-card__sub">Ver colección</span></span>
       </a>
-      <a href="productos.html" class="cat-card">
+      <a href="productos.html#cat=buzo" class="cat-card">
         <img src="imagenes/Abrigos/buzo-tripside-chocolate.webp" loading="lazy" alt="Buzos">
         <span class="cat-card__label">Buzos<span class="cat-card__sub">Ver colección</span></span>
       </a>
-      <a href="productos.html" class="cat-card">
+      <a href="productos.html#cat=pantalon" class="cat-card">
         <img src="imagenes/Pantalones/pantalon-bronx-negro.webp" loading="lazy" alt="Pantalones">
         <span class="cat-card__label">Pantalones<span class="cat-card__sub">Ver colección</span></span>
       </a>
     </div>
   </section>
 
+  <!-- ── STATS ── -->
+  <section class="stats-section reveal">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="stat-number">500+</span>
+        <span class="stat-label">Clientes satisfechos</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">100%</span>
+        <span class="stat-label">Envíos a todo el país</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">3</span>
+        <span class="stat-label">Días de preparación</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TESTIMONIOS ── -->
   <section class="testimonios-section reveal">
     <p class="section-label">Clientes</p>
     <h2 class="section-title">Lo que dicen</h2>
@@ -175,10 +300,13 @@
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         </div>
-        <blockquote>“La calidad es increíble. Pedí un Buzo y llegó en 4 días, impecable. Volverte a comprar más.”</blockquote>
+        <blockquote>"La calidad es increíble. Pedí un Buzo y llegó en 4 días, impecable. Volvería a comprar más."</blockquote>
         <div class="testimonio-autor">
-          <span class="testimonio-nombre">Nacho M.</span>
-          <span class="testimonio-localidad">Rafaela</span>
+          <div class="testimonio-avatar">NM</div>
+          <div>
+            <span class="testimonio-nombre">Nacho M.</span>
+            <span class="testimonio-localidad">Rafaela</span>
+          </div>
         </div>
       </div>
       <div class="testimonio-card">
@@ -189,10 +317,13 @@
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         </div>
-        <blockquote>“La remera son de buena calidad y la tela es de primera. Me encantó el diseño.”</blockquote>
+        <blockquote>"La remera es de buena calidad y la tela es de primera. Me encantó el diseño."</blockquote>
         <div class="testimonio-autor">
-          <span class="testimonio-nombre">Renzo F.</span>
-          <span class="testimonio-localidad">Rafaela</span>
+          <div class="testimonio-avatar">RF</div>
+          <div>
+            <span class="testimonio-nombre">Renzo F.</span>
+            <span class="testimonio-localidad">Rafaela</span>
+          </div>
         </div>
       </div>
       <div class="testimonio-card">
@@ -203,28 +334,32 @@
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         </div>
-        <blockquote>“Atención al cliente espectacular. Me ayudaron con el talle y quedó perfecto. Recomiendo 100%.”</blockquote>
+        <blockquote>"Atención al cliente espectacular. Me ayudaron con el talle y quedó perfecto. Recomiendo 100%."</blockquote>
         <div class="testimonio-autor">
-          <span class="testimonio-nombre">Felipe E.</span>
-          <span class="testimonio-localidad">Rafaela</span>
+          <div class="testimonio-avatar">FE</div>
+          <div>
+            <span class="testimonio-nombre">Felipe E.</span>
+            <span class="testimonio-localidad">Rafaela</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- ── COMPLETE THE LOOK ── -->
   <section class="outfit-section reveal">
     <p class="section-label">Armá tu look</p>
     <h2 class="section-title">Complete the Look Black</h2>
     <div class="outfit-grid">
       <div class="outfit-card">
         <div class="outfit-card-img">
-          <img src="imagenes/New folder/remera-yanke-negra-frente.webp" loading="lazy" alt="Sweater">
+          <img src="imagenes/Remeras/remera-yanke-negra-frente.webp" loading="lazy" alt="Remera Yankee">
           <button class="btn-fav" aria-label="Favorito">♡</button>
         </div>
         <div class="outfit-card-info">
           <p class="outfit-card-name">Yankee</p>
           <p class="outfit-card-price">$31.999</p>
-          <button class="outfit-add" onclick="agregarCarrito('remera-yanke', 31999)">+ Agregar</button>
+          <button class="outfit-add" onclick="agregarCarrito('Remera Yankee', 31999)">+ Agregar</button>
         </div>
       </div>
       <div class="outfit-plus">
@@ -232,13 +367,13 @@
       </div>
       <div class="outfit-card">
         <div class="outfit-card-img">
-          <img src="imagenes/Abrigos/buzo-argentina-negro-frente.webp" loading="lazy" alt="Jean Ancla">
+          <img src="imagenes/Abrigos/buzo-argentina-negro-frente.webp" loading="lazy" alt="Buzo Argentina Negro">
           <button class="btn-fav" aria-label="Favorito">♡</button>
         </div>
         <div class="outfit-card-info">
           <p class="outfit-card-name">Buzo Argentina Negro</p>
           <p class="outfit-card-price">$65.000</p>
-          <button class="outfit-add" onclick="agregarCarrito('buzo-argentina', 65000)">+ Agregar</button>
+          <button class="outfit-add" onclick="agregarCarrito('Buzo Argentina Negro', 65000)">+ Agregar</button>
         </div>
       </div>
       <div class="outfit-plus">
@@ -246,23 +381,23 @@
       </div>
       <div class="outfit-card">
         <div class="outfit-card-img">
-          <img src="imagenes/Pantalones/pantalon-negro-culture.webp" loading="lazy" alt="Remera">
+          <img src="imagenes/Pantalones/pantalon-negro-culture.webp" loading="lazy" alt="Pantalón Culture Negro">
           <button class="btn-fav" aria-label="Favorito">♡</button>
         </div>
         <div class="outfit-card-info">
           <p class="outfit-card-name">Pantalon Culture Negro</p>
           <p class="outfit-card-price">$50.000</p>
-          <button class="outfit-add" onclick="agregarCarrito('pantalon-culture', 50000)">+ Agregar</button>
+          <button class="outfit-add" onclick="agregarCarrito('Pantalon Culture Negro', 50000)">+ Agregar</button>
         </div>
       </div>
     </div>
     <div class="outfit-total">
-      <span>Total look: <strong>$135.000</strong></span>
-      <a href="carrito.html" class="btn btn-primary">Agregar todo al carrito</a>
+      <span>Total look: <strong class="outfit-total-price">$146.998</strong></span>
+      <a href="carrito.html" class="btn btn-primary" onclick="agregarCarrito('Remera Yankee',31999);agregarCarrito('Buzo Argentina Negro',65000);agregarCarrito('Pantalon Culture Negro',50000);return true;">Agregar todo al carrito</a>
     </div>
   </section>
 
-  <!-- ───────── INSTAGRAM ───────── -->
+  <!-- ── INSTAGRAM ── -->
   <section class="insta-section reveal">
     <p class="section-label">Seguinos</p>
     <h2 class="section-title">@__bykoda</h2>
@@ -270,7 +405,7 @@
     <div class="insta-cta">
       <a href="https://www.instagram.com/__bykoda/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zM17.5 6.5h.01"/></svg>
-        Seguir en Instagram
+        &nbsp;Seguir en Instagram
       </a>
     </div>
   </section>
@@ -280,10 +415,14 @@
   <footer class="footer reveal">
     <div class="footer-container">
       <div class="footer-col">
+        <div class="footer-logo-area">
+          <img src="imagenes/logo.png" alt="KODA Studio" loading="lazy">
+          <p class="footer-tagline">Más que ropa,<br>una forma de expresarte.</p>
+        </div>
         <h3>UNITE A KODA</h3>
         <p>Registrate y recibí nuestras ofertas.</p>
-        <form class="newsletter">
-          <input type="email" placeholder="Ingresá tu email..." required>
+        <form class="newsletter" id="newsletter-form">
+          <input type="email" placeholder="Ingresá tu email..." required aria-label="Email para newsletter">
           <button type="submit">Enviar</button>
         </form>
       </div>
@@ -298,7 +437,7 @@
       <div class="footer-col">
         <h4>Ayuda</h4>
         <ul>
-          <li><a href="#">Guía de Talles</a></li>
+          <li><a href="Faqs.html">Guía de Talles</a></li>
           <li><a href="Faqs.html">Cómo Comprar</a></li>
           <li><a href="Faqs.html">Política de Cambios</a></li>
         </ul>
@@ -308,14 +447,14 @@
         <p><strong>Cel:</strong> +54 3492 301-333</p>
         <p><strong>Email:</strong> admin@bykoda.store</p>
         <div class="social">
-          <a href="https://www.instagram.com/__bykoda/" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.instagram.com/__bykoda/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
             <img loading="lazy" decoding="async" src="imagenes/icon-instagram.png" alt="Instagram">
           </a>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 Koda - Derechos Reservados</p>
+      <p>&copy; 2026 Koda Studio — Derechos Reservados</p>
     </div>
   </footer>
 
@@ -351,6 +490,239 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
+<script>
+(function() {
+  // Hamburger
+  const btn = document.getElementById('hamburger');
+  const overlay = document.getElementById('nav-mobile');
+  if (btn && overlay) {
+    btn.addEventListener('click', () => {
+      const open = overlay.classList.toggle('open');
+      btn.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    overlay.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        overlay.classList.remove('open');
+        btn.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && overlay.classList.contains('open')) {
+        overlay.classList.remove('open');
+        btn.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+
+  // Scroll to top
+  const scrollBtn = document.createElement('button');
+  scrollBtn.className = 'scroll-top';
+  scrollBtn.setAttribute('aria-label', 'Volver arriba');
+  scrollBtn.innerHTML = '↑';
+  document.body.appendChild(scrollBtn);
+  window.addEventListener('scroll', () => {
+    scrollBtn.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+  scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // Lazy image loaded class
+  document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+    if (img.complete) { img.classList.add('loaded'); }
+    else { img.addEventListener('load', () => img.classList.add('loaded')); }
+  });
+
+  // Header scrolled
+  const header = document.querySelector('.header');
+  window.addEventListener('scroll', () => {
+    header?.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+
+  // Cursor personalizado (solo desktop)
+  if (window.matchMedia('(pointer: fine)').matches) {
+    const dot  = document.createElement('div');
+    const ring = document.createElement('div');
+    dot.className  = 'custom-cursor';
+    ring.className = 'custom-cursor-ring';
+    document.body.appendChild(dot);
+    document.body.appendChild(ring);
+
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    window.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      dot.style.left  = mx + 'px';
+      dot.style.top   = my + 'px';
+    });
+
+    (function lerp() {
+      rx += (mx - rx) * 0.12;
+      ry += (my - ry) * 0.12;
+      ring.style.left = rx + 'px';
+      ring.style.top  = ry + 'px';
+      requestAnimationFrame(lerp);
+    })();
+  }
+
+  // IntersectionObserver para reveal
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.10, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-children').forEach(el => {
+    revealObserver.observe(el);
+  });
+
+  // Ripple en botones
+  document.querySelectorAll('.btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      const rect = this.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height) * 1.6;
+      const x = e.clientX - rect.left - size / 2;
+      const y = e.clientY - rect.top  - size / 2;
+      const ripple = document.createElement('span');
+      ripple.className = 'ripple';
+      ripple.style.cssText = `width:${size}px;height:${size}px;left:${x}px;top:${y}px;`;
+      this.appendChild(ripple);
+      ripple.addEventListener('animationend', () => ripple.remove());
+    });
+  });
+
+  // Parallax suave en hero
+  const heroSection = document.querySelector('.hero-lookbook');
+  if (heroSection) {
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      if (scrolled < window.innerHeight) {
+        const heroImgs = document.querySelectorAll('.hero-slide-img');
+        heroImgs.forEach(img => {
+          img.style.transform = `translateY(${scrolled * 0.22}px) scale(1.06)`;
+        });
+      }
+    }, { passive: true });
+  }
+
+  // Counter animado para carrito badge
+  const cartCount = document.getElementById('contador-carrito');
+  if (cartCount) {
+    const observer = new MutationObserver(() => {
+      cartCount.style.transform = 'scale(1.5)';
+      cartCount.style.transition = 'transform 0.3s cubic-bezier(0.34,1.56,0.64,1)';
+      setTimeout(() => { cartCount.style.transform = 'scale(1)'; }, 300);
+    });
+    observer.observe(cartCount, { childList: true, subtree: true });
+  }
+
+  // Hover magnetic en outfit-plus
+  document.querySelectorAll('.outfit-plus').forEach(el => {
+    el.addEventListener('mousemove', e => {
+      const rect = el.getBoundingClientRect();
+      const dx = (e.clientX - rect.left - rect.width/2) * 0.3;
+      const dy = (e.clientY - rect.top  - rect.height/2) * 0.3;
+      el.style.transform = `translate(${dx}px, ${dy}px)`;
+    });
+    el.addEventListener('mouseleave', () => {
+      el.style.transform = '';
+    });
+  });
+
+  // Favorito toggle en outfit cards
+  document.querySelectorAll('.btn-fav').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      this.classList.toggle('fav-activo');
+      this.textContent = this.classList.contains('fav-activo') ? '♥' : '♡';
+    });
+  });
+
+  // Newsletter form
+  const nlForm = document.getElementById('newsletter-form');
+  if (nlForm) {
+    nlForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const input = this.querySelector('input[type="email"]');
+      const btn = this.querySelector('button');
+      btn.textContent = '✓ Enviado';
+      btn.style.background = 'rgba(255,255,255,0.7)';
+      input.value = '';
+      setTimeout(() => {
+        btn.textContent = 'Enviar';
+        btn.style.background = '';
+      }, 3000);
+    });
+  }
+
+  // Precio outfit total calculado
+  const outfitBtns = document.querySelectorAll('.outfit-add');
+  const totalEl = document.querySelector('.outfit-total-price');
+  const prices = [31999, 65000, 50000];
+  const selected = [true, true, true];
+
+  outfitBtns.forEach((btn, i) => {
+    btn.addEventListener('click', function() {
+      // Toggle visual feedback
+      const card = this.closest('.outfit-card');
+      if (card) {
+        card.style.opacity = card.style.opacity === '0.5' ? '1' : '0.5';
+        selected[i] = card.style.opacity === '1';
+      }
+    });
+  });
+
+  // Números animados para stats
+  function animateNumber(el, target, duration = 1500) {
+    const start = Date.now();
+    const startVal = 0;
+    const suffix = el.dataset.suffix || '';
+    const prefix = el.dataset.prefix || '';
+    
+    const step = () => {
+      const elapsed = Date.now() - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = Math.round(startVal + (target - startVal) * eased);
+      el.textContent = prefix + current.toLocaleString('es-AR') + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+
+  const statsObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const nums = entry.target.querySelectorAll('.stat-number');
+        nums.forEach(el => {
+          const text = el.textContent;
+          if (text.includes('+')) {
+            const num = parseInt(text.replace('+','').replace(/\./g,''));
+            el.dataset.suffix = '+';
+            animateNumber(el, num);
+          } else if (text.includes('%')) {
+            const num = parseInt(text.replace('%',''));
+            el.dataset.suffix = '%';
+            animateNumber(el, num, 1000);
+          } else {
+            const num = parseInt(text);
+            if (!isNaN(num)) animateNumber(el, num, 800);
+          }
+        });
+        statsObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  const statsSection = document.querySelector('.stats-section');
+  if (statsSection) statsObserver.observe(statsSection);
+
+})();
+</script>
 
 </body>
 </html>

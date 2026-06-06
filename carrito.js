@@ -1,3 +1,13 @@
+/* ─── Sanitize HTML (prevención XSS) ────────────────────────────── */
+function escapeHTML(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 /* ================================================================
    KODA SHOP — carrito.js  (v3 — lógica mejorada + bugs corregidos)
    ================================================================ */
@@ -66,6 +76,14 @@ function actualizarContadorCarrito() {
       el.classList.remove('badge-bump');
       void el.offsetWidth;
       el.classList.add('badge-bump');
+      // Pop animation on nav cart link
+      const cartLink = document.querySelector('.nav-link--cart');
+      if (cartLink) {
+        cartLink.classList.remove('pop');
+        void cartLink.offsetWidth;
+        cartLink.classList.add('pop');
+        cartLink.addEventListener('animationend', () => cartLink.classList.remove('pop'), { once: true });
+      }
     }
   }
 }
@@ -101,10 +119,21 @@ function agregarConCantidad(btn, nombre, precio, talle) {
   const carrito = getCarrito();
   const existente = carrito.find(p => p.nombre === key);
 
+  // Capture product image from DOM card
+  let imgSrc = '';
+  if (btn) {
+    const container = btn.closest('.producto');
+    if (container) {
+      const imgEl = container.querySelector('.img-flip img.img-adelante, .img-flip img, .img-simple, img');
+      if (imgEl) imgSrc = imgEl.getAttribute('src') || imgEl.getAttribute('data-src') || '';
+    }
+  }
+
   if (existente) {
     existente.cantidad += cantidad;
+    if (!existente.imgSrc && imgSrc) existente.imgSrc = imgSrc;
   } else {
-    carrito.push({ nombre: key, precio, cantidad });
+    carrito.push({ nombre: key, precio, cantidad, imgSrc });
   }
 
   setCarrito(carrito);
@@ -130,8 +159,14 @@ function agregarConCantidadZapa(btn, nombre, precio) {
   const key     = `${nombre} (Nro. ${talle})`;
   const carrito = getCarrito();
   const existente = carrito.find(p => p.nombre === key);
+  let zapaImg = '';
+  if (btn) {
+    const container = btn.closest('.producto');
+    const imgEl = container?.querySelector('.img-flip img.img-adelante, img');
+    if (imgEl) zapaImg = imgEl.getAttribute('src') || '';
+  }
   if (existente) { existente.cantidad += qty; }
-  else           { carrito.push({ nombre: key, precio, cantidad: qty }); }
+  else           { carrito.push({ nombre: key, precio, cantidad: qty, imgSrc: zapaImg }); }
   setCarrito(carrito);
   actualizarContadorCarrito();
   showToast(key + ' agregado al carrito.', 'success');
@@ -149,11 +184,15 @@ function mostrarCarrito() {
 
   if (carrito.length === 0) {
     lista.innerHTML = `
-      <div class="carrito-vacio">
-        <div class="carrito-vacio-icon">🛍️</div>
-        <h4>Tu carrito está vacío</h4>
-        <p>Añadí productos para comenzar tu compra.</p>
-        <a href="productos.html" class="btn btn-primary" style="margin-top:16px">Ver catálogo</a>
+      <div class="carrito-vacio" style="text-align:center;padding:64px 24px;display:flex;flex-direction:column;align-items:center;gap:16px;">
+        <div style="width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.4"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        </div>
+        <div>
+          <h4 style="font-size:1rem;font-weight:700;letter-spacing:-0.01em;color:#fff;margin:0 0 6px;">Tu carrito está vacío</h4>
+          <p style="font-size:0.85rem;color:rgba(255,255,255,0.35);max-width:240px;margin:0 auto;line-height:1.5;">Explorá el catálogo y encontrá algo que te guste.</p>
+        </div>
+        <a href="productos.html" class="btn btn-primary" style="margin-top:8px;font-size:0.8rem;">Ver catálogo</a>
       </div>`;
     const totalEl = document.getElementById('total');
     if (totalEl) totalEl.textContent = '$0';
@@ -167,10 +206,14 @@ function mostrarCarrito() {
     div.className   = 'carrito-item';
     const precioUnit = item.precio > 0 ? `$${item.precio.toLocaleString('es-AR')}` : 'Consultar';
     const precioTotal = item.precio > 0 ? `$${(item.precio * item.cantidad).toLocaleString('es-AR')}` : 'Consultar';
+    const imgHTML = item.imgSrc
+      ? `<div class="cart-item-img"><img src="${escapeHTML(item.imgSrc)}" alt="${escapeHTML(item.nombre)}" loading="lazy"></div>`
+      : `<div class="cart-item-img cart-item-img--empty"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.25"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>`;
     div.innerHTML = `
+      ${imgHTML}
       <div class="item-meta">
-        <h4>${item.nombre}</h4>
-        <p>Precio unitario: ${precioUnit}</p>
+        <h4>${escapeHTML(item.nombre)}</h4>
+        <p>Precio unitario: ${escapeHTML(precioUnit)}</p>
         <div class="cantidad-control">
           <button type="button" aria-label="Menos" onclick="cambiarCantidad(${index}, -1)">−</button>
           <span>${item.cantidad}</span>
@@ -178,8 +221,8 @@ function mostrarCarrito() {
         </div>
       </div>
       <div class="item-actions">
-        <p class="item-subtotal">${precioTotal}</p>
-        <button type="button" class="btn-eliminar" onclick="eliminarProducto(${index})" aria-label="Eliminar ${item.nombre}">✕</button>
+        <p class="item-subtotal">${escapeHTML(precioTotal)}</p>
+        <button type="button" class="btn-eliminar" onclick="eliminarProducto(${index})" aria-label="Eliminar ${escapeHTML(item.nombre)}">✕</button>
       </div>`;
     lista.appendChild(div);
   });
@@ -470,7 +513,7 @@ function actualizarContadorResultados(visibles, hayFiltro) {
   }
   if (hayFiltro) {
     counter.textContent = `${visibles} resultado${visibles !== 1 ? 's' : ''}`;
-    show(counter);
+    show(counter, 'block');
   } else {
     hide(counter);
   }
@@ -599,8 +642,8 @@ function renderVistosRecientemente() {
     if (vistos.length < 2) { container.closest('section')?.remove(); return; }
     container.innerHTML = vistos.map(v => `
       <div class="visto-card">
-        <img src="${v.imgSrc}" alt="${v.nombre}" loading="lazy">
-        <p class="visto-nombre">${v.nombre}</p>
+        <img src="${escapeHTML(v.imgSrc)}" alt="${escapeHTML(v.nombre)}" loading="lazy">
+        <p class="visto-nombre">${escapeHTML(v.nombre)}</p>
         <p class="visto-precio">${v.precio > 0 ? '$' + v.precio.toLocaleString('es-AR') : 'Consultar'}</p>
       </div>
     `).join('');
@@ -746,6 +789,16 @@ function initRipple() {
 }
 
 /* ─── Header scroll effect + hero parallax ────────────────────── */
+function initActiveNav() {
+  const path = window.location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.nav-link, .nav-mobile-overlay .nav-link').forEach(link => {
+    const href = link.getAttribute('href') || '';
+    if (href === path || (path === '' && href === 'index.html') || (path === 'index.html' && href === 'index.html')) {
+      link.setAttribute('aria-current', 'page');
+    }
+  });
+}
+
 function initHeaderScroll() {
   const header = document.querySelector('.header');
   if (!header) return;
@@ -778,6 +831,7 @@ function initHeaderScroll() {
 /* ─── Arranque ─────────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
   initHeaderScroll();
+  initActiveNav();
   initRipple();
   actualizarContadorCarrito();
   mostrarCarrito();
@@ -790,5 +844,4 @@ document.addEventListener('DOMContentLoaded', () => {
   initTalles();
   initFavoritos();
   initOrdenador();
-  renderVistosRecientemente();
 });

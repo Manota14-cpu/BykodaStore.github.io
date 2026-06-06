@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
+  <meta name="theme-color" content="#000000">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- ── SEO ── -->
@@ -16,18 +17,37 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.bykoda.store/productos.html">
   <meta property="og:image" content="https://www.bykoda.store/imagenes/og-cover.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <link rel="icon" href="imagenes/logo.png" type="image/png">
+  <link rel="apple-touch-icon" href="imagenes/logo.png">
   <link rel="preload" as="image" href="imagenes/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <script src="carrito.js" defer></script>
   <script src="loader.js"></script>
 </head>
 
 <body class="pagina-productos">
+  <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
   <a class="skip-link" href="#main-content">Saltar al contenido</a>
+
+  <!-- ── Announcement Bar ── -->
+  <div class="announcement-bar" aria-label="Anuncios">
+    <div class="announcement-bar__track">
+      <span class="announcement-bar__item">Envíos a todo el país en 4–8 días hábiles</span>
+      <span class="announcement-bar__item">Ediciones limitadas — Una vez que se van, no vuelven</span>
+      <span class="announcement-bar__item">Diseño argentino, calidad sin compromisos</span>
+      <span class="announcement-bar__item">Atención directa por WhatsApp e Instagram</span>
+      <span class="announcement-bar__item">Envíos a todo el país en 4–8 días hábiles</span>
+      <span class="announcement-bar__item">Ediciones limitadas — Una vez que se van, no vuelven</span>
+      <span class="announcement-bar__item">Diseño argentino, calidad sin compromisos</span>
+      <span class="announcement-bar__item">Atención directa por WhatsApp e Instagram</span>
+    </div>
+  </div>
+
+
 
   <header class="header">
     <div class="header-inner">
@@ -38,24 +58,37 @@
         <a href="Faqs.html" class="nav-link">FAQs</a>
         <a href="carrito.html" class="nav-link nav-link--cart">Carrito (<span id="contador-carrito">0</span>)</a>
       </nav>
+      <button class="hamburger" id="hamburger" aria-label="Menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
+  <nav class="nav-mobile-overlay" id="nav-mobile" aria-label="Navegación móvil">
+    <a href="index.html" class="nav-link">Inicio</a>
+    <a href="productos.html" class="nav-link">Catálogo</a>
+    <a href="Faqs.html" class="nav-link">FAQs</a>
+    <a href="carrito.html" class="nav-link nav-link--cart">Carrito</a>
+  </nav>
 
   <main id="main-content">
     <!-- SIDEBAR FILTROS -->
     <div class="sidebar reveal" id="sidebar">
       <h3>Filtrar</h3>
-      <button onclick="filtrar('todos', this)" class="activo">Todos</button>
-      <button onclick="filtrar('pantalon', this)">Pantalones</button>
-      <button onclick="filtrar('remera', this)">Remeras</button>
-      <button onclick="filtrar('buzo', this)">Buzos / Camperas</button>
+
+      <div style="margin-bottom:20px">
+        <p style="font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin:0 0 10px">Categoría</p>
+        <button onclick="filtrarCat('todos', this)" class="activo" data-cat="todos">Todos</button>
+        <button onclick="filtrarCat('pantalon', this)" data-cat="pantalon">Pantalones</button>
+        <button onclick="filtrarCat('remera', this)" data-cat="remera">Remeras</button>
+        <button onclick="filtrarCat('buzo', this)" data-cat="buzo">Buzos / Camperas</button>
+      </div>
 
       <div class="precio-filter">
-        <h4>Precio máximo</h4>
+        <p style="font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin:0 0 10px">Precio máximo</p>
         <div class="precio-slider-wrap">
-          <input type="range" id="precio-slider" min="0" max="120000" step="1000" value="120000" class="precio-slider">
+          <input type="range" id="precio-slider" min="30000" max="90000" step="500" value="90000" class="precio-slider">
           <div class="precio-slider-labels">
-            <span>$0</span>
+            <span>$30.000</span>
             <span id="precio-slider-val">Todos</span>
           </div>
         </div>
@@ -65,24 +98,26 @@
 
     <!-- GRILLA DE PRODUCTOS -->
     <section class="productos">
-      <h2>Nuestros Productos</h2>
-
-      <!-- Buscador -->
-      <div class="buscador-wrap">
-        <input type="search" id="buscador" placeholder="Buscar producto..." autocomplete="off">
-        <span class="ico-search">🔍</span>
+      <div style="margin-bottom:20px">
+        <p style="font-size:0.68rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin:0 0 6px">Tienda</p>
+        <h2 style="font-size:clamp(1.4rem,3vw,2rem);letter-spacing:-0.02em;margin:0;color:#fff">Catálogo</h2>
       </div>
 
-      <div class="orden-wrap">
-        <label for="orden-select">Ordenar por:</label>
-        <select id="orden-select">
+      <!-- Buscador + orden en una fila -->
+      <div style="display:flex;gap:12px;align-items:center;margin-bottom:12px;flex-wrap:wrap">
+        <div class="buscador-wrap" style="flex:1;min-width:180px">
+          <input type="search" id="buscador" placeholder="Buscar..." aria-label="Buscar productos" autocomplete="off">
+          <span class="ico-search" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:0.9rem;pointer-events:none;opacity:0.4">🔍</span>
+        </div>
+        <select id="orden-select" aria-label="Ordenar productos" style="flex-shrink:0">
           <option value="default">Relevancia</option>
-          <option value="precio-asc">Precio: menor a mayor</option>
-          <option value="precio-desc">Precio: mayor a menor</option>
+          <option value="precio-asc">Precio ↑</option>
+          <option value="precio-desc">Precio ↓</option>
           <option value="az">A → Z</option>
           <option value="za">Z → A</option>
         </select>
       </div>
+      <p class="resultados-counter" id="resultados-counter" aria-live="polite"></p>
 
       <div class="grid" id="grid-productos">
 
@@ -253,30 +288,54 @@
     </div>
   </footer>
 
+  <script src="carrito.js"></script>
   <script>
-    /* ── Buscador + Filtros (unificado) ── */
+    /* ── Buscador + Filtros + Ordenamiento (unificado) ── */
     (function() {
-      const buscador = document.getElementById('buscador');
+      const buscador  = document.getElementById('buscador');
       const noResults = document.getElementById('no-results');
+      const counter   = document.getElementById('resultados-counter');
+      const ordenSel  = document.getElementById('orden-select');
 
-      function getProductos() {
-        return document.querySelectorAll('.producto');
+      /* ── Ordenar cards en el DOM ── */
+      function ordenarGrid(orden) {
+        const grid  = document.getElementById('grid-productos');
+        const noRes = document.getElementById('no-results');
+        const cards = Array.from(document.querySelectorAll('.producto'));
+
+        cards.sort((a, b) => {
+          const pa = parseInt(a.dataset.precio) || 0;
+          const pb = parseInt(b.dataset.precio) || 0;
+          const na = a.dataset.nombre || '';
+          const nb = b.dataset.nombre || '';
+          switch (orden) {
+            case 'precio-asc':  return pa - pb;
+            case 'precio-desc': return pb - pa;
+            case 'az':          return na.localeCompare(nb, 'es');
+            case 'za':          return nb.localeCompare(na, 'es');
+            default:
+              // Orden original (preservado con data-idx)
+              return (parseInt(a.dataset.idx) || 0) - (parseInt(b.dataset.idx) || 0);
+          }
+        });
+
+        cards.forEach(c => grid.insertBefore(c, noRes));
       }
 
       window.aplicarFiltros = function() {
-        const texto = (buscador?.value || '').toLowerCase().trim();
-        const categoriaActiva = document.querySelector('.sidebar button.activo')?.dataset?.cat || 'todos';
+        const texto     = (buscador?.value || '').toLowerCase().trim();
+        const catActiva = document.querySelector('.sidebar button.activo')?.dataset?.cat || 'todos';
         const maxPrecio = (typeof window.precioMax !== 'undefined') ? window.precioMax : Infinity;
         let visibles = 0;
 
-        getProductos().forEach(p => {
+        document.querySelectorAll('.producto').forEach(p => {
           if (p.dataset.varianteOculta) { p.style.display = 'none'; return; }
           const nombre = (p.dataset.nombre || '').toLowerCase();
           const cat    = p.dataset.categoria || '';
           const precio = parseInt(p.dataset.precio || '0') || 0;
 
           const ok =
-            (categoriaActiva === 'todos' || cat === categoriaActiva) &&
+            (catActiva === 'todos' || cat === catActiva) &&
             (!texto || nombre.includes(texto)) &&
             (maxPrecio === Infinity || precio === 0 || precio <= maxPrecio);
 
@@ -285,8 +344,17 @@
         });
 
         if (noResults) noResults.style.display = visibles === 0 ? 'block' : 'none';
+
+        /* Contador de resultados */
+        if (counter) {
+          const total = document.querySelectorAll('.producto:not([data-variante-oculta])').length;
+          counter.textContent = visibles < total
+            ? visibles + ' de ' + total + ' productos'
+            : total + ' productos';
+        }
       };
 
+      /* Buscador */
       if (buscador) {
         buscador.addEventListener('input', window.aplicarFiltros);
         buscador.addEventListener('keydown', e => {
@@ -294,18 +362,29 @@
         });
       }
 
-      /* filtrar() llamada desde los botones del sidebar */
-      window.filtrar = function(categoria, btn) {
+      /* Selector de orden */
+      if (ordenSel) {
+        ordenSel.addEventListener('change', () => {
+          ordenarGrid(ordenSel.value);
+          window.aplicarFiltros();
+        });
+      }
+
+      /* filtrarCat() — llamada desde los botones del sidebar */
+      window.filtrarCat = function(categoria, btn) {
         document.querySelectorAll('.sidebar button').forEach(b => b.classList.remove('activo'));
         btn.classList.add('activo');
         btn.dataset.cat = categoria;
         window.aplicarFiltros();
       };
 
-      /* Asignar data-cat a los botones del sidebar */
+      /* Retrocompatibilidad */
+      window.filtrar = window.filtrarCat;
+
+      /* Asignar data-cat automáticamente a los botones del sidebar */
       document.querySelectorAll('.sidebar button').forEach(btn => {
         const oc = btn.getAttribute('onclick') || '';
-        const m  = oc.match(/filtrar\('([^']+)'/);
+        const m  = oc.match(/filtrar(?:Cat)?\('([^']+)'/);
         if (m) btn.dataset.cat = m[1];
       });
     })();
@@ -334,6 +413,7 @@
     }
 
     /* ── Generar HTML de una card ── */
+    let _cardIdx = 0;
     function buildCard(p) {
       const div = document.createElement('div');
       div.className = 'producto';
@@ -341,14 +421,15 @@
       div.dataset.nombre    = p.nombre.toLowerCase();
       div.dataset.id        = p.id;
       div.dataset.precio    = p.precio;
+      div.dataset.idx       = _cardIdx++;
 
       /* Imagen(es) */
       const imgs = p.imagenes || [];
       const hasFlip = imgs.length >= 2;
       let imgHtml = `<button class="btn-fav" aria-label="Agregar a favoritos">♡</button>`;
-      imgHtml += `<img class="img-adelante" src="${imgs[0] || ''}" loading="lazy" alt="${p.nombre} adelante" onerror="this.src='imagenes/logo%20png.png'">`;
+      imgHtml += `<img class="img-adelante" src="${imgs[0] || ''}" loading="lazy" alt="${p.nombre} adelante" onload="this.classList.add('loaded')" onerror="this.src='imagenes/logo.png';this.classList.add('loaded')">`;
       if (hasFlip) {
-        imgHtml += `<img class="img-atras" src="${imgs[1]}" loading="lazy" alt="${p.nombre} atrás" onerror="this.src='imagenes/logo%20png.png'">`;
+        imgHtml += `<img class="img-atras" src="${imgs[1]}" loading="lazy" alt="${p.nombre} atrás" onload="this.classList.add('loaded')" onerror="this.src='imagenes/logo.png';this.classList.add('loaded')">`;
         imgHtml += `<span class="flip-hint">↩ VER REVERSO</span>`;
       }
 
@@ -527,6 +608,9 @@
 
         newCard.addEventListener('click', e => {
           if (e.target.closest('.controls') || e.target.closest('.color-swatch') || e.target.closest('.btn-fav') || e.target.closest('.img-flip')) return;
+          // Navegar a la página de producto en lugar de abrir el modal
+          const id = newCard.dataset.id;
+          if (id) { window.location.href = 'producto.html?id=' + id; return; }
           const nombre    = newCard.querySelector('h3')?.textContent || '';
           const priceEl2  = newCard.querySelector('.price-sale, .price');
           const precioTxt = priceEl2?.textContent || '0';
@@ -704,6 +788,17 @@
       .then(r => r.json())
       .then(data => {
         renderGrid(data);
+        // Auto-filtrar por hash de URL (ej: productos.html#cat=remera)
+        const hash = window.location.hash;
+        if (hash && hash.startsWith('#cat=')) {
+          const cat = hash.replace('#cat=', '');
+          const btn = document.querySelector(`.sidebar button[data-cat="${cat}"]`);
+          if (btn) {
+            document.querySelectorAll('.sidebar button').forEach(b => b.classList.remove('activo'));
+            btn.classList.add('activo');
+            if (typeof window.aplicarFiltros === 'function') window.aplicarFiltros();
+          }
+        }
       })
       .catch(err => {
         console.warn('stock.json no disponible:', err);
@@ -754,5 +849,53 @@
   </script>
 
 
+<script>
+(function() {
+  var btn = document.getElementById('hamburger');
+  var overlay = document.getElementById('nav-mobile');
+  if (btn && overlay) {
+    btn.addEventListener('click', function() {
+      var open = overlay.classList.toggle('open');
+      btn.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    overlay.querySelectorAll('.nav-link').forEach(function(link) {
+      link.addEventListener('click', function() {
+        overlay.classList.remove('open');
+        btn.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && overlay.classList.contains('open')) {
+        overlay.classList.remove('open');
+        btn.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+  // Scroll top
+  var scrollBtn = document.createElement('button');
+  scrollBtn.className = 'scroll-top';
+  scrollBtn.setAttribute('aria-label', 'Volver arriba');
+  scrollBtn.innerHTML = '↑';
+  document.body.appendChild(scrollBtn);
+  window.addEventListener('scroll', function() {
+    scrollBtn.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+  scrollBtn.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  // Header scrolled
+  var header = document.querySelector('.header');
+  window.addEventListener('scroll', function() {
+    if (header) header.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+  // Lazy img
+  document.querySelectorAll('img[loading="lazy"]').forEach(function(img) {
+    if (img.complete) img.classList.add('loaded');
+    else img.addEventListener('load', function() { img.classList.add('loaded'); });
+  });
+})();
+</script>
 </body>
 </html>

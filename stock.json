@@ -1,974 +1,1634 @@
 [
   {
-    "id": "remera-company",
-    "nombre": "Remera Company",
-    "cartNombre": "Remera Company",
-    "precio": 31999,
-    "categoria": "remera",
-    "imagenes": [
-      "imagenes/New folder/remera-company-blanca.webp",
-      "imagenes/New folder/remera-company-negra.webp"
-    ],
-    "stock": "disponible",
-    "descripcion": "Disponible en Blanco y Negro",
-    "precio_original": 35000,
-    "talles": ["S", "M", "L", "XL", "XXL"],
-    "variantes": [
-      {
-        "color": "#FFFFFF",
-        "label": "Blanco",
-        "imgs": ["imagenes/New folder/remera-company-blanca.webp"],
-        "nombre": "Remera Company (Blanca)",
-        "precio": 31999
-      },
-      {
-        "color": "#111111",
-        "label": "Negro",
-        "imgs": ["imagenes/New folder/remera-company-negra.webp"],
-        "nombre": "Remera Company (Negra)",
-        "precio": 31999
-      }
-    ]
-  },
-  {
-    "id": "remera-cristal",
-    "nombre": "Remera Cristal",
-    "cartNombre": "Remera Cristal",
-    "precio": 31999,
-    "categoria": "remera",
-    "imagenes": [
-      "imagenes/New folder/remera-cristal-beige.webp",
-      "imagenes/New folder/remera-cristal-negra.webp"
-    ],
-    "stock": "disponible",
-    "descripcion": "Disponible en Beige y Negro",
-    "precio_original": 35000,
-    "talles": ["S", "M", "L", "XL", "XXL"],
-    "variantes": [
-      {
-        "color": "#E8D5B7",
-        "label": "Beige",
-        "imgs": ["imagenes/New folder/remera-cristal-beige.webp"],
-        "nombre": "Remera Cristal (Beige)",
-        "precio": 31999
-      },
-      {
-        "color": "#111111",
-        "label": "Negro",
-        "imgs": ["imagenes/New folder/remera-cristal-negra.webp"],
-        "nombre": "Remera Cristal (Negra)",
-        "precio": 31999
-      }
-    ]
-  },
-  {
-    "id": "remera-culture",
-    "nombre": "Remera Culture",
-    "cartNombre": "Remera Culture",
-    "precio": 31999,
-    "categoria": "remera",
-    "imagenes": [
-      "imagenes/New folder/remera-culture-frente-blanca.webp",
-      "imagenes/New folder/culture-frente-remera-negra.webp"
-    ],
-    "stock": "disponible",
-    "descripcion": "Disponible en Blanco y Negro",
-    "precio_original": 35000,
-    "talles": ["S", "M", "L", "XL", "XXL"],
-    "variantes": [
-      {
-        "color": "#FFFFFF",
-        "label": "Blanco",
-        "imgs": [
-          "imagenes/New folder/remera-culture-frente-blanca.webp",
-          "imagenes/New folder/remera-culture-espalda.webp"
-        ],
-        "nombre": "Remera Culture (Blanca)",
-        "precio": 31999
-      },
-      {
-        "color": "#111111",
-        "label": "Negro",
-        "imgs": [
-          "imagenes/New folder/culture-frente-remera-negra.webp"
-        ],
-        "nombre": "Remera Culture (Negra)",
-        "precio": 31999
-      }
-    ]
-  },
-  {
-    "id": "remera-district",
-    "nombre": "Remera District",
-    "cartNombre": "Remera District",
-    "precio": 31999,
-    "categoria": "remera",
-    "imagenes": [
-      "imagenes/New folder/remera-district-frente-hueso.webp",
-      "imagenes/New folder/remera-district-negra-frente.webp"
-    ],
-    "stock": "disponible",
-    "descripcion": "Disponible en Hueso y Negro",
-    "precio_original": 35000,
-    "talles": ["S", "M", "L", "XL", "XXL"],
-    "variantes": [
-      {
-        "color": "#F5F0E1",
-        "label": "Hueso",
-        "imgs": [
-          "imagenes/New folder/remera-district-frente-hueso.webp",
-          "imagenes/New folder/remera-district-hueso.webp",
-          "imagenes/New folder/remera-district-espalda.webp"
-        ],
-        "nombre": "Remera District (Hueso)",
-        "precio": 31999
-      },
-      {
-        "color": "#111111",
-        "label": "Negro",
-        "imgs": [
-          "imagenes/New folder/remera-district-negra-frente.webp"
-        ],
-        "nombre": "Remera District (Negra)",
-        "precio": 31999
-      }
-    ]
-  },
-  {
-    "id": "remera-kingdom",
-    "nombre": "Remera Kingdom",
-    "cartNombre": "Remera Kingdom",
-    "precio": 31999,
-    "categoria": "remera",
-    "imagenes": [
-      "imagenes/New folder/remera-kingdom-crudo.webp",
-      "imagenes/New folder/remera-kingdom-negra.webp"
-    ],
-    "stock": "disponible",
-    "descripcion": "Disponible en Crudo y Negro",
-    "precio_original": 35000,
-    "talles": ["S", "M", "L", "XL", "XXL"],
-    "variantes": [
-      {
-        "color": "#F5E6C8",
-        "label": "Crudo",
-        "imgs": ["imagenes/New folder/remera-kingdom-crudo.webp"],
-        "nombre": "Remera Kingdom (Crudo)",
-        "precio": 31999
-      },
-      {
-        "color": "#111111",
-        "label": "Negro",
-        "imgs": ["imagenes/New folder/remera-kingdom-negra.webp"],
-        "nombre": "Remera Kingdom (Negra)",
-        "precio": 31999
-      }
-    ]
-  },
-  {
-    "id": "remera-love-pulse",
-    "nombre": "Remera Love Pulse",
-    "cartNombre": "Remera Love Pulse",
-    "precio": 31999,
-    "categoria": "remera",
-    "imagenes": [
-      "imagenes/New folder/remera-love-hueso-frente.webp",
-      "imagenes/New folder/remera-love-pulse-frente-negra.webp"
-    ],
-    "stock": "disponible",
-    "descripcion": "Disponible en Hueso y Negro",
-    "precio_original": 35000,
-    "talles": ["S", "M", "L", "XL", "XXL"],
-    "variantes": [
-      {
-        "color": "#F5F0E1",
-        "label": "Hueso",
-        "imgs": [
-          "imagenes/New folder/remera-love-hueso-frente.webp",
-          "imagenes/New folder/remera-love-hueso-espalda.webp"
-        ],
-        "nombre": "Remera Love Pulse (Hueso)",
-        "precio": 31999
-      },
-      {
-        "color": "#111111",
-        "label": "Negro",
-        "imgs": [
-          "imagenes/New folder/remera-love-pulse-frente-negra.webp",
-          "imagenes/New folder/remera-espalda-love-negra.webp"
-        ],
-        "nombre": "Remera Love Pulse (Negra)",
-        "precio": 31999
-      }
-    ]
-  },
-  {
-    "id": "remera-oversize-feel-the-pulse",
-    "nombre": "Remera Oversize Feel the Pulse",
-    "cartNombre": "Remera Oversize Feel the Pulse",
-    "precio": 31999,
-    "categoria": "remera",
-    "imagenes": [
-      "imagenes/New folder/remera-oversize-feel-the-pulse-hueso-espalda-.webp",
-      "imagenes/New folder/remera-oversize-feel-the-pulse-negra-frente.webp"
-    ],
-    "stock": "disponible",
-    "descripcion": "Disponible en Hueso y Negro",
-    "precio_original": 35000,
-    "talles": ["S", "M", "L", "XL", "XXL"],
-    "variantes": [
-      {
-        "color": "#F5F0E1",
-        "label": "Hueso",
-        "imgs": [
-          "imagenes/New folder/remera-oversize-feel-the-pulse-hueso-espalda-.webp"
-        ],
-        "nombre": "Remera Oversize Feel the Pulse (Hueso)",
-        "precio": 31999
-      },
-      {
-        "color": "#111111",
-        "label": "Negro",
-        "imgs": [
-          "imagenes/New folder/remera-oversize-feel-the-pulse-negra-frente.webp",
-          "imagenes/New folder/remera-oversize-feel-the-pulse-negra-espalda.webp"
-        ],
-        "nombre": "Remera Oversize Feel the Pulse (Negra)",
-        "precio": 31999
-      }
-    ]
-  },
-  {
-    "id": "remera-oversize-tripside",
-    "nombre": "Remera Oversize Tripside",
-    "cartNombre": "Remera Oversize Tripside",
-    "precio": 31999,
-    "categoria": "remera",
-    "imagenes": [
-      "imagenes/New folder/remera-oversize-tripside-hueso.webp",
-      "imagenes/New folder/remera-oversize-tripside-negra.webp"
-    ],
-    "stock": "disponible",
-    "descripcion": "Disponible en Hueso y Negro",
-    "precio_original": 35000,
-    "talles": ["S", "M", "L", "XL", "XXL"],
-    "variantes": [
-      {
-        "color": "#F5F0E1",
-        "label": "Hueso",
-        "imgs": ["imagenes/New folder/remera-oversize-tripside-hueso.webp"],
-        "nombre": "Remera Oversize Tripside (Hueso)",
-        "precio": 31999
-      },
-      {
-        "color": "#111111",
-        "label": "Negro",
-        "imgs": ["imagenes/New folder/remera-oversize-tripside-negra.webp"],
-        "nombre": "Remera Oversize Tripside (Negra)",
-        "precio": 31999
-      }
-    ]
-  },
-  {
-    "id": "remera-oversize-world",
-    "nombre": "Remera Oversize World",
-    "cartNombre": "Remera Oversize World",
-    "precio": 31999,
-    "categoria": "remera",
-    "imagenes": [
-      "imagenes/New folder/remera-oversize-world-blanca-espalda.webp",
-      "imagenes/New folder/remera-oversize-world-espalda-hueso.webp",
-      "imagenes/New folder/remera-oversize-world-negra-espalda.webp"
-    ],
-    "stock": "disponible",
-    "descripcion": "Disponible en Blanco, Hueso y Negro",
-    "precio_original": 35000,
-    "talles": ["S", "M", "L", "XL", "XXL"],
-    "variantes": [
-      {
-        "color": "#FFFFFF",
-        "label": "Blanco",
-        "imgs": ["imagenes/New folder/remera-oversize-world-blanca-espalda.webp"],
-        "nombre": "Remera Oversize World (Blanca)",
-        "precio": 31999
-      },
-      {
-        "color": "#F5F0E1",
-        "label": "Hueso",
-        "imgs": ["imagenes/New folder/remera-oversize-world-espalda-hueso.webp"],
-        "nombre": "Remera Oversize World (Hueso)",
-        "precio": 31999
-      },
-      {
-        "color": "#111111",
-        "label": "Negro",
-        "imgs": ["imagenes/New folder/remera-oversize-world-negra-espalda.webp"],
-        "nombre": "Remera Oversize World (Negra)",
-        "precio": 31999
-      }
-    ]
-  },
-  {
-    "id": "remera-trust-god",
-    "nombre": "Remera Trust God",
-    "cartNombre": "Remera Trust God",
-    "precio": 31999,
-    "categoria": "remera",
-    "imagenes": [
-      "imagenes/New folder/remera-trust-god-blanca.webp",
-      "imagenes/New folder/remera-trust-god-hueso.webp",
-      "imagenes/New folder/remera-trust-god-negra.webp"
-    ],
-    "stock": "disponible",
-    "descripcion": "Disponible en Blanco, Hueso y Negro",
-    "precio_original": 35000,
-    "talles": ["S", "M", "L", "XL", "XXL"],
-    "variantes": [
-      {
-        "color": "#FFFFFF",
-        "label": "Blanco",
-        "imgs": ["imagenes/New folder/remera-trust-god-blanca.webp"],
-        "nombre": "Remera Trust God (Blanca)",
-        "precio": 31999
-      },
-      {
-        "color": "#F5F0E1",
-        "label": "Hueso",
-        "imgs": ["imagenes/New folder/remera-trust-god-hueso.webp"],
-        "nombre": "Remera Trust God (Hueso)",
-        "precio": 31999
-      },
-      {
-        "color": "#111111",
-        "label": "Negro",
-        "imgs": ["imagenes/New folder/remera-trust-god-negra.webp"],
-        "nombre": "Remera Trust God (Negra)",
-        "precio": 31999
-      }
-    ]
-  },
-  {
-    "id": "remera-yanke",
-    "nombre": "Remera Yanke",
-    "cartNombre": "Remera Yanke",
-    "precio": 31999,
-    "categoria": "remera",
-    "imagenes": [
-      "imagenes/New folder/remera-yanke-beige-frente.webp",
-      "imagenes/New folder/remera-yanke-negra-frente.webp"
-    ],
-    "stock": "disponible",
-    "descripcion": "Disponible en Beige y Negro",
-    "precio_original": 35000,
-    "talles": ["S", "M", "L", "XL", "XXL"],
-    "variantes": [
-      {
-        "color": "#E8D5B7",
-        "label": "Beige",
-        "imgs": [
-          "imagenes/New folder/remera-yanke-beige-frente.webp",
-          "imagenes/New folder/remera-yanke-beige-espalda.webp"
-        ],
-        "nombre": "Remera Yanke (Beige)",
-        "precio": 31999
-      },
-      {
-        "color": "#111111",
-        "label": "Negro",
-        "imgs": [
-          "imagenes/New folder/remera-yanke-negra-frente.webp",
-          "imagenes/New folder/remera-yanke-negra-espalda.webp"
-        ],
-        "nombre": "Remera Yanke (Negra)",
-        "precio": 31999
-      }
-    ]
-  },
-  {
-    "id": "remera-oversize-bandido",
-    "nombre": "Remera Oversize Bandido",
-    "cartNombre": "Remera Oversize Bandido",
-    "precio": 31999,
-    "categoria": "remera",
-    "imagenes": [
-      "imagenes/New folder/remera-oversize-bandido.webp"
-    ],
-    "stock": "disponible",
-    "descripcion": "",
-    "precio_original": 35000,
-    "talles": ["S", "M", "L", "XL", "XXL"],
-    "variantes": null
-  },
-  {
-    "id": "remera-oversize-crosses",
-    "nombre": "Remera Oversize Crosses",
-    "cartNombre": "Remera Oversize Crosses",
-    "precio": 31999,
-    "categoria": "remera",
-    "imagenes": [
-      "imagenes/New folder/remera-oversize-crosses-negra-frente.webp"
-    ],
-    "stock": "disponible",
-    "descripcion": "",
-    "precio_original": 35000,
-    "talles": ["S", "M", "L", "XL", "XXL"],
-    "variantes": null
-  },
-  {
-    "id": "remera-oversize-fuck-you",
-    "nombre": "Remera Oversize Fuck You",
-    "cartNombre": "Remera Oversize Fuck You",
-    "precio": 31999,
-    "categoria": "remera",
-    "imagenes": [
-      "imagenes/New folder/remera-oversize-fuck-you.webp"
-    ],
-    "stock": "disponible",
-    "descripcion": "",
-    "precio_original": 35000,
-    "talles": ["S", "M", "L", "XL", "XXL"],
-    "variantes": null
-  },
-  {
-    "id": "remera-oversize-risk",
-    "nombre": "Remera Oversize Risk",
-    "cartNombre": "Remera Oversize Risk",
-    "precio": 31999,
-    "categoria": "remera",
-    "imagenes": [
-      "imagenes/New folder/remera-oversize-risk.webp"
-    ],
-    "stock": "disponible",
-    "descripcion": "",
-    "precio_original": 35000,
-    "talles": ["S", "M", "L", "XL", "XXL"],
-    "variantes": null
-  },
-  {
-    "id": "remera-feel-the-pulse",
-    "nombre": "Remera Feel the Pulse",
-    "cartNombre": "Remera Feel the Pulse",
-    "precio": 31999,
-    "categoria": "remera",
-    "imagenes": [
-      "imagenes/New folder/remera-feel-the-pulse-hueso-frente.webp"
-    ],
-    "stock": "disponible",
-    "descripcion": "",
-    "precio_original": 35000,
-    "talles": ["S", "M", "L", "XL", "XXL"],
-    "variantes": null
-  },
-  {
-    "id": "polo-tripside",
-    "nombre": "Polo Tripside",
-    "cartNombre": "Polo Tripside",
-    "precio": 31999,
-    "categoria": "remera",
-    "imagenes": [
-      "imagenes/New folder/polo-tripside.webp"
-    ],
-    "stock": "disponible",
-    "descripcion": "",
-    "precio_original": 35000,
-    "talles": ["S", "M", "L", "XL", "XXL"],
-    "variantes": null
-  },
-  {
-    "id": "remera-argentina-oversize",
-    "nombre": "Remera Argentina Oversize",
-    "cartNombre": "Remera Argentina Oversize",
-    "precio": 31999,
-    "categoria": "remera",
-    "imagenes": [
-      "imagenes/New folder/remera-argentina-oversize-frente.webp"
-    ],
-    "stock": "disponible",
-    "descripcion": "",
-    "precio_original": 35000,
-    "talles": ["S", "M", "L", "XL", "XXL"],
-    "variantes": null
-  },
-  {
-    "id": "pantalon-alas",
-    "nombre": "Pantalón Alas",
-    "cartNombre": "Pantalon Alas",
-    "precio": 52999,
+    "id": "jean-ancla",
+    "nombre": "Jean Ancla",
+    "cartNombre": "Jean Ancla",
+    "precio": 62999,
     "categoria": "pantalon",
     "imagenes": [
-      "imagenes/Pantalones/pantalon-beige-alas.webp",
-      "imagenes/Pantalones/pantalon-oversize-alas.webp"
+      "imagenes/Pantalones/PANT 1-1.webp"
     ],
     "stock": "disponible",
     "descripcion": "",
-    "precio_original": 58000,
-    "talles": ["S", "M", "L", "XL", "XXL"],
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
     "variantes": null
   },
   {
-    "id": "pantalon-bronx",
-    "nombre": "Pantalón Bronx",
-    "cartNombre": "Pantalon Bronx",
-    "precio": 52999,
+    "id": "jean-f1",
+    "nombre": "Jean F1",
+    "cartNombre": "Jean F1",
+    "precio": 62999,
     "categoria": "pantalon",
     "imagenes": [
-      "imagenes/Pantalones/pantalon-bronx-negro.webp",
-      "imagenes/Pantalones/pantalon-oversize-bronx-beige.webp",
-      "imagenes/Pantalones/pantalon-oversize-bronx-marron.webp"
+      "imagenes/Pantalones/PANT 2-1.webp",
+      "imagenes/Pantalones/PANT 2-2.webp"
     ],
     "stock": "disponible",
-    "descripcion": "Disponible en Negro, Beige y Marrón",
-    "precio_original": 58000,
-    "talles": ["S", "M", "L", "XL", "XXL"],
-    "variantes": [
-      {
-        "color": "#111111",
-        "label": "Negro",
-        "imgs": ["imagenes/Pantalones/pantalon-bronx-negro.webp"],
-        "nombre": "Pantalón Bronx (Negro)",
-        "precio": 52999
-      },
-      {
-        "color": "#E8D5B7",
-        "label": "Beige",
-        "imgs": ["imagenes/Pantalones/pantalon-oversize-bronx-beige.webp"],
-        "nombre": "Pantalón Bronx (Beige)",
-        "precio": 52999
-      },
-      {
-        "color": "#6B3A2A",
-        "label": "Marrón",
-        "imgs": ["imagenes/Pantalones/pantalon-oversize-bronx-marron.webp"],
-        "nombre": "Pantalón Bronx (Marrón)",
-        "precio": 52999
-      }
-    ]
+    "descripcion": "",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
   },
   {
-    "id": "pantalon-culture",
-    "nombre": "Pantalón Culture",
-    "cartNombre": "Pantalon Culture",
-    "precio": 52999,
+    "id": "jean-laos-love-hater",
+    "nombre": "Jean Laos / Love Hater",
+    "cartNombre": "Jean Laos",
+    "precio": 62999,
     "categoria": "pantalon",
     "imagenes": [
-      "imagenes/Pantalones/pantalon-negro-culture.webp"
+      "imagenes/Pantalones/PANT 3-1.webp",
+      "imagenes/Pantalones/PANT 3-2.webp"
     ],
     "stock": "disponible",
     "descripcion": "",
-    "precio_original": 58000,
-    "talles": ["S", "M", "L", "XL", "XXL"],
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
     "variantes": null
   },
   {
-    "id": "pantalon-tripside",
-    "nombre": "Pantalón Tripside",
-    "cartNombre": "Pantalon Tripside",
-    "precio": 52999,
+    "id": "jean-max",
+    "nombre": "Jean Max",
+    "cartNombre": "Jean Max",
+    "precio": 62999,
     "categoria": "pantalon",
     "imagenes": [
-      "imagenes/Pantalones/pantalon-oversize-tripside-beige.webp",
-      "imagenes/Pantalones/pantalon-oversize-tripside-marron.webp"
+      "imagenes/Pantalones/PANT 4-1.webp",
+      "imagenes/Pantalones/PANT 4-2.webp"
     ],
     "stock": "disponible",
-    "descripcion": "Disponible en Beige y Marrón",
-    "precio_original": 58000,
-    "talles": ["S", "M", "L", "XL", "XXL"],
+    "descripcion": "",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "jean-red",
+    "nombre": "Jean Red",
+    "cartNombre": "Jean Red",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "imagenes/Pantalones/PANT 5-1.webp",
+      "imagenes/Pantalones/PANT 5-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "jean-rei",
+    "nombre": "Jean Rei",
+    "cartNombre": "Jean Rei",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "imagenes/Pantalones/PANT 6-1.webp",
+      "imagenes/Pantalones/PANT 6-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "jean-skull",
+    "nombre": "Jean Skull",
+    "cartNombre": "Jean Skull",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "imagenes/Pantalones/PANT 7-1.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "jean-star",
+    "nombre": "Jean Star",
+    "cartNombre": "Jean Star",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "imagenes/Pantalones/PANT 8-1.webp",
+      "imagenes/Pantalones/PANT 8-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "jean-vinni",
+    "nombre": "Jean Vinni",
+    "cartNombre": "Jean Vinni",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "imagenes/Pantalones/PANT 9-1.webp",
+      "imagenes/Pantalones/PANT 9-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "jean-white-blanco",
+    "nombre": "Jean White",
+    "cartNombre": "Jean White",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "imagenes/Pantalones/PANT 10-1.webp",
+      "imagenes/Pantalones/PANT 10-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "jogger-adidas-pantalon",
+    "nombre": "Jogger Adidas",
+    "cartNombre": "Jogger Adidas",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "imagenes/Pantalones/PANT 11-1.webp",
+      "imagenes/Pantalones/PANT 11-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "river-pantalon-negro",
+    "nombre": "River Pantalón (Negro)",
+    "cartNombre": "River Pantalon Negro",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "imagenes/Pantalones/PANT 12-1.webp",
+      "imagenes/Pantalones/PANT 12-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "hoodie-balance-negro",
+    "nombre": "Hoodie Balance (Negro)",
+    "cartNombre": "Hoodie Balance Negro",
+    "precio": 85999,
+    "categoria": "buzo",
+    "imagenes": [
+      "imagenes/Abrigos/1-1.webp",
+      "imagenes/Abrigos/1-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 95999,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
     "variantes": [
       {
-        "color": "#E8D5B7",
-        "label": "Beige",
-        "imgs": ["imagenes/Pantalones/pantalon-oversize-tripside-beige.webp"],
-        "nombre": "Pantalón Tripside (Beige)",
-        "precio": 52999
+        "color": "#222222",
+        "label": "Negro",
+        "imgs": [
+          "imagenes/Abrigos/1-1.webp",
+          "imagenes/Abrigos/1-1.webp"
+        ],
+        "nombre": "Hoodie Balance (Negro)",
+        "precio": 52000
       },
       {
-        "color": "#6B3A2A",
-        "label": "Marrón",
-        "imgs": ["imagenes/Pantalones/pantalon-oversize-tripside-marron.webp"],
-        "nombre": "Pantalón Tripside (Marrón)",
-        "precio": 52999
+        "color": "#888888",
+        "label": "Gris",
+        "imgs": [
+          "imagenes/Abrigos/1-2.webp",
+          "imagenes/Abrigos/1-2.webp"
+        ],
+        "nombre": "Hoodie Balance (Gris)",
+        "precio": 52000
       }
     ]
   },
   {
-    "id": "buzo-apparel",
-    "nombre": "Buzo Apparel",
-    "cartNombre": "Buzo Apparel",
-    "precio": 64999,
+    "id": "hoodie-ben-negro",
+    "nombre": "LE MANS – SWEATER",
+    "cartNombre": "LE MANS – SWEATER",
+    "precio": 58500,
     "categoria": "buzo",
     "imagenes": [
-      "imagenes/Abrigos/buzo-apparel-chocolate-frente.webp",
-      "imagenes/Abrigos/buzo-apparel-negro-frente.webp"
+      "imagenes/Abrigos/2-1.webp",
+      "imagenes/Abrigos/2-2.webp"
     ],
     "stock": "disponible",
-    "descripcion": "Disponible en Chocolate y Negro",
-    "precio_original": 72000,
-    "talles": ["S", "M", "L", "XL", "XXL"],
+    "descripcion": "",
+    "precio_original": 65000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "PIN – SWEATER",
+    "nombre": "PIN – SWEATER",
+    "cartNombre": "PIN – SWEATER",
+    "precio": 58500,
+    "categoria": "buzo",
+    "imagenes": [
+      "imagenes/Abrigos/3-1.webp",
+      "imagenes/Abrigos/3-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 65000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "zip-hoodie-champ-campera",
+    "nombre": "Zip Hoodie Champ",
+    "cartNombre": "Zip Hoodie Champ",
+    "precio": 85999,
+    "categoria": "buzo",
+    "imagenes": [
+      "imagenes/Abrigos/4-1.webp",
+      "imagenes/Abrigos/4-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 95999,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "zip-hoodie-west-campera",
+    "nombre": "Zip Hoodie West",
+    "cartNombre": "Zip Hoodie West",
+    "precio": 85999,
+    "categoria": "buzo",
+    "imagenes": [
+      "imagenes/Abrigos/5-1.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 95999,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "sweater-lemans-gris",
+    "nombre": "Sweater LeMans (Gris)",
+    "cartNombre": "Sweater LeMans Gris",
+    "precio": 85999,
+    "categoria": "buzo",
+    "imagenes": [
+      "imagenes/Abrigos/6-1.webp",
+      "imagenes/Abrigos/6-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 95999,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "DALLAS – SWEATER",
+    "nombre": "DALLAS – SWEATER",
+    "cartNombre": "DALLAS – SWEATER",
+    "precio": 58500,
+    "categoria": "buzo",
+    "imagenes": [
+      "imagenes/Abrigos/7-1.webp",
+      "imagenes/Abrigos/7-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 65000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "remera-japon-azul-japonesa",
+    "nombre": "Remera Japón (Azul)",
+    "cartNombre": "Remera Japon Azul",
+    "precio": 40500,
+    "categoria": "remera",
+    "imagenes": [
+      "imagenes/Remeras/REMERA 1-1.webp",
+      "imagenes/Remeras/REMERA 1-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 45000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
     "variantes": [
       {
-        "color": "#5C3317",
-        "label": "Chocolate",
+        "color": "#3a6fad",
+        "label": "Azul",
         "imgs": [
-          "imagenes/Abrigos/buzo-apparel-chocolate-frente.webp",
-          "imagenes/Abrigos/buzo-apparel-chocolate-espalda.webp"
+          "imagenes/Remeras/REMERA 1-1.webp",
+          "imagenes/Remeras/REMERA 1-1.webp"
         ],
-        "nombre": "Buzo Apparel (Chocolate)",
-        "precio": 64999
+        "nombre": "Remera Japón (Azul)",
+        "precio": 28000
+      },
+      {
+        "color": "#e8e4dc",
+        "label": "Blanca",
+        "imgs": [
+          "imagenes/Remeras/REMERA 1-2.webp",
+          "imagenes/Remeras/REMERA 1-2.webp"
+        ],
+        "nombre": "Remera Japón (Blanca)",
+        "precio": 28000
+      },
+      {
+        "color": "#4a3e33",
+        "label": "Street",
+        "imgs": [
+          "imagenes/Remeras/REMERA 1-1.webp",
+          "imagenes/Remeras/REMERA 1-1.webp"
+        ],
+        "nombre": "Remera Japón (Street)",
+        "precio": 29000
+      }
+    ]
+  },
+  {
+    "id": "remera-lineas-negro",
+    "nombre": "Remera Líneas (Negro)",
+    "cartNombre": "Remera Lineas Negro",
+    "precio": 40500,
+    "categoria": "remera",
+    "imagenes": [
+      "imagenes/Remeras/REMERA 2-1.webp",
+      "imagenes/Remeras/REMERA 2-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 45000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": [
+      {
+        "color": "#111111",
+        "label": "Negro",
+        "imgs": [
+          "imagenes/Remeras/REMERA 2-1.webp",
+          "imagenes/Remeras/REMERA 2-1.webp"
+        ],
+        "nombre": "Remera Líneas (Negro)",
+        "precio": 27000
+      },
+      {
+        "color": "#2a2a2a",
+        "label": "Del Negro",
+        "imgs": [
+          "imagenes/Remeras/REMERA 2-2.webp",
+          "imagenes/Remeras/REMERA 2-2.webp"
+        ],
+        "nombre": "Remera Líneas Del (Negro)",
+        "precio": 27000
+      }
+    ]
+  },
+  {
+    "id": "river-camiseta-negro",
+    "nombre": "River Camiseta (Negro)",
+    "cartNombre": "River Camiseta Negro",
+    "precio": 40500,
+    "categoria": "remera",
+    "imagenes": [
+      "imagenes/Remeras/REMERA 3-1.webp",
+      "imagenes/Remeras/REMERA 3-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 45000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "remera-wttr-azul",
+    "nombre": "Remera WTTR (Azul)",
+    "cartNombre": "Remera WTTR Azul",
+    "precio": 40500,
+    "categoria": "remera",
+    "imagenes": [
+      "imagenes/Remeras/REMERA 4-1.webp",
+      "imagenes/Remeras/REMERA 4-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 45000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": [
+      {
+        "color": "#3a6fad",
+        "label": "Azul",
+        "imgs": [
+          "imagenes/Remeras/REMERA 4-1.webp",
+          "imagenes/Remeras/REMERA 4-1.webp"
+        ],
+        "nombre": "Remera WTTR (Azul)",
+        "precio": 28500
       },
       {
         "color": "#111111",
         "label": "Negro",
         "imgs": [
-          "imagenes/Abrigos/buzo-apparel-negro-frente.webp",
-          "imagenes/Abrigos/buzo-apparel-negro-espalda.webp"
+          "imagenes/Remeras/REMERA 4-2.webp",
+          "imagenes/Remeras/REMERA 4-2.webp"
         ],
-        "nombre": "Buzo Apparel (Negro)",
-        "precio": 64999
+        "nombre": "Remera WTTR (Negro)",
+        "precio": 28500
       }
     ]
   },
   {
-    "id": "buzo-argentina",
-    "nombre": "Buzo Argentina",
-    "cartNombre": "Buzo Argentina",
-    "precio": 64999,
-    "categoria": "buzo",
+    "id": "remera-race",
+    "nombre": "Remera Race",
+    "cartNombre": "Remera Race",
+    "precio": 40500,
+    "categoria": "remera",
     "imagenes": [
-      "imagenes/Abrigos/buzo-argentina-negro-frente.webp",
-      "imagenes/Abrigos/buzo-argentina-espalda-negro.webp"
+      "imagenes/Remeras/REMERA 5-1.webp",
+      "imagenes/Remeras/REMERA 5-2.webp"
     ],
     "stock": "disponible",
     "descripcion": "",
-    "precio_original": 72000,
-    "talles": ["S", "M", "L", "XL", "XXL"],
+    "precio_original": 45000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
     "variantes": null
   },
   {
-    "id": "buzo-tripside",
-    "nombre": "Buzo Tripside",
-    "cartNombre": "Buzo Tripside",
-    "precio": 64999,
-    "categoria": "buzo",
+    "id": "remera-star",
+    "nombre": "Remera Star",
+    "cartNombre": "Remera Star",
+    "precio": 40500,
+    "categoria": "remera",
     "imagenes": [
-      "imagenes/Abrigos/buzo-beige-tripside.webp",
-      "imagenes/Abrigos/buzo-tripside-blanco.webp",
-      "imagenes/Abrigos/buzo-tripside-chocolate.webp",
-      "imagenes/Abrigos/buzo-tripside-negro.webp"
-    ],
-    "stock": "disponible",
-    "descripcion": "Disponible en Beige, Blanco, Chocolate y Negro",
-    "precio_original": 72000,
-    "talles": ["S", "M", "L", "XL", "XXL"],
-    "variantes": [
-      {
-        "color": "#E8D5B7",
-        "label": "Beige",
-        "imgs": ["imagenes/Abrigos/buzo-beige-tripside.webp"],
-        "nombre": "Buzo Tripside (Beige)",
-        "precio": 64999
-      },
-      {
-        "color": "#FFFFFF",
-        "label": "Blanco",
-        "imgs": ["imagenes/Abrigos/buzo-tripside-blanco.webp"],
-        "nombre": "Buzo Tripside (Blanco)",
-        "precio": 64999
-      },
-      {
-        "color": "#5C3317",
-        "label": "Chocolate",
-        "imgs": ["imagenes/Abrigos/buzo-tripside-chocolate.webp"],
-        "nombre": "Buzo Tripside (Chocolate)",
-        "precio": 64999
-      },
-      {
-        "color": "#111111",
-        "label": "Negro",
-        "imgs": ["imagenes/Abrigos/buzo-tripside-negro.webp"],
-        "nombre": "Buzo Tripside (Negro)",
-        "precio": 64999
-      }
-    ]
-  },
-  {
-    "id": "buzo-global",
-    "nombre": "Buzo Global",
-    "cartNombre": "Buzo Global",
-    "precio": 64999,
-    "categoria": "buzo",
-    "imagenes": [
-      "imagenes/Abrigos/buzo-blanco-global.webp",
-      "imagenes/Abrigos/buzo-negro-global.webp"
-    ],
-    "stock": "disponible",
-    "descripcion": "Disponible en Blanco y Negro",
-    "precio_original": 72000,
-    "talles": ["S", "M", "L", "XL", "XXL"],
-    "variantes": [
-      {
-        "color": "#FFFFFF",
-        "label": "Blanco",
-        "imgs": [
-          "imagenes/Abrigos/buzo-blanco-global.webp",
-          "imagenes/Abrigos/buzo-blanco-espalda-global.webp"
-        ],
-        "nombre": "Buzo Global (Blanco)",
-        "precio": 64999
-      },
-      {
-        "color": "#111111",
-        "label": "Negro",
-        "imgs": [
-          "imagenes/Abrigos/buzo-negro-global.webp",
-          "imagenes/Abrigos/buzo-negro-espalda-global.webp"
-        ],
-        "nombre": "Buzo Global (Negro)",
-        "precio": 64999
-      }
-    ]
-  },
-  {
-    "id": "buzo-feel-the-pulse",
-    "nombre": "Buzo Feel the Pulse",
-    "cartNombre": "Buzo Feel the Pulse",
-    "precio": 64999,
-    "categoria": "buzo",
-    "imagenes": [
-      "imagenes/Abrigos/buzo-feel-the-pulse-frente-beige.webp",
-      "imagenes/Abrigos/buzo-feel-the-pulse-frente-blanco.webp",
-      "imagenes/Abrigos/buzo-feel-the-pulse-chocolate-frente.webp",
-      "imagenes/Abrigos/buzo-feel-the-pulse-negro-frente.webp"
-    ],
-    "stock": "disponible",
-    "descripcion": "Disponible en Beige, Blanco, Chocolate y Negro",
-    "precio_original": 72000,
-    "talles": ["S", "M", "L", "XL", "XXL"],
-    "variantes": [
-      {
-        "color": "#E8D5B7",
-        "label": "Beige",
-        "imgs": [
-          "imagenes/Abrigos/buzo-feel-the-pulse-frente-beige.webp",
-          "imagenes/Abrigos/buzo-feel-the-pulse-beige-espalda-.webp"
-        ],
-        "nombre": "Buzo Feel the Pulse (Beige)",
-        "precio": 64999
-      },
-      {
-        "color": "#FFFFFF",
-        "label": "Blanco",
-        "imgs": [
-          "imagenes/Abrigos/buzo-feel-the-pulse-frente-blanco.webp",
-          "imagenes/Abrigos/buzo-blanco-feel-the-pulse-espalda.webp"
-        ],
-        "nombre": "Buzo Feel the Pulse (Blanco)",
-        "precio": 64999
-      },
-      {
-        "color": "#5C3317",
-        "label": "Chocolate",
-        "imgs": [
-          "imagenes/Abrigos/buzo-feel-the-pulse-chocolate-frente.webp",
-          "imagenes/Abrigos/buzo-feel-the-pulse-chocolate-espalda.webp"
-        ],
-        "nombre": "Buzo Feel the Pulse (Chocolate)",
-        "precio": 64999
-      },
-      {
-        "color": "#111111",
-        "label": "Negro",
-        "imgs": [
-          "imagenes/Abrigos/buzo-feel-the-pulse-negro-frente.webp",
-          "imagenes/Abrigos/buzo-feel-the-pulse-negro-espalda.webp"
-        ],
-        "nombre": "Buzo Feel the Pulse (Negro)",
-        "precio": 64999
-      }
-    ]
-  },
-  {
-    "id": "buzo-comfort",
-    "nombre": "Buzo Comfort",
-    "cartNombre": "Buzo Comfort",
-    "precio": 64999,
-    "categoria": "buzo",
-    "imagenes": [
-      "imagenes/Abrigos/buzo-comfort-beige.webp",
-      "imagenes/Abrigos/buzo-comfort-chocolate.webp",
-      "imagenes/Abrigos/buzo-comfort-negro.webp"
-    ],
-    "stock": "disponible",
-    "descripcion": "Disponible en Beige, Chocolate y Negro",
-    "precio_original": 72000,
-    "talles": ["S", "M", "L", "XL", "XXL"],
-    "variantes": [
-      {
-        "color": "#E8D5B7",
-        "label": "Beige",
-        "imgs": ["imagenes/Abrigos/buzo-comfort-beige.webp"],
-        "nombre": "Buzo Comfort (Beige)",
-        "precio": 64999
-      },
-      {
-        "color": "#5C3317",
-        "label": "Chocolate",
-        "imgs": ["imagenes/Abrigos/buzo-comfort-chocolate.webp"],
-        "nombre": "Buzo Comfort (Chocolate)",
-        "precio": 64999
-      },
-      {
-        "color": "#111111",
-        "label": "Negro",
-        "imgs": ["imagenes/Abrigos/buzo-comfort-negro.webp"],
-        "nombre": "Buzo Comfort (Negro)",
-        "precio": 64999
-      }
-    ]
-  },
-  {
-    "id": "buzo-company",
-    "nombre": "Buzo Company",
-    "cartNombre": "Buzo Company",
-    "precio": 64999,
-    "categoria": "buzo",
-    "imagenes": [
-      "imagenes/Abrigos/buzo-company-beige.webp",
-      "imagenes/Abrigos/buzo-company-blanoc.webp",
-      "imagenes/Abrigos/buzo-company-negro.webp"
-    ],
-    "stock": "disponible",
-    "descripcion": "Disponible en Beige, Blanco y Negro",
-    "precio_original": 72000,
-    "talles": ["S", "M", "L", "XL", "XXL"],
-    "variantes": [
-      {
-        "color": "#E8D5B7",
-        "label": "Beige",
-        "imgs": ["imagenes/Abrigos/buzo-company-beige.webp"],
-        "nombre": "Buzo Company (Beige)",
-        "precio": 64999
-      },
-      {
-        "color": "#FFFFFF",
-        "label": "Blanco",
-        "imgs": ["imagenes/Abrigos/buzo-company-blanoc.webp"],
-        "nombre": "Buzo Company (Blanco)",
-        "precio": 64999
-      },
-      {
-        "color": "#111111",
-        "label": "Negro",
-        "imgs": ["imagenes/Abrigos/buzo-company-negro.webp"],
-        "nombre": "Buzo Company (Negro)",
-        "precio": 64999
-      }
-    ]
-  },
-  {
-    "id": "buzo-crosses",
-    "nombre": "Buzo Crosses",
-    "cartNombre": "Buzo Crosses",
-    "precio": 64999,
-    "categoria": "buzo",
-    "imagenes": [
-      "imagenes/Abrigos/buzo-crosses-negro.webp"
+      "imagenes/Remeras/REMERA 6-1.webp"
     ],
     "stock": "disponible",
     "descripcion": "",
-    "precio_original": 72000,
-    "talles": ["S", "M", "L", "XL", "XXL"],
+    "precio_original": 45000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
     "variantes": null
   },
   {
-    "id": "buzo-designed",
-    "nombre": "Buzo Designed",
-    "cartNombre": "Buzo Designed",
-    "precio": 64999,
-    "categoria": "buzo",
+    "id": "remera-stll",
+    "nombre": "Remera Stll",
+    "cartNombre": "Remera Stll",
+    "precio": 40500,
+    "categoria": "remera",
     "imagenes": [
-      "imagenes/Abrigos/buzo-designed-frente-negro.webp",
-      "imagenes/Abrigos/buzo-designed-espalda-negro-.webp"
+      "imagenes/Remeras/REMERA 7-1.webp",
+      "imagenes/Remeras/REMERA 7-2.webp"
     ],
     "stock": "disponible",
     "descripcion": "",
-    "precio_original": 72000,
-    "talles": ["S", "M", "L", "XL", "XXL"],
+    "precio_original": 45000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
     "variantes": null
   },
   {
-    "id": "buzo-everyday",
-    "nombre": "Buzo Everyday",
-    "cartNombre": "Buzo Everyday",
-    "precio": 64999,
-    "categoria": "buzo",
+    "id": "remera-malb",
+    "nombre": "Remera Malb",
+    "cartNombre": "Remera Malb",
+    "precio": 40500,
+    "categoria": "remera",
     "imagenes": [
-      "imagenes/Abrigos/buzo-everyday-blanco.webp"
+      "imagenes/Remeras/REMERA 8-1.webp",
+      "imagenes/Remeras/REMERA 8-2.webp"
     ],
     "stock": "disponible",
     "descripcion": "",
-    "precio_original": 72000,
-    "talles": ["S", "M", "L", "XL", "XXL"],
+    "precio_original": 45000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
     "variantes": null
   },
   {
-    "id": "buzo-la",
-    "nombre": "Buzo LA",
-    "cartNombre": "Buzo LA",
-    "precio": 64999,
-    "categoria": "buzo",
+    "id": "remera-nof",
+    "nombre": "Remera Nof",
+    "cartNombre": "Remera Nof",
+    "precio": 40500,
+    "categoria": "remera",
     "imagenes": [
-      "imagenes/Abrigos/buzo-la-negro-.webp"
+      "imagenes/Remeras/REMERA 9-1.webp",
+      "imagenes/Remeras/REMERA 9-2.webp"
     ],
     "stock": "disponible",
     "descripcion": "",
-    "precio_original": 72000,
-    "talles": ["S", "M", "L", "XL", "XXL"],
+    "precio_original": 45000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
     "variantes": null
   },
   {
-    "id": "buzo-lakers",
-    "nombre": "Buzo Lakers",
-    "cartNombre": "Buzo Lakers",
-    "precio": 64999,
-    "categoria": "buzo",
+    "id": "remera-tactica-negro",
+    "nombre": "Remera Táctica (Negro)",
+    "cartNombre": "Remera Tactica Negro",
+    "precio": 40500,
+    "categoria": "remera",
     "imagenes": [
-      "imagenes/Abrigos/buzo-lakers-.webp",
-      "imagenes/Abrigos/buzo-lakers-blanco.webp"
+      "imagenes/Remeras/REMERA 10-1.webp",
+      "imagenes/Remeras/REMERA 10-2.webp"
     ],
     "stock": "disponible",
     "descripcion": "",
-    "precio_original": 72000,
-    "talles": ["S", "M", "L", "XL", "XXL"],
+    "precio_original": 45000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
     "variantes": null
   },
   {
-    "id": "buzo-culture",
-    "nombre": "Buzo Culture",
-    "cartNombre": "Buzo Culture",
-    "precio": 64999,
-    "categoria": "buzo",
+    "id": "remera-tron",
+    "nombre": "Remera Tron",
+    "cartNombre": "Remera Tron",
+    "precio": 40500,
+    "categoria": "remera",
     "imagenes": [
-      "imagenes/Abrigos/buzo-negro-culture.webp"
+      "imagenes/Remeras/REMERA 11-1.webp"
     ],
     "stock": "disponible",
     "descripcion": "",
-    "precio_original": 72000,
-    "talles": ["S", "M", "L", "XL", "XXL"],
+    "precio_original": 45000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
     "variantes": null
   },
   {
-    "id": "buzo-comforts",
-    "nombre": "Buzo Comforts",
-    "cartNombre": "Buzo Comforts",
-    "precio": 64999,
-    "categoria": "buzo",
+    "id": "remera-jh",
+    "nombre": "Remera JH",
+    "cartNombre": "Remera JH",
+    "precio": 40500,
+    "categoria": "remera",
     "imagenes": [
-      "imagenes/Abrigos/buzo-comforts-blanco.webp"
+      "imagenes/Remeras/REMERA 12-1.webp",
+      "imagenes/Remeras/REMERA 12-2.webp"
     ],
     "stock": "disponible",
     "descripcion": "",
-    "precio_original": 72000,
-    "talles": ["S", "M", "L", "XL", "XXL"],
+    "precio_original": 45000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "remera-jho",
+    "nombre": "Remera JHO",
+    "cartNombre": "Remera JHO",
+    "precio": 40500,
+    "categoria": "remera",
+    "imagenes": [
+      "imagenes/Remeras/REMERA 13-1.webp",
+      "imagenes/Remeras/REMERA 13-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 45000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "remera-s",
+    "nombre": "Remera S",
+    "cartNombre": "Remera S",
+    "precio": 40500,
+    "categoria": "remera",
+    "imagenes": [
+      "imagenes/Remeras/REMERA 14-1.webp",
+      "imagenes/Remeras/REMERA 14-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 45000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "look-modelo-editorial-buzo",
+    "nombre": "Look Modelo 2",
+    "cartNombre": "Look Modelo 2",
+    "precio": 85999,
+    "categoria": "buzo",
+    "imagenes": [
+      "imagenes/Abrigos/8-1.webp",
+      "imagenes/Abrigos/8-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 95999,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "look-modelo-editorial-pantalon",
+    "nombre": "Look Modelo 3",
+    "cartNombre": "Look Modelo 3",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "imagenes/Pantalones/PANT 13-1.webp",
+      "imagenes/Pantalones/PANT 13-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "CLASSY – SWEATER",
+    "nombre": "CLASSY – SWEATER",
+    "cartNombre": "CLASSY – SWEATER",
+    "precio": 58500,
+    "categoria": "buzo",
+    "imagenes": [
+      "imagenes/Abrigos/9-1.webp",
+      "imagenes/Abrigos/9-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 65000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "fast---hoodie-rustico",
+    "nombre": "Fast - Hoodie Rustico",
+    "cartNombre": "Fast - Hoodie Rustico",
+    "precio": 85999,
+    "categoria": "buzo",
+    "imagenes": [
+      "imagenes/Abrigos/10-1.webp",
+      "imagenes/Abrigos/10-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 95999,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "pin---sweater",
+    "nombre": "Pin - Sweater",
+    "cartNombre": "Pin - Sweater",
+    "precio": 85999,
+    "categoria": "buzo",
+    "imagenes": [
+      "imagenes/Abrigos/11-1.webp",
+      "imagenes/Abrigos/11-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 95999,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "le-mans---sweater",
+    "nombre": "Le Mans - Sweater",
+    "cartNombre": "Le Mans - Sweater",
+    "precio": 85999,
+    "categoria": "buzo",
+    "imagenes": [
+      "imagenes/Abrigos/12-1.webp",
+      "imagenes/Abrigos/12-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 95999,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "wli-6-1--track-jacket-river",
+    "nombre": "Wli-6-1- Track Jacket River",
+    "cartNombre": "Wli-6-1- Track Jacket River",
+    "precio": 85999,
+    "categoria": "buzo",
+    "imagenes": [
+      "imagenes/Abrigos/13-1.webp",
+      "imagenes/Abrigos/13-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 95999,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "wli-3-a--japan-snow",
+    "nombre": "Wli-3-A- Japan Snow",
+    "cartNombre": "Wli-3-A- Japan Snow",
+    "precio": 85999,
+    "categoria": "buzo",
+    "imagenes": [
+      "imagenes/Abrigos/14-1.webp",
+      "imagenes/Abrigos/14-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 95999,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "wli-3-b--japan-black",
+    "nombre": "Wli-3-B- Japan Black",
+    "cartNombre": "Wli-3-B- Japan Black",
+    "precio": 85999,
+    "categoria": "buzo",
+    "imagenes": [
+      "imagenes/Abrigos/15-1.webp",
+      "imagenes/Abrigos/15-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 95999,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "wli-7-1--track-jacket-gang",
+    "nombre": "Wli-7-1- Track Jacket Gang",
+    "cartNombre": "Wli-7-1- Track Jacket Gang",
+    "precio": 85999,
+    "categoria": "buzo",
+    "imagenes": [
+      "imagenes/Abrigos/16-1.webp",
+      "imagenes/Abrigos/16-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 95999,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "wli-5-1--track-jacket-basic",
+    "nombre": "Wli-5-1- Track Jacket Basic",
+    "cartNombre": "Wli-5-1- Track Jacket Basic",
+    "precio": 85999,
+    "categoria": "buzo",
+    "imagenes": [
+      "imagenes/Abrigos/17-1.webp",
+      "imagenes/Abrigos/17-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 95999,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "wli-4--racer",
+    "nombre": "Wli-4- Racer",
+    "cartNombre": "Wli-4- Racer",
+    "precio": 85999,
+    "categoria": "buzo",
+    "imagenes": [
+      "imagenes/Abrigos/18-1.webp",
+      "imagenes/Abrigos/18-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 95999,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "wli-2-tron-jacket",
+    "nombre": "Wli-2-Tron Jacket",
+    "cartNombre": "Wli-2-Tron Jacket",
+    "precio": 85999,
+    "categoria": "buzo",
+    "imagenes": [
+      "imagenes/Abrigos/19-1.webp",
+      "imagenes/Abrigos/19-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 95999,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "wli-9--tactical",
+    "nombre": "Wli-9- Tactical",
+    "cartNombre": "Wli-9- Tactical",
+    "precio": 85999,
+    "categoria": "buzo",
+    "imagenes": [
+      "imagenes/Abrigos/20-1.webp",
+      "imagenes/Abrigos/20-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 95999,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "star---campera-gabardina-bordada",
+    "nombre": "Star - Campera Gabardina Bordada",
+    "cartNombre": "Star - Campera Gabardina Bordada",
+    "precio": 85999,
+    "categoria": "buzo",
+    "imagenes": [
+      "imagenes/Abrigos/21-1.webp",
+      "imagenes/Abrigos/21-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 95999,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "malb---campera-gabardina-bordada",
+    "nombre": "Malb - Campera Gabardina Bordada",
+    "cartNombre": "Malb - Campera Gabardina Bordada",
+    "precio": 85999,
+    "categoria": "buzo",
+    "imagenes": [
+      "imagenes/Abrigos/22-1.webp",
+      "imagenes/Abrigos/22-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 95999,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "wli-6-2--track-pants-river",
+    "nombre": "Wli-6-2- Track Pants River",
+    "cartNombre": "Wli-6-2- Track Pants River",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "imagenes/Pantalones/PANT 14-1.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "wli-7-2--track-pants-gang",
+    "nombre": "Wli-7-2- Track Pants Gang",
+    "cartNombre": "Wli-7-2- Track Pants Gang",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "imagenes/Pantalones/PANT 15-1.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "kain-clasico-20---jean-baggy",
+    "nombre": "Kain Clasico 2.0 - Jean Baggy",
+    "cartNombre": "Kain Clasico 2.0 - Jean Baggy",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "imagenes/Pantalones/PANT 16-1.webp",
+      "imagenes/Pantalones/PANT 16-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "japon-onix---jean-cargo-carpintero",
+    "nombre": "Japon Onix - Jean Cargo Carpintero",
+    "cartNombre": "Japon Onix - Jean Cargo Carpintero",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "imagenes/Pantalones/PANT 17-1.webp",
+      "imagenes/Pantalones/PANT 17-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "out-20---jean-baggy-con-bordado",
+    "nombre": "Out 2.0 - Jean Baggy Con Bordado",
+    "cartNombre": "Out 2.0 - Jean Baggy Con Bordado",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "imagenes/Pantalones/PANT 18-1.webp",
+      "imagenes/Pantalones/PANT 18-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "dree-dark---jean-baggy",
+    "nombre": "Dree Dark - Jean Baggy",
+    "cartNombre": "Dree Dark - Jean Baggy",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "https://dcdn-us.mitiendanube.com/stores/007/229/147/products/imagen_2026-05-29_222426650-c566bd542c26d13e4b17801042710952-1024-1024.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "kain-stone---baggy",
+    "nombre": "Kain Stone - Baggy",
+    "cartNombre": "Kain Stone - Baggy",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "https://dcdn-us.mitiendanube.com/stores/007/229/147/products/imagen_2026-05-29_222248666-89e569bf12e641dc4317801041733989-1024-1024.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "ghost---baggy-jean",
+    "nombre": "Ghost - Baggy Jean",
+    "cartNombre": "Ghost - Baggy Jean",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "https://dcdn-us.mitiendanube.com/stores/007/229/147/products/imagen_2026-05-29_222107202-ee06f5fc1ae6aeefd717801040722854-1024-1024.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "llamas---baggy-jean",
+    "nombre": "Llamas - Baggy Jean",
+    "cartNombre": "Llamas - Baggy Jean",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "https://dcdn-us.mitiendanube.com/stores/007/229/147/products/imagen_2026-05-29_221853527-2b7a5ed70ae7c982f917801039392379-1024-1024.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "lemus---jean-bagy-bordado",
+    "nombre": "Lemus - Jean Bagy Bordado",
+    "cartNombre": "Lemus - Jean Bagy Bordado",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "https://dcdn-us.mitiendanube.com/stores/007/229/147/products/imagen_2026-05-29_221605653-f3a021260273ab2da717801037699741-1024-1024.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "roach-20---skate-baggy",
+    "nombre": "Roach 2.0 - Skate Baggy",
+    "cartNombre": "Roach 2.0 - Skate Baggy",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "https://dcdn-us.mitiendanube.com/stores/007/229/147/products/imagen_2026-05-29_221338664-a011c5984b29ba46a517801036239497-1024-1024.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "skull-20---jean-baggy-bordado",
+    "nombre": "Skull 2.0 - Jean Baggy Bordado",
+    "cartNombre": "Skull 2.0 - Jean Baggy Bordado",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "https://dcdn-us.mitiendanube.com/stores/007/229/147/products/imagen_2026-05-29_221145047-f7bf14b8cbaf4c618317801035095522-1024-1024.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "star---jean",
+    "nombre": "Star - Jean",
+    "cartNombre": "Star - Jean",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "https://dcdn-us.mitiendanube.com/stores/007/229/147/products/imagen_2026-05-29_220958380-a73d7ef9851f8b1a1c17801034028261-1024-1024.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "kunai---baggy",
+    "nombre": "Kunai - Baggy",
+    "cartNombre": "Kunai - Baggy",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "https://dcdn-us.mitiendanube.com/stores/007/229/147/products/imagen_2026-05-29_220753463-fcdb852504f9532e1d17801032783567-1024-1024.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "f1-20---baggy-jean-bordado",
+    "nombre": "F1 2.0 - Baggy Jean Bordado",
+    "cartNombre": "F1 2.0 - Baggy Jean Bordado",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "https://dcdn-us.mitiendanube.com/stores/007/229/147/products/imagen_2026-05-29_220534434-6af55a750ea2fedc1517801031390076-1024-1024.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "akira---baggy",
+    "nombre": "Akira - Baggy",
+    "cartNombre": "Akira - Baggy",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "https://dcdn-us.mitiendanube.com/stores/007/229/147/products/imagen_2026-05-29_220345414-c673628995af410d4617801030300510-1024-1024.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "dree---jean-baggy",
+    "nombre": "Dree - Jean Baggy",
+    "cartNombre": "Dree - Jean Baggy",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "https://dcdn-us.mitiendanube.com/stores/007/229/147/products/imagen_2026-05-29_220119982-5937dcb0d2c7113fd817801028848394-1024-1024.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "espiga---baggy-jean",
+    "nombre": "Espiga - Baggy Jean",
+    "cartNombre": "Espiga - Baggy Jean",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "https://dcdn-us.mitiendanube.com/stores/007/229/147/products/imagen_2026-05-29_213947709-9049a0c5218afd53b817801015925285-1024-1024.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "snow---baggy-jean",
+    "nombre": "Snow - Baggy Jean",
+    "cartNombre": "Snow - Baggy Jean",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "https://dcdn-us.mitiendanube.com/stores/007/229/147/products/imagen_2026-05-29_213753508-5f02427592164743a417801014785530-1024-1024.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "lit---baggy-jean",
+    "nombre": "Lit - Baggy Jean",
+    "cartNombre": "Lit - Baggy Jean",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "https://dcdn-us.mitiendanube.com/stores/007/229/147/products/imagen_2026-05-29_213153696-4fa04032ac7650e98117801011183244-1024-1024.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "pocket---baggy-jean",
+    "nombre": "Pocket - Baggy Jean",
+    "cartNombre": "Pocket - Baggy Jean",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "https://dcdn-us.mitiendanube.com/stores/007/229/147/products/imagen_2026-05-29_213004841-d7a921ac5f98c9d54317801010117880-1024-1024.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null
+  },
+  {
+    "id": "max---baggy-bordado",
+    "nombre": "Max - Baggy Bordado",
+    "cartNombre": "Max - Baggy Bordado",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "https://dcdn-us.mitiendanube.com/stores/007/229/147/products/imagen_2026-05-29_212458106-edd4ce9fc45dc6778c17801007036285-1024-1024.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
     "variantes": null
   }
 ]
