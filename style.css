@@ -1143,9 +1143,9 @@ main {
   transform: translateX(120%) translateY(0);
   background: rgba(20,20,20,0.96);
   color: #fff;
-  padding: 12px 24px;
+  padding: 10px 20px;
   border-radius: 40px;
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   font-weight: 500;
   opacity: 0;
   pointer-events: none;
@@ -1153,8 +1153,10 @@ main {
   z-index: 9999;
   border: 1px solid rgba(255,255,255,0.1);
   backdrop-filter: blur(12px);
-  max-width: 90vw;
-  text-align: center;
+  max-width: min(320px, 80vw);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .toast.show {
@@ -2791,11 +2793,12 @@ main {
 
 /* ── Toast mejorado ── */
 .toast {
+  top: auto !important;
   bottom: 24px !important;
   border-radius: 14px !important;
-  font-size: 0.82rem !important;
-  padding: 12px 20px !important;
-  max-width: 320px !important;
+  font-size: 0.78rem !important;
+  padding: 8px 16px !important;
+  max-width: 280px !important;
 }
 
 /* ── Producto page: info gap mobile ── */
@@ -4009,7 +4012,7 @@ img:not(.loaded):not([src=""]) {
   display: flex;
   align-items: center;
   gap: 0;
-  animation: tickerScroll 28s linear infinite;
+  animation: tickerScroll 18s linear infinite;
   white-space: nowrap;
   will-change: transform;
 }
@@ -4191,7 +4194,11 @@ img:not(.loaded):not([src=""]) {
 .footer-logo-area img {
   height: 36px;
   width: auto;
+  max-width: 140px;
+  object-fit: contain;
+  object-position: left center;
   opacity: 0.8;
+  display: block;
 }
 
 .footer-tagline {
@@ -4612,14 +4619,18 @@ img:not(.loaded):not([src=""]) {
 
 /* ── Toast notifications mejoradas ── */
 .toast {
-  font-size: 0.82rem !important;
+  top: auto !important;
+  bottom: 28px !important;
+  font-size: 0.76rem !important;
   letter-spacing: 0.02em;
   backdrop-filter: blur(12px) !important;
   border-radius: 999px !important;
-  padding: 12px 20px !important;
+  padding: 6px 14px !important;
   display: flex !important;
   align-items: center !important;
-  gap: 10px !important;
+  gap: 6px !important;
+  line-height: 1.3 !important;
+  min-height: auto !important;
 }
 
 /* ── Nav: página activa con punto indicador ── */

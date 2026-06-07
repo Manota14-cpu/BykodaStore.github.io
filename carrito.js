@@ -139,8 +139,7 @@ function agregarConCantidad(btn, nombre, precio, talle) {
   setCarrito(carrito);
   actualizarContadorCarrito();
 
-  const label = precio > 0 ? `${key} agregado al carrito.` : `${key} agregado. Precio a consultar.`;
-  showToast(label, 'success');
+  showToast('✓ Agregado al carrito', 'success');
 }
 
 /* ─── Agregar con talle de calzado (select) ─────────────────────── */
@@ -169,7 +168,7 @@ function agregarConCantidadZapa(btn, nombre, precio) {
   else           { carrito.push({ nombre: key, precio, cantidad: qty, imgSrc: zapaImg }); }
   setCarrito(carrito);
   actualizarContadorCarrito();
-  showToast(key + ' agregado al carrito.', 'success');
+  showToast('✓ Agregado al carrito', 'success');
 }
 
 /* ─── Mostrar carrito ───────────────────────────────────────────── */
@@ -257,7 +256,7 @@ function eliminarProducto(index) {
   setCarrito(carrito);
   mostrarCarrito();
   actualizarContadorCarrito();
-  showToast(`"${nombre}" eliminado del carrito.`);
+  showToast('✕ Eliminado del carrito');
 }
 
 function cambiarCantidad(index, delta) {

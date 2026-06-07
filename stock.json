@@ -327,7 +327,7 @@
     "variantes": null
   },
   {
-    "id": "PIN – SWEATER",
+    "id": "pin-sweater",
     "nombre": "PIN – SWEATER",
     "cartNombre": "PIN – SWEATER",
     "precio": 58500,
@@ -414,7 +414,7 @@
     "variantes": null
   },
   {
-    "id": "DALLAS – SWEATER",
+    "id": "dallas-sweater",
     "nombre": "DALLAS – SWEATER",
     "cartNombre": "DALLAS – SWEATER",
     "precio": 58500,
@@ -859,7 +859,7 @@
     "variantes": null
   },
   {
-    "id": "CLASSY – SWEATER",
+    "id": "classy-sweater",
     "nombre": "CLASSY – SWEATER",
     "cartNombre": "CLASSY – SWEATER",
     "precio": 58500,
@@ -881,7 +881,7 @@
     "variantes": null
   },
   {
-    "id": "fast---hoodie-rustico",
+    "id": "fast-hoodie-rustico",
     "nombre": "Fast - Hoodie Rustico",
     "cartNombre": "Fast - Hoodie Rustico",
     "precio": 85999,
@@ -903,7 +903,7 @@
     "variantes": null
   },
   {
-    "id": "pin---sweater",
+    "id": "pin-sweater-2",
     "nombre": "Pin - Sweater",
     "cartNombre": "Pin - Sweater",
     "precio": 85999,
@@ -925,7 +925,7 @@
     "variantes": null
   },
   {
-    "id": "le-mans---sweater",
+    "id": "le-mans-sweater",
     "nombre": "Le Mans - Sweater",
     "cartNombre": "Le Mans - Sweater",
     "precio": 85999,
@@ -947,7 +947,7 @@
     "variantes": null
   },
   {
-    "id": "wli-6-1--track-jacket-river",
+    "id": "wli-6-1-track-jacket-river",
     "nombre": "Wli-6-1- Track Jacket River",
     "cartNombre": "Wli-6-1- Track Jacket River",
     "precio": 85999,
@@ -969,7 +969,7 @@
     "variantes": null
   },
   {
-    "id": "wli-3-a--japan-snow",
+    "id": "wli-3-a-japan-snow",
     "nombre": "Wli-3-A- Japan Snow",
     "cartNombre": "Wli-3-A- Japan Snow",
     "precio": 85999,
@@ -991,7 +991,7 @@
     "variantes": null
   },
   {
-    "id": "wli-3-b--japan-black",
+    "id": "wli-3-b-japan-black",
     "nombre": "Wli-3-B- Japan Black",
     "cartNombre": "Wli-3-B- Japan Black",
     "precio": 85999,
@@ -1013,7 +1013,7 @@
     "variantes": null
   },
   {
-    "id": "wli-7-1--track-jacket-gang",
+    "id": "wli-7-1-track-jacket-gang",
     "nombre": "Wli-7-1- Track Jacket Gang",
     "cartNombre": "Wli-7-1- Track Jacket Gang",
     "precio": 85999,
@@ -1035,7 +1035,7 @@
     "variantes": null
   },
   {
-    "id": "wli-5-1--track-jacket-basic",
+    "id": "wli-5-1-track-jacket-basic",
     "nombre": "Wli-5-1- Track Jacket Basic",
     "cartNombre": "Wli-5-1- Track Jacket Basic",
     "precio": 85999,
@@ -1057,7 +1057,7 @@
     "variantes": null
   },
   {
-    "id": "wli-4--racer",
+    "id": "wli-4-racer",
     "nombre": "Wli-4- Racer",
     "cartNombre": "Wli-4- Racer",
     "precio": 85999,
@@ -1101,7 +1101,7 @@
     "variantes": null
   },
   {
-    "id": "wli-9--tactical",
+    "id": "wli-9-tactical",
     "nombre": "Wli-9- Tactical",
     "cartNombre": "Wli-9- Tactical",
     "precio": 85999,
@@ -1123,7 +1123,7 @@
     "variantes": null
   },
   {
-    "id": "star---campera-gabardina-bordada",
+    "id": "star-campera-gabardina-bordada",
     "nombre": "Star - Campera Gabardina Bordada",
     "cartNombre": "Star - Campera Gabardina Bordada",
     "precio": 85999,
@@ -1145,7 +1145,7 @@
     "variantes": null
   },
   {
-    "id": "malb---campera-gabardina-bordada",
+    "id": "malb-campera-gabardina-bordada",
     "nombre": "Malb - Campera Gabardina Bordada",
     "cartNombre": "Malb - Campera Gabardina Bordada",
     "precio": 85999,
@@ -1167,7 +1167,7 @@
     "variantes": null
   },
   {
-    "id": "wli-6-2--track-pants-river",
+    "id": "wli-6-2-track-pants-river",
     "nombre": "Wli-6-2- Track Pants River",
     "cartNombre": "Wli-6-2- Track Pants River",
     "precio": 62999,
@@ -1188,7 +1188,7 @@
     "variantes": null
   },
   {
-    "id": "wli-7-2--track-pants-gang",
+    "id": "wli-7-2-track-pants-gang",
     "nombre": "Wli-7-2- Track Pants Gang",
     "cartNombre": "Wli-7-2- Track Pants Gang",
     "precio": 62999,
@@ -1209,7 +1209,7 @@
     "variantes": null
   },
   {
-    "id": "kain-clasico-20---jean-baggy",
+    "id": "kain-clasico-20-jean-baggy",
     "nombre": "Kain Clasico 2.0 - Jean Baggy",
     "cartNombre": "Kain Clasico 2.0 - Jean Baggy",
     "precio": 62999,
@@ -1231,7 +1231,7 @@
     "variantes": null
   },
   {
-    "id": "japon-onix---jean-cargo-carpintero",
+    "id": "japon-onix-jean-cargo-carpintero",
     "nombre": "Japon Onix - Jean Cargo Carpintero",
     "cartNombre": "Japon Onix - Jean Cargo Carpintero",
     "precio": 62999,
@@ -1253,7 +1253,7 @@
     "variantes": null
   },
   {
-    "id": "out-20---jean-baggy-con-bordado",
+    "id": "out-20-jean-baggy-con-bordado",
     "nombre": "Out 2.0 - Jean Baggy Con Bordado",
     "cartNombre": "Out 2.0 - Jean Baggy Con Bordado",
     "precio": 62999,
@@ -1275,7 +1275,7 @@
     "variantes": null
   },
   {
-    "id": "dree-dark---jean-baggy",
+    "id": "dree-dark-jean-baggy",
     "nombre": "Dree Dark - Jean Baggy",
     "cartNombre": "Dree Dark - Jean Baggy",
     "precio": 62999,
@@ -1296,7 +1296,7 @@
     "variantes": null
   },
   {
-    "id": "kain-stone---baggy",
+    "id": "kain-stone-baggy",
     "nombre": "Kain Stone - Baggy",
     "cartNombre": "Kain Stone - Baggy",
     "precio": 62999,
@@ -1317,7 +1317,7 @@
     "variantes": null
   },
   {
-    "id": "ghost---baggy-jean",
+    "id": "ghost-baggy-jean",
     "nombre": "Ghost - Baggy Jean",
     "cartNombre": "Ghost - Baggy Jean",
     "precio": 62999,
@@ -1338,7 +1338,7 @@
     "variantes": null
   },
   {
-    "id": "llamas---baggy-jean",
+    "id": "llamas-baggy-jean",
     "nombre": "Llamas - Baggy Jean",
     "cartNombre": "Llamas - Baggy Jean",
     "precio": 62999,
@@ -1359,7 +1359,7 @@
     "variantes": null
   },
   {
-    "id": "lemus---jean-bagy-bordado",
+    "id": "lemus-jean-bagy-bordado",
     "nombre": "Lemus - Jean Bagy Bordado",
     "cartNombre": "Lemus - Jean Bagy Bordado",
     "precio": 62999,
@@ -1380,7 +1380,7 @@
     "variantes": null
   },
   {
-    "id": "roach-20---skate-baggy",
+    "id": "roach-20-skate-baggy",
     "nombre": "Roach 2.0 - Skate Baggy",
     "cartNombre": "Roach 2.0 - Skate Baggy",
     "precio": 62999,
@@ -1401,7 +1401,7 @@
     "variantes": null
   },
   {
-    "id": "skull-20---jean-baggy-bordado",
+    "id": "skull-20-jean-baggy-bordado",
     "nombre": "Skull 2.0 - Jean Baggy Bordado",
     "cartNombre": "Skull 2.0 - Jean Baggy Bordado",
     "precio": 62999,
@@ -1422,7 +1422,7 @@
     "variantes": null
   },
   {
-    "id": "star---jean",
+    "id": "star-jean",
     "nombre": "Star - Jean",
     "cartNombre": "Star - Jean",
     "precio": 62999,
@@ -1443,7 +1443,7 @@
     "variantes": null
   },
   {
-    "id": "kunai---baggy",
+    "id": "kunai-baggy",
     "nombre": "Kunai - Baggy",
     "cartNombre": "Kunai - Baggy",
     "precio": 62999,
@@ -1464,7 +1464,7 @@
     "variantes": null
   },
   {
-    "id": "f1-20---baggy-jean-bordado",
+    "id": "f1-20-baggy-jean-bordado",
     "nombre": "F1 2.0 - Baggy Jean Bordado",
     "cartNombre": "F1 2.0 - Baggy Jean Bordado",
     "precio": 62999,
@@ -1485,7 +1485,7 @@
     "variantes": null
   },
   {
-    "id": "akira---baggy",
+    "id": "akira-baggy",
     "nombre": "Akira - Baggy",
     "cartNombre": "Akira - Baggy",
     "precio": 62999,
@@ -1506,7 +1506,7 @@
     "variantes": null
   },
   {
-    "id": "dree---jean-baggy",
+    "id": "dree-jean-baggy",
     "nombre": "Dree - Jean Baggy",
     "cartNombre": "Dree - Jean Baggy",
     "precio": 62999,
@@ -1527,7 +1527,7 @@
     "variantes": null
   },
   {
-    "id": "espiga---baggy-jean",
+    "id": "espiga-baggy-jean",
     "nombre": "Espiga - Baggy Jean",
     "cartNombre": "Espiga - Baggy Jean",
     "precio": 62999,
@@ -1548,7 +1548,7 @@
     "variantes": null
   },
   {
-    "id": "snow---baggy-jean",
+    "id": "snow-baggy-jean",
     "nombre": "Snow - Baggy Jean",
     "cartNombre": "Snow - Baggy Jean",
     "precio": 62999,
@@ -1569,7 +1569,7 @@
     "variantes": null
   },
   {
-    "id": "lit---baggy-jean",
+    "id": "lit-baggy-jean",
     "nombre": "Lit - Baggy Jean",
     "cartNombre": "Lit - Baggy Jean",
     "precio": 62999,
@@ -1590,7 +1590,7 @@
     "variantes": null
   },
   {
-    "id": "pocket---baggy-jean",
+    "id": "pocket-baggy-jean",
     "nombre": "Pocket - Baggy Jean",
     "cartNombre": "Pocket - Baggy Jean",
     "precio": 62999,
@@ -1611,7 +1611,7 @@
     "variantes": null
   },
   {
-    "id": "max---baggy-bordado",
+    "id": "max-baggy-bordado",
     "nombre": "Max - Baggy Bordado",
     "cartNombre": "Max - Baggy Bordado",
     "precio": 62999,
