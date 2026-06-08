@@ -844,3 +844,22 @@ document.addEventListener('DOMContentLoaded', () => {
   initFavoritos();
   initOrdenador();
 });
+
+/* ── Sincronizar badge del bottom nav con el contador de carrito ── */
+(function() {
+  var origActualizar = actualizarContadorCarrito;
+  actualizarContadorCarrito = function() {
+    origActualizar();
+    var badge = document.getElementById('bottom-nav-badge-carrito');
+    if (badge) {
+      var carrito = getCarrito();
+      var total = carrito.reduce(function(s,i){ return s + i.cantidad; }, 0);
+      badge.textContent = total > 0 ? total : '';
+      badge.style.display = total > 0 ? 'flex' : 'none';
+    }
+  };
+  // Inicializar al cargar
+  document.addEventListener('DOMContentLoaded', function() {
+    actualizarContadorCarrito();
+  });
+})();

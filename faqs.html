@@ -4,15 +4,15 @@
   <meta charset="utf-8">
   <meta name="theme-color" content="#000000">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Preguntas Frecuentes | KODA Studio</title>
-  <meta name="description" content="Respondemos tus dudas sobre envíos, talles, cambios y más en KODA Studio.">
+  <title>Preguntas Frecuentes | BYKODA</title>
+  <meta name="description" content="Respondemos tus dudas sobre envíos, talles, cambios y más en BYKODA.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://www.bykoda.store/Faqs.html">
-  <meta property="og:title" content="Preguntas Frecuentes | KODA Studio">
-  <meta property="og:description" content="Respondemos tus dudas sobre envíos, talles, cambios y más en KODA Studio.">
+  <link rel="canonical" href="https://www.bykoda.store/faqs">
+  <meta property="og:title" content="Preguntas Frecuentes | BYKODA">
+  <meta property="og:description" content="Respondemos tus dudas sobre envíos, talles, cambios y más en BYKODA.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.bykoda.store/Faqs.html">
-  <meta property="og:site_name" content="KODA Studio">
+  <meta property="og:url" content="https://www.bykoda.store/faqs">
+  <meta property="og:site_name" content="BYKODA">
   <meta property="og:locale" content="es_AR">
   <link rel="icon" href="imagenes/logo.png" type="image/png">
   <link rel="apple-touch-icon" href="imagenes/logo.png">
@@ -23,6 +23,7 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="style-v4.css">
 
+  <link rel="stylesheet" href="mejoras-v8.css">
   <script src="loader.js"></script>
 
   <script type="application/ld+json">
@@ -80,11 +81,11 @@
 
   <header class="header">
     <div class="header-inner">
-      <div class="logo"><a href="index.html"><img loading="lazy" decoding="async" src="imagenes/logo.png" alt="Koda Store"></a></div>
+      <div class="logo"><a href="/"><img loading="lazy" decoding="async" src="imagenes/logo.png" alt="BYKODA"></a></div>
       <nav class="nav">
-        <a href="index.html" class="nav-link">Inicio</a>
-        <a href="productos.html" class="nav-link">Catálogo</a>
-        <a href="carrito.html" class="nav-link nav-link--cart">Carrito (<span id="contador-carrito">0</span>)</a>
+        <a href="/" class="nav-link">Inicio</a>
+        <a href="/catalogo" class="nav-link">Catálogo</a>
+        <a href="/carrito" class="nav-link nav-link--cart">Carrito (<span id="contador-carrito">0</span>)</a>
       </nav>
       <button class="hamburger" id="hamburger" aria-label="Menú" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -92,10 +93,10 @@
     </div>
   </header>
   <nav class="nav-mobile-overlay" id="nav-mobile" aria-label="Navegación móvil">
-    <a href="index.html" class="nav-link">Inicio</a>
-    <a href="productos.html" class="nav-link">Catálogo</a>
-    <a href="Faqs.html" class="nav-link">FAQs</a>
-    <a href="carrito.html" class="nav-link nav-link--cart">Carrito</a>
+    <a href="/" class="nav-link">Inicio</a>
+    <a href="/catalogo" class="nav-link">Catálogo</a>
+    <a href="/faqs" class="nav-link">FAQs</a>
+    <a href="/carrito" class="nav-link nav-link--cart">Carrito</a>
   </nav>
 
   <!-- ───────── CONTACTO ───────── -->
@@ -352,7 +353,7 @@
   <footer class="footer reveal">
     <div class="footer-container">
       <div class="footer-col">
-        <h3>UNITE A KODA</h3>
+        <h3>UNITE A BYKODA</h3>
         <p>Registrate y recibí nuestras ofertas.</p>
         <form class="newsletter" id="newsletter-form-faqs">
           <input type="email" placeholder="Ingresá tu email..." required>
@@ -362,17 +363,17 @@
       <div class="footer-col">
         <h4>Menú</h4>
         <ul>
-          <li><a href="productos.html">Tienda</a></li>
-          <li><a href="index.html">Inicio</a></li>
-          <li><a href="Faqs.html">FAQs</a></li>
+          <li><a href="/catalogo">Tienda</a></li>
+          <li><a href="/">Inicio</a></li>
+          <li><a href="/faqs">FAQs</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Ayuda</h4>
         <ul>
           <li><a href="#">Guía de Talles</a></li>
-          <li><a href="Faqs.html">Cómo Comprar</a></li>
-          <li><a href="Faqs.html">Política de Cambios</a></li>
+          <li><a href="/faqs">Cómo Comprar</a></li>
+          <li><a href="/faqs">Política de Cambios</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -532,7 +533,7 @@
       producto:'👕 Consulta sobre un producto', cambio:'🔄 Cambio o devolución', otro:'💬 Otro'
     }[asunto] || asunto;
 
-    var texto = '💬 *Consulta KODA Studio*\n━━━━━━━━━━━━━━━━━━━\n\n';
+    var texto = '💬 *Consulta BYKODA*\n━━━━━━━━━━━━━━━━━━━\n\n';
     texto += '👤 *Nombre:* ' + nombre + '\n';
     texto += '📱 *Teléfono:* ' + telefono + '\n';
     texto += '📌 *Tema:* ' + asuntoTexto + '\n';
@@ -577,5 +578,27 @@
   });
 })();
 </script>
+<nav class="bottom-nav" aria-label="Navegación principal">
+  <a href="/" class="bottom-nav__item " aria-label="Inicio">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <span>Inicio</span>
+    
+  </a>
+  <a href="/catalogo" class="bottom-nav__item " aria-label="Catálogo">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+    <span>Catálogo</span>
+    
+  </a>
+  <a href="/carrito" class="bottom-nav__item " aria-label="Carrito">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.99 1.61H19a2 2 0 001.99-1.78l1.01-6.22H6"/></svg>
+    <span>Carrito</span>
+    <span class="bottom-nav__badge" id="bottom-nav-badge-carrito"></span>
+  </a>
+  <a href="/faqs" class="bottom-nav__item activo" aria-label="FAQs">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    <span>FAQs</span>
+    
+  </a>
+</nav>
 </body>
 </html>

@@ -1,0 +1,691 @@
+/* ══════════════════════════════════════════════════════════════
+   BYKODA — mejoras.css
+   Correcciones de bugs + mejoras de UX/accesibilidad/visual
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── Accesibilidad: visually-hidden ── */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── Skip link ── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  background: #fff;
+  color: #000;
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  z-index: 99999;
+  transition: top 0.2s;
+  text-decoration: none;
+}
+.skip-link:focus {
+  top: 16px;
+}
+
+/* ── Focus visible mejorado ── */
+:focus-visible {
+  outline: 2px solid rgba(255,255,255,0.5);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ── BUG FIX: .nav-link--cart con badge en línea ── */
+.nav-link--cart {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+#contador-carrito {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  background: #fff;
+  color: #000;
+  font-size: 0.62rem;
+  font-weight: 800;
+  border-radius: 999px;
+  padding: 0 5px;
+  line-height: 1;
+  transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), background 0.3s;
+}
+/* Ocultar si está en 0 */
+#contador-carrito:empty,
+#contador-carrito[data-count="0"] {
+  opacity: 0;
+  transform: scale(0.6);
+}
+
+/* ── BUG FIX: hero h2 en slides 2/3 ── */
+.hero-slide-content h2.hero-slide-title {
+  font-family: 'Bebas Neue', 'Montserrat', sans-serif;
+  font-size: clamp(3rem, 7vw, 7rem);
+  font-weight: 900;
+  letter-spacing: -0.06em;
+  line-height: 0.9;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+/* ── Hero CTA group ── */
+.hero-cta-group {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.hero-ig-btn {
+  gap: 8px;
+}
+
+/* ── Mobile nav mejorado: backdrop y botón de cerrar ── */
+.nav-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 98;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.nav-backdrop.visible {
+  display: block;
+  opacity: 1;
+}
+
+.nav-mobile-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 4px;
+  padding: 60px 48px;
+  transform: translateX(-100%);
+  transition: transform 0.5s cubic-bezier(0.22,1,0.36,1);
+}
+.nav-mobile-overlay.open {
+  transform: translateX(0);
+}
+.nav-mobile-overlay .nav-link {
+  font-size: clamp(1.8rem, 6vw, 2.5rem);
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.05em;
+  padding: 8px 0;
+  opacity: 0.7;
+  transition: opacity 0.3s, transform 0.3s;
+}
+.nav-mobile-overlay .nav-link:hover,
+.nav-mobile-overlay .nav-link[aria-current="page"] {
+  opacity: 1;
+  transform: translateX(8px);
+}
+
+.nav-mobile-close {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  background: none;
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.6);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+.nav-mobile-close:hover {
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+}
+
+@media (min-width: 768px) {
+  .nav-mobile-overlay,
+  .nav-backdrop {
+    display: none !important;
+  }
+}
+
+/* ── BUG FIX: main no debería tener max-width en la homepage (hero full-width) ── */
+/* El hero necesita ancho completo, los sections internos ya tienen max-width */
+.hero-lookbook {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+}
+
+/* ── BUG FIX: perks-section máximo alineado ── */
+.perks-section {
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── Testimonio card: blockquote sin itálica por defecto en algunos browsers ── */
+.testimonio-card blockquote {
+  margin: 0 0 16px;
+  font-style: normal;
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.6;
+  position: relative;
+  padding-left: 0;
+}
+.testimonio-card blockquote::before {
+  content: '"';
+  font-family: 'Bebas Neue', Georgia, serif;
+  font-size: 3rem;
+  color: rgba(255,255,255,0.08);
+  position: absolute;
+  top: -12px;
+  left: -8px;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* ── Testimonio card: mejorar layout ── */
+.testimonio-card {
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 20px;
+  padding: 28px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: border-color 0.4s, transform 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s;
+  position: relative;
+  overflow: hidden;
+}
+.testimonio-card:hover {
+  border-color: rgba(255,255,255,0.13);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+}
+
+.testimonio-stars {
+  display: flex;
+  gap: 3px;
+  color: #f5c518;
+}
+.testimonio-nombre {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.85);
+  letter-spacing: 0.04em;
+}
+.testimonio-localidad {
+  display: block;
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ── Testimonios grid responsive ── */
+.testimonios-section {
+  padding: 80px 24px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+.testimonios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* ── Newsletter mejorado (sin form tag) ── */
+.newsletter {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 5px;
+}
+.newsletter-feedback {
+  font-size: 0.78rem;
+  margin: 0;
+  min-height: 1.2em;
+  line-height: 1.4;
+}
+
+/* ── Footer: links de contacto clickeables ── */
+.footer-col a[href^="tel"],
+.footer-col a[href^="mailto"] {
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.footer-col a[href^="tel"]:hover,
+.footer-col a[href^="mailto"]:hover {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ── Scroll top: usando SVG en lugar de text ── */
+.scroll-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── BUG FIX: ripple-anim faltaba definida globalmente ── */
+@keyframes ripple-anim {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* ── Stagger delay para reveal-children ── */
+.reveal-children.visible > *:nth-child(1) { transition-delay: 0s; }
+.reveal-children.visible > *:nth-child(2) { transition-delay: 0.12s; }
+.reveal-children.visible > *:nth-child(3) { transition-delay: 0.24s; }
+.reveal-children.visible > *:nth-child(4) { transition-delay: 0.36s; }
+.reveal-children.visible > *:nth-child(5) { transition-delay: 0.48s; }
+.reveal-children.visible > *:nth-child(6) { transition-delay: 0.60s; }
+
+/* ── Badge bump animation ── */
+@keyframes badge-bump {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.5); }
+  100% { transform: scale(1); }
+}
+.badge-bump {
+  animation: badge-bump 0.4s cubic-bezier(0.34,1.56,0.64,1);
+}
+
+/* ── Cat-card: hover border sutil ── */
+.cat-card {
+  border: 1px solid rgba(255,255,255,0.05);
+  transition: transform 0.55s cubic-bezier(0.22,1,0.36,1), border-color 0.4s, box-shadow 0.5s;
+}
+.cat-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255,255,255,0.12);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+}
+
+/* ── Instagram section ── */
+.insta-section {
+  padding: 80px 24px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  text-align: center;
+}
+.insta-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+/* ── prefers-reduced-motion: desactivar animaciones ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .announcement-bar__track {
+    animation: none;
+  }
+}
+
+/* ── Responsive: mobile fixes ── */
+@media (max-width: 767px) {
+  .hero-cta-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .categories-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .categories-grid .cat-card:last-child {
+    grid-column: span 2;
+    aspect-ratio: 16/9;
+  }
+  .testimonios-grid {
+    grid-template-columns: 1fr;
+  }
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .editorial-card--large {
+    min-height: 380px;
+  }
+  .editorial-card-content {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-slide-content {
+    bottom: 80px;
+    left: 20px;
+    right: 20px;
+  }
+  .perk {
+    padding: 0;
+  }
+}
+
+/* ── WhatsApp tooltip en desktop ── */
+@media (pointer: fine) {
+  .whatsapp-btn {
+    position: relative;
+  }
+  .whatsapp-btn::after {
+    content: 'Consultar por WhatsApp';
+    position: absolute;
+    right: calc(100% + 12px);
+    top: 50%;
+    transform: translateY(-50%) translateX(8px);
+    white-space: nowrap;
+    background: rgba(20,20,20,0.95);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.1);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+  }
+  .whatsapp-btn:hover::after {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   BYKODA v10 — CORRECCIONES CRÍTICAS + MEJORAS PREMIUM
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── FIX CRÍTICO: Hero full-width real ─────────────────────── */
+/* El hero ahora está FUERA de main, así que no necesita hacks  */
+/* Eliminamos el truco anterior que rompía con overflow-x:hidden */
+.hero-lookbook {
+  width: 100% !important;
+  margin-left: 0 !important;
+  position: relative;
+  display: block;
+}
+
+/* ── main ahora es solo el contenido bajo el hero ── */
+main {
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+/* ── Centrado real de todas las secciones internas ── */
+.perks-section,
+.categories-section,
+.editorial-grid,
+.stats-section,
+.testimonios-section,
+.nuevo-ingreso-section,
+.insta-section,
+.newsletter-section,
+.section-surface {
+  max-width: var(--max-width, 1180px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── FIX: Swiper hero perfectamente centrado ── */
+.hero-swiper {
+  width: 100% !important;
+  left: 0 !important;
+  position: relative !important;
+}
+
+.hero-swiper .swiper-wrapper {
+  width: 100% !important;
+}
+
+.hero-swiper .swiper-slide {
+  width: 100% !important;
+}
+
+/* ── FIX: Imagen hero centrada, no recortada a la derecha ── */
+.hero-slide-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  display: block !important;
+}
+
+/* ── MEJORA: Overlay gradiente más cinematográfico ── */
+.hero-swiper .swiper-slide::after {
+  background: linear-gradient(
+    to right,
+    rgba(0,0,0,0.72) 0%,
+    rgba(0,0,0,0.4) 50%,
+    rgba(0,0,0,0.15) 100%
+  ),
+  linear-gradient(
+    to top,
+    rgba(0,0,0,0.6) 0%,
+    transparent 60%
+  ) !important;
+}
+
+/* ── MEJORA: Texto hero más impactante ── */
+.hero-slide-content {
+  left: clamp(24px, 6vw, 100px) !important;
+  right: auto !important;
+  max-width: min(640px, 55vw) !important;
+}
+
+@media (max-width: 767px) {
+  .hero-slide-content {
+    left: 24px !important;
+    right: 24px !important;
+    max-width: none !important;
+    bottom: 80px !important;
+  }
+}
+
+/* ── MEJORA: Botones de navegación del hero mejorados ── */
+.hero-swiper-next,
+.hero-swiper-prev {
+  background: rgba(255,255,255,0.1) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255,255,255,0.2) !important;
+  width: 56px !important;
+  height: 56px !important;
+}
+
+.hero-swiper-next:hover,
+.hero-swiper-prev:hover {
+  background: rgba(255,255,255,0.22) !important;
+  transform: scale(1.08) !important;
+}
+
+/* ── MEJORA: Announcement bar sticky (se queda arriba) ── */
+.announcement-bar {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+}
+
+/* ── MEJORA: Header con glass morphism sutil ── */
+.header {
+  background: rgba(0,0,0,0.85) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+  transition: background 0.4s ease, box-shadow 0.4s ease !important;
+}
+
+.header.scrolled {
+  background: rgba(0,0,0,0.97) !important;
+  box-shadow: 0 2px 40px rgba(0,0,0,0.6) !important;
+}
+
+/* ── MEJORA: Sección de categorías con hover más rico ── */
+.cat-card {
+  border-radius: 16px !important;
+  overflow: hidden;
+}
+
+.cat-card img {
+  transition: transform 0.7s cubic-bezier(0.22,1,0.36,1) !important;
+}
+
+.cat-card:hover img {
+  transform: scale(1.08) !important;
+}
+
+/* ── MEJORA: Cards de producto con sombra sutil ── */
+.producto-card,
+.product-card {
+  border-radius: 14px !important;
+  transition: transform 0.45s cubic-bezier(0.22,1,0.36,1),
+              box-shadow 0.45s ease !important;
+}
+
+.producto-card:hover,
+.product-card:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.5) !important;
+}
+
+/* ── MEJORA: Stats section con separadores más elegantes ── */
+.stat-item {
+  position: relative;
+}
+
+.stat-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 20%;
+  height: 60%;
+  width: 1px;
+  background: rgba(255,255,255,0.08);
+}
+
+/* ── MEJORA: Scroll top button ── */
+.scroll-top {
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 50% !important;
+  background: rgba(255,255,255,0.08) !important;
+  border: 1px solid rgba(255,255,255,0.15) !important;
+  backdrop-filter: blur(12px) !important;
+  transition: background 0.3s, transform 0.3s, box-shadow 0.3s !important;
+}
+
+.scroll-top:hover {
+  background: rgba(255,255,255,0.15) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4) !important;
+}
+
+/* ── FIX: Eliminar margen izquierdo indeseado en hero ── */
+.hero-lookbook + * {
+  /* primera sección después del hero: sin gap raro */
+  margin-top: 0;
+}
+
+/* ── MEJORA: Smooth scroll global ── */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ── MEJORA: Fuente en cards editoriales ── */
+.editorial-card h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.02em;
+}
+
+/* ── FIX: section label centrado correctamente ── */
+.section-label {
+  letter-spacing: 0.3em;
+}
+
+/* ── MEJORA: Footer con separador top elegante ── */
+footer {
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+/* ── MEJORA: Input de newsletter más premium ── */
+.newsletter-input,
+input[type="email"] {
+  border-radius: 999px !important;
+  padding: 12px 20px !important;
+  background: rgba(255,255,255,0.06) !important;
+  border: 1px solid rgba(255,255,255,0.12) !important;
+  color: #fff !important;
+  transition: border-color 0.3s, background 0.3s !important;
+}
+
+.newsletter-input:focus,
+input[type="email"]:focus {
+  border-color: rgba(255,255,255,0.35) !important;
+  background: rgba(255,255,255,0.09) !important;
+  outline: none !important;
+}
+
+/* ── MEJORA: CTA buttons más llamativos ── */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.btn-primary:hover::before {
+  opacity: 1;
+}
+
+/* ── MEJORA: WhatsApp button pulsing ── */
+.whatsapp-btn {
+  animation: whatsapp-pulse 3s ease-in-out infinite;
+}
+
+@keyframes whatsapp-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
+  50% { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
+}
+
