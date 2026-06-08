@@ -88,10 +88,12 @@
         </a>
       </div>
       <nav class="nav" aria-label="Navegación principal">
-        <a href="index.html" class="nav-link">Inicio</a>
-        <a href="productos.html" class="nav-link">Catálogo</a>
-        <a href="faqs.html" class="nav-link">FAQs</a>
-        <a href="carrito.html" class="nav-link nav-link--cart">Carrito (<span id="contador-carrito">0</span>)</a>
+        <a href="/catalogo" class="nav-link">Catálogo</a>
+        <a href="/faqs" class="nav-link">FAQs</a>
+        <a href="/carrito" class="nav-link nav-link--cart" aria-label="Carrito de compras">
+          Carrito
+          <span class="cart-badge" id="contador-carrito" aria-live="polite" aria-atomic="true">0</span>
+        </a>
       </nav>
       <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-mobile">
         <span></span><span></span><span></span>

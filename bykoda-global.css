@@ -4752,46 +4752,6 @@ img:not(.loaded):not([src=""]) {
   color: rgba(255,255,255,0.6);
 }
 
-/* ── Scroll suave en toda la página ── */
-html {
-  scroll-behavior: smooth;
-}
-
-/* ── Loader: animación de entrada para el logo ── */
-#koda-loader img {
-  animation: loaderFadeUp 0.5s cubic-bezier(0.22,1,0.36,1) both;
-}
-
-@keyframes loaderFadeUp {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* ── Mejorar la barra del loader ── */
-#koda-loader .koda-barra-wrap {
-  margin-top: 28px;
-  width: 80px;
-  height: 1px;
-  background: rgba(255,255,255,0.08);
-  border-radius: 1px;
-  overflow: hidden;
-}
-
-#koda-loader .koda-barra {
-  background: rgba(255,255,255,0.6);
-  animation: koda-fill 0.7s cubic-bezier(0.22,1,0.36,1) forwards;
-}
-
-/* ── Productos: "no results" más elegante ── */
-.no-results {
-  font-size: 0.85rem;
-  color: rgba(255,255,255,0.3);
-  text-align: center;
-  padding: 60px 0;
-  letter-spacing: 0.05em;
-  grid-column: 1 / -1;
-}
-
 /* ── Announcement bar: fade edges ── */
 .announcement-bar::before,
 .announcement-bar::after {
@@ -4852,7 +4812,7 @@ html {
 /* ── Print styles ── */
 @media print {
   .announcement-bar, .header, .whatsapp-btn, .scroll-top,
-  .custom-cursor, .custom-cursor-ring, #koda-loader {
+  .custom-cursor, .custom-cursor-ring {
     display: none !important;
   }
   body { color: #000; background: #fff; }
@@ -5576,46 +5536,6 @@ html {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: rgba(255,255,255,0.6);
-}
-
-/* ── Scroll suave en toda la página ── */
-html {
-  scroll-behavior: smooth;
-}
-
-/* ── Loader: animación de entrada para el logo ── */
-#koda-loader img {
-  animation: loaderFadeUp 0.5s cubic-bezier(0.22,1,0.36,1) both;
-}
-
-@keyframes loaderFadeUp {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* ── Mejorar la barra del loader ── */
-#koda-loader .koda-barra-wrap {
-  margin-top: 28px;
-  width: 80px;
-  height: 1px;
-  background: rgba(255,255,255,0.08);
-  border-radius: 1px;
-  overflow: hidden;
-}
-
-#koda-loader .koda-barra {
-  background: rgba(255,255,255,0.6);
-  animation: koda-fill 0.7s cubic-bezier(0.22,1,0.36,1) forwards;
-}
-
-/* ── Productos: "no results" más elegante ── */
-.no-results {
-  font-size: 0.85rem;
-  color: rgba(255,255,255,0.3);
-  text-align: center;
-  padding: 60px 0;
-  letter-spacing: 0.05em;
-  grid-column: 1 / -1;
 }
 
 /* ── Announcement bar: fade edges ── */
@@ -6437,7 +6357,7 @@ html, body {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
-  object-position: left center !important;
+  object-position: center center !important;
   filter: brightness(0.75) !important;
   transform-origin: center center !important;
 }
@@ -6647,5 +6567,13 @@ main {
   .hero-slide-content h2 {
     font-size: clamp(2.2rem, 9vw, 3.2rem) !important;
   }
+}
+
+/* ─── OCULTAR BOTTOM NAV COMPLETAMENTE ─── */
+.bottom-nav {
+  display: none !important;
+}
+body {
+  padding-bottom: 0 !important;
 }
 
