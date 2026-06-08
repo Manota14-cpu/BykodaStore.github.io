@@ -449,11 +449,9 @@
     "descripcion": "",
     "precio_original": 45000,
     "talles": [
-      "S",
       "M",
       "L",
-      "XL",
-      "XXL"
+      "XL"
     ],
     "variantes": [
       {
@@ -502,11 +500,9 @@
     "descripcion": "",
     "precio_original": 45000,
     "talles": [
-      "S",
       "M",
       "L",
-      "XL",
-      "XXL"
+      "XL"
     ],
     "variantes": [
       {
@@ -545,19 +541,17 @@
     "descripcion": "",
     "precio_original": 45000,
     "talles": [
-      "S",
       "M",
       "L",
-      "XL",
-      "XXL"
+      "XL"
     ],
     "variantes": null
   },
   {
-    "id": "remera-wttr-azul",
-    "nombre": "Remera WTTR (Azul)",
-    "cartNombre": "Remera WTTR Azul",
-    "precio": 40500,
+    "id": "ROCKSTAR",
+    "nombre": "ROCKSTAR",
+    "cartNombre": "ROCKSTAR",
+    "precio": 30000,
     "categoria": "remera",
     "imagenes": [
       "imagenes/Remeras/REMERA 4-1.webp",
@@ -565,23 +559,21 @@
     ],
     "stock": "disponible",
     "descripcion": "",
-    "precio_original": 45000,
+    "precio_original": 33000,
     "talles": [
-      "S",
       "M",
       "L",
-      "XL",
-      "XXL"
+      "XL"
     ],
     "variantes": [
       {
-        "color": "#3a6fad",
-        "label": "Azul",
+        "color": "#fffff",
+        "label": "Blanca",
         "imgs": [
           "imagenes/Remeras/REMERA 4-1.webp",
           "imagenes/Remeras/REMERA 4-1.webp"
         ],
-        "nombre": "Remera WTTR (Azul)",
+        "nombre": "Rockstar",
         "precio": 28500
       },
       {
@@ -591,16 +583,16 @@
           "imagenes/Remeras/REMERA 4-2.webp",
           "imagenes/Remeras/REMERA 4-2.webp"
         ],
-        "nombre": "Remera WTTR (Negro)",
+        "nombre": "Rockstar",
         "precio": 28500
       }
     ]
   },
   {
-    "id": "remera-race",
-    "nombre": "Remera Race",
-    "cartNombre": "Remera Race",
-    "precio": 40500,
+    "id": "DEATHBLOOM",
+    "nombre": "DEATHBLOOM – REMERA BOXY",
+    "cartNombre": "DEATHBLOOM – REMERA BOXY",
+    "precio": 30000,
     "categoria": "remera",
     "imagenes": [
       "imagenes/Remeras/REMERA 5-1.webp",
@@ -608,20 +600,18 @@
     ],
     "stock": "disponible",
     "descripcion": "",
-    "precio_original": 45000,
+    "precio_original": 33000,
     "talles": [
-      "S",
       "M",
       "L",
-      "XL",
-      "XXL"
+      "XL"
     ],
     "variantes": null
   },
   {
-    "id": "remera-star",
-    "nombre": "Remera Star",
-    "cartNombre": "Remera Star",
+    "id": "aura",
+    "nombre": "AURA – REMERA OVERSIZE BORDADA",
+    "cartNombre": "AURA – REMERA OVERSIZE BORDADA",
     "precio": 40500,
     "categoria": "remera",
     "imagenes": [
@@ -631,13 +621,32 @@
     "descripcion": "",
     "precio_original": 45000,
     "talles": [
-      "S",
       "M",
       "L",
-      "XL",
-      "XXL"
+      "XL"
     ],
-    "variantes": null
+"variantes": [
+      {
+        "color": "#7d8471",
+        "label": "Cemento",
+        "imgs": [
+          "imagenes/Remeras/REMERA 4-1.webp",
+          "imagenes/Remeras/REMERA 4-1.webp"
+        ],
+        "nombre": "AURA – REMERA OVERSIZE BORDADA",
+        "precio": 30000
+      },
+      {
+        "color": "#111111",
+        "label": "Negro",
+        "imgs": [
+          "imagenes/Remeras/REMERA 4-2.webp",
+          "imagenes/Remeras/REMERA 4-2.webp"
+        ],
+        "nombre": "AURA – REMERA OVERSIZE BORDADA",
+        "precio": 30000
+      }
+    ]
   },
   {
     "id": "remera-stll",
@@ -685,8 +694,8 @@
   },
   {
     "id": "remera-nof",
-    "nombre": "Remera Nof",
-    "cartNombre": "Remera Nof",
+    "nombre": "WL2566-08",
+    "cartNombre": "WL2566-08",
     "precio": 40500,
     "categoria": "remera",
     "imagenes": [
