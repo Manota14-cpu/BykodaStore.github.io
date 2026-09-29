@@ -1,0 +1,229 @@
+@import 'tailwindcss';
+
+/* Los proyectos de video (HyperFrames) y el catálogo archivado no son parte del
+   sitio: no se escanean. */
+@source not '../../videos';
+@source not '../../scripts';
+@source not '../../catalogo-anterior';
+
+/* ============================================================
+   BYKODA — sistema de diseño
+   Único archivo de estilos del proyecto. Todo lo demás son
+   utilidades de Tailwind escritas en los componentes.
+   ============================================================ */
+
+/* El tema lo decide `data-theme` en <html> (lo escribe src/lib/theme.ts
+   antes del primer pintado). Esta variante permite escribir `dark:` cuando
+   una regla no se puede resolver con los tokens semánticos de abajo. */
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+/* ---- Paleta cruda: la fuente de verdad de cada tema ---------------- */
+:root,
+[data-theme='light'] {
+  --k-ground: #f4f4f6;
+  --k-surface: #ffffff;
+  --k-raised: #fafafb;
+  --k-ink: #141416;
+  --k-ink-2: rgb(20 20 22 / 0.72);
+  --k-ink-3: rgb(20 20 22 / 0.5);
+  --k-line: rgb(20 20 22 / 0.1);
+  --k-line-strong: rgb(20 20 22 / 0.26);
+  --k-hover: rgb(20 20 22 / 0.05);
+  --k-invert: #141416;
+  --k-on-invert: #ffffff;
+  --k-shadow: rgb(20 20 22 / 0.1);
+}
+
+[data-theme='dark'] {
+  --k-ground: #000000;
+  --k-surface: #0c0c0e;
+  --k-raised: #131316;
+  --k-ink: #f5f5f5;
+  --k-ink-2: rgb(255 255 255 / 0.68);
+  --k-ink-3: rgb(255 255 255 / 0.45);
+  --k-line: rgb(255 255 255 / 0.1);
+  --k-line-strong: rgb(255 255 255 / 0.24);
+  --k-hover: rgb(255 255 255 / 0.06);
+  --k-invert: #ffffff;
+  --k-on-invert: #000000;
+  --k-shadow: rgb(0 0 0 / 0.5);
+}
+
+/* ---- Tokens de Tailwind -------------------------------------------
+   `inline` hace que las utilidades referencien la variable en vez de
+   copiar su valor: así un solo `bg-surface` sirve para ambos temas sin
+   escribir `dark:` en cada elemento. */
+@theme inline {
+  --font-display: 'Bebas Neue', 'Arial Narrow', sans-serif;
+  --font-sans: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+
+  --color-ground: var(--k-ground);
+  --color-surface: var(--k-surface);
+  --color-raised: var(--k-raised);
+  --color-ink: var(--k-ink);
+  --color-ink-2: var(--k-ink-2);
+  --color-ink-3: var(--k-ink-3);
+  --color-line: var(--k-line);
+  --color-line-strong: var(--k-line-strong);
+  --color-hover: var(--k-hover);
+  --color-invert: var(--k-invert);
+  --color-on-invert: var(--k-on-invert);
+
+  /* Semánticos: no cambian con el tema. */
+  --color-whatsapp: #25d366;
+  --color-whatsapp-ink: #128c3e;
+  --color-sale: #ff3b30;
+  --color-ultimas: #ff6b35;
+  --color-exito: #22c55e;
+  --color-alerta: #ef4444;
+  --color-fav: #ff4d6d;
+
+  --ease-suave: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --container-pagina: 78rem;
+}
+
+/* ---- Base ---------------------------------------------------------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--color-ground);
+    color-scheme: light;
+  }
+
+  [data-theme='dark'] html,
+  html[data-theme='dark'] {
+    color-scheme: dark;
+  }
+
+  body {
+    /* `clip` en vez de `hidden`: hidden convierte al body en contenedor de
+       scroll y rompe position:sticky en todo lo que cuelga de él. */
+    overflow-x: clip;
+    background-color: var(--color-ground);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-line-strong);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: var(--color-invert);
+    color: var(--color-on-invert);
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-ground);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-line-strong);
+    border: 3px solid var(--color-ground);
+    border-radius: 999px;
+  }
+
+  /* El select nativo hereda mal el tema en Windows. */
+  option {
+    background: var(--color-surface);
+    color: var(--color-ink);
+  }
+
+  /* Quita las flechitas del input numérico. */
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    appearance: none;
+    margin: 0;
+  }
+}
+
+/* ---- Utilidades propias -------------------------------------------- */
+@utility titulo-display {
+  font-family: var(--font-display);
+  line-height: 0.92;
+  letter-spacing: 0.01em;
+  text-wrap: balance;
+}
+
+/* Micro-etiqueta en mayúsculas: se repite en toda la tienda. */
+@utility eyebrow {
+  font-size: 0.66rem;
+  line-height: 1.4;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-ink-3);
+}
+
+@utility area-pagina {
+  width: min(100%, var(--container-pagina));
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 4vw, 2.5rem);
+}
+
+/* Aparición al entrar en viewport (ver useRevelar). */
+@utility revelar {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.7s var(--ease-suave),
+    transform 0.7s var(--ease-suave);
+
+  &[data-visible='true'] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---- Animaciones ---------------------------------------------------- */
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes subir {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+@keyframes latido {
+  30% {
+    transform: scale(1.35);
+  }
+}

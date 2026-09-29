@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=720, height=900" />
+    <title>BYKODA — la calle 4:5</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      html,
+      body {
+        margin: 0;
+        background: #000;
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #000;
+      }
+      .toma {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        /* Punto de partida explícito: GSAP interpola entre dos blur(), no desde none. */
+        filter: blur(0px);
+      }
+      .toma + .toma {
+        opacity: 0;
+      }
+      .camara {
+        position: absolute;
+        inset: 0;
+        transform-origin: 50% 50%;
+        will-change: transform;
+      }
+      .camara img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="calle"
+      data-start="0"
+      data-width="720"
+      data-height="900"
+      data-duration="12"
+    >
+      <!-- Orden de capas = orden de entrada: la que entra tapa a la anterior. -->
+      <div class="toma" id="a"><div class="camara" data-layout-allow-overflow id="ca"><img src="assets/chat6.webp" alt="" /></div></div>
+      <div class="toma" id="b"><div class="camara" data-layout-allow-overflow id="cb"><img src="assets/chat7.webp" alt="" /></div></div>
+      <div class="toma" id="c"><div class="camara" data-layout-allow-overflow id="cc"><img src="assets/chat8.webp" alt="" /></div></div>
+    </div>
+    <script>
+      const PASO = 4; // cada prenda manda 4 s
+      const CRUCE = 1.2; // cambio de foco largo: la banda es ambiente, no corte
+      const VENTANA = PASO + CRUCE; // 5.2 s en pantalla incluyendo la entrada
+      const TOTAL = 3 * PASO; // 12 = data-duration
+      // Receta "focus pull" en tempo calmo: la que sale se desenfoca, la que entra
+      // aparece desenfocada y hace foco. Evita la doble exposición nítida de un
+      // fundido plano entre dos prendas ubicadas en el mismo lugar.
+      const DESENFOQUE = "blur(16px)";
+      const ENFOCADO = "blur(0px)";
+
+      /** Cambio de foco de `sale` a `entra`, que empieza en `t`. */
+      function cambioDeFoco(sale, entra, t) {
+        tl.to(sale, { filter: DESENFOQUE, duration: 0.6, ease: "power1.in" }, t);
+        tl.fromTo(entra, { opacity: 0, filter: DESENFOQUE }, { opacity: 1, filter: DESENFOQUE, duration: 0.6, ease: "sine.inOut" }, t + 0.1);
+        tl.to(entra, { filter: ENFOCADO, duration: 0.7, ease: "power1.out" }, t + 0.5);
+      }
+
+      // Push-in lineal por prenda. Toda traslación cumple |t| <= (escala - 1) / 2.
+      const TOMAS = [
+        { capa: "#a", camara: "#ca", desde: { scale: 1.03, xPercent: 0, yPercent: 1 }, hasta: { scale: 1.09, xPercent: 0, yPercent: -1 } },
+        { capa: "#b", camara: "#cb", desde: { scale: 1.02, xPercent: 0, yPercent: -0.8 }, hasta: { scale: 1.08, xPercent: 0, yPercent: 0.8 } },
+        { capa: "#c", camara: "#cc", desde: { scale: 1.02, xPercent: 0.8, yPercent: 0 }, hasta: { scale: 1.08, xPercent: -0.8, yPercent: 0 } },
+      ];
+
+      function pose(toma, u) {
+        const f = u / VENTANA;
+        return {
+          scale: toma.desde.scale + (toma.hasta.scale - toma.desde.scale) * f,
+          xPercent: toma.desde.xPercent + (toma.hasta.xPercent - toma.desde.xPercent) * f,
+          yPercent: toma.desde.yPercent + (toma.hasta.yPercent - toma.desde.yPercent) * f,
+        };
+      }
+
+      const tl = gsap.timeline({ paused: true });
+
+      // Primera prenda: arranca encendida y a mitad de su recorrido; nunca se
+      // apaga, las demás la tapan.
+      const [a, b, c] = TOMAS;
+      tl.fromTo(a.camara, pose(a, CRUCE), { ...pose(a, VENTANA), duration: VENTANA - CRUCE, ease: "none" }, 0);
+
+      // Segunda y tercera entran tapando a la anterior, con cambio de foco.
+      const anterior = [a, b];
+      [b, c].forEach((toma, k) => {
+        const inicio = (k + 1) * PASO - CRUCE;
+        tl.fromTo(toma.camara, pose(toma, 0), { ...pose(toma, VENTANA), duration: VENTANA, ease: "none" }, inicio);
+        cambioDeFoco(anterior[k].capa, toma.capa, inicio);
+      });
+
+      // Cuando la tercera ya tapa por completo a la segunda, la segunda se apaga
+      // (no se ve): así, al final, lo único debajo de la tercera es la primera.
+      tl.set(b.capa, { opacity: 0 }, 2 * PASO);
+
+      // Cierre del loop: la tercera se desenfoca y se desvanece; debajo, la
+      // primera retoma su recorrido desde el principio y hace foco justo en la
+      // pose exacta del cuadro 0. Su cámara salta mientras la tercera la tapa.
+      const cierre = TOTAL - CRUCE;
+      tl.fromTo(a.camara, pose(a, 0), { ...pose(a, CRUCE), duration: CRUCE, ease: "none", immediateRender: false }, cierre);
+      tl.to(c.capa, { filter: DESENFOQUE, duration: 0.6, ease: "power1.in" }, cierre);
+      tl.to(c.capa, { opacity: 0, duration: 0.6, ease: "sine.inOut" }, cierre + 0.1);
+      tl.fromTo(a.capa, { filter: DESENFOQUE }, { filter: ENFOCADO, duration: 0.7, ease: "power1.out", immediateRender: false }, cierre + 0.5);
+
+      window.__timelines["calle"] = tl;
+    </script>
+  </body>
+</html>

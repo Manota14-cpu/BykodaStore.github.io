@@ -1,0 +1,1987 @@
+[
+  {
+    "id": "jean-ancla",
+    "nombre": "Jean Ancla",
+    "cartNombre": "Jean Ancla",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "imagenes/Pantalones/PANT 1-1.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Jean de denim premium con caída estructurada y terminaciones reforzadas.",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "jean",
+    "calce": "Regular",
+    "tela": "Denim de algodón rígido, gramaje medio-pesado",
+    "composicion": "98% algodón · 2% elastano",
+    "cuidados": "Lavar del revés con agua fría. No usar lavandina. Secar a la sombra."
+  },
+  {
+    "id": "jean-f1",
+    "nombre": "Jean F1",
+    "cartNombre": "Jean F1",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "imagenes/Pantalones/PANT 2-1.webp",
+      "imagenes/Pantalones/PANT 2-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Jean de denim premium con caída estructurada y terminaciones reforzadas.",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "jean",
+    "calce": "Regular",
+    "tela": "Denim de algodón rígido, gramaje medio-pesado",
+    "composicion": "98% algodón · 2% elastano",
+    "cuidados": "Lavar del revés con agua fría. No usar lavandina. Secar a la sombra."
+  },
+  {
+    "id": "jean-laos-love-hater",
+    "nombre": "Jean Laos / Love Hater",
+    "cartNombre": "Jean Laos",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "imagenes/Pantalones/PANT 3-1.webp",
+      "imagenes/Pantalones/PANT 3-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Jean de denim premium con caída estructurada y terminaciones reforzadas.",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "jean",
+    "calce": "Regular",
+    "tela": "Denim de algodón rígido, gramaje medio-pesado",
+    "composicion": "98% algodón · 2% elastano",
+    "cuidados": "Lavar del revés con agua fría. No usar lavandina. Secar a la sombra."
+  },
+  {
+    "id": "jean-max",
+    "nombre": "Jean Max",
+    "cartNombre": "Jean Max",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "imagenes/Pantalones/PANT 4-1.webp",
+      "imagenes/Pantalones/PANT 4-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Jean de denim premium con caída estructurada y terminaciones reforzadas.",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "jean",
+    "calce": "Regular",
+    "tela": "Denim de algodón rígido, gramaje medio-pesado",
+    "composicion": "98% algodón · 2% elastano",
+    "cuidados": "Lavar del revés con agua fría. No usar lavandina. Secar a la sombra."
+  },
+  {
+    "id": "jean-red",
+    "nombre": "Jean Red",
+    "cartNombre": "Jean Red",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "imagenes/Pantalones/PANT 5-1.webp",
+      "imagenes/Pantalones/PANT 5-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Jean de denim premium con caída estructurada y terminaciones reforzadas.",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "jean",
+    "calce": "Regular",
+    "tela": "Denim de algodón rígido, gramaje medio-pesado",
+    "composicion": "98% algodón · 2% elastano",
+    "cuidados": "Lavar del revés con agua fría. No usar lavandina. Secar a la sombra."
+  },
+  {
+    "id": "jean-rei",
+    "nombre": "Jean Rei",
+    "cartNombre": "Jean Rei",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "imagenes/Pantalones/PANT 6-1.webp",
+      "imagenes/Pantalones/PANT 6-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Jean de denim premium con caída estructurada y terminaciones reforzadas.",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "jean",
+    "calce": "Regular",
+    "tela": "Denim de algodón rígido, gramaje medio-pesado",
+    "composicion": "98% algodón · 2% elastano",
+    "cuidados": "Lavar del revés con agua fría. No usar lavandina. Secar a la sombra."
+  },
+  {
+    "id": "jean-skull",
+    "nombre": "Jean Skull",
+    "cartNombre": "Jean Skull",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "imagenes/Pantalones/PANT 7-1.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Jean de denim premium con caída estructurada y terminaciones reforzadas.",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "jean",
+    "calce": "Regular",
+    "tela": "Denim de algodón rígido, gramaje medio-pesado",
+    "composicion": "98% algodón · 2% elastano",
+    "cuidados": "Lavar del revés con agua fría. No usar lavandina. Secar a la sombra."
+  },
+  {
+    "id": "jean-star",
+    "nombre": "Jean Star",
+    "cartNombre": "Jean Star",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "imagenes/Pantalones/PANT 8-1.webp",
+      "imagenes/Pantalones/PANT 8-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Jean de denim premium con caída estructurada y terminaciones reforzadas.",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "jean",
+    "calce": "Regular",
+    "tela": "Denim de algodón rígido, gramaje medio-pesado",
+    "composicion": "98% algodón · 2% elastano",
+    "cuidados": "Lavar del revés con agua fría. No usar lavandina. Secar a la sombra."
+  },
+  {
+    "id": "jean-vinni",
+    "nombre": "Jean Vinni",
+    "cartNombre": "Jean Vinni",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "imagenes/Pantalones/PANT 9-1.webp",
+      "imagenes/Pantalones/PANT 9-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Jean de denim premium con caída estructurada y terminaciones reforzadas.",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "jean",
+    "calce": "Regular",
+    "tela": "Denim de algodón rígido, gramaje medio-pesado",
+    "composicion": "98% algodón · 2% elastano",
+    "cuidados": "Lavar del revés con agua fría. No usar lavandina. Secar a la sombra."
+  },
+  {
+    "id": "jean-white-blanco",
+    "nombre": "Jean White",
+    "cartNombre": "Jean White",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "imagenes/Pantalones/PANT 10-1.webp",
+      "imagenes/Pantalones/PANT 10-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Jean de denim premium con caída estructurada y terminaciones reforzadas.",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "jean",
+    "calce": "Regular",
+    "tela": "Denim de algodón rígido, gramaje medio-pesado",
+    "composicion": "98% algodón · 2% elastano",
+    "cuidados": "Lavar del revés con agua fría. No usar lavandina. Secar a la sombra."
+  },
+  {
+    "id": "jogger-adidas-pantalon",
+    "nombre": "Jogger Adidas",
+    "cartNombre": "Jogger Adidas",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "imagenes/Pantalones/PANT 11-1.webp",
+      "imagenes/Pantalones/PANT 11-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Pantalón deportivo de tricot con cintura elástica, cordón ajustable y puños tobilleros.",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "jogger",
+    "calce": "Regular",
+    "tela": "Tricot deportivo liviano con forro de malla",
+    "composicion": "100% poliéster",
+    "cuidados": "Lavar a máquina en frío, ciclo suave. No planchar sobre los apliques."
+  },
+  {
+    "id": "river-pantalon-negro",
+    "nombre": "River Pantalón (Negro)",
+    "cartNombre": "River Pantalon Negro",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "imagenes/Pantalones/PANT 12-1.webp",
+      "imagenes/Pantalones/PANT 12-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Jean de denim premium con caída estructurada y terminaciones reforzadas.",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "jean",
+    "calce": "Regular",
+    "tela": "Denim de algodón rígido, gramaje medio-pesado",
+    "composicion": "98% algodón · 2% elastano",
+    "cuidados": "Lavar del revés con agua fría. No usar lavandina. Secar a la sombra."
+  },
+  {
+    "id": "hoodie-balance-negro",
+    "nombre": "Hoodie Balance (Negro)",
+    "cartNombre": "Hoodie Balance Negro",
+    "precio": 85999,
+    "categoria": "buzo",
+    "imagenes": [
+      "imagenes/Abrigos/1-1.webp",
+      "imagenes/Abrigos/1-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Buzo canguro de frisa perchada, con capucha forrada, puños acanalados y caída oversize.",
+    "precio_original": 95999,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": [
+      {
+        "color": "#222222",
+        "label": "Negro",
+        "imgs": [
+          "imagenes/Abrigos/1-1.webp"
+        ],
+        "nombre": "Hoodie Balance (Negro)",
+        "precio": 52000
+      },
+      {
+        "color": "#888888",
+        "label": "Gris",
+        "imgs": [
+          "imagenes/Abrigos/1-2.webp"
+        ],
+        "nombre": "Hoodie Balance (Gris)",
+        "precio": 52000
+      }
+    ],
+    "subcategoria": "hoodie",
+    "calce": "Oversize",
+    "tela": "Frisa perchada premium con interior afelpado",
+    "composicion": "80% algodón · 20% poliéster",
+    "cuidados": "Lavar del revés con agua fría. No secar en secarropas. No planchar la estampa."
+  },
+  {
+    "id": "hoodie-ben-negro",
+    "nombre": "LE MANS – SWEATER",
+    "cartNombre": "LE MANS – SWEATER",
+    "precio": 58500,
+    "categoria": "buzo",
+    "imagenes": [
+      "imagenes/Abrigos/2-1.webp",
+      "imagenes/Abrigos/2-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Buzo canguro de frisa perchada, con capucha forrada, puños acanalados y caída oversize.",
+    "precio_original": 65000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "hoodie",
+    "calce": "Oversize",
+    "tela": "Frisa perchada premium con interior afelpado",
+    "composicion": "80% algodón · 20% poliéster",
+    "cuidados": "Lavar del revés con agua fría. No secar en secarropas. No planchar la estampa."
+  },
+  {
+    "id": "pin-sweater",
+    "nombre": "PIN – SWEATER",
+    "cartNombre": "PIN – SWEATER",
+    "precio": 58500,
+    "categoria": "buzo",
+    "imagenes": [
+      "imagenes/Abrigos/3-1.webp",
+      "imagenes/Abrigos/3-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Sweater de punto con cuello redondo, puños y cintura acanalados.",
+    "precio_original": 65000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "sweater",
+    "calce": "Regular",
+    "tela": "Hilo de algodón tejido, punto cerrado",
+    "composicion": "70% algodón · 30% acrílico",
+    "cuidados": "Lavar a mano o ciclo lana en frío. Secar en plano, sin colgar."
+  },
+  {
+    "id": "zip-hoodie-champ-campera",
+    "nombre": "Zip Hoodie Champ",
+    "cartNombre": "Zip Hoodie Champ",
+    "precio": 85999,
+    "categoria": "buzo",
+    "imagenes": [
+      "imagenes/Abrigos/4-1.webp",
+      "imagenes/Abrigos/4-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Buzo canguro de frisa perchada, con capucha forrada, puños acanalados y caída oversize.",
+    "precio_original": 95999,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "hoodie",
+    "calce": "Oversize",
+    "tela": "Frisa perchada premium con interior afelpado",
+    "composicion": "80% algodón · 20% poliéster",
+    "cuidados": "Lavar del revés con agua fría. No secar en secarropas. No planchar la estampa."
+  },
+  {
+    "id": "zip-hoodie-west-campera",
+    "nombre": "Zip Hoodie West",
+    "cartNombre": "Zip Hoodie West",
+    "precio": 85999,
+    "categoria": "buzo",
+    "imagenes": [
+      "imagenes/Abrigos/5-1.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Buzo canguro de frisa perchada, con capucha forrada, puños acanalados y caída oversize.",
+    "precio_original": 95999,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "hoodie",
+    "calce": "Oversize",
+    "tela": "Frisa perchada premium con interior afelpado",
+    "composicion": "80% algodón · 20% poliéster",
+    "cuidados": "Lavar del revés con agua fría. No secar en secarropas. No planchar la estampa."
+  },
+  {
+    "id": "sweater-lemans-gris",
+    "nombre": "Sweater LeMans (Gris)",
+    "cartNombre": "Sweater LeMans Gris",
+    "precio": 85999,
+    "categoria": "buzo",
+    "imagenes": [
+      "imagenes/Abrigos/6-1.webp",
+      "imagenes/Abrigos/6-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Sweater de punto con cuello redondo, puños y cintura acanalados.",
+    "precio_original": 95999,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "sweater",
+    "calce": "Regular",
+    "tela": "Hilo de algodón tejido, punto cerrado",
+    "composicion": "70% algodón · 30% acrílico",
+    "cuidados": "Lavar a mano o ciclo lana en frío. Secar en plano, sin colgar."
+  },
+  {
+    "id": "dallas-sweater",
+    "nombre": "DALLAS – SWEATER",
+    "cartNombre": "DALLAS – SWEATER",
+    "precio": 58500,
+    "categoria": "buzo",
+    "imagenes": [
+      "imagenes/Abrigos/7-1.webp",
+      "imagenes/Abrigos/7-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Sweater de punto con cuello redondo, puños y cintura acanalados.",
+    "precio_original": 65000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "sweater",
+    "calce": "Regular",
+    "tela": "Hilo de algodón tejido, punto cerrado",
+    "composicion": "70% algodón · 30% acrílico",
+    "cuidados": "Lavar a mano o ciclo lana en frío. Secar en plano, sin colgar."
+  },
+  {
+    "id": "remera-japon-azul-japonesa",
+    "nombre": "Remera Japón (Azul)",
+    "cartNombre": "Remera Japon Azul",
+    "precio": 40500,
+    "categoria": "remera",
+    "imagenes": [
+      "imagenes/Remeras/REMERA 1-1.webp",
+      "imagenes/Remeras/REMERA 1-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Remera de algodón peinado con cuello reforzado y estampa de alta durabilidad.",
+    "precio_original": 45000,
+    "talles": [
+      "M",
+      "L",
+      "XL"
+    ],
+    "variantes": [
+      {
+        "color": "#3a6fad",
+        "label": "Azul",
+        "imgs": [
+          "imagenes/Remeras/REMERA 1-1.webp"
+        ],
+        "nombre": "Remera Japón (Azul)",
+        "precio": 28000
+      },
+      {
+        "color": "#e8e4dc",
+        "label": "Blanca",
+        "imgs": [
+          "imagenes/Remeras/REMERA 1-2.webp"
+        ],
+        "nombre": "Remera Japón (Blanca)",
+        "precio": 28000
+      },
+      {
+        "color": "#4a3e33",
+        "label": "Street",
+        "imgs": [
+          "imagenes/Remeras/REMERA 1-1.webp"
+        ],
+        "nombre": "Remera Japón (Street)",
+        "precio": 29000
+      }
+    ],
+    "subcategoria": "remera",
+    "calce": "Regular",
+    "tela": "Jersey de algodón peinado 24/1",
+    "composicion": "100% algodón",
+    "cuidados": "Lavar del revés con agua fría. Planchar del revés a temperatura media."
+  },
+  {
+    "id": "remera-lineas-negro",
+    "nombre": "Remera Líneas (Negro)",
+    "cartNombre": "Remera Lineas Negro",
+    "precio": 40500,
+    "categoria": "remera",
+    "imagenes": [
+      "imagenes/Remeras/REMERA 2-1.webp",
+      "imagenes/Remeras/REMERA 2-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Remera de algodón peinado con cuello reforzado y estampa de alta durabilidad.",
+    "precio_original": 45000,
+    "talles": [
+      "M",
+      "L",
+      "XL"
+    ],
+    "variantes": [
+      {
+        "color": "#111111",
+        "label": "Negro",
+        "imgs": [
+          "imagenes/Remeras/REMERA 2-1.webp"
+        ],
+        "nombre": "Remera Líneas (Negro)",
+        "precio": 27000
+      },
+      {
+        "color": "#2a2a2a",
+        "label": "Del Negro",
+        "imgs": [
+          "imagenes/Remeras/REMERA 2-2.webp"
+        ],
+        "nombre": "Remera Líneas Del (Negro)",
+        "precio": 27000
+      }
+    ],
+    "subcategoria": "remera",
+    "calce": "Regular",
+    "tela": "Jersey de algodón peinado 24/1",
+    "composicion": "100% algodón",
+    "cuidados": "Lavar del revés con agua fría. Planchar del revés a temperatura media."
+  },
+  {
+    "id": "river-camiseta-negro",
+    "nombre": "River Camiseta (Negro)",
+    "cartNombre": "River Camiseta Negro",
+    "precio": 40500,
+    "categoria": "remera",
+    "imagenes": [
+      "imagenes/Remeras/REMERA 3-1.webp",
+      "imagenes/Remeras/REMERA 3-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Remera de algodón peinado con cuello reforzado y estampa de alta durabilidad.",
+    "precio_original": 45000,
+    "talles": [
+      "M",
+      "L",
+      "XL"
+    ],
+    "variantes": null,
+    "subcategoria": "remera",
+    "calce": "Regular",
+    "tela": "Jersey de algodón peinado 24/1",
+    "composicion": "100% algodón",
+    "cuidados": "Lavar del revés con agua fría. Planchar del revés a temperatura media."
+  },
+  {
+    "id": "ROCKSTAR",
+    "nombre": "ROCKSTAR",
+    "cartNombre": "ROCKSTAR",
+    "precio": 30000,
+    "categoria": "remera",
+    "imagenes": [
+      "imagenes/Remeras/REMERA 4-1.webp",
+      "imagenes/Remeras/REMERA 4-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Remera de algodón peinado con cuello reforzado y estampa de alta durabilidad.",
+    "precio_original": 33000,
+    "talles": [
+      "M",
+      "L",
+      "XL"
+    ],
+    "variantes": [
+      {
+        "color": "#ffffff",
+        "label": "Blanca",
+        "imgs": [
+          "imagenes/Remeras/REMERA 4-1.webp"
+        ],
+        "nombre": "Rockstar (Blanca)",
+        "precio": 28500
+      },
+      {
+        "color": "#111111",
+        "label": "Negro",
+        "imgs": [
+          "imagenes/Remeras/REMERA 4-2.webp"
+        ],
+        "nombre": "Rockstar (Negra)",
+        "precio": 28500
+      }
+    ],
+    "subcategoria": "remera",
+    "calce": "Regular",
+    "tela": "Jersey de algodón peinado 24/1",
+    "composicion": "100% algodón",
+    "cuidados": "Lavar del revés con agua fría. Planchar del revés a temperatura media."
+  },
+  {
+    "id": "DEATHBLOOM",
+    "nombre": "DEATHBLOOM – REMERA BOXY",
+    "cartNombre": "DEATHBLOOM – REMERA BOXY",
+    "precio": 30000,
+    "categoria": "remera",
+    "imagenes": [
+      "imagenes/Remeras/REMERA 5-1.webp",
+      "imagenes/Remeras/REMERA 5-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Remera oversize de corte boxy, hombro caído y gramaje pesado que mantiene la forma.",
+    "precio_original": 33000,
+    "talles": [
+      "M",
+      "L",
+      "XL"
+    ],
+    "variantes": null,
+    "subcategoria": "remera-oversize",
+    "calce": "Oversize",
+    "tela": "Jersey de algodón peinado 20/1, gramaje pesado",
+    "composicion": "100% algodón",
+    "cuidados": "Lavar del revés con agua fría. Planchar del revés a temperatura media."
+  },
+  {
+    "id": "aura",
+    "nombre": "AURA – REMERA OVERSIZE BORDADA",
+    "cartNombre": "AURA – REMERA OVERSIZE BORDADA",
+    "precio": 40500,
+    "categoria": "remera",
+    "imagenes": [
+      "imagenes/Remeras/REMERA 6-1.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Remera oversize de corte boxy, hombro caído y gramaje pesado que mantiene la forma.",
+    "precio_original": 45000,
+    "talles": [
+      "M",
+      "L",
+      "XL"
+    ],
+    "variantes": [
+      {
+        "color": "#7d8471",
+        "label": "Cemento",
+        "imgs": [
+          "imagenes/Remeras/REMERA 6-1.webp"
+        ],
+        "nombre": "AURA – REMERA OVERSIZE BORDADA (Cemento)",
+        "precio": 30000
+      },
+      {
+        "color": "#111111",
+        "label": "Negro",
+        "imgs": [
+          "imagenes/Remeras/REMERA 6-1.webp"
+        ],
+        "nombre": "AURA – REMERA OVERSIZE BORDADA (Negro)",
+        "precio": 30000
+      }
+    ],
+    "subcategoria": "remera-oversize",
+    "calce": "Oversize",
+    "tela": "Jersey de algodón peinado 20/1, gramaje pesado",
+    "composicion": "100% algodón",
+    "cuidados": "Lavar del revés con agua fría. Planchar del revés a temperatura media."
+  },
+  {
+    "id": "remera-stll",
+    "nombre": "Remera Stll",
+    "cartNombre": "Remera Stll",
+    "precio": 40500,
+    "categoria": "remera",
+    "imagenes": [
+      "imagenes/Remeras/REMERA 7-1.webp",
+      "imagenes/Remeras/REMERA 7-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Remera de algodón peinado con cuello reforzado y estampa de alta durabilidad.",
+    "precio_original": 45000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "remera",
+    "calce": "Regular",
+    "tela": "Jersey de algodón peinado 24/1",
+    "composicion": "100% algodón",
+    "cuidados": "Lavar del revés con agua fría. Planchar del revés a temperatura media."
+  },
+  {
+    "id": "remera-malb",
+    "nombre": "Remera Malb",
+    "cartNombre": "Remera Malb",
+    "precio": 40500,
+    "categoria": "remera",
+    "imagenes": [
+      "imagenes/Remeras/REMERA 8-1.webp",
+      "imagenes/Remeras/REMERA 8-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Remera de algodón peinado con cuello reforzado y estampa de alta durabilidad.",
+    "precio_original": 45000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "remera",
+    "calce": "Regular",
+    "tela": "Jersey de algodón peinado 24/1",
+    "composicion": "100% algodón",
+    "cuidados": "Lavar del revés con agua fría. Planchar del revés a temperatura media."
+  },
+  {
+    "id": "remera-nof",
+    "nombre": "WL2566-08",
+    "cartNombre": "WL2566-08",
+    "precio": 40500,
+    "categoria": "remera",
+    "imagenes": [
+      "imagenes/Remeras/REMERA 9-1.webp",
+      "imagenes/Remeras/REMERA 9-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Remera de algodón peinado con cuello reforzado y estampa de alta durabilidad.",
+    "precio_original": 45000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "remera",
+    "calce": "Regular",
+    "tela": "Jersey de algodón peinado 24/1",
+    "composicion": "100% algodón",
+    "cuidados": "Lavar del revés con agua fría. Planchar del revés a temperatura media."
+  },
+  {
+    "id": "remera-tactica-negro",
+    "nombre": "Remera Táctica (Negro)",
+    "cartNombre": "Remera Tactica Negro",
+    "precio": 40500,
+    "categoria": "remera",
+    "imagenes": [
+      "imagenes/Remeras/REMERA 10-1.webp",
+      "imagenes/Remeras/REMERA 10-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Remera de algodón peinado con cuello reforzado y estampa de alta durabilidad.",
+    "precio_original": 45000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "remera",
+    "calce": "Regular",
+    "tela": "Jersey de algodón peinado 24/1",
+    "composicion": "100% algodón",
+    "cuidados": "Lavar del revés con agua fría. Planchar del revés a temperatura media."
+  },
+  {
+    "id": "remera-tron",
+    "nombre": "Remera Tron",
+    "cartNombre": "Remera Tron",
+    "precio": 40500,
+    "categoria": "remera",
+    "imagenes": [
+      "imagenes/Remeras/REMERA 11-1.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Remera de algodón peinado con cuello reforzado y estampa de alta durabilidad.",
+    "precio_original": 45000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "remera",
+    "calce": "Regular",
+    "tela": "Jersey de algodón peinado 24/1",
+    "composicion": "100% algodón",
+    "cuidados": "Lavar del revés con agua fría. Planchar del revés a temperatura media."
+  },
+  {
+    "id": "remera-jh",
+    "nombre": "Remera JH",
+    "cartNombre": "Remera JH",
+    "precio": 40500,
+    "categoria": "remera",
+    "imagenes": [
+      "imagenes/Remeras/REMERA 12-1.webp",
+      "imagenes/Remeras/REMERA 12-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Remera de algodón peinado con cuello reforzado y estampa de alta durabilidad.",
+    "precio_original": 45000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "remera",
+    "calce": "Regular",
+    "tela": "Jersey de algodón peinado 24/1",
+    "composicion": "100% algodón",
+    "cuidados": "Lavar del revés con agua fría. Planchar del revés a temperatura media."
+  },
+  {
+    "id": "remera-jho",
+    "nombre": "Remera JHO",
+    "cartNombre": "Remera JHO",
+    "precio": 40500,
+    "categoria": "remera",
+    "imagenes": [
+      "imagenes/Remeras/REMERA 13-1.webp",
+      "imagenes/Remeras/REMERA 13-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Remera de algodón peinado con cuello reforzado y estampa de alta durabilidad.",
+    "precio_original": 45000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "remera",
+    "calce": "Regular",
+    "tela": "Jersey de algodón peinado 24/1",
+    "composicion": "100% algodón",
+    "cuidados": "Lavar del revés con agua fría. Planchar del revés a temperatura media."
+  },
+  {
+    "id": "remera-s",
+    "nombre": "Remera S",
+    "cartNombre": "Remera S",
+    "precio": 40500,
+    "categoria": "remera",
+    "imagenes": [
+      "imagenes/Remeras/REMERA 14-1.webp",
+      "imagenes/Remeras/REMERA 14-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Remera de algodón peinado con cuello reforzado y estampa de alta durabilidad.",
+    "precio_original": 45000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "remera",
+    "calce": "Regular",
+    "tela": "Jersey de algodón peinado 24/1",
+    "composicion": "100% algodón",
+    "cuidados": "Lavar del revés con agua fría. Planchar del revés a temperatura media."
+  },
+  {
+    "id": "look-modelo-editorial-buzo",
+    "nombre": "Look Modelo 2",
+    "cartNombre": "Look Modelo 2",
+    "precio": 85999,
+    "categoria": "buzo",
+    "imagenes": [
+      "imagenes/Abrigos/8-1.webp",
+      "imagenes/Abrigos/8-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Buzo canguro de frisa perchada, con capucha forrada, puños acanalados y caída oversize.",
+    "precio_original": 95999,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "hoodie",
+    "calce": "Oversize",
+    "tela": "Frisa perchada premium con interior afelpado",
+    "composicion": "80% algodón · 20% poliéster",
+    "cuidados": "Lavar del revés con agua fría. No secar en secarropas. No planchar la estampa."
+  },
+  {
+    "id": "look-modelo-editorial-pantalon",
+    "nombre": "Look Modelo 3",
+    "cartNombre": "Look Modelo 3",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "imagenes/Pantalones/PANT 13-1.webp",
+      "imagenes/Pantalones/PANT 13-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Jean de denim premium con caída estructurada y terminaciones reforzadas.",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "jean",
+    "calce": "Regular",
+    "tela": "Denim de algodón rígido, gramaje medio-pesado",
+    "composicion": "98% algodón · 2% elastano",
+    "cuidados": "Lavar del revés con agua fría. No usar lavandina. Secar a la sombra."
+  },
+  {
+    "id": "classy-sweater",
+    "nombre": "CLASSY – SWEATER",
+    "cartNombre": "CLASSY – SWEATER",
+    "precio": 58500,
+    "categoria": "buzo",
+    "imagenes": [
+      "imagenes/Abrigos/9-1.webp",
+      "imagenes/Abrigos/9-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Sweater de punto con cuello redondo, puños y cintura acanalados.",
+    "precio_original": 65000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "sweater",
+    "calce": "Regular",
+    "tela": "Hilo de algodón tejido, punto cerrado",
+    "composicion": "70% algodón · 30% acrílico",
+    "cuidados": "Lavar a mano o ciclo lana en frío. Secar en plano, sin colgar."
+  },
+  {
+    "id": "fast-hoodie-rustico",
+    "nombre": "Fast - Hoodie Rustico",
+    "cartNombre": "Fast - Hoodie Rustico",
+    "precio": 85999,
+    "categoria": "buzo",
+    "imagenes": [
+      "imagenes/Abrigos/10-1.webp",
+      "imagenes/Abrigos/10-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Buzo canguro de frisa perchada, con capucha forrada, puños acanalados y caída oversize.",
+    "precio_original": 95999,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "hoodie",
+    "calce": "Oversize",
+    "tela": "Frisa perchada premium con interior afelpado",
+    "composicion": "80% algodón · 20% poliéster",
+    "cuidados": "Lavar del revés con agua fría. No secar en secarropas. No planchar la estampa."
+  },
+  {
+    "id": "pin-sweater-2",
+    "nombre": "Pin - Sweater",
+    "cartNombre": "Pin - Sweater",
+    "precio": 85999,
+    "categoria": "buzo",
+    "imagenes": [
+      "imagenes/Abrigos/11-1.webp",
+      "imagenes/Abrigos/11-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Sweater de punto con cuello redondo, puños y cintura acanalados.",
+    "precio_original": 95999,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "sweater",
+    "calce": "Regular",
+    "tela": "Hilo de algodón tejido, punto cerrado",
+    "composicion": "70% algodón · 30% acrílico",
+    "cuidados": "Lavar a mano o ciclo lana en frío. Secar en plano, sin colgar."
+  },
+  {
+    "id": "le-mans-sweater",
+    "nombre": "Le Mans - Sweater",
+    "cartNombre": "Le Mans - Sweater",
+    "precio": 85999,
+    "categoria": "buzo",
+    "imagenes": [
+      "imagenes/Abrigos/12-1.webp",
+      "imagenes/Abrigos/12-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Sweater de punto con cuello redondo, puños y cintura acanalados.",
+    "precio_original": 95999,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "sweater",
+    "calce": "Regular",
+    "tela": "Hilo de algodón tejido, punto cerrado",
+    "composicion": "70% algodón · 30% acrílico",
+    "cuidados": "Lavar a mano o ciclo lana en frío. Secar en plano, sin colgar."
+  },
+  {
+    "id": "wli-6-1-track-jacket-river",
+    "nombre": "Wli-6-1- Track Jacket River",
+    "cartNombre": "Wli-6-1- Track Jacket River",
+    "precio": 85999,
+    "categoria": "buzo",
+    "imagenes": [
+      "imagenes/Abrigos/13-1.webp",
+      "imagenes/Abrigos/13-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Campera deportiva de tricot con cierre completo, cuello mao y bandas laterales.",
+    "precio_original": 95999,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "track-jacket",
+    "calce": "Regular",
+    "tela": "Tricot deportivo liviano con forro de malla",
+    "composicion": "100% poliéster",
+    "cuidados": "Lavar a máquina en frío, ciclo suave. No planchar sobre los apliques."
+  },
+  {
+    "id": "wli-3-a-japan-snow",
+    "nombre": "Wli-3-A- Japan Snow",
+    "cartNombre": "Wli-3-A- Japan Snow",
+    "precio": 85999,
+    "categoria": "buzo",
+    "imagenes": [
+      "imagenes/Abrigos/14-1.webp",
+      "imagenes/Abrigos/14-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Campera deportiva de tricot con cierre completo, cuello mao y bandas laterales.",
+    "precio_original": 95999,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "track-jacket",
+    "calce": "Regular",
+    "tela": "Tricot deportivo liviano con forro de malla",
+    "composicion": "100% poliéster",
+    "cuidados": "Lavar a máquina en frío, ciclo suave. No planchar sobre los apliques."
+  },
+  {
+    "id": "wli-3-b-japan-black",
+    "nombre": "Wli-3-B- Japan Black",
+    "cartNombre": "Wli-3-B- Japan Black",
+    "precio": 85999,
+    "categoria": "buzo",
+    "imagenes": [
+      "imagenes/Abrigos/15-1.webp",
+      "imagenes/Abrigos/15-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Buzo canguro de frisa perchada, con capucha forrada, puños acanalados y caída oversize.",
+    "precio_original": 95999,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "hoodie",
+    "calce": "Oversize",
+    "tela": "Frisa perchada premium con interior afelpado",
+    "composicion": "80% algodón · 20% poliéster",
+    "cuidados": "Lavar del revés con agua fría. No secar en secarropas. No planchar la estampa."
+  },
+  {
+    "id": "wli-7-1-track-jacket-gang",
+    "nombre": "Wli-7-1- Track Jacket Gang",
+    "cartNombre": "Wli-7-1- Track Jacket Gang",
+    "precio": 85999,
+    "categoria": "buzo",
+    "imagenes": [
+      "imagenes/Abrigos/16-1.webp",
+      "imagenes/Abrigos/16-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Campera deportiva de tricot con cierre completo, cuello mao y bandas laterales.",
+    "precio_original": 95999,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "track-jacket",
+    "calce": "Regular",
+    "tela": "Tricot deportivo liviano con forro de malla",
+    "composicion": "100% poliéster",
+    "cuidados": "Lavar a máquina en frío, ciclo suave. No planchar sobre los apliques."
+  },
+  {
+    "id": "wli-5-1-track-jacket-basic",
+    "nombre": "Wli-5-1- Track Jacket Basic",
+    "cartNombre": "Wli-5-1- Track Jacket Basic",
+    "precio": 85999,
+    "categoria": "buzo",
+    "imagenes": [
+      "imagenes/Abrigos/17-1.webp",
+      "imagenes/Abrigos/17-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Campera deportiva de tricot con cierre completo, cuello mao y bandas laterales.",
+    "precio_original": 95999,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "track-jacket",
+    "calce": "Regular",
+    "tela": "Tricot deportivo liviano con forro de malla",
+    "composicion": "100% poliéster",
+    "cuidados": "Lavar a máquina en frío, ciclo suave. No planchar sobre los apliques."
+  },
+  {
+    "id": "wli-4-racer",
+    "nombre": "Wli-4- Racer",
+    "cartNombre": "Wli-4- Racer",
+    "precio": 85999,
+    "categoria": "buzo",
+    "imagenes": [
+      "imagenes/Abrigos/18-1.webp",
+      "imagenes/Abrigos/18-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Campera deportiva de tricot con cierre completo, cuello mao y bandas laterales.",
+    "precio_original": 95999,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "track-jacket",
+    "calce": "Regular",
+    "tela": "Tricot deportivo liviano con forro de malla",
+    "composicion": "100% poliéster",
+    "cuidados": "Lavar a máquina en frío, ciclo suave. No planchar sobre los apliques."
+  },
+  {
+    "id": "wli-2-tron-jacket",
+    "nombre": "Wli-2-Tron Jacket",
+    "cartNombre": "Wli-2-Tron Jacket",
+    "precio": 85999,
+    "categoria": "buzo",
+    "imagenes": [
+      "imagenes/Abrigos/19-1.webp",
+      "imagenes/Abrigos/19-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Campera deportiva de tricot con cierre completo, cuello mao y bandas laterales.",
+    "precio_original": 95999,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "track-jacket",
+    "calce": "Regular",
+    "tela": "Tricot deportivo liviano con forro de malla",
+    "composicion": "100% poliéster",
+    "cuidados": "Lavar a máquina en frío, ciclo suave. No planchar sobre los apliques."
+  },
+  {
+    "id": "wli-9-tactical",
+    "nombre": "Wli-9- Tactical",
+    "cartNombre": "Wli-9- Tactical",
+    "precio": 85999,
+    "categoria": "buzo",
+    "imagenes": [
+      "imagenes/Abrigos/20-1.webp",
+      "imagenes/Abrigos/20-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Campera deportiva de tricot con cierre completo, cuello mao y bandas laterales.",
+    "precio_original": 95999,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "track-jacket",
+    "calce": "Regular",
+    "tela": "Tricot deportivo liviano con forro de malla",
+    "composicion": "100% poliéster",
+    "cuidados": "Lavar a máquina en frío, ciclo suave. No planchar sobre los apliques."
+  },
+  {
+    "id": "star-campera-gabardina-bordada",
+    "nombre": "Star - Campera Gabardina Bordada",
+    "cartNombre": "Star - Campera Gabardina Bordada",
+    "precio": 85999,
+    "categoria": "buzo",
+    "imagenes": [
+      "imagenes/Abrigos/21-1.webp",
+      "imagenes/Abrigos/21-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Campera de gabardina con bordado, forro interior y cierre metálico de alta resistencia.",
+    "precio_original": 95999,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "campera",
+    "calce": "Regular",
+    "tela": "Gabardina de algodón con bordado aplicado",
+    "composicion": "100% algodón",
+    "cuidados": "Lavar del revés con agua fría. Planchar a temperatura media sin tocar el bordado."
+  },
+  {
+    "id": "malb-campera-gabardina-bordada",
+    "nombre": "Malb - Campera Gabardina Bordada",
+    "cartNombre": "Malb - Campera Gabardina Bordada",
+    "precio": 85999,
+    "categoria": "buzo",
+    "imagenes": [
+      "imagenes/Abrigos/22-1.webp",
+      "imagenes/Abrigos/22-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Campera de gabardina con bordado, forro interior y cierre metálico de alta resistencia.",
+    "precio_original": 95999,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "campera",
+    "calce": "Regular",
+    "tela": "Gabardina de algodón con bordado aplicado",
+    "composicion": "100% algodón",
+    "cuidados": "Lavar del revés con agua fría. Planchar a temperatura media sin tocar el bordado."
+  },
+  {
+    "id": "wli-6-2-track-pants-river",
+    "nombre": "Wli-6-2- Track Pants River",
+    "cartNombre": "Wli-6-2- Track Pants River",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "imagenes/Pantalones/PANT 14-1.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Pantalón deportivo de tricot con cintura elástica, cordón ajustable y puños tobilleros.",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "jogger",
+    "calce": "Regular",
+    "tela": "Tricot deportivo liviano con forro de malla",
+    "composicion": "100% poliéster",
+    "cuidados": "Lavar a máquina en frío, ciclo suave. No planchar sobre los apliques."
+  },
+  {
+    "id": "wli-7-2-track-pants-gang",
+    "nombre": "Wli-7-2- Track Pants Gang",
+    "cartNombre": "Wli-7-2- Track Pants Gang",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "imagenes/Pantalones/PANT 15-1.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Pantalón deportivo de tricot con cintura elástica, cordón ajustable y puños tobilleros.",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "jogger",
+    "calce": "Regular",
+    "tela": "Tricot deportivo liviano con forro de malla",
+    "composicion": "100% poliéster",
+    "cuidados": "Lavar a máquina en frío, ciclo suave. No planchar sobre los apliques."
+  },
+  {
+    "id": "kain-clasico-20-jean-baggy",
+    "nombre": "Kain Clasico 2.0 - Jean Baggy",
+    "cartNombre": "Kain Clasico 2.0 - Jean Baggy",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "imagenes/Pantalones/PANT 16-1.webp",
+      "imagenes/Pantalones/PANT 16-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Jean baggy de tiro alto y pierna ancha, con caída suelta sobre el calzado.",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "jean-baggy",
+    "calce": "Baggy",
+    "tela": "Denim de algodón rígido, gramaje pesado",
+    "composicion": "100% algodón",
+    "cuidados": "Lavar del revés con agua fría. No usar lavandina. Secar a la sombra."
+  },
+  {
+    "id": "japon-onix-jean-cargo-carpintero",
+    "nombre": "Japon Onix - Jean Cargo Carpintero",
+    "cartNombre": "Japon Onix - Jean Cargo Carpintero",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "imagenes/Pantalones/PANT 17-1.webp",
+      "imagenes/Pantalones/PANT 17-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Jean cargo carpintero de pierna amplia, con bolsillos laterales y presillas utilitarias.",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "jean-cargo",
+    "calce": "Baggy",
+    "tela": "Denim de algodón rígido con bolsillos cargo reforzados",
+    "composicion": "100% algodón",
+    "cuidados": "Lavar del revés con agua fría. No usar lavandina. Secar a la sombra."
+  },
+  {
+    "id": "out-20-jean-baggy-con-bordado",
+    "nombre": "Out 2.0 - Jean Baggy Con Bordado",
+    "cartNombre": "Out 2.0 - Jean Baggy Con Bordado",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "imagenes/Pantalones/PANT 18-1.webp",
+      "imagenes/Pantalones/PANT 18-2.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Jean baggy de tiro alto y pierna ancha, con caída suelta sobre el calzado.",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "jean-baggy",
+    "calce": "Baggy",
+    "tela": "Denim de algodón rígido, gramaje pesado",
+    "composicion": "100% algodón",
+    "cuidados": "Lavar del revés con agua fría. No usar lavandina. Secar a la sombra."
+  },
+  {
+    "id": "dree-dark-jean-baggy",
+    "nombre": "Dree Dark - Jean Baggy",
+    "cartNombre": "Dree Dark - Jean Baggy",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "https://dcdn-us.mitiendanube.com/stores/007/229/147/products/imagen_2026-05-29_222426650-c566bd542c26d13e4b17801042710952-1024-1024.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Jean baggy de tiro alto y pierna ancha, con caída suelta sobre el calzado.",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "jean-baggy",
+    "calce": "Baggy",
+    "tela": "Denim de algodón rígido, gramaje pesado",
+    "composicion": "100% algodón",
+    "cuidados": "Lavar del revés con agua fría. No usar lavandina. Secar a la sombra."
+  },
+  {
+    "id": "kain-stone-baggy",
+    "nombre": "Kain Stone - Baggy",
+    "cartNombre": "Kain Stone - Baggy",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "https://dcdn-us.mitiendanube.com/stores/007/229/147/products/imagen_2026-05-29_222248666-89e569bf12e641dc4317801041733989-1024-1024.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Jean baggy de tiro alto y pierna ancha, con caída suelta sobre el calzado.",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "jean-baggy",
+    "calce": "Baggy",
+    "tela": "Denim de algodón rígido, gramaje pesado",
+    "composicion": "100% algodón",
+    "cuidados": "Lavar del revés con agua fría. No usar lavandina. Secar a la sombra."
+  },
+  {
+    "id": "ghost-baggy-jean",
+    "nombre": "Ghost - Baggy Jean",
+    "cartNombre": "Ghost - Baggy Jean",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "https://dcdn-us.mitiendanube.com/stores/007/229/147/products/imagen_2026-05-29_222107202-ee06f5fc1ae6aeefd717801040722854-1024-1024.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Jean baggy de tiro alto y pierna ancha, con caída suelta sobre el calzado.",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "jean-baggy",
+    "calce": "Baggy",
+    "tela": "Denim de algodón rígido, gramaje pesado",
+    "composicion": "100% algodón",
+    "cuidados": "Lavar del revés con agua fría. No usar lavandina. Secar a la sombra."
+  },
+  {
+    "id": "llamas-baggy-jean",
+    "nombre": "Llamas - Baggy Jean",
+    "cartNombre": "Llamas - Baggy Jean",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "https://dcdn-us.mitiendanube.com/stores/007/229/147/products/imagen_2026-05-29_221853527-2b7a5ed70ae7c982f917801039392379-1024-1024.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Jean baggy de tiro alto y pierna ancha, con caída suelta sobre el calzado.",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "jean-baggy",
+    "calce": "Baggy",
+    "tela": "Denim de algodón rígido, gramaje pesado",
+    "composicion": "100% algodón",
+    "cuidados": "Lavar del revés con agua fría. No usar lavandina. Secar a la sombra."
+  },
+  {
+    "id": "lemus-jean-bagy-bordado",
+    "nombre": "Lemus - Jean Bagy Bordado",
+    "cartNombre": "Lemus - Jean Bagy Bordado",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "https://dcdn-us.mitiendanube.com/stores/007/229/147/products/imagen_2026-05-29_221605653-f3a021260273ab2da717801037699741-1024-1024.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Jean de denim premium con caída estructurada y terminaciones reforzadas.",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "jean",
+    "calce": "Regular",
+    "tela": "Denim de algodón rígido, gramaje medio-pesado",
+    "composicion": "98% algodón · 2% elastano",
+    "cuidados": "Lavar del revés con agua fría. No usar lavandina. Secar a la sombra."
+  },
+  {
+    "id": "roach-20-skate-baggy",
+    "nombre": "Roach 2.0 - Skate Baggy",
+    "cartNombre": "Roach 2.0 - Skate Baggy",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "https://dcdn-us.mitiendanube.com/stores/007/229/147/products/imagen_2026-05-29_221338664-a011c5984b29ba46a517801036239497-1024-1024.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Jean baggy de tiro alto y pierna ancha, con caída suelta sobre el calzado.",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "jean-baggy",
+    "calce": "Baggy",
+    "tela": "Denim de algodón rígido, gramaje pesado",
+    "composicion": "100% algodón",
+    "cuidados": "Lavar del revés con agua fría. No usar lavandina. Secar a la sombra."
+  },
+  {
+    "id": "skull-20-jean-baggy-bordado",
+    "nombre": "Skull 2.0 - Jean Baggy Bordado",
+    "cartNombre": "Skull 2.0 - Jean Baggy Bordado",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "https://dcdn-us.mitiendanube.com/stores/007/229/147/products/imagen_2026-05-29_221145047-f7bf14b8cbaf4c618317801035095522-1024-1024.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Jean baggy de tiro alto y pierna ancha, con caída suelta sobre el calzado.",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "jean-baggy",
+    "calce": "Baggy",
+    "tela": "Denim de algodón rígido, gramaje pesado",
+    "composicion": "100% algodón",
+    "cuidados": "Lavar del revés con agua fría. No usar lavandina. Secar a la sombra."
+  },
+  {
+    "id": "star-jean",
+    "nombre": "Star - Jean",
+    "cartNombre": "Star - Jean",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "https://dcdn-us.mitiendanube.com/stores/007/229/147/products/imagen_2026-05-29_220958380-a73d7ef9851f8b1a1c17801034028261-1024-1024.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Jean de denim premium con caída estructurada y terminaciones reforzadas.",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "jean",
+    "calce": "Regular",
+    "tela": "Denim de algodón rígido, gramaje medio-pesado",
+    "composicion": "98% algodón · 2% elastano",
+    "cuidados": "Lavar del revés con agua fría. No usar lavandina. Secar a la sombra."
+  },
+  {
+    "id": "kunai-baggy",
+    "nombre": "Kunai - Baggy",
+    "cartNombre": "Kunai - Baggy",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "https://dcdn-us.mitiendanube.com/stores/007/229/147/products/imagen_2026-05-29_220753463-fcdb852504f9532e1d17801032783567-1024-1024.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Jean baggy de tiro alto y pierna ancha, con caída suelta sobre el calzado.",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "jean-baggy",
+    "calce": "Baggy",
+    "tela": "Denim de algodón rígido, gramaje pesado",
+    "composicion": "100% algodón",
+    "cuidados": "Lavar del revés con agua fría. No usar lavandina. Secar a la sombra."
+  },
+  {
+    "id": "f1-20-baggy-jean-bordado",
+    "nombre": "F1 2.0 - Baggy Jean Bordado",
+    "cartNombre": "F1 2.0 - Baggy Jean Bordado",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "https://dcdn-us.mitiendanube.com/stores/007/229/147/products/imagen_2026-05-29_220534434-6af55a750ea2fedc1517801031390076-1024-1024.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Jean baggy de tiro alto y pierna ancha, con caída suelta sobre el calzado.",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "jean-baggy",
+    "calce": "Baggy",
+    "tela": "Denim de algodón rígido, gramaje pesado",
+    "composicion": "100% algodón",
+    "cuidados": "Lavar del revés con agua fría. No usar lavandina. Secar a la sombra."
+  },
+  {
+    "id": "akira-baggy",
+    "nombre": "Akira - Baggy",
+    "cartNombre": "Akira - Baggy",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "https://dcdn-us.mitiendanube.com/stores/007/229/147/products/imagen_2026-05-29_220345414-c673628995af410d4617801030300510-1024-1024.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Jean baggy de tiro alto y pierna ancha, con caída suelta sobre el calzado.",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "jean-baggy",
+    "calce": "Baggy",
+    "tela": "Denim de algodón rígido, gramaje pesado",
+    "composicion": "100% algodón",
+    "cuidados": "Lavar del revés con agua fría. No usar lavandina. Secar a la sombra."
+  },
+  {
+    "id": "dree-jean-baggy",
+    "nombre": "Dree - Jean Baggy",
+    "cartNombre": "Dree - Jean Baggy",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "https://dcdn-us.mitiendanube.com/stores/007/229/147/products/imagen_2026-05-29_220119982-5937dcb0d2c7113fd817801028848394-1024-1024.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Jean baggy de tiro alto y pierna ancha, con caída suelta sobre el calzado.",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "jean-baggy",
+    "calce": "Baggy",
+    "tela": "Denim de algodón rígido, gramaje pesado",
+    "composicion": "100% algodón",
+    "cuidados": "Lavar del revés con agua fría. No usar lavandina. Secar a la sombra."
+  },
+  {
+    "id": "espiga-baggy-jean",
+    "nombre": "Espiga - Baggy Jean",
+    "cartNombre": "Espiga - Baggy Jean",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "https://dcdn-us.mitiendanube.com/stores/007/229/147/products/imagen_2026-05-29_213947709-9049a0c5218afd53b817801015925285-1024-1024.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Jean baggy de tiro alto y pierna ancha, con caída suelta sobre el calzado.",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "jean-baggy",
+    "calce": "Baggy",
+    "tela": "Denim de algodón rígido, gramaje pesado",
+    "composicion": "100% algodón",
+    "cuidados": "Lavar del revés con agua fría. No usar lavandina. Secar a la sombra."
+  },
+  {
+    "id": "snow-baggy-jean",
+    "nombre": "Snow - Baggy Jean",
+    "cartNombre": "Snow - Baggy Jean",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "https://dcdn-us.mitiendanube.com/stores/007/229/147/products/imagen_2026-05-29_213753508-5f02427592164743a417801014785530-1024-1024.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Jean baggy de tiro alto y pierna ancha, con caída suelta sobre el calzado.",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "jean-baggy",
+    "calce": "Baggy",
+    "tela": "Denim de algodón rígido, gramaje pesado",
+    "composicion": "100% algodón",
+    "cuidados": "Lavar del revés con agua fría. No usar lavandina. Secar a la sombra."
+  },
+  {
+    "id": "lit-baggy-jean",
+    "nombre": "Lit - Baggy Jean",
+    "cartNombre": "Lit - Baggy Jean",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "https://dcdn-us.mitiendanube.com/stores/007/229/147/products/imagen_2026-05-29_213153696-4fa04032ac7650e98117801011183244-1024-1024.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Jean baggy de tiro alto y pierna ancha, con caída suelta sobre el calzado.",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "jean-baggy",
+    "calce": "Baggy",
+    "tela": "Denim de algodón rígido, gramaje pesado",
+    "composicion": "100% algodón",
+    "cuidados": "Lavar del revés con agua fría. No usar lavandina. Secar a la sombra."
+  },
+  {
+    "id": "pocket-baggy-jean",
+    "nombre": "Pocket - Baggy Jean",
+    "cartNombre": "Pocket - Baggy Jean",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "https://dcdn-us.mitiendanube.com/stores/007/229/147/products/imagen_2026-05-29_213004841-d7a921ac5f98c9d54317801010117880-1024-1024.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Jean baggy de tiro alto y pierna ancha, con caída suelta sobre el calzado.",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "jean-baggy",
+    "calce": "Baggy",
+    "tela": "Denim de algodón rígido, gramaje pesado",
+    "composicion": "100% algodón",
+    "cuidados": "Lavar del revés con agua fría. No usar lavandina. Secar a la sombra."
+  },
+  {
+    "id": "max-baggy-bordado",
+    "nombre": "Max - Baggy Bordado",
+    "cartNombre": "Max - Baggy Bordado",
+    "precio": 62999,
+    "categoria": "pantalon",
+    "imagenes": [
+      "https://dcdn-us.mitiendanube.com/stores/007/229/147/products/imagen_2026-05-29_212458106-edd4ce9fc45dc6778c17801007036285-1024-1024.webp"
+    ],
+    "stock": "disponible",
+    "descripcion": "Jean baggy de tiro alto y pierna ancha, con caída suelta sobre el calzado.",
+    "precio_original": 70000,
+    "talles": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "variantes": null,
+    "subcategoria": "jean-baggy",
+    "calce": "Baggy",
+    "tela": "Denim de algodón rígido, gramaje pesado",
+    "composicion": "100% algodón",
+    "cuidados": "Lavar del revés con agua fría. No usar lavandina. Secar a la sombra."
+  }
+]

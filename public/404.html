@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>BYKODA</title>
+    <script>
+      // GitHub Pages no sabe de rutas de SPA: guardamos el destino y volvemos
+      // al index, que lo restaura con history.replaceState (ver index.html).
+      (function () {
+        var destino = location.pathname + location.search + location.hash;
+        try {
+          sessionStorage.setItem('bykoda_redirect', destino);
+        } catch (e) {}
+        location.replace('/');
+      })();
+    </script>
+  </head>
+  <body>
+    <noscript>
+      <p>
+        Esta página necesita JavaScript. Ir a
+        <a href="https://www.bykoda.store/">bykoda.store</a>.
+      </p>
+    </noscript>
+  </body>
+</html>

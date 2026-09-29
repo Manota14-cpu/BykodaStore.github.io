@@ -1,0 +1,16 @@
+node_modules
+dist
+coverage
+*.local
+.DS_Store
+*.log
+vite.config.ts.timestamp-*
+*.tsbuildinfo
+
+# Configuración local de herramientas
+.claude/
+
+# Proyectos de video: capturas, renders y catálogo de medios que genera HyperFrames
+videos/*/snapshots/
+videos/*/renders/
+videos/*/.media/

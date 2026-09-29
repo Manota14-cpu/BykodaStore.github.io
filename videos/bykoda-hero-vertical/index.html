@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=720, height=900" />
+    <title>BYKODA — hero 4:5 (celular)</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      html,
+      body {
+        margin: 0;
+        background: #000;
+      }
+      /* Negro puro a propósito: es el negro de las fotos y del tema oscuro del
+         sitio. Un negro teñido dejaría el borde de cada foto a la vista. */
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #000;
+      }
+      /* Cada toma es una capa: la opacidad hace el fundido y el negro del
+         escenario funciona como el "lavado" de la receta fade-through. */
+      .toma {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+      }
+      .toma + .toma {
+        opacity: 0;
+      }
+      /* Cámara virtual (viewport-change): un solo wrapper por toma lleva escala y
+         traslación; la foto adentro no se mueve. */
+      .camara {
+        position: absolute;
+        inset: 0;
+        transform-origin: 50% 50%;
+        will-change: transform;
+      }
+      .camara img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="hero-vertical"
+      data-start="0"
+      data-width="720"
+      data-height="900"
+      data-duration="15.8"
+    >
+      <div class="toma" id="t1"><div class="camara" data-layout-allow-overflow id="c1"><img src="assets/chat1.webp" alt="" /></div></div>
+      <div class="toma" id="t2"><div class="camara" data-layout-allow-overflow id="c2"><img src="assets/chat2.webp" alt="" /></div></div>
+      <div class="toma" id="t3"><div class="camara" data-layout-allow-overflow id="c3"><img src="assets/chat3.webp" alt="" /></div></div>
+      <div class="toma" id="t4"><div class="camara" data-layout-allow-overflow id="c4"><img src="assets/chat4.webp" alt="" /></div></div>
+    </div>
+    <script>
+      // Tiempos (s). Receta fade-through con tempo calmo: la salida y la entrada
+      // no se pisan; en el medio queda un instante de negro puro.
+      const ENTRADA = 1.1; // la figura sube desde la oscuridad
+      const SALIDA = 0.9; // y vuelve a apagarse
+      const VENTANA = 3.7; // tiempo total en pantalla de cada figura
+      const NEGRO = 0.25; // pausa en negro entre figuras
+      const PASO = VENTANA + NEGRO; // 3.95
+      const TOTAL = 4 * PASO; // 15.8 = data-duration
+
+      // Poses de cámara al principio y al final de cada ventana. Push-in lineal:
+      // velocidad constante, sin frenar debajo del fundido. Toda traslación cumple
+      // |t| <= (escala - 1) / 2 para que nunca aparezca el borde de la foto.
+      const TOMAS = [
+        { id: 1, desde: { scale: 1.02, xPercent: 0, yPercent: 0 }, hasta: { scale: 1.1, xPercent: 0, yPercent: -1 } },
+        { id: 2, desde: { scale: 1.03, xPercent: 0.8, yPercent: 0 }, hasta: { scale: 1.11, xPercent: -0.8, yPercent: 0 } },
+        { id: 3, desde: { scale: 1.02, xPercent: 0, yPercent: -0.5 }, hasta: { scale: 1.09, xPercent: 0, yPercent: 0.8 } },
+        // La última se aleja: cierra el ciclo con un respiro en vez de otro empuje.
+        { id: 4, desde: { scale: 1.12, xPercent: 0, yPercent: -1 }, hasta: { scale: 1.03, xPercent: 0, yPercent: 0 } },
+      ];
+
+      function pose(toma, u) {
+        const f = u / VENTANA;
+        return {
+          scale: toma.desde.scale + (toma.hasta.scale - toma.desde.scale) * f,
+          xPercent: toma.desde.xPercent + (toma.hasta.xPercent - toma.desde.xPercent) * f,
+          yPercent: toma.desde.yPercent + (toma.hasta.yPercent - toma.desde.yPercent) * f,
+        };
+      }
+
+      const tl = gsap.timeline({ paused: true });
+
+      TOMAS.forEach((toma, i) => {
+        const capa = `#t${toma.id}`;
+        const camara = `#c${toma.id}`;
+
+        if (i === 0) {
+          // El loop arranca con la primera figura ya encendida (el póster del sitio
+          // es este cuadro). Su entrada desde el negro ocurre al final del ciclo.
+          tl.fromTo(camara, pose(toma, ENTRADA), { ...pose(toma, VENTANA), duration: VENTANA - ENTRADA, ease: "none" }, 0);
+          tl.fromTo(capa, { opacity: 1 }, { opacity: 0, duration: SALIDA, ease: "sine.in" }, VENTANA - ENTRADA - SALIDA);
+          return;
+        }
+
+        const inicio = i * PASO - ENTRADA;
+        tl.fromTo(camara, pose(toma, 0), { ...pose(toma, VENTANA), duration: VENTANA, ease: "none" }, inicio);
+        tl.fromTo(capa, { opacity: 0 }, { opacity: 1, duration: ENTRADA, ease: "sine.out" }, inicio);
+        tl.to(capa, { opacity: 0, duration: SALIDA, ease: "sine.in" }, inicio + VENTANA - SALIDA);
+      });
+
+      // Cierre: la misma capa de la primera figura vuelve a subir desde el negro
+      // (las demás ya están apagadas) y termina en la pose exacta del cuadro 0.
+      // immediateRender: false para no pisar el estado inicial de la toma 1.
+      const cierre = TOTAL - ENTRADA;
+      tl.fromTo("#c1", pose(TOMAS[0], 0), { ...pose(TOMAS[0], ENTRADA), duration: ENTRADA, ease: "none", immediateRender: false }, cierre);
+      tl.fromTo("#t1", { opacity: 0 }, { opacity: 1, duration: ENTRADA, ease: "sine.out", immediateRender: false }, cierre);
+
+      window.__timelines["hero-vertical"] = tl;
+    </script>
+  </body>
+</html>
