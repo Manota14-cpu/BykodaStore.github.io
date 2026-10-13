@@ -26,6 +26,10 @@ const ProductoPlataformaSchema = z.object({
   stock: z.number().nullish(),
   imagen: z.string().nullish(),
   imagenes: z.array(z.string()).nullish(),
+  /** Prenda con talles y colores en Visual App: cada combinación llega como un producto con su stock. */
+  prenda: z.object({ id: z.string().min(1), nombre: z.string().trim().min(1) }).nullish(),
+  talle: z.string().trim().min(1).nullish(),
+  color: z.string().trim().min(1).nullish(),
 });
 
 export type ProductoPlataforma = z.infer<typeof ProductoPlataformaSchema>;

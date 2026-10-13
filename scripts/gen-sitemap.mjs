@@ -11,7 +11,8 @@ const TIENDA = process.env.VITE_VISUAL_APP_SLUG || 'bykoda';
 const hoy = new Date().toISOString().slice(0, 10);
 
 // Las mismas URLs que arma el sitio (slugify en src/lib/catalogo.ts y
-// desdePlataforma en src/api/catalogo.ts).
+// catalogoDesdePlataforma en src/api/catalogo.ts): una por prenda, aunque
+// llegue como varias combinaciones de talle y color.
 const slugify = (s) =>
   s
     .toLowerCase()
@@ -27,18 +28,22 @@ if (!respuesta.ok) {
   process.exit(1);
 }
 const { productos = [] } = await respuesta.json();
+const fichas = new Map(
+  productos
+    .map((p) => (p?.prenda?.id && p.prenda.nombre ? p.prenda : p))
+    .filter((p) => typeof p?.id === 'string' && typeof p?.nombre === 'string' && p.nombre.trim())
+    .map((p) => [slugProducto(p), p]),
+);
 
 const rutas = [
   { loc: '/', changefreq: 'weekly', priority: '1.0' },
   { loc: '/catalogo', changefreq: 'weekly', priority: '0.9' },
   { loc: '/info', changefreq: 'monthly', priority: '0.7' },
-  ...productos
-    .filter((p) => typeof p?.id === 'string' && typeof p?.nombre === 'string' && p.nombre.trim())
-    .map((p) => ({
-      loc: `/producto/${encodeURIComponent(slugProducto(p))}`,
-      changefreq: 'weekly',
-      priority: '0.8',
-    })),
+  ...[...fichas.keys()].map((slug) => ({
+    loc: `/producto/${encodeURIComponent(slug)}`,
+    changefreq: 'weekly',
+    priority: '0.8',
+  })),
 ];
 
 // /carrito queda fuera a propósito: es una página transaccional sin valor SEO.

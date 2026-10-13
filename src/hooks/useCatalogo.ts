@@ -3,7 +3,7 @@ import { queryOptions, useQuery } from '@tanstack/react-query';
 import type { Producto } from '@/types';
 import { TIENDA } from '@/config/tienda';
 import { obtenerCatalogoPlataforma } from '@/api/plataforma';
-import { desdePlataforma } from '@/api/catalogo';
+import { catalogoDesdePlataforma } from '@/api/catalogo';
 
 export const opcionesCatalogoPlataforma = () =>
   queryOptions({
@@ -35,7 +35,7 @@ export function useCatalogo(): EstadoCatalogo {
   const plataforma = useQuery(opcionesCatalogoPlataforma());
 
   const productos = useMemo(
-    () => plataforma.data?.productos.map(desdePlataforma) ?? [],
+    () => (plataforma.data ? catalogoDesdePlataforma(plataforma.data.productos) : []),
     [plataforma.data],
   );
 

@@ -24,6 +24,14 @@ import { Button, Select } from '@/components/ui';
 
 const TALLES_ESTANDAR = ['S', 'M', 'L', 'XL', 'XXL'];
 
+/** Talles que se pueden comprar: en una prenda con variantes, solo los que tienen stock. */
+function tallesDisponibles(p: Producto): string[] {
+  if (p.opciones?.length) {
+    return [...new Set(p.opciones.flatMap((o) => (o.talle && o.stock !== 'sin-stock' ? [o.talle] : [])))];
+  }
+  return p.talles ?? TALLES_ESTANDAR;
+}
+
 const OPCIONES_ORDEN: { value: Orden; label: string }[] = [
   { value: 'default', label: 'Relevancia' },
   { value: 'precio-asc', label: 'Precio: menor a mayor' },
@@ -42,9 +50,9 @@ function aplicarFiltros(
   return productos.filter((p) => {
     if (excepto !== 'categoria' && !perteneceACategoria(p, f.categoria)) return false;
     if (excepto !== 'subcategoria' && f.subcategoria && p.subcategoria !== f.subcategoria) return false;
-    if (f.talles.length > 0) {
-      const talles = p.talles ?? TALLES_ESTANDAR;
-      if (talles.length > 0 && !f.talles.some((t) => talles.includes(t))) return false;
+    if (f.talles.length > 0 && (p.talles ?? TALLES_ESTANDAR).length > 0) {
+      const talles = tallesDisponibles(p);
+      if (!f.talles.some((t) => talles.includes(t))) return false;
     }
     if (Number.isFinite(f.precioMax) && precioEfectivo(p) > f.precioMax) return false;
     if (f.soloOfertas && !(p.precio_original && p.precio_original > p.precio)) return false;
@@ -108,11 +116,15 @@ export function CatalogPage() {
 
   const { precioMin, precioTope, talles } = useMemo(() => {
     const precios = productos.map(precioEfectivo).filter((p) => p > 0);
-    const presentes = new Set(productos.flatMap((p) => p.talles ?? TALLES_ESTANDAR));
+    const presentes = new Set(productos.flatMap(tallesDisponibles));
+    // Primero los estándar en su orden; después los que cargó la tienda (38, 40, Único…).
+    const otros = [...presentes]
+      .filter((t) => !TALLES_ESTANDAR.includes(t))
+      .sort((a, b) => a.localeCompare(b, 'es', { numeric: true }));
     return {
       precioMin: precios.length ? Math.floor(Math.min(...precios) / 500) * 500 : 0,
       precioTope: precios.length ? Math.ceil(Math.max(...precios) / 500) * 500 : 0,
-      talles: TALLES_ESTANDAR.filter((t) => presentes.has(t)),
+      talles: [...TALLES_ESTANDAR.filter((t) => presentes.has(t)), ...otros],
     };
   }, [productos]);
 

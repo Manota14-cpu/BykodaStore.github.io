@@ -80,10 +80,12 @@ export function direccionCompleta(form: PedidoForm): string {
 
 /**
  * Arma el pedido que se registra en la plataforma con los productos que vienen
- * de ella: son los únicos que descuentan stock allá. La plataforma no maneja
- * talles ni cupones, así que viajan en las notas, junto con las prendas del
- * catálogo anterior y el total a cobrar, para que el pedido completo quede en
- * la app. Devuelve null si no hay nada de la plataforma.
+ * de ella: son los únicos que descuentan stock allá. En las prendas con talles
+ * y colores cargados en la plataforma, el id ya es el de la combinación. Los
+ * talles elegidos en productos sin variantes y los cupones no los maneja la
+ * plataforma, así que viajan en las notas, junto con las prendas del catálogo
+ * anterior y el total a cobrar, para que el pedido completo quede en la app.
+ * Devuelve null si no hay nada de la plataforma.
  */
 export function armarPedidoPlataforma(
   form: PedidoForm,
@@ -96,14 +98,14 @@ export function armarPedidoPlataforma(
   if (deLaPlataforma.length === 0) return null;
   const fueraDeLaApp = items.filter((i) => !deLaPlataforma.includes(i));
 
-  // Mismo producto en dos talles = dos renglones del carrito, un solo id.
+  // Producto sin variantes en dos talles = dos renglones del carrito, un solo id.
   const porId = new Map<string, number>();
   for (const item of deLaPlataforma) {
     porId.set(item.productoId!, (porId.get(item.productoId!) ?? 0) + item.cantidad);
   }
 
   const talles = deLaPlataforma
-    .filter((i) => i.talle)
+    .filter((i) => i.talle && !i.variante)
     .map((i) => `${i.nombre.replace(/\s*\([^)]*\)\s*$/, '')} → ${i.talle} × ${i.cantidad}`);
 
   const extras = fueraDeLaApp

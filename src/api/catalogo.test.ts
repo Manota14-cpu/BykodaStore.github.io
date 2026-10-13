@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { desdePlataforma } from './catalogo';
+import { catalogoDesdePlataforma, desdePlataforma } from './catalogo';
 import type { ProductoPlataforma } from './plataforma';
 
 const REMERA_BOXY: ProductoPlataforma = {
@@ -64,5 +64,77 @@ describe('desdePlataforma', () => {
 
   it('los accesorios no llevan selector de talle', () => {
     expect(desdePlataforma({ ...REMERA_BOXY, categoria: 'Accesorios' }).talles).toEqual([]);
+  });
+});
+
+describe('catalogoDesdePlataforma', () => {
+  const PRENDA = { id: 'a1b2c3d4e5f6', nombre: 'HOODIE KODA' };
+  const variante = (
+    id: string,
+    color: string,
+    talle: string,
+    stock: number,
+    extra: Partial<ProductoPlataforma> = {},
+  ): ProductoPlataforma => ({
+    ...REMERA_BOXY,
+    id,
+    nombre: `HOODIE KODA ${color} ${talle}`,
+    categoria: 'Buzos',
+    precio: 52000,
+    prenda: PRENDA,
+    talle,
+    color,
+    stock,
+    disponible: stock > 0,
+    ...extra,
+  });
+  const VARIANTES = [
+    variante('v-negro-m', 'Negro', 'M', 0, { imagenes: ['https://cdn.ejemplo.com/negro.webp'] }),
+    variante('v-negro-l', 'Negro', 'L', 5, { imagenes: ['https://cdn.ejemplo.com/negro.webp'] }),
+    variante('v-gris-m', 'Gris', 'M', 2, { precio: 50000, imagenes: ['https://cdn.ejemplo.com/gris.webp'] }),
+  ];
+
+  it('junta las combinaciones de una prenda en una sola ficha, en el orden en que llegan', () => {
+    const lista = catalogoDesdePlataforma([REMERA_BOXY, ...VARIANTES, { ...REMERA_BOXY, id: 'otro', nombre: 'GORRA' }]);
+    expect(lista.map((p) => p.nombre)).toEqual(['REMERA BOXY FIT', 'HOODIE KODA', 'GORRA']);
+    const hoodie = lista[1]!;
+    expect(hoodie).toMatchObject({
+      id: PRENDA.id,
+      slug: 'hoodie-koda-a1b2c3',
+      categoria: 'buzo',
+      talles: ['M', 'L'],
+      colores: ['Negro', 'Gris'],
+      precio: 50000,
+      unidades: 7,
+      stock: 'disponible',
+    });
+    expect(hoodie.opciones).toHaveLength(3);
+  });
+
+  it('guarda el stock y el id de cada combinación para el pedido', () => {
+    const [hoodie] = catalogoDesdePlataforma(VARIANTES);
+    expect(hoodie!.opciones).toEqual([
+      expect.objectContaining({ id: 'v-negro-m', color: 'Negro', talle: 'M', stock: 'sin-stock', unidades: 0 }),
+      expect.objectContaining({ id: 'v-negro-l', color: 'Negro', talle: 'L', stock: 'disponible', unidades: 5 }),
+      expect.objectContaining({ id: 'v-gris-m', color: 'Gris', talle: 'M', stock: 'ultimas', unidades: 2 }),
+    ]);
+  });
+
+  it('muestra primero las fotos de lo que tiene stock', () => {
+    const [hoodie] = catalogoDesdePlataforma([
+      variante('v1', 'Negro', 'M', 0, { imagenes: ['https://cdn.ejemplo.com/negro.webp'] }),
+      variante('v2', 'Gris', 'M', 3, { imagenes: ['https://cdn.ejemplo.com/gris.webp'] }),
+    ]);
+    expect(hoodie!.imagenes).toEqual(['https://cdn.ejemplo.com/gris.webp', 'https://cdn.ejemplo.com/negro.webp']);
+  });
+
+  it('marca la prenda sin stock cuando se agotan todas las combinaciones', () => {
+    const [hoodie] = catalogoDesdePlataforma(VARIANTES.map((v) => ({ ...v, stock: 0, disponible: false })));
+    expect(hoodie).toMatchObject({ stock: 'sin-stock', unidades: 0, precio: 50000 });
+  });
+
+  it('con alguna combinación sin control de stock, no informa unidades', () => {
+    const [hoodie] = catalogoDesdePlataforma([...VARIANTES, variante('v-gris-l', 'Gris', 'L', 1, { stock: null, disponible: true })]);
+    expect(hoodie).toMatchObject({ stock: 'disponible', unidades: null });
   });
 });
