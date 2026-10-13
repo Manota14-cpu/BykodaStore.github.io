@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { AnimatePresence } from 'motion/react';
 import * as m from 'motion/react-m';
-import { useProducto } from '@/hooks/useCatalogo';
+import { useMercadoPago, useProducto } from '@/hooks/useCatalogo';
 import { fmtMoneda, pctOff } from '@/lib/format';
 import { etiquetaProducto } from '@/lib/catalogo';
 import { tablaParaCategoria, TIP_TALLES } from '@/lib/talles';
@@ -29,6 +29,7 @@ export function ProductPage() {
   const { id: slug } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { producto, productos, cargando } = useProducto(slug);
+  const mercadoPago = useMercadoPago();
 
   const [varIdx, setVarIdx] = useState(0);
   const [imgIdx, setImgIdx] = useState(0);
@@ -575,7 +576,9 @@ export function ProductPage() {
             {[
               'Envío a todo el país · 4 a 8 días hábiles',
               'Cambio de talle sin cargo dentro de los 7 días',
-              'Coordinás pago y envío por WhatsApp, sin datos de tarjeta',
+              mercadoPago
+                ? 'Pagás con Mercado Pago o coordinás el pago por WhatsApp'
+                : 'Coordinás pago y envío por WhatsApp, sin datos de tarjeta',
             ].map((g) => (
               <li key={g} className="flex items-start gap-2.5">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="mt-0.5 shrink-0 text-exito" aria-hidden="true">

@@ -9,6 +9,7 @@ import { WhatsappButton } from './WhatsappButton';
 import { ScrollTop } from './ScrollTop';
 import { BottomNav } from './BottomNav';
 import { CartDrawer } from './CartDrawer';
+import { AvisoPago } from './AvisoPago';
 import { EASE_SUAVE } from './motion/curvas';
 
 function CargandoPagina() {
@@ -54,6 +55,7 @@ export function Layout() {
       <WhatsappButton />
       <ScrollTop />
       <CartDrawer />
+      <AvisoPago />
       <Toast />
     </>
   );

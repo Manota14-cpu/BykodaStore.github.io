@@ -37,12 +37,16 @@ export type ProductoPlataforma = z.infer<typeof ProductoPlataformaSchema>;
 const CatalogoSchema = z.object({
   negocio: z.string().nullish(),
   whatsapp: z.string().nullish(),
+  /** La tienda conectó Mercado Pago en Visual App (Configuración → Tienda web). */
+  mercadopago: z.boolean().nullish(),
   productos: z.array(z.unknown()),
 });
 
 export interface CatalogoPlataforma {
   negocio: string | null;
   whatsapp: string | null;
+  /** Los pedidos se pueden pagar con Mercado Pago: la plataforma arma el cobro. */
+  mercadopago: boolean;
   productos: ProductoPlataforma[];
   /** Productos que llegaron con un formato inválido y no se muestran. */
   descartados: number;
@@ -93,6 +97,7 @@ export async function obtenerCatalogoPlataforma(
   return {
     negocio: catalogo.negocio ?? null,
     whatsapp: catalogo.whatsapp ?? null,
+    mercadopago: catalogo.mercadopago === true,
     productos,
     descartados,
   };
@@ -107,23 +112,49 @@ export interface PedidoPlataforma {
   direccion: string;
   notas: string;
   items: { id: string; cantidad: number }[];
+  /** Pagar con Mercado Pago: la plataforma arma el cobro con sus precios y devuelve el link. */
+  pago?: 'mercadopago';
+  /** Página a la que vuelve el cliente después de pagar. */
+  vuelta?: string;
 }
 
 const RespuestaPedidoSchema = z.object({
   numero: z.union([z.number(), z.string()]),
   total: z.number().optional(),
+  /** Link de pago de Mercado Pago, si se pidió y se pudo armar. */
+  pagar: z.string().optional(),
+  /** Por qué no se pudo armar el cobro (el pedido igual quedó registrado). */
+  errorPago: z.string().optional(),
 });
+
+export interface RespuestaPedido {
+  numero: string;
+  total?: number;
+  pagar?: string;
+  errorPago?: string;
+}
+
+/** Solo se sigue un link de pago que sea de Mercado Pago, por https. */
+function esLinkDeMercadoPago(link: string): boolean {
+  try {
+    const u = new URL(link);
+    return u.protocol === 'https:' && /(^|\.)mercadopago\.com(\.[a-z]{2})?$/.test(u.hostname);
+  } catch {
+    return false;
+  }
+}
 
 const RespuestaErrorSchema = z.object({ error: z.string().min(1) });
 
 /**
  * Registra el pedido en la plataforma: el servidor vuelve a validar el stock y
  * devuelve el número de pedido, que después viaja en el mensaje de WhatsApp.
+ * Con `pago: 'mercadopago'` también devuelve el link para pagarlo.
  */
 export async function registrarPedido(
   pedido: PedidoPlataforma,
   slug: string = TIENDA.slug,
-): Promise<{ numero: string; total?: number }> {
+): Promise<RespuestaPedido> {
   let respuesta: Response;
   try {
     respuesta = await fetch(url(slug, 'pedido'), {
@@ -153,5 +184,8 @@ export async function registrarPedido(
 
   const ok = RespuestaPedidoSchema.safeParse(cuerpo);
   if (!ok.success) throw new ErrorPlataforma('La tienda respondió algo inesperado al registrar el pedido.');
-  return { numero: String(ok.data.numero), total: ok.data.total };
+  const { numero, total, pagar, errorPago } = ok.data;
+  if (!pedido.pago) return { numero: String(numero), total };
+  if (pagar && esLinkDeMercadoPago(pagar)) return { numero: String(numero), total, pagar };
+  return { numero: String(numero), total, errorPago: errorPago || 'No se pudo abrir Mercado Pago.' };
 }

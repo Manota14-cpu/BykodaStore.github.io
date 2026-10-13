@@ -142,3 +142,17 @@ export function armarPedidoPlataforma(
     items: [...porId.entries()].map(([id, cantidad]) => ({ id, cantidad })),
   };
 }
+
+/**
+ * Por qué este carrito no se puede pagar con Mercado Pago, o null si se puede.
+ * La plataforma cobra solo sus productos y a sus precios: un cupón, una prenda
+ * del catálogo anterior o un precio a consultar se arreglan por WhatsApp.
+ */
+export function motivoSinMercadoPago(items: CartItem[], cupon: Cupon | null): string | null {
+  if (items.some((i) => i.fuente !== 'plataforma' || !i.productoId)) {
+    return 'Hay prendas del catálogo anterior: este pedido se paga por WhatsApp.';
+  }
+  if (items.some((i) => !(i.precio > 0))) return 'Hay precios a consultar: este pedido se paga por WhatsApp.';
+  if (cupon) return 'Con cupón, el pago se coordina por WhatsApp para aplicarte el descuento.';
+  return null;
+}

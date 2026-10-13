@@ -4,6 +4,7 @@ import { AnimatePresence } from 'motion/react';
 import * as m from 'motion/react-m';
 import { useCarritoUI } from '@/store/carritoUI';
 import { useCartTotals } from '@/store/cart';
+import { useMercadoPago } from '@/hooks/useCatalogo';
 import { useModal } from '@/lib/useModal';
 import { fmtMoneda } from '@/lib/format';
 import { EASE_SUAVE } from './motion/curvas';
@@ -19,6 +20,7 @@ export function CartDrawer() {
   const { cantidadTotal, totalFinal, hayConsulta } = useCartTotals();
   const panelRef = useModal(abierto, cerrar);
   const { pathname } = useLocation();
+  const mercadoPago = useMercadoPago();
 
   // Navegar (por ejemplo, a "Ver carrito") cierra el panel.
   useEffect(() => {
@@ -99,7 +101,9 @@ export function CartDrawer() {
                 Seguir comprando
               </Button>
               <p className="text-center text-xs text-ink-3">
-                El pedido se confirma por WhatsApp: no se cobra nada en el sitio.
+                {mercadoPago
+                  ? 'Al finalizar elegís pagar con Mercado Pago o por WhatsApp.'
+                  : 'El pedido se confirma por WhatsApp: no se cobra nada en el sitio.'}
               </p>
             </div>
           </m.div>
