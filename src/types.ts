@@ -23,6 +23,18 @@ export type FuenteCatalogo = 'plataforma' | 'local';
 
 export type EstadoStock = 'disponible' | 'ultimas' | 'sin-stock';
 
+/** Una combinación de talle y color cargada en Visual App, con su propio stock. */
+export interface OpcionPlataforma {
+  /** Id de esta combinación en la plataforma: es el que se manda al registrar el pedido. */
+  id: string;
+  talle: string | null;
+  color: string | null;
+  precio: number;
+  stock: EstadoStock;
+  unidades: number | null;
+  imagenes: string[];
+}
+
 /**
  * Producto tal como lo usa la UI, sin importar la fuente. Los adaptadores de
  * `src/api/catalogo.ts` convierten cada fuente a esta forma.
@@ -49,6 +61,13 @@ export interface Producto {
   descripcion?: string;
   /** undefined = talles estándar; [] = no lleva talle. */
   talles?: string[];
+  /** Colores cargados en la plataforma para esta prenda (vacío si no tiene). */
+  colores?: string[];
+  /**
+   * Prenda con talles y colores en la plataforma: cada combinación con su stock.
+   * Si está, la ficha ofrece solo estas combinaciones y el pedido usa su id.
+   */
+  opciones?: OpcionPlataforma[];
   variantes?: ProductoVariante[] | null;
   calce?: string;
   tela?: string;
@@ -80,6 +99,11 @@ export interface CartItem {
   /** Carritos guardados antes de la plataforma no lo tienen: se toman como locales. */
   fuente?: FuenteCatalogo;
   talle?: string;
+  /**
+   * Color y talle de una prenda con variantes en la plataforma ("Negro · M"). El
+   * id ya identifica la combinación, así que el talle no hace falta en las notas.
+   */
+  variante?: string;
   /** Tope de unidades según el stock que informó la plataforma al agregarlo. */
   maximo?: number | null;
 }

@@ -114,6 +114,27 @@ describe('armarPedidoPlataforma', () => {
     expect(pedido!.notas).not.toContain('Total a cobrar');
   });
 
+  it('las prendas con variantes en la plataforma van por el id de la combinación, sin anotar el talle', () => {
+    const hoodie = (id: string, detalle: string, talle: string, cantidad: number): CartItem => ({
+      nombre: `HOODIE KODA (${detalle})`,
+      precio: 52000,
+      cantidad,
+      productoId: id,
+      fuente: 'plataforma',
+      talle,
+      variante: detalle,
+    });
+    const pedido = armarPedidoPlataforma(completo, [hoodie('v-negro-l', 'Negro · L', 'L', 1), hoodie('v-gris-m', 'Gris · M', 'M', 2), remera('S', 1)], null);
+    expect(pedido!.items).toEqual([
+      { id: 'v-negro-l', cantidad: 1 },
+      { id: 'v-gris-m', cantidad: 2 },
+      { id: '896fd3b4b05842368e808340726cf8a8', cantidad: 1 },
+    ]);
+    // Solo el producto sin variantes necesita el talle en las notas.
+    expect(pedido!.notas).toContain('Talles: REMERA BOXY FIT → S × 1');
+    expect(pedido!.notas).not.toContain('HOODIE');
+  });
+
   it('resume en WhatsApp si hay muchas prendas de afuera', () => {
     const muchos = Array.from({ length: 8 }, (_, i) => ({ ...jeanLocal, nombre: `Jean ${i} (M)` }));
     const pedido = armarPedidoPlataforma(completo, [remera('M', 1), ...muchos], null, 1);

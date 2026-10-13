@@ -32,8 +32,10 @@ export function ProductPage() {
 
   const [varIdx, setVarIdx] = useState(0);
   const [imgIdx, setImgIdx] = useState(0);
+  const [color, setColor] = useState<string | null>(null);
   const [talle, setTalle] = useState<string | null>(null);
   const [cantidad, setCantidad] = useState(1);
+  const [faltaColor, setFaltaColor] = useState(false);
   const [faltaTalle, setFaltaTalle] = useState(false);
 
   const addItem = useCartStore((s) => s.addItem);
@@ -46,8 +48,10 @@ export function ProductPage() {
   useEffect(() => {
     setVarIdx(0);
     setImgIdx(0);
+    setColor(null);
     setTalle(null);
     setCantidad(1);
+    setFaltaColor(false);
     setFaltaTalle(false);
   }, [slug]);
 
@@ -61,9 +65,35 @@ export function ProductPage() {
 
   const variantes = producto?.variantes?.length ? producto.variantes : null;
   const variante = variantes ? variantes[Math.min(varIdx, variantes.length - 1)] : null;
-  const imgs = (variante?.imgs.length ? variante.imgs : producto?.imagenes) ?? [];
+
+  // Prenda con talles y colores en la plataforma: solo se ofrecen las
+  // combinaciones cargadas y cada una tiene su stock.
+  const opciones = producto?.opciones?.length ? producto.opciones : null;
+  const colores = producto?.colores ?? [];
+  const talles = opciones ? (producto?.talles ?? []) : (producto?.talles ?? TALLES_ESTANDAR);
+  const colorElegido = colores.length === 1 ? colores[0]! : color;
+  const talleElegido = opciones && talles.length === 1 ? talles[0]! : talle;
+  const opcion =
+    opciones?.find(
+      (o) =>
+        (colores.length === 0 || o.color === colorElegido) && (talles.length === 0 || o.talle === talleElegido),
+    ) ?? null;
+  /** Si hay stock de ese talle y ese color (null = cualquiera). */
+  const hayStock = (t: string | null, c: string | null) =>
+    !opciones ||
+    opciones.some((o) => o.stock !== 'sin-stock' && (t === null || o.talle === t) && (c === null || o.color === c));
+  const fotosColor =
+    opciones && colorElegido
+      ? [...new Set(opciones.filter((o) => o.color === colorElegido).flatMap((o) => o.imagenes))]
+      : [];
+
+  const imgs = (variante?.imgs.length ? variante.imgs : fotosColor.length ? fotosColor : producto?.imagenes) ?? [];
   const imgActual = imgs[Math.min(imgIdx, Math.max(0, imgs.length - 1))];
-  const precio = variante && variante.precio > 0 ? variante.precio : (producto?.precio ?? 0);
+  const precio = opcion
+    ? opcion.precio
+    : variante && variante.precio > 0
+      ? variante.precio
+      : (producto?.precio ?? 0);
   const nombre = variante ? variante.nombre : producto?.cartNombre || producto?.nombre || '';
   const descuento =
     producto?.precio_original && producto.precio_original > producto.precio
@@ -126,38 +156,55 @@ export function ProductPage() {
   }
 
   const p = producto;
-  const talles = p.talles ?? TALLES_ESTANDAR;
   const llevaTalle = talles.length > 0;
-  const sinStock = p.stock === 'sin-stock';
+  // Con la combinación elegida manda su stock; antes, el de la prenda entera.
+  const stock = opcion?.stock ?? p.stock;
+  const unidades = opcion ? opcion.unidades : (p.unidades ?? null);
+  const sinStock = stock === 'sin-stock';
   const esFavorito = favs.includes(p.id);
-  const tope = Math.max(1, Math.min(MAXIMO_POR_PEDIDO, p.unidades ?? MAXIMO_POR_PEDIDO));
-  const quedan = !sinStock && typeof p.unidades === 'number' && p.unidades <= UMBRAL_ULTIMAS ? p.unidades : null;
+  const tope = Math.max(1, Math.min(MAXIMO_POR_PEDIDO, unidades ?? MAXIMO_POR_PEDIDO));
+  // Al cambiar a una combinación con menos stock, la cantidad no la pasa.
+  const cant = Math.min(cantidad, tope);
+  const quedan = !sinStock && typeof unidades === 'number' && unidades <= UMBRAL_ULTIMAS ? unidades : null;
   const urlProducto = `${SITE_URL}/producto/${p.slug}`;
+  const detalle = [colores.length > 0 ? colorElegido : null, talleElegido].filter(Boolean).join(' · ');
+  const nombreConsulta = colores.length > 0 && colorElegido ? `${nombre} (${colorElegido})` : nombre;
 
   function agregar(): boolean {
     if (sinStock) return false;
-    if (llevaTalle && !talle) {
+    if (colores.length > 0 && !colorElegido) {
+      setFaltaColor(true);
+      document.getElementById('ficha-colores')?.scrollIntoView({ block: 'center', behavior: 'smooth' });
+      return false;
+    }
+    if (llevaTalle && !talleElegido) {
       setFaltaTalle(true);
       document.getElementById('ficha-talles')?.scrollIntoView({ block: 'center', behavior: 'smooth' });
       return false;
     }
+    if (opciones && !opcion) {
+      showToast('Esa combinación no está disponible.', 'error');
+      return false;
+    }
     const item = {
-      nombre: talle ? `${nombre} (${talle})` : nombre,
+      nombre: detalle ? `${nombre} (${detalle})` : nombre,
       precio,
-      cantidad,
+      cantidad: cant,
       imgSrc: imgActual,
-      productoId: p.id,
+      // En una prenda con variantes, el pedido descuenta el stock de la combinación.
+      productoId: opcion?.id ?? p.id,
       slug: p.slug,
       fuente: p.fuente,
-      talle: talle ?? undefined,
-      maximo: p.unidades ?? null,
+      talle: talleElegido ?? undefined,
+      variante: opcion ? detalle : undefined,
+      maximo: unidades,
     };
     const agregadas = addItem(item);
     if (agregadas === 0) {
       showToast('Ya tenés en el carrito todas las unidades disponibles.', 'error');
       return false;
     }
-    if (agregadas < cantidad) showToast(`Solo quedaban ${agregadas} disponibles: agregamos esas.`);
+    if (agregadas < cant) showToast(`Solo quedaban ${agregadas} disponibles: agregamos esas.`);
     abrirCarrito({ ...item, cantidad: agregadas });
     return true;
   }
@@ -279,7 +326,7 @@ export function ProductPage() {
             )}
             <div className="absolute top-4 left-4 flex flex-col items-start gap-1.5">
               {sinStock && <Badge tono="agotado">Sin stock</Badge>}
-              {!sinStock && (quedan !== null || p.stock === 'ultimas') && (
+              {!sinStock && (quedan !== null || stock === 'ultimas') && (
                 <Badge tono="ultimas">{quedan !== null ? `Quedan ${quedan}` : 'Últimas unidades'}</Badge>
               )}
             </div>
@@ -359,6 +406,60 @@ export function ProductPage() {
             </div>
           )}
 
+          {colores.length > 1 && (
+            <div id="ficha-colores" className="grid gap-3 border-t border-line pt-6">
+              <div className="flex items-baseline justify-between">
+                <span className="eyebrow">Color</span>
+                {colorElegido && <span className="text-sm font-semibold text-ink">{colorElegido}</span>}
+              </div>
+              <div role="group" aria-label="Elegí el color" className="flex flex-wrap gap-2">
+                {colores.map((c) => {
+                  const agotado = !hayStock(null, c);
+                  return (
+                    <button
+                      key={c}
+                      type="button"
+                      aria-pressed={colorElegido === c}
+                      disabled={agotado}
+                      title={agotado ? 'Sin stock' : undefined}
+                      onClick={() => {
+                        const nuevo = colorElegido === c ? null : c;
+                        setColor(nuevo);
+                        setImgIdx(0);
+                        setFaltaColor(false);
+                        // Si el talle elegido no está en el nuevo color, se vuelve a elegir.
+                        if (nuevo && talle && !hayStock(talle, nuevo)) setTalle(null);
+                      }}
+                      className={cn(
+                        'rounded-lg border px-4 py-3 text-sm font-semibold tracking-wider transition-colors',
+                        colorElegido === c
+                          ? 'border-invert bg-invert text-on-invert'
+                          : 'border-line text-ink-2 hover:border-line-strong hover:text-ink',
+                        agotado && 'cursor-not-allowed text-ink-3 line-through opacity-50 hover:border-line hover:text-ink-3',
+                        faltaColor && 'border-alerta/60',
+                      )}
+                    >
+                      {c}
+                    </button>
+                  );
+                })}
+              </div>
+              <AnimatePresence>
+                {faltaColor && (
+                  <m.p
+                    role="alert"
+                    className="text-sm text-alerta"
+                    initial={{ opacity: 0, y: -4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                  >
+                    Elegí un color para continuar.
+                  </m.p>
+                )}
+              </AnimatePresence>
+            </div>
+          )}
+
           {llevaTalle && (
             <div id="ficha-talles" className="grid gap-3 border-t border-line pt-6">
               <div className="flex items-baseline justify-between">
@@ -368,26 +469,33 @@ export function ProductPage() {
                 </a>
               </div>
               <div role="group" aria-label="Elegí tu talle" className="flex flex-wrap gap-2">
-                {talles.map((t) => (
-                  <button
-                    key={t}
-                    type="button"
-                    aria-pressed={talle === t}
-                    onClick={() => {
-                      setTalle(talle === t ? null : t);
-                      setFaltaTalle(false);
-                    }}
-                    className={cn(
-                      'min-w-14 rounded-lg border px-4 py-3 text-sm font-semibold tracking-wider transition-colors',
-                      talle === t
-                        ? 'border-invert bg-invert text-on-invert'
-                        : 'border-line text-ink-2 hover:border-line-strong hover:text-ink',
-                      faltaTalle && 'border-alerta/60',
-                    )}
-                  >
-                    {t}
-                  </button>
-                ))}
+                {talles.map((t) => {
+                  // Tachado si no queda en el color elegido (o en ninguno, si todavía no hay color).
+                  const agotado = !hayStock(t, colores.length > 0 ? colorElegido : null);
+                  return (
+                    <button
+                      key={t}
+                      type="button"
+                      aria-pressed={talleElegido === t}
+                      disabled={agotado}
+                      title={agotado ? 'Sin stock' : undefined}
+                      onClick={() => {
+                        setTalle(talleElegido === t ? null : t);
+                        setFaltaTalle(false);
+                      }}
+                      className={cn(
+                        'min-w-14 rounded-lg border px-4 py-3 text-sm font-semibold tracking-wider transition-colors',
+                        talleElegido === t
+                          ? 'border-invert bg-invert text-on-invert'
+                          : 'border-line text-ink-2 hover:border-line-strong hover:text-ink',
+                        agotado && 'cursor-not-allowed text-ink-3 line-through opacity-50 hover:border-line hover:text-ink-3',
+                        faltaTalle && 'border-alerta/60',
+                      )}
+                    >
+                      {t}
+                    </button>
+                  );
+                })}
               </div>
               <AnimatePresence>
                 {faltaTalle && (
@@ -411,20 +519,20 @@ export function ProductPage() {
                 <button
                   type="button"
                   aria-label="Quitar una unidad"
-                  disabled={cantidad <= 1}
-                  onClick={() => setCantidad((q) => Math.max(1, q - 1))}
+                  disabled={cant <= 1}
+                  onClick={() => setCantidad(Math.max(1, cant - 1))}
                   className="h-12 w-11 text-ink transition-colors hover:bg-hover disabled:opacity-35"
                 >
                   −
                 </button>
                 <span aria-live="polite" className="min-w-8 text-center text-sm font-semibold text-ink tabular-nums">
-                  {cantidad}
+                  {cant}
                 </span>
                 <button
                   type="button"
                   aria-label="Agregar una unidad"
-                  disabled={cantidad >= tope}
-                  onClick={() => setCantidad((q) => Math.min(tope, q + 1))}
+                  disabled={cant >= tope}
+                  onClick={() => setCantidad(Math.min(tope, cant + 1))}
                   className="h-12 w-11 text-ink transition-colors hover:bg-hover disabled:opacity-35"
                 >
                   +
@@ -441,7 +549,7 @@ export function ProductPage() {
 
           <div className="flex flex-wrap gap-x-6 gap-y-3">
             <a
-              href={construirURLConsultaProducto({ nombre, precio, talle, cantidad, url: urlProducto })}
+              href={construirURLConsultaProducto({ nombre: nombreConsulta, precio, talle: talleElegido, cantidad: cant, url: urlProducto })}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-sm text-ink-2 transition-colors hover:text-ink"
@@ -484,7 +592,7 @@ export function ProductPage() {
               <p className="mt-4 text-sm text-ink-2">
                 ¿Dudas con la tela o el calce?{' '}
                 <ButtonExterno
-                  href={construirURLConsultaProducto({ nombre, precio, talle, cantidad, url: urlProducto })}
+                  href={construirURLConsultaProducto({ nombre: nombreConsulta, precio, talle: talleElegido, cantidad: cant, url: urlProducto })}
                   variante="fantasma"
                   tamano="sm"
                   className="inline-flex h-auto px-0 align-baseline text-ink underline underline-offset-4"

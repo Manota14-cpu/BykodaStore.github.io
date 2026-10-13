@@ -32,13 +32,16 @@ de cargar o sacar productos, corré `npm run sitemap` para que Google los encuen
 - **Categoría**: se muestra tal como está cargada en el panel. Remeras, Buzos,
   Pantalones, Bermudas y Accesorios tienen menú propio (se aceptan sinónimos como
   "hoodie" o "jogger"); una categoría nueva aparece sola en el menú.
-- **Stock**: el carrito no deja pasar las unidades informadas, sumando todos los
-  talles de la prenda, y sigue al stock en vivo: si otra compra lo descuenta, lo
-  agotado sale del carrito y lo que bajó se achica, con un aviso. Lo que no está en
-  la app (por ejemplo, prendas del catálogo anterior en carritos viejos) también
-  sale. Con 3 o menos se muestra "Quedan N".
-- **Talles**: la plataforma no los maneja todavía. La ficha ofrece S a XXL
-  (los accesorios no llevan talle) y el talle elegido viaja en las notas del pedido.
+- **Stock**: el carrito no deja pasar las unidades informadas (por combinación de
+  talle y color, o sumando todos los talles si la prenda no los tiene cargados) y
+  sigue al stock en vivo: si otra compra lo descuenta, lo agotado sale del carrito y
+  lo que bajó se achica, con un aviso. Lo que no está en la app (por ejemplo,
+  prendas del catálogo anterior en carritos viejos) también sale. Con 3 o menos se
+  muestra "Quedan N".
+- **Talles y colores**: si la prenda tiene talles y colores cargados en Visual App,
+  la ficha muestra exactamente esos, tacha los que no tienen stock y el pedido
+  descuenta el stock de la combinación elegida. Si no los tiene, ofrece S a XXL (los
+  accesorios no llevan talle) y el talle elegido viaja en las notas del pedido.
 - **Fotos**: conviene subirlas verticales 3:4 (por ejemplo 1080×1440): las tarjetas
   son verticales y a una foto cuadrada se le recortan los costados. Sin foto, la
   prenda muestra "Foto próximamente".
