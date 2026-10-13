@@ -6,13 +6,18 @@ import { AnimatePresence } from 'motion/react';
 import * as m from 'motion/react-m';
 import { useCartStore, useCartTotals } from '@/store/cart';
 import { useToastStore } from '@/store/toast';
+import { useMercadoPago } from '@/hooks/useCatalogo';
 import { useModal } from '@/lib/useModal';
 import { fmtMoneda } from '@/lib/format';
+import { cn } from '@/lib/cn';
+import { guardarPagoEnCurso } from '@/lib/pagoMercadoPago';
+import { irA } from '@/lib/navegar';
 import { PAISES, PROVINCIAS_AR } from '@/lib/argentina';
 import { construirURLPedidoWhatsApp, generarReferencia } from '@/lib/whatsapp';
 import {
   armarPedidoPlataforma,
   esquemaPedido,
+  motivoSinMercadoPago,
   PEDIDO_FORM_VACIO,
   type CampoPedido,
   type PedidoForm,
@@ -46,8 +51,16 @@ function guardarDatos(form: PedidoForm) {
 interface Resultado {
   numero?: string;
   referencia: string;
+  /** Mensaje de WhatsApp con el detalle del pedido. */
   url: string;
+  /** Link de Mercado Pago al que se está yendo. */
+  pagar?: string;
+  total?: number;
+  /** Se eligió Mercado Pago pero no se pudo armar el cobro: sigue por WhatsApp. */
+  sinCobro?: boolean;
 }
+
+type MedioDePago = 'mercadopago' | 'whatsapp';
 
 export function CheckoutModal({ open, onClose }: { open: boolean; onClose: () => void }) {
   const items = useCartStore((s) => s.items);
@@ -59,6 +72,10 @@ export function CheckoutModal({ open, onClose }: { open: boolean; onClose: () =>
 
   const [resultado, setResultado] = useState<Resultado | null>(null);
   const [errorEnvio, setErrorEnvio] = useState<string | null>(null);
+  const [medio, setMedio] = useState<MedioDePago>('mercadopago');
+  const mercadoPago = useMercadoPago();
+  const motivoSinMP = mercadoPago ? motivoSinMercadoPago(items, cupon) : null;
+  const pagaConMP = mercadoPago && !motivoSinMP && medio === 'mercadopago';
   const ventanaRef = useRef<Window | null>(null);
   const boxRef = useModal(open, cerrar);
 
@@ -93,11 +110,17 @@ export function CheckoutModal({ open, onClose }: { open: boolean; onClose: () =>
     setErrorEnvio(null);
     const referencia = generarReferencia();
     const pedido = armarPedidoPlataforma(datos, items, cupon, totalFinal);
+    const conMP = pagaConMP && pedido !== null;
 
     let numero: string | undefined;
+    let total: number | undefined;
+    let pagar: string | undefined;
     if (pedido) {
       try {
-        ({ numero } = await registrarPedido(pedido));
+        // Con Mercado Pago, la plataforma arma el cobro y Mercado Pago vuelve al inicio del sitio.
+        ({ numero, total, pagar } = await registrarPedido(
+          conMP ? { ...pedido, pago: 'mercadopago', vuelta: `${window.location.origin}/` } : pedido,
+        ));
       } catch (error) {
         ventanaRef.current?.close();
         setErrorEnvio(error instanceof Error ? error.message : 'No se pudo registrar el pedido.');
@@ -108,6 +131,22 @@ export function CheckoutModal({ open, onClose }: { open: boolean; onClose: () =>
     }
 
     const url = construirURLPedidoWhatsApp(items, cupon, datos, referencia, numero);
+
+    if (conMP) {
+      guardarDatos(datos);
+      vaciarCarrito();
+      void queryClient.invalidateQueries({ queryKey: ['catalogo', 'plataforma'] });
+      if (pagar) {
+        guardarPagoEnCurso({ numero, total: total ?? totalFinal });
+        setResultado({ numero, referencia, url, pagar, total: total ?? totalFinal });
+        irA(pagar);
+      } else {
+        // El pedido quedó registrado, pero sin cobro: se sigue por WhatsApp.
+        setResultado({ numero, referencia, url, sinCobro: true });
+      }
+      return;
+    }
+
     const ventana = ventanaRef.current;
     if (ventana && !ventana.closed) ventana.location.href = url;
     else window.location.href = url; // la pestaña se bloqueó: se abre acá
@@ -123,7 +162,7 @@ export function CheckoutModal({ open, onClose }: { open: boolean; onClose: () =>
     // de un await el navegador la bloquearía como popup. Solo si el formulario
     // es válido, así un error de tipeo no deja una pestaña en blanco.
     ventanaRef.current = null;
-    if (esquemaPedido.safeParse(getValues()).success) {
+    if (!pagaConMP && esquemaPedido.safeParse(getValues()).success) {
       const ventana = window.open('about:blank', '_blank');
       if (ventana) ventana.opener = null; // la pestaña nueva no puede tocar esta
       ventanaRef.current = ventana;
@@ -176,7 +215,27 @@ export function CheckoutModal({ open, onClose }: { open: boolean; onClose: () =>
               </svg>
             </button>
 
-            {resultado ? (
+            {resultado?.pagar ? (
+              <div className="grid justify-items-center gap-4 py-6 text-center">
+                <span
+                  aria-hidden="true"
+                  className="size-10 animate-spin rounded-full border-2 border-line border-t-ink"
+                />
+                <h2 id="checkout-titulo" className="titulo-display text-4xl text-ink">
+                  {resultado.numero ? `Pedido #${resultado.numero} anotado` : 'Pedido anotado'}
+                </h2>
+                <p role="status" className="max-w-[42ch] text-sm leading-relaxed text-ink-2">
+                  Te llevamos a Mercado Pago para pagar{' '}
+                  {resultado.total ? fmtMoneda(resultado.total) : 'tu pedido'}…
+                </p>
+                <a
+                  href={resultado.pagar}
+                  className="mt-2 inline-flex h-11 items-center rounded-lg bg-invert px-5 text-[0.8rem] font-semibold tracking-[0.12em] text-on-invert uppercase transition hover:opacity-85"
+                >
+                  Ir a Mercado Pago
+                </a>
+              </div>
+            ) : resultado ? (
               <div className="grid justify-items-center gap-4 py-6 text-center">
                 <span className="grid size-14 place-items-center rounded-full bg-whatsapp/15 text-whatsapp-ink dark:text-whatsapp">
                   <IconWhatsapp size={26} />
@@ -185,8 +244,9 @@ export function CheckoutModal({ open, onClose }: { open: boolean; onClose: () =>
                   {resultado.numero ? `Pedido #${resultado.numero} enviado` : 'Pedido enviado'}
                 </h2>
                 <p className="max-w-[42ch] text-sm leading-relaxed text-ink-2">
-                  Te abrimos WhatsApp con el detalle completo. Mandá el mensaje y te respondemos para
-                  confirmar el pago y el envío.
+                  {resultado.sinCobro
+                    ? 'No pudimos abrir Mercado Pago, pero tu pedido quedó anotado. Mandanos el detalle por WhatsApp y te pasamos otra forma de pago.'
+                    : 'Te abrimos WhatsApp con el detalle completo. Mandá el mensaje y te respondemos para confirmar el pago y el envío.'}
                 </p>
                 <p className="eyebrow">Referencia {resultado.referencia}</p>
                 <div className="mt-2 flex flex-wrap justify-center gap-3">
@@ -197,7 +257,7 @@ export function CheckoutModal({ open, onClose }: { open: boolean; onClose: () =>
                     className="inline-flex h-11 items-center gap-2 rounded-lg bg-whatsapp px-5 text-[0.8rem] font-semibold tracking-[0.12em] text-black uppercase transition hover:brightness-95"
                   >
                     <IconWhatsapp size={18} />
-                    Abrir WhatsApp de nuevo
+                    {resultado.sinCobro ? 'Enviar por WhatsApp' : 'Abrir WhatsApp de nuevo'}
                   </a>
                   <Button variante="secundario" onClick={cerrar}>
                     Listo
@@ -212,8 +272,9 @@ export function CheckoutModal({ open, onClose }: { open: boolean; onClose: () =>
                   </h2>
                   <p className="mt-2 text-sm font-semibold text-ink tabular-nums">{resumen}</p>
                   <p className="mt-2 max-w-[56ch] text-xs leading-relaxed text-ink-3">
-                    No se cobra nada acá. Al enviar, registramos el pedido y se abre WhatsApp con el
-                    detalle completo para confirmar el pago y coordinar el envío.
+                    {mercadoPago
+                      ? 'Elegí cómo pagar: con Mercado Pago ahora, o por WhatsApp. El costo de envío te lo confirmamos por WhatsApp.'
+                      : 'No se cobra nada acá. Al enviar, registramos el pedido y se abre WhatsApp con el detalle completo para confirmar el pago y coordinar el envío.'}
                   </p>
                 </div>
 
@@ -315,6 +376,30 @@ export function CheckoutModal({ open, onClose }: { open: boolean; onClose: () =>
                     />
                   </Field>
 
+                  {mercadoPago && (
+                    <fieldset className="grid gap-3">
+                      <legend className="eyebrow mb-3">Forma de pago</legend>
+                      <div className="grid gap-3 sm:grid-cols-2">
+                        <OpcionPago
+                          titulo="Mercado Pago"
+                          detalle={
+                            motivoSinMP ??
+                            'Tarjeta de crédito, débito o dinero en cuenta. Pagás las prendas ahora y el envío te lo cotizamos por WhatsApp.'
+                          }
+                          elegida={pagaConMP}
+                          deshabilitada={motivoSinMP !== null}
+                          onElegir={() => setMedio('mercadopago')}
+                        />
+                        <OpcionPago
+                          titulo="Por WhatsApp"
+                          detalle="Transferencia, link de pago o efectivo al retirar. Coordinamos el pago y el envío con vos."
+                          elegida={!pagaConMP}
+                          onElegir={() => setMedio('whatsapp')}
+                        />
+                      </div>
+                    </fieldset>
+                  )}
+
                   {errorEnvio && (
                     <p role="alert" className="rounded-lg border border-alerta/40 bg-alerta/10 px-4 py-3 text-sm text-ink">
                       {errorEnvio} Revisá el carrito y probá de nuevo.
@@ -325,14 +410,23 @@ export function CheckoutModal({ open, onClose }: { open: boolean; onClose: () =>
                     <Button variante="secundario" className="sm:flex-1" onClick={cerrar}>
                       Volver al carrito
                     </Button>
-                    <Button type="submit" variante="whatsapp" className="sm:flex-[1.6]" disabled={isSubmitting}>
-                      {isSubmitting ? (
-                        <span className="size-4 animate-spin rounded-full border-2 border-black/30 border-t-black" />
-                      ) : (
-                        <IconWhatsapp size={18} />
-                      )}
-                      {isSubmitting ? 'Registrando pedido…' : 'Enviar pedido por WhatsApp'}
-                    </Button>
+                    {pagaConMP ? (
+                      <Button type="submit" className="sm:flex-[1.6]" disabled={isSubmitting}>
+                        {isSubmitting && (
+                          <span className="size-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
+                        )}
+                        {isSubmitting ? 'Preparando el pago…' : 'Pagar con Mercado Pago'}
+                      </Button>
+                    ) : (
+                      <Button type="submit" variante="whatsapp" className="sm:flex-[1.6]" disabled={isSubmitting}>
+                        {isSubmitting ? (
+                          <span className="size-4 animate-spin rounded-full border-2 border-black/30 border-t-black" />
+                        ) : (
+                          <IconWhatsapp size={18} />
+                        )}
+                        {isSubmitting ? 'Registrando pedido…' : 'Enviar pedido por WhatsApp'}
+                      </Button>
+                    )}
                   </div>
                 </form>
               </>
@@ -342,5 +436,42 @@ export function CheckoutModal({ open, onClose }: { open: boolean; onClose: () =>
         </div>
       )}
     </AnimatePresence>
+  );
+}
+
+function OpcionPago({
+  titulo,
+  detalle,
+  elegida,
+  deshabilitada = false,
+  onElegir,
+}: {
+  titulo: string;
+  detalle: string;
+  elegida: boolean;
+  deshabilitada?: boolean;
+  onElegir: () => void;
+}) {
+  return (
+    <label
+      className={cn(
+        'flex cursor-pointer items-start gap-3 rounded-xl border p-4 transition-colors',
+        elegida ? 'border-ink bg-hover' : 'border-line hover:border-line-strong',
+        deshabilitada && 'cursor-not-allowed opacity-60 hover:border-line',
+      )}
+    >
+      <input
+        type="radio"
+        name="medio-de-pago"
+        checked={elegida}
+        disabled={deshabilitada}
+        onChange={onElegir}
+        className="mt-0.5 size-4 shrink-0 accent-current"
+      />
+      <span className="grid gap-1">
+        <span className="text-sm font-semibold text-ink">{titulo}</span>
+        <span className="text-xs leading-relaxed text-ink-3">{detalle}</span>
+      </span>
+    </label>
   );
 }

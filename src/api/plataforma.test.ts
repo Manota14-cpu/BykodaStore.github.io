@@ -64,6 +64,13 @@ describe('obtenerCatalogoPlataforma', () => {
     warn.mockRestore();
   });
 
+  it('informa si la tienda cobra con Mercado Pago', async () => {
+    vi.stubGlobal('fetch', vi.fn(async () => respuesta({ ...RESPUESTA_REAL, mercadopago: true })));
+    expect((await obtenerCatalogoPlataforma('bykoda')).mercadopago).toBe(true);
+    vi.stubGlobal('fetch', vi.fn(async () => respuesta(RESPUESTA_REAL)));
+    expect((await obtenerCatalogoPlataforma('bykoda')).mercadopago).toBe(false);
+  });
+
   it('falla con un error claro si la tienda no responde bien', async () => {
     vi.stubGlobal('fetch', vi.fn(async () => respuesta({}, 503)));
     await expect(obtenerCatalogoPlataforma('bykoda')).rejects.toThrow(ErrorPlataforma);
@@ -96,6 +103,35 @@ describe('registrarPedido', () => {
   it('muestra el mensaje de la tienda cuando rechaza el pedido', async () => {
     vi.stubGlobal('fetch', vi.fn(async () => respuesta({ error: 'No hay stock suficiente de REMERA BOXY FIT.' }, 409)));
     await expect(registrarPedido(pedido, 'bykoda')).rejects.toThrow('No hay stock suficiente de REMERA BOXY FIT.');
+  });
+
+  it('con Mercado Pago devuelve el link para pagar', async () => {
+    const link = 'https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=123-abc';
+    const fetchMock = vi.fn(async () => respuesta({ numero: 58, total: 34000, pagar: link }));
+    vi.stubGlobal('fetch', fetchMock);
+
+    const resultado = await registrarPedido({ ...pedido, pago: 'mercadopago', vuelta: 'https://www.bykoda.store/' }, 'bykoda');
+
+    expect(resultado).toEqual({ numero: '58', total: 34000, pagar: link });
+    const [, init] = fetchMock.mock.calls[0] as unknown as [string, RequestInit];
+    expect(JSON.parse(init.body as string)).toMatchObject({ pago: 'mercadopago', vuelta: 'https://www.bykoda.store/' });
+  });
+
+  it('si no se pudo armar el cobro, o el link no es de Mercado Pago, avisa sin link', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async () => respuesta({ numero: 59, total: 34000, errorPago: 'El negocio no tiene Mercado Pago conectado.' })),
+    );
+    expect(await registrarPedido({ ...pedido, pago: 'mercadopago' }, 'bykoda')).toEqual({
+      numero: '59',
+      total: 34000,
+      errorPago: 'El negocio no tiene Mercado Pago conectado.',
+    });
+
+    vi.stubGlobal('fetch', vi.fn(async () => respuesta({ numero: 60, total: 34000, pagar: 'javascript:alert(1)' })));
+    const raro = await registrarPedido({ ...pedido, pago: 'mercadopago' }, 'bykoda');
+    expect(raro.pagar).toBeUndefined();
+    expect(raro.errorPago).toBeTruthy();
   });
 
   it('avisa si no hay conexión', async () => {

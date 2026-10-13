@@ -11,6 +11,7 @@ import { TABLAS_TALLES, TIP_TALLES } from '@/lib/talles';
 import { construirURLConsultaWhatsApp, WA_NUMBER, WA_TEL_VISIBLE } from '@/lib/whatsapp';
 import { useToastStore } from '@/store/toast';
 import { useSEO } from '@/lib/seo';
+import { useMercadoPago } from '@/hooks/useCatalogo';
 import { cn } from '@/lib/cn';
 
 const EMAIL = 'admin@bykoda.store';
@@ -47,11 +48,40 @@ const VALORES = [
   {
     titulo: 'Trato directo',
     texto:
-      'No hay intermediarios ni checkout automático. Coordinás el pedido con nosotros por WhatsApp y sabés siempre con quién estás hablando.',
+      'Del otro lado hay una persona. Coordinás el envío con nosotros por WhatsApp y sabés siempre con quién estás hablando.',
   },
 ];
 
 const lista = 'grid list-disc gap-1.5 pl-5';
+
+/** Reemplaza a la primera pregunta cuando la tienda cobra con Mercado Pago. */
+const FAQ_COMPRA_MP = {
+  titulo: '¿Cómo compro? ¿Cómo pago?',
+  contenido: (
+    <>
+      <p>Podés pagar con Mercado Pago al finalizar la compra o coordinar el pago por WhatsApp.</p>
+      <ol className="grid list-decimal gap-2 pl-5">
+        <li>Elegís la prenda, el talle y la cantidad, y la agregás al carrito.</li>
+        <li>
+          En el carrito tocás <strong className="text-ink">Finalizar compra</strong> y completás tus datos de
+          contacto y envío.
+        </li>
+        <li>
+          Elegís cómo pagar. Con <strong className="text-ink">Mercado Pago</strong> pagás las prendas en el
+          momento, con tarjeta de crédito, débito o dinero en cuenta. <strong className="text-ink">Por
+          WhatsApp</strong> se abre el chat con el pedido ya escrito y te pasamos los datos para pagar. Con
+          cupón de descuento, el pago se coordina por WhatsApp.
+        </li>
+        <li>Te confirmamos el costo de envío por WhatsApp.</li>
+        <li>Con el pago acreditado despachamos en 1 a 3 días hábiles y te pasamos el seguimiento.</li>
+      </ol>
+      <p className="mt-3 text-xs text-ink-3">
+        Los datos de tu tarjeta los carga Mercado Pago: nunca pasan por este sitio y nunca te los vamos a pedir
+        por WhatsApp.
+      </p>
+    </>
+  ),
+};
 
 const FAQS = [
   {
@@ -189,6 +219,7 @@ const esquemaConsulta = z.object({
 type Consulta = z.infer<typeof esquemaConsulta>;
 
 export function InfoPage() {
+  const mercadoPago = useMercadoPago();
   useSEO({
     title: 'Nosotros, FAQ y contacto | BYKODA',
     description:
@@ -376,7 +407,7 @@ export function InfoPage() {
             </p>
           </Revelar>
           <Revelar delay={0.05} className="lg:col-span-8">
-            <Accordion items={FAQS} inicial={0} />
+            <Accordion items={mercadoPago ? [FAQ_COMPRA_MP, ...FAQS.slice(1)] : FAQS} inicial={0} />
           </Revelar>
         </div>
       </section>

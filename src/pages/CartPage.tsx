@@ -5,6 +5,7 @@ import * as m from 'motion/react-m';
 import { margenDeStock, useCartStore, useCartTotals } from '@/store/cart';
 import { useToastStore } from '@/store/toast';
 import { useSincronizarCarrito } from '@/hooks/useSincronizarCarrito';
+import { useMercadoPago } from '@/hooks/useCatalogo';
 import { fmtMoneda } from '@/lib/format';
 import { useSEO } from '@/lib/seo';
 import { cn } from '@/lib/cn';
@@ -16,8 +17,9 @@ import { Button, ButtonLink, Input } from '@/components/ui';
 const GARANTIAS = [
   'Envíos a todo el país · 4 a 8 días hábiles',
   'Cambio de talle sin cargo dentro de los 7 días',
-  'Coordinás pago y envío por WhatsApp, sin datos de tarjeta',
 ];
+const GARANTIA_PAGO = 'Coordinás pago y envío por WhatsApp, sin datos de tarjeta';
+const GARANTIA_PAGO_MP = 'Pagás con Mercado Pago o coordinás el pago por WhatsApp';
 
 const MEDIOS = ['Transferencia', 'Mercado Pago', 'Efectivo (retiro)'];
 
@@ -47,6 +49,7 @@ export function CartPage() {
 
   // Mientras se revisa el pedido, el carrito sigue al stock y los precios de la app.
   useSincronizarCarrito();
+  const mercadoPago = useMercadoPago();
 
   // "Comprar ahora" en la ficha llega con ?checkout=1.
   useEffect(() => {
@@ -108,7 +111,7 @@ export function CartPage() {
             </h1>
             <p className="mt-3 text-[0.95rem] text-ink-2">
               {cantidadTotal} {cantidadTotal === 1 ? 'artículo' : 'artículos'} · revisá cantidades y
-              finalizá por WhatsApp.
+              {mercadoPago ? ' finalizá la compra.' : ' finalizá por WhatsApp.'}
             </p>
           </header>
 
@@ -290,7 +293,7 @@ export function CartPage() {
 
               <div className="grid gap-2.5">
                 <Button tamano="lg" ancho="completo" onClick={() => setCheckout(true)}>
-                  Finalizar por WhatsApp
+                  {mercadoPago ? 'Finalizar compra' : 'Finalizar por WhatsApp'}
                 </Button>
                 <Button variante="secundario" ancho="completo" onClick={handleVaciar}>
                   Vaciar carrito
@@ -318,7 +321,7 @@ export function CartPage() {
               </div>
 
               <ul className="grid gap-2 border-t border-line pt-5">
-                {GARANTIAS.map((g) => (
+                {[...GARANTIAS, mercadoPago ? GARANTIA_PAGO_MP : GARANTIA_PAGO].map((g) => (
                   <li
                     key={g}
                     className="flex items-start gap-2.5 text-xs leading-relaxed text-ink-3"

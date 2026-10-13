@@ -60,3 +60,9 @@ export function useProducto(slug: string | undefined) {
   );
   return { ...catalogo, producto };
 }
+
+/** Si la tienda tiene Mercado Pago conectado en Visual App (false mientras carga). */
+export function useMercadoPago(): boolean {
+  const { data } = useQuery({ ...opcionesCatalogoPlataforma(), select: (c) => c.mercadopago });
+  return data === true;
+}

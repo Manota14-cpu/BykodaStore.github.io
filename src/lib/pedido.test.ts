@@ -4,6 +4,7 @@ import { fmtMoneda } from './format';
 import {
   armarPedidoPlataforma,
   direccionCompleta,
+  motivoSinMercadoPago,
   PEDIDO_FORM_VACIO,
   validarPedido,
   type PedidoForm,
@@ -149,5 +150,20 @@ describe('direccionCompleta', () => {
     expect(direccionCompleta({ ...completo, codigoPostal: '2300' })).toBe(
       'Belgrano 1234, Rafaela, Santa Fe (CP 2300), Argentina',
     );
+  });
+});
+
+describe('motivoSinMercadoPago', () => {
+  const hoodie: CartItem = { nombre: 'HOODIE KODA (Negro · L)', precio: 52000, cantidad: 1, productoId: 'v-negro-l', fuente: 'plataforma' };
+  const cupon: Cupon = { codigo: 'KODA10', descuento: 10, activo: true, usos_max: -1, usos: 0, vence: null };
+
+  it('se puede pagar con Mercado Pago si todo es de la plataforma y sin cupón', () => {
+    expect(motivoSinMercadoPago([hoodie], null)).toBeNull();
+  });
+
+  it('no, con prendas del catálogo anterior, precios a consultar o cupón', () => {
+    expect(motivoSinMercadoPago([hoodie, { ...hoodie, productoId: 'jean', fuente: 'local' }], null)).toMatch(/catálogo anterior/);
+    expect(motivoSinMercadoPago([{ ...hoodie, precio: 0 }], null)).toMatch(/a consultar/);
+    expect(motivoSinMercadoPago([hoodie], cupon)).toMatch(/cupón/);
   });
 });

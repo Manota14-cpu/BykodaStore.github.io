@@ -49,6 +49,13 @@ de cargar o sacar productos, corré `npm run sitemap` para que Google los encuen
   stock y devuelve el número) y después se abre WhatsApp con el detalle completo y
   ese número. Con cupón, el total a cobrar queda anotado en las notas del pedido
   (el total de la app no aplica descuentos).
+- **Mercado Pago**: si la tienda tiene Mercado Pago conectado en Visual App
+  (Configuración → Tienda web → Conectar Mercado Pago), al finalizar se puede elegir
+  pagar ahí. La plataforma registra el pedido, arma el cobro con sus precios y
+  Mercado Pago vuelve al inicio del sitio, que avisa si el pago se aprobó. Cobra
+  solo las prendas: el envío se cotiza por WhatsApp. Con cupón, prendas del
+  catálogo anterior o precios a consultar, el pago sigue por WhatsApp. Sin Mercado
+  Pago conectado, la opción no aparece.
 
 La conexión se configura en [`src/config/tienda.ts`](src/config/tienda.ts) y con
 variables de entorno:
