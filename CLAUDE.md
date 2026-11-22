@@ -9,7 +9,7 @@ repo privado `Manota14-cpu/bykoda-interno`.
 ## Qué es
 
 BYKODA (también "Koda") es una marca de streetwear argentino de Rafaela, Santa Fe.
-Vende ediciones limitadas en tiradas cortas que no se reponen. El trato es directo
+Vende ediciones limitadas en drops chicos que no se reponen. El trato es directo
 por WhatsApp. Se está **reabriendo** con un grupo de amigos (noviembre 2026).
 
 - Sitio: https://www.bykoda.store (dominio en `public/CNAME`)
@@ -55,7 +55,11 @@ Antes de dar algo por terminado: `npm test && npm run lint && npm run build`.
   también.
 - **Compra**: carrito → formulario → el pedido se registra en Visual App → se abre
   WhatsApp con el detalle. Opcional: Mercado Pago, si está conectado en Visual App.
-- **Cupones**: `public/cupones.json`. Al cambiarlos, subí `VERSION` en `src/api/local.ts`.
+- **Cupones**: `public/cupones.json` guarda solo el hash de cada código (`npm run cupon`).
+  Al cambiarlos, subí `VERSION` en `src/api/local.ts`. Los códigos reales van en el repo privado.
+- **Newsletter**: Google Form configurado en `src/config/newsletter.ts`. Sin configurar, va por WhatsApp.
+- **Reseñas**: solo reales, en `TESTIMONIOS` (`src/components/home/Secciones.tsx`). Vacía = sección oculta.
+- **Textos**: no decir que BYKODA diseña, fabrica o produce mientras no sea así.
 - **Videos de la home**: proyectos HyperFrames en `videos/`. Están apagados
   (`videosListos: false` en `src/config/media.ts`), así que se muestran los pósters.
 - **Catálogo anterior**: 71 prendas archivadas en `catalogo-anterior/`. No se publica.

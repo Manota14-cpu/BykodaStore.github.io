@@ -36,9 +36,9 @@ const TEMAS = [
 
 const VALORES = [
   {
-    titulo: 'Producción corta',
+    titulo: 'Drops chicos',
     texto:
-      'Trabajamos con tiradas limitadas. Cada drop tiene pocas unidades por talle y no se repone: por eso lo que ves hoy puede no estar mañana.',
+      'Cada drop trae pocas unidades por talle y no se repone: por eso lo que ves hoy puede no estar mañana.',
   },
   {
     titulo: 'Materiales elegidos',
@@ -350,17 +350,17 @@ export function InfoPage() {
           <Revelar className="md:col-span-7">
             <p className="eyebrow">Nosotros</p>
             <h2 id="titulo-nosotros" className="titulo-display mt-3 text-[clamp(2.4rem,5.5vw,4rem)] text-ink uppercase">
-              Streetwear argentino, en tiradas cortas
+              Streetwear argentino, en drops chicos
             </h2>
             <div className="mt-5 grid max-w-[62ch] gap-4 text-[0.95rem] leading-relaxed text-ink-2">
               <p>
                 BYKODA nació en Rafaela, Santa Fe, con una idea simple: que se pueda comprar ropa urbana buena sin
-                pasar por una cadena impersonal. Diseñamos y seleccionamos cada prenda, producimos poco y vendemos
-                hablando con cada cliente.
+                pasar por una cadena impersonal. Elegimos cada prenda una por una, traemos pocas unidades por talle y
+                vendemos hablando con cada cliente.
               </p>
               <p>
-                No somos un marketplace ni revendemos catálogos de terceros. Lo que ves en el sitio es lo que
-                tenemos, con el talle y la tela que dice la ficha.
+                Lo que ves en el sitio es lo que tenemos en stock, con el talle y la tela que dice la ficha. ¿Dudás
+                con un talle o un color? Escribinos y te mandamos medidas o más fotos antes de comprar.
               </p>
             </div>
             <ButtonLink to="/catalogo" className="mt-8">

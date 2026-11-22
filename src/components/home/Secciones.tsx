@@ -74,25 +74,16 @@ export function Garantias() {
   );
 }
 
-const TESTIMONIOS = [
-  {
-    texto: 'La calidad es excelente y la atención por WhatsApp fue súper rápida. Ya hice dos pedidos.',
-    nombre: 'Mateo A.',
-    localidad: 'Rosario',
-  },
-  {
-    texto: 'El hoodie es increíble y llegó antes de lo esperado. Sin dudas vuelvo a comprar.',
-    nombre: 'Juli P.',
-    localidad: 'Córdoba',
-  },
-  {
-    texto: 'Prendas únicas, nadie más las tiene. La mejor tienda de streetwear del país.',
-    nombre: 'Nico R.',
-    localidad: 'Buenos Aires',
-  },
-];
+/**
+ * Reseñas de clientes reales, con su permiso (por ejemplo, de mensajes de
+ * WhatsApp o Instagram). Nada inventado: mientras la lista esté vacía, la
+ * sección no se muestra. Formato:
+ *   { texto: 'Lo que dijo', nombre: 'Nombre y la inicial del apellido', localidad: 'Ciudad' }
+ */
+const TESTIMONIOS: { texto: string; nombre: string; localidad: string }[] = [];
 
 export function Testimonios() {
+  if (TESTIMONIOS.length === 0) return null;
   return (
     <section aria-labelledby="titulo-resenas" className="area-pagina py-[clamp(4rem,10vw,8rem)]">
       <SectionHeading id="titulo-resenas" eyebrow="Reseñas" titulo="Lo que dicen quienes compraron" />

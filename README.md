@@ -1,9 +1,9 @@
 # BYKODA Store
 
 Tienda de ropa urbana. SPA en React + TypeScript + Vite + Tailwind CSS, publicada en
-GitHub Pages. **No hay pasarela de pago**: el pedido se arma en el sitio y se confirma
-por WhatsApp. El catálogo, el stock y los pedidos se manejan desde la plataforma
-**Visual App**.
+GitHub Pages. El pedido se arma en el sitio y se confirma por WhatsApp, o se paga con
+Mercado Pago si está conectado. El catálogo, el stock y los pedidos se manejan desde la
+plataforma **Visual App**.
 
 ## Cómo correrlo
 
@@ -20,6 +20,7 @@ npm run dev
 | `npm run lint`         | ESLint                                                            |
 | `npm run format`       | Prettier                                                          |
 | `npm run sitemap`      | Regenera `public/sitemap.xml` con los productos de Visual App     |
+| `npm run cupon`        | Genera la entrada de un cupón nuevo para `public/cupones.json`    |
 
 ## Catálogo en Visual App
 
@@ -73,9 +74,31 @@ el build.
 
 ## Cupones
 
-Se gestionan en [`public/cupones.json`](public/cupones.json). Al cambiarlos, subí el
-`VERSION` en [`src/api/local.ts`](src/api/local.ts) para invalidar la caché del
-navegador.
+Se gestionan en [`public/cupones.json`](public/cupones.json). El archivo es público,
+así que no guarda los códigos sino su hash: el sitio calcula el hash de lo que escribe
+el cliente y lo compara. Para crear un cupón:
+
+```bash
+npm run cupon -- VERANO20 20 --vence 2027-01-31 --usos 1
+```
+
+Pegá el resultado dentro de `"cupones"` y subí el `VERSION` en
+[`src/api/local.ts`](src/api/local.ts) para invalidar la caché del navegador. El límite
+de usos se cuenta por navegador; el código usado viaja en el mensaje del pedido para
+poder controlarlo.
+
+## Lista de espera (newsletter)
+
+El "Enterate primero de cada drop" del pie de página guarda los mails en un Google Form
+(sus respuestas van a una planilla). Se conecta en
+[`src/config/newsletter.ts`](src/config/newsletter.ts), con los pasos explicados ahí.
+Mientras no esté conectado, el mail se manda a la tienda por WhatsApp.
+
+## Reseñas
+
+La sección de reseñas de la home solo aparece si hay reseñas cargadas en `TESTIMONIOS`
+([`src/components/home/Secciones.tsx`](src/components/home/Secciones.tsx)). Tienen que
+ser de clientes reales y con su permiso.
 
 ## Estructura
 
