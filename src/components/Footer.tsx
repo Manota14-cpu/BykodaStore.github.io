@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import { useToastStore } from '@/store/toast';
 import { WA_NUMBER, WA_TEL_VISIBLE } from '@/lib/whatsapp';
 import { ESTUDIO, MARCA, rangoCopyright } from '@/lib/creditos';
+import { EMAIL_RE, newsletterConectado, suscribirEmail, urlSuscripcionWhatsApp } from '@/lib/newsletter';
 import { Button, Input } from './ui';
 
 const EMAIL = 'admin@bykoda.store';
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i;
 
 const COLUMNAS = [
   {
@@ -35,24 +35,31 @@ export function Footer() {
   const showToast = useToastStore((s) => s.showToast);
   const [email, setEmail] = useState('');
 
-  function handleNewsletter(e: FormEvent<HTMLFormElement>) {
+  const [enviando, setEnviando] = useState(false);
+
+  async function handleNewsletter(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const valor = email.trim();
     if (!EMAIL_RE.test(valor)) {
       showToast('Revisá el correo que ingresaste.', 'error');
       return;
     }
-    try {
-      const subs = JSON.parse(localStorage.getItem('koda_subs') || '[]') as string[];
-      if (!subs.includes(valor)) {
-        subs.push(valor);
-        localStorage.setItem('koda_subs', JSON.stringify(subs));
-      }
-    } catch {
-      /* storage bloqueado */
+    if (!newsletterConectado()) {
+      // Todavía no hay formulario: el mail le llega a la tienda por WhatsApp.
+      window.open(urlSuscripcionWhatsApp(valor), '_blank', 'noopener');
+      setEmail('');
+      return;
     }
-    showToast('¡Gracias por suscribirte!', 'success');
-    setEmail('');
+    setEnviando(true);
+    try {
+      await suscribirEmail(valor);
+      showToast('¡Listo! Te avisamos antes de cada drop.', 'success');
+      setEmail('');
+    } catch {
+      showToast('No pudimos anotarte. Revisá tu conexión y probá de nuevo.', 'error');
+    } finally {
+      setEnviando(false);
+    }
   }
 
   return (
@@ -87,8 +94,8 @@ export function Footer() {
               onChange={(e) => setEmail(e.target.value)}
               className="py-2.5"
             />
-            <Button type="submit" tamano="sm" className="shrink-0 px-4">
-              Enviar
+            <Button type="submit" tamano="sm" className="shrink-0 px-4" disabled={enviando}>
+              {enviando ? 'Enviando…' : 'Enviar'}
             </Button>
           </form>
         </div>
