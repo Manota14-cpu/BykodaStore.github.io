@@ -1,55 +1,40 @@
 {
-  "_instrucciones": "Editá este archivo para gestionar tus cupones de descuento.",
+  "_instrucciones": "Los códigos no se publican: cada cupón guarda solo su hash. Para crear uno: npm run cupon -- CODIGO DESCUENTO [--vence AAAA-MM-DD] [--usos N] [--inactivo]. Pegá el resultado acá, subí VERSION en src/api/local.ts y anotá el código en el repo privado.",
   "_campos": {
-    "codigo": "El código que escribe el cliente (insensible a mayúsculas)",
-    "descuento": "Porcentaje de descuento (ej: 10 = 10%)",
-    "tipo": "porcentaje (único tipo por ahora)",
-    "activo": "true = funciona | false = desactivado sin borrar",
-    "usos_max": "Máximo de usos por persona en este navegador (-1 = ilimitado)",
-    "usos": "Contador del archivo (informativo; no se actualiza solo)",
-    "vence": "Fecha de vencimiento en formato YYYY-MM-DD o null para sin vencimiento",
-    "descripcion": "Nota interna tuya, el cliente no la ve"
+    "hash": "Huella del código (la genera npm run cupon)",
+    "descuento": "Porcentaje de descuento (10 = 10%)",
+    "activo": "true = funciona, false = desactivado sin borrar",
+    "usos_max": "Usos por persona en un mismo navegador (-1 = sin límite)",
+    "vence": "Último día de validez, AAAA-MM-DD, o null"
   },
   "cupones": [
     {
-      "codigo": "KODA10",
+      "hash": "7ff2facd0ccc50758d85ee86a2b9d4e124926fb91ce9aa9a5a55df66587cfc4e",
       "descuento": 10,
-      "tipo": "porcentaje",
       "activo": true,
       "usos_max": -1,
-      "usos": 0,
-      "vence": null,
-      "descripcion": "Cupón general 10% off"
+      "vence": null
     },
     {
-      "codigo": "KODA15",
+      "hash": "b9a0e2fcefca187b57f3d3d7d4bb412f0a8884a0811a78b48a4f491338fda082",
       "descuento": 15,
-      "tipo": "porcentaje",
       "activo": true,
       "usos_max": -1,
-      "usos": 0,
-      "vence": "2026-12-31",
-      "descripcion": "Cupón especial 15% — limitado a 50 usos"
+      "vence": "2026-12-31"
     },
     {
-      "codigo": "BIENVENIDO",
+      "hash": "32a94ab81b4d75fba8a476084d3ec9ca7c656a9bc0a11a69a800c300ca4b7b75",
       "descuento": 20,
-      "tipo": "porcentaje",
       "activo": true,
       "usos_max": 1,
-      "usos": 0,
-      "vence": null,
-      "descripcion": "20% para primera compra — 1 uso por persona"
+      "vence": null
     },
     {
-      "codigo": "PROMO25",
+      "hash": "41414cde8d013402192f9dbccbd55aa2d7508b16a0b202c947617f4181289603",
       "descuento": 25,
-      "tipo": "porcentaje",
       "activo": false,
       "usos_max": 10,
-      "usos": 10,
-      "vence": null,
-      "descripcion": "Reservado para promociones especiales — desactivado"
+      "vence": null
     }
   ]
 }

@@ -60,7 +60,7 @@ export function HeroHome() {
           transition={{ duration: 0.8, ease: EASE_SUAVE, delay: 0.55 }}
         >
           <p className="max-w-[40ch] text-[clamp(0.95rem,1.4vw,1.05rem)] leading-relaxed text-white/80">
-            Streetwear argentino en tiradas cortas. Cuando una prenda se agota, no vuelve.
+            Streetwear argentino en drops chicos. Cuando una prenda se agota, no vuelve.
           </p>
           <div className="flex flex-wrap gap-3">
             <ButtonLink to="/catalogo" tamano="lg" className="bg-white text-black hover:bg-white/90 hover:opacity-100">

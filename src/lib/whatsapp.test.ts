@@ -15,7 +15,6 @@ const cupon: Cupon = {
   descuento: 10,
   activo: true,
   usos_max: -1,
-  usos: 0,
   vence: null,
 };
 

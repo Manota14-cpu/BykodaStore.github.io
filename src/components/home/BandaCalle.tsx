@@ -9,7 +9,7 @@ import { Revelar, RevelarGrupo, RevelarItem } from '../motion/Revelar';
 const DATOS = [
   { titulo: 'Denim de gramaje pesado', texto: 'Caída estructurada que no se deforma con el uso.' },
   { titulo: 'Frisa perchada', texto: 'Interior afelpado, capucha forrada, puños acanalados.' },
-  { titulo: 'Tiradas cortas', texto: 'Pocas unidades por talle. No se reponen.' },
+  { titulo: 'Drops chicos', texto: 'Pocas unidades por talle. No se reponen.' },
 ];
 
 /** La colección en la calle: video vertical a un lado, el porqué de la ropa al otro. */
@@ -42,7 +42,7 @@ export function BandaCalle() {
               Hecho para la calle
             </h2>
             <p className="mt-5 max-w-[46ch] text-[0.98rem] leading-relaxed text-ink-2">
-              Diseñamos y seleccionamos cada prenda para el uso real: asfalto, colectivo, noche. La
+              Elegimos cada prenda pensando en el uso real: asfalto, colectivo, noche. La
               ficha de cada una dice qué tela lleva, cómo calza y cómo cuidarla.
             </p>
           </Revelar>
