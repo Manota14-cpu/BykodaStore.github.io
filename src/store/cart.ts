@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import type { CartItem, Cupon } from '@/types';
 import { obtenerCupones } from '@/api/local';
+import { hashCupon, normalizarCodigo } from '@/lib/cupones';
 
 const STORAGE_KEY = 'carrito';
 const USOS_LOCALES_KEY = 'koda_cupon_usos';
@@ -197,19 +198,26 @@ export const useCartStore = create<CartState>((set, get) => ({
   },
 
   aplicarCupon: async (codigo) => {
-    const codigoLimpio = codigo.trim().toUpperCase();
+    const codigoLimpio = normalizarCodigo(codigo);
     if (!codigoLimpio) {
       set({ cuponMsg: { type: 'error', text: 'Ingresá un código de cupón.' } });
       return;
     }
-    const cupones = await obtenerCupones();
-    const cupon = cupones.find((c) => c.codigo.toUpperCase() === codigoLimpio);
-    if (!cupon || !cupon.activo) {
+    const [cupones, hash] = await Promise.all([obtenerCupones(), hashCupon(codigoLimpio)]);
+    const guardado = cupones.find((c) => c.hash === hash);
+    if (!guardado || !guardado.activo) {
       set({ cuponMsg: { type: 'error', text: 'Código inválido o inactivo.' } });
       return;
     }
+    const cupon: Cupon = {
+      codigo: codigoLimpio,
+      descuento: guardado.descuento,
+      activo: guardado.activo,
+      usos_max: guardado.usos_max,
+      vence: guardado.vence,
+    };
     const usadosLocales = getUsosLocales()[cupon.codigo] || 0;
-    if (cupon.usos_max !== -1 && (cupon.usos >= cupon.usos_max || usadosLocales >= cupon.usos_max)) {
+    if (cupon.usos_max !== -1 && usadosLocales >= cupon.usos_max) {
       set({ cuponMsg: { type: 'error', text: 'Este cupón ya alcanzó su límite de usos.' } });
       return;
     }

@@ -18,7 +18,8 @@
     "test:watch": "vitest",
     "lint": "eslint .",
     "format": "prettier --write \"src/**/*.{ts,tsx,css}\" \"*.{ts,json,md}\"",
-    "sitemap": "node scripts/gen-sitemap.mjs"
+    "sitemap": "node scripts/gen-sitemap.mjs",
+    "cupon": "node scripts/cupon.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.9.1",

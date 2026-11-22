@@ -95,7 +95,7 @@ describe('CheckoutModal con Mercado Pago', () => {
 
   it('con cupón, Mercado Pago no se puede elegir y sigue por WhatsApp', async () => {
     stubPlataforma({ mercadopago: true });
-    const cupon: Cupon = { codigo: 'KODA10', descuento: 10, activo: true, usos_max: -1, usos: 0, vence: null };
+    const cupon: Cupon = { codigo: 'KODA10', descuento: 10, activo: true, usos_max: -1, vence: null };
     useCartStore.setState({ cupon });
     renderCheckout();
 

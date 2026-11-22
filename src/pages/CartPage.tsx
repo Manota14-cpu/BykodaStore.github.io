@@ -227,7 +227,7 @@ export function CartPage() {
                 <div className="flex gap-2">
                   <Input
                     id="cupon-input"
-                    placeholder="Ej: KODA10"
+                    placeholder="Tu código"
                     autoComplete="off"
                     spellCheck={false}
                     value={cuponInput}

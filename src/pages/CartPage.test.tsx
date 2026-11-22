@@ -64,11 +64,11 @@ describe('CartPage', () => {
         json: async () => ({
           cupones: [
             {
-              codigo: 'KODA10',
+              // Hash de "KODA10" (npm run cupon -- KODA10 10).
+              hash: '7ff2facd0ccc50758d85ee86a2b9d4e124926fb91ce9aa9a5a55df66587cfc4e',
               descuento: 10,
               activo: true,
               usos_max: -1,
-              usos: 0,
               vence: null,
             },
           ],

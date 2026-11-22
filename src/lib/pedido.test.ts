@@ -76,7 +76,7 @@ describe('armarPedidoPlataforma', () => {
     talle,
   });
   const jeanLocal: CartItem = { nombre: 'Jean Ancla (M)', precio: 62999, cantidad: 1, productoId: 'jean-ancla', fuente: 'local', talle: 'M' };
-  const cupon: Cupon = { codigo: 'KODA10', descuento: 10, activo: true, usos_max: -1, usos: 0, vence: null };
+  const cupon: Cupon = { codigo: 'KODA10', descuento: 10, activo: true, usos_max: -1, vence: null };
 
   it('devuelve null si no hay nada de la plataforma', () => {
     expect(armarPedidoPlataforma(completo, [jeanLocal], null)).toBeNull();
@@ -155,7 +155,7 @@ describe('direccionCompleta', () => {
 
 describe('motivoSinMercadoPago', () => {
   const hoodie: CartItem = { nombre: 'HOODIE KODA (Negro · L)', precio: 52000, cantidad: 1, productoId: 'v-negro-l', fuente: 'plataforma' };
-  const cupon: Cupon = { codigo: 'KODA10', descuento: 10, activo: true, usos_max: -1, usos: 0, vence: null };
+  const cupon: Cupon = { codigo: 'KODA10', descuento: 10, activo: true, usos_max: -1, vence: null };
 
   it('se puede pagar con Mercado Pago si todo es de la plataforma y sin cupón', () => {
     expect(motivoSinMercadoPago([hoodie], null)).toBeNull();

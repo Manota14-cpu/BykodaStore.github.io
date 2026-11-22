@@ -1,4 +1,4 @@
-import type { Cupon } from '@/types';
+import type { CuponGuardado } from '@/types';
 
 /**
  * Datos que siguen en archivos del propio sitio: los cupones
@@ -6,14 +6,14 @@ import type { Cupon } from '@/types';
  */
 
 /** Cambiá este valor al publicar cambios en los JSON locales para invalidar la caché. */
-const VERSION = '4';
+const VERSION = '5';
 
-let cuponesPromesa: Promise<Cupon[]> | null = null;
+let cuponesPromesa: Promise<CuponGuardado[]> | null = null;
 
-export function obtenerCupones(): Promise<Cupon[]> {
+export function obtenerCupones(): Promise<CuponGuardado[]> {
   if (!cuponesPromesa) {
     cuponesPromesa = fetch(`/cupones.json?v=${VERSION}`)
-      .then((r) => r.json() as Promise<{ cupones?: Cupon[] }>)
+      .then((r) => r.json() as Promise<{ cupones?: CuponGuardado[] }>)
       .then((d) => d.cupones ?? [])
       .catch(() => {
         cuponesPromesa = null; // permite reintentar tras un fallo de red

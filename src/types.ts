@@ -75,16 +75,18 @@ export interface Producto {
   cuidados?: string;
 }
 
+/** Cupón aplicado al carrito: el código es el que escribió el cliente. */
 export interface Cupon {
   codigo: string;
   descuento: number;
-  tipo?: string;
   activo: boolean;
+  /** Usos por persona en un mismo navegador (-1 = sin límite). */
   usos_max: number;
-  usos: number;
   vence: string | null;
-  descripcion?: string;
 }
+
+/** Cupón como está en `public/cupones.json`: sin el código, solo su hash. */
+export type CuponGuardado = Omit<Cupon, 'codigo'> & { hash: string };
 
 export interface CartItem {
   /** Clave única en el carrito: incluye variante y talle. */

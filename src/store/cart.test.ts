@@ -1,12 +1,17 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { margenDeStock, useCartStore, type StockVivo } from './cart';
 
-vi.mock('../api/local', () => ({
-  obtenerCupones: vi.fn(async () => [
-    { codigo: 'KODA10', descuento: 10, activo: true, usos_max: -1, usos: 0, vence: null },
-    { codigo: 'VENCIDO', descuento: 5, activo: true, usos_max: -1, usos: 0, vence: '2020-01-01' },
-  ]),
-}));
+vi.mock('../api/local', async () => {
+  const { hashCupon } = await import('@/lib/cupones');
+  return {
+    obtenerCupones: vi.fn(async () => [
+      { hash: await hashCupon('KODA10'), descuento: 10, activo: true, usos_max: -1, vence: null },
+      { hash: await hashCupon('VENCIDO'), descuento: 5, activo: true, usos_max: -1, vence: '2020-01-01' },
+      { hash: await hashCupon('UNAVEZ'), descuento: 20, activo: true, usos_max: 1, vence: null },
+      { hash: await hashCupon('APAGADO'), descuento: 25, activo: false, usos_max: -1, vence: null },
+    ]),
+  };
+});
 
 beforeEach(() => {
   localStorage.clear();
@@ -199,5 +204,20 @@ describe('aplicarCupon', () => {
   it('rechaza un cupón vencido', async () => {
     await useCartStore.getState().aplicarCupon('VENCIDO');
     expect(useCartStore.getState().cuponMsg?.text).toContain('vencido');
+  });
+
+  it('rechaza un cupón desactivado', async () => {
+    await useCartStore.getState().aplicarCupon('apagado');
+    expect(useCartStore.getState().cupon).toBeNull();
+    expect(useCartStore.getState().cuponMsg?.type).toBe('error');
+  });
+
+  it('respeta el límite de usos por navegador', async () => {
+    await useCartStore.getState().aplicarCupon('UNAVEZ');
+    expect(useCartStore.getState().cupon?.descuento).toBe(20);
+    useCartStore.setState({ cupon: null, cuponMsg: null });
+    await useCartStore.getState().aplicarCupon('UNAVEZ');
+    expect(useCartStore.getState().cupon).toBeNull();
+    expect(useCartStore.getState().cuponMsg?.text).toContain('límite');
   });
 });
