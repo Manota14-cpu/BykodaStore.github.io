@@ -17,7 +17,7 @@ export function ScrollTop() {
       aria-label="Volver arriba"
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       className={cn(
-        'fixed right-4 bottom-[calc(9.5rem+env(safe-area-inset-bottom,0px))] z-[900] grid size-11 place-items-center rounded-full border border-line bg-surface/90 text-ink backdrop-blur-md transition-all duration-300 ease-(--ease-suave) hover:border-line-strong md:right-7 md:bottom-28',
+        'fixed right-4 bottom-[calc(9.5rem+env(safe-area-inset-bottom,0px))] z-[900] hidden size-11 place-items-center rounded-full border border-line bg-surface/90 text-ink backdrop-blur-md transition-all duration-300 ease-(--ease-suave) hover:border-line-strong md:right-7 md:bottom-28 md:grid',
         visible ? 'translate-y-0 opacity-100' : 'pointer-events-none translate-y-3 opacity-0',
       )}
     >

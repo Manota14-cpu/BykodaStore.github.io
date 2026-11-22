@@ -21,7 +21,7 @@ export function PlaceholderProducto({ nombre, className }: { nombre: string; cla
         src="/imagenes/logo.webp"
         alt=""
         aria-hidden="true"
-        className="w-1/2 max-w-40 opacity-[0.13] invert dark:invert-0"
+        className="w-1/2 max-w-40 opacity-[0.13] invert"
       />
       {/* En miniaturas (carrito, drawer) el aviso no entra: queda solo el logo. */}
       <span className="eyebrow absolute inset-x-0 bottom-4 px-2 text-center text-balance @max-[9rem]:hidden">

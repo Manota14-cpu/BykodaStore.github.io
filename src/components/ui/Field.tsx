@@ -3,7 +3,7 @@ import { cn } from '@/lib/cn';
 
 const control = [
   'w-full rounded-lg border border-line bg-hover/40 px-3.5 py-3 text-sm text-ink',
-  'transition-colors duration-200 placeholder:text-ink-3',
+  'transition-colors duration-200 placeholder:text-ink/35',
   'focus:border-line-strong focus:bg-hover focus:outline-none',
   'aria-invalid:border-alerta',
 ].join(' ');

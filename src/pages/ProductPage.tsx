@@ -298,9 +298,9 @@ export function ProductPage() {
         </span>
       </nav>
 
-      <div className="grid items-start gap-10 md:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] lg:gap-16">
+      <div className="grid grid-cols-[minmax(0,1fr)] items-start gap-10 md:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] lg:gap-16">
         {/* Galería */}
-        <div className="grid gap-3 md:sticky md:top-24">
+        <div className="grid grid-cols-[minmax(0,1fr)] gap-3 md:sticky md:top-24">
           <div className="relative aspect-4/5 overflow-hidden rounded-2xl bg-hover">
             {imgActual ? (
               <AnimatePresence mode="popLayout" initial={false}>
@@ -356,7 +356,7 @@ export function ProductPage() {
 
         {/* Compra */}
         <m.div
-          className="grid content-start gap-6"
+          className="grid grid-cols-[minmax(0,1fr)] content-start gap-6"
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: EASE_SUAVE, delay: 0.1 }}
@@ -539,7 +539,13 @@ export function ProductPage() {
                   +
                 </button>
               </div>
-              <Button variante="secundario" tamano="lg" className="h-12 flex-1" onClick={agregar} disabled={sinStock}>
+              <Button
+                variante="secundario"
+                tamano="lg"
+                className="h-12 min-w-0 flex-1 px-3 tracking-[0.06em] sm:px-7 sm:tracking-[0.12em]"
+                onClick={agregar}
+                disabled={sinStock}
+              >
                 {sinStock ? 'Sin stock' : 'Agregar al carrito'}
               </Button>
             </div>

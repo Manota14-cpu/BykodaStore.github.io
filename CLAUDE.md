@@ -22,8 +22,10 @@ por WhatsApp. Se está **reabriendo** con un grupo de amigos (noviembre 2026).
 - Español rioplatense, con voseo: "vestí", "comprá", "escribinos". Nunca "tú".
 - Frases cortas y seguras. Lema: **"Vestí tu actitud."** Frase que lo resume: "Cuando una
   prenda se agota, no vuelve."
-- Estética: negro puro, una figura bajo un foco, la calle mojada. Tipografías Bebas
-  Neue (títulos, en mayúsculas) y Montserrat (texto).
+- Estética: sitio blanco, estilo tienda (fotos sobre gris claro, esquinas rectas, nombres en
+  mayúsculas chicas). El negro queda para el hero y las fotos: una figura bajo un foco, la
+  calle mojada. Tipografías Bebas Neue (títulos, en mayúsculas) y Montserrat (texto).
+- **No hay modo oscuro**: un solo tema claro, con los colores en `src/styles/tailwind.css`.
 - Ideas que se repiten: ediciones limitadas, materiales pesados (denim rígido, frisa
   perchada), trato con una persona real, envíos a todo el país.
 - No prometer nada que la tienda no cumpla: plazos, cambios y medios de pago tienen que
