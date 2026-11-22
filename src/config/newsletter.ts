@@ -13,6 +13,7 @@
  * Mientras esté vacío, el mail se manda a la tienda por WhatsApp para no perderlo.
  */
 export const NEWSLETTER = {
-  formulario: '',
-  campoEmail: '',
+  formulario:
+    'https://docs.google.com/forms/d/e/1FAIpQLSe1dBNECSvjHpv66s6w9udNXSvugd2pfYZMImNSBH5J2Wb0gw/formResponse',
+  campoEmail: 'entry.1673791784',
 };
