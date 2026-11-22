@@ -12,14 +12,8 @@
    utilidades de Tailwind escritas en los componentes.
    ============================================================ */
 
-/* El tema lo decide `data-theme` en <html> (lo escribe src/lib/theme.ts
-   antes del primer pintado). Esta variante permite escribir `dark:` cuando
-   una regla no se puede resolver con los tokens semánticos de abajo. */
-@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
-
-/* ---- Paleta cruda: la fuente de verdad de cada tema ---------------- */
-:root,
-[data-theme='light'] {
+/* ---- Paleta: el sitio tiene un solo tema, claro ------------------- */
+:root {
   --k-ground: #ffffff;
   --k-surface: #f7f7f8;
   --k-raised: #fafafb;
@@ -36,26 +30,9 @@
   --k-tile: #f3f3f3;
 }
 
-[data-theme='dark'] {
-  --k-ground: #000000;
-  --k-surface: #0c0c0e;
-  --k-raised: #131316;
-  --k-ink: #f5f5f5;
-  --k-ink-2: rgb(255 255 255 / 0.68);
-  --k-ink-3: rgb(255 255 255 / 0.45);
-  --k-line: rgb(255 255 255 / 0.1);
-  --k-line-strong: rgb(255 255 255 / 0.24);
-  --k-hover: rgb(255 255 255 / 0.06);
-  --k-invert: #ffffff;
-  --k-on-invert: #000000;
-  --k-shadow: rgb(0 0 0 / 0.5);
-  --k-tile: #111113;
-}
-
 /* ---- Tokens de Tailwind -------------------------------------------
    `inline` hace que las utilidades referencien la variable en vez de
-   copiar su valor: así un solo `bg-surface` sirve para ambos temas sin
-   escribir `dark:` en cada elemento. */
+   copiar su valor: los colores se cambian en un solo lugar, arriba. */
 @theme inline {
   --font-display: 'Bebas Neue', 'Arial Narrow', sans-serif;
   --font-sans: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
@@ -73,7 +50,7 @@
   --color-on-invert: var(--k-on-invert);
   --color-tile: var(--k-tile);
 
-  /* Semánticos: no cambian con el tema. */
+  /* Semánticos. */
   --color-whatsapp: #25d366;
   --color-whatsapp-ink: #128c3e;
   --color-sale: #ff3b30;
@@ -85,6 +62,14 @@
   --ease-suave: cubic-bezier(0.22, 1, 0.36, 1);
 
   --container-pagina: 78rem;
+
+  /* Esquinas: rectas en fotos y tarjetas, apenas suavizadas en botones y
+     campos. Un solo criterio para todo el sitio. */
+  --radius-md: 0.125rem;
+  --radius-lg: 0.125rem;
+  --radius-xl: 0;
+  --radius-2xl: 0;
+  --radius-3xl: 0;
 }
 
 /* ---- Base ---------------------------------------------------------- */
@@ -93,11 +78,6 @@
     scroll-behavior: smooth;
     background-color: var(--color-ground);
     color-scheme: light;
-  }
-
-  [data-theme='dark'] html,
-  html[data-theme='dark'] {
-    color-scheme: dark;
   }
 
   body {

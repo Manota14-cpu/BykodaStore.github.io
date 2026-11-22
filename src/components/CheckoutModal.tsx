@@ -237,7 +237,7 @@ export function CheckoutModal({ open, onClose }: { open: boolean; onClose: () =>
               </div>
             ) : resultado ? (
               <div className="grid justify-items-center gap-4 py-6 text-center">
-                <span className="grid size-14 place-items-center rounded-full bg-whatsapp/15 text-whatsapp-ink dark:text-whatsapp">
+                <span className="grid size-14 place-items-center rounded-full bg-whatsapp/15 text-whatsapp-ink">
                   <IconWhatsapp size={26} />
                 </span>
                 <h2 id="checkout-titulo" className="titulo-display text-4xl text-ink">

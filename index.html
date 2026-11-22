@@ -2,22 +2,8 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#ffffff" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script>
-      (function () {
-        try {
-          var t = localStorage.getItem('bykoda-theme');
-          if (t !== 'dark' && t !== 'light') {
-            t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-          }
-          document.documentElement.dataset.theme = t;
-          document.documentElement.style.colorScheme = t;
-          var meta = document.querySelector('meta[name="theme-color"]');
-          if (meta) meta.setAttribute('content', t === 'light' ? '#ffffff' : '#000000');
-        } catch (e) {}
-      })();
-    </script>
     <title>BYKODA | Ropa Urbana Premium Argentina</title>
     <meta
       name="description"

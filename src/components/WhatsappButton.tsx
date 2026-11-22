@@ -1,10 +1,14 @@
+import { useLocation } from 'react-router-dom';
 import { WA_NUMBER } from '@/lib/whatsapp';
 import { IconWhatsapp } from './icons';
 
 /**
  * Botón flotante. Se levanta sobre la barra inferior en mobile para no taparla.
+ * En el carrito no aparece: tapaba el cupón y el pedido ya termina en WhatsApp.
  */
 export function WhatsappButton() {
+  const { pathname } = useLocation();
+  if (pathname === '/carrito') return null;
   return (
     <a
       href={`https://wa.me/${WA_NUMBER}`}

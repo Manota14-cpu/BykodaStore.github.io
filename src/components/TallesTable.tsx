@@ -2,7 +2,9 @@ import type { TablaTalles } from '@/lib/talles';
 
 export function TallesTable({ tabla }: { tabla: TablaTalles }) {
   return (
-    <div className="overflow-x-auto">
+    /* `contain: inline-size` evita que el ancho mínimo de la tabla empuje a la
+       página: en celular la tabla se desliza sola, dentro de su caja. */
+    <div className="w-full overflow-x-auto [contain:inline-size]">
       <table className="w-full min-w-[26rem] border-collapse text-[0.82rem]">
         <caption className="sr-only">{tabla.label} — medidas en centímetros</caption>
         <thead>

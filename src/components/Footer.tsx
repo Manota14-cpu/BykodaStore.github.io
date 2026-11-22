@@ -72,7 +72,7 @@ export function Footer() {
             width="132"
             height="36"
             loading="lazy"
-            className="h-8 w-auto invert dark:invert-0"
+            className="h-8 w-auto invert"
           />
           <p className="mt-4 max-w-[22ch] text-sm leading-relaxed text-ink-2">
             Más que ropa, una forma de expresarte.
@@ -145,7 +145,7 @@ export function Footer() {
               aria-label="Instagram de BYKODA"
               className="grid size-10 place-items-center rounded-full border border-line transition-colors hover:border-line-strong hover:bg-hover"
             >
-              <img src="/imagenes/icon-instagram.webp" alt="" width="20" height="20" loading="lazy" className="size-5 invert dark:invert-0" />
+              <img src="/imagenes/icon-instagram.webp" alt="" width="20" height="20" loading="lazy" className="size-5 invert" />
             </a>
             <a
               href="https://www.tiktok.com/@bykoda.store?lang=es"
@@ -154,7 +154,7 @@ export function Footer() {
               aria-label="TikTok de BYKODA"
               className="grid size-10 place-items-center rounded-full border border-line transition-colors hover:border-line-strong hover:bg-hover"
             >
-              <img src="/imagenes/logotiktok.webp" alt="" width="20" height="20" loading="lazy" className="size-5 invert dark:invert-0" />
+              <img src="/imagenes/logotiktok.webp" alt="" width="20" height="20" loading="lazy" className="size-5 invert" />
             </a>
           </div>
         </div>

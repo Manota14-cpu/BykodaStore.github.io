@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useCartStore } from '@/store/cart';
-import { useTheme } from '@/lib/theme';
 import { cn } from '@/lib/cn';
 
 const NAV = [
@@ -20,7 +19,7 @@ export function AnnouncementBar() {
   return (
     <div
       aria-label="Anuncios"
-      className="overflow-hidden border-b border-line bg-invert py-2 text-on-invert"
+      className="overflow-hidden border-b border-line bg-surface py-2 text-ink-2"
     >
       <div className="flex w-max animate-[marquee_38s_linear_infinite] gap-16 pr-16">
         {[...ANUNCIOS, ...ANUNCIOS].map((texto, i) => (
@@ -73,7 +72,6 @@ export function Header() {
   const [latir, setLatir] = useState(false);
   const cantidad = useCartStore((s) => s.items.reduce((suma, i) => suma + i.cantidad, 0));
   const location = useLocation();
-  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const onScroll = () => setScrolleado(window.scrollY > 10);
@@ -119,8 +117,8 @@ export function Header() {
               alt="BYKODA"
               width="112"
               height="30"
-              /* El logo es blanco sobre transparente: en tema claro se invierte. */
-              className="h-7 w-auto invert dark:invert-0"
+              /* El logo es blanco sobre transparente: se invierte para el fondo blanco. */
+              className="h-8 w-auto invert md:h-9"
             />
           </Link>
 
@@ -133,34 +131,6 @@ export function Header() {
           </nav>
 
           <div className="flex shrink-0 items-center gap-2">
-            <button
-              type="button"
-              aria-label={theme === 'dark' ? 'Activar modo claro' : 'Activar modo oscuro'}
-              aria-pressed={theme === 'light'}
-              onClick={toggleTheme}
-              className={botonIcono}
-            >
-              {theme === 'dark' ? (
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
-                </svg>
-              ) : (
-                <svg
-                  width="17"
-                  height="17"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.7"
-                  strokeLinecap="round"
-                  aria-hidden="true"
-                >
-                  <circle cx="12" cy="12" r="4.5" />
-                  <path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8" />
-                </svg>
-              )}
-            </button>
-
             <Link
               to="/carrito"
               aria-label={`Carrito, ${cantidad} ${cantidad === 1 ? 'artículo' : 'artículos'}`}

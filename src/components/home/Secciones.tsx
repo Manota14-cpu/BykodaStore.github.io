@@ -169,16 +169,16 @@ export function Instagram() {
 
 export function CtaFinal() {
   return (
-    <section aria-labelledby="titulo-cta" className="bg-invert text-on-invert">
+    <section aria-labelledby="titulo-cta" className="border-t border-line bg-ground text-ink">
       <div className="area-pagina flex flex-col items-start justify-between gap-8 py-[clamp(4rem,9vw,7rem)] md:flex-row md:items-end">
         <Revelar>
-          <p className="text-[0.66rem] tracking-[0.22em] uppercase opacity-60">Ediciones limitadas</p>
+          <p className="eyebrow">Ediciones limitadas</p>
           <h2 id="titulo-cta" className="titulo-display mt-3 max-w-[14ch] text-[clamp(3rem,7vw,6rem)] uppercase">
             No te quedes sin el tuyo
           </h2>
         </Revelar>
         <Revelar delay={0.1}>
-          <ButtonLink to="/catalogo" tamano="lg" className="bg-ground text-ink hover:opacity-90">
+          <ButtonLink to="/catalogo" tamano="lg">
             Ver catálogo
           </ButtonLink>
         </Revelar>

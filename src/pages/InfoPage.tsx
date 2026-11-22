@@ -449,9 +449,9 @@ export function InfoPage() {
           </h2>
         </Revelar>
 
-        <div className="mt-8 grid items-start gap-8 lg:grid-cols-12 lg:gap-12">
+        <div className="mt-8 grid grid-cols-[minmax(0,1fr)] items-start gap-8 lg:grid-cols-12 lg:gap-12">
           <Revelar className="lg:col-span-7">
-            <form onSubmit={alEnviar} noValidate className="grid gap-5 rounded-2xl border border-line bg-surface p-7">
+            <form onSubmit={alEnviar} noValidate className="grid gap-5 rounded-2xl border border-line bg-surface p-5 sm:p-7">
               <p className="text-sm leading-relaxed text-ink-2">
                 Completá el formulario y se abre WhatsApp con tu consulta ya redactada.
               </p>
@@ -475,7 +475,7 @@ export function InfoPage() {
               <Field id="ct-mensaje" label="Mensaje" error={errors.mensaje?.message}>
                 <Textarea {...campo('mensaje')} rows={4} placeholder="Contanos en qué te podemos ayudar… (opcional)" />
               </Field>
-              <Button type="submit" variante="whatsapp" tamano="lg">
+              <Button type="submit" variante="whatsapp" tamano="lg" className="h-auto min-h-13 py-3 text-center whitespace-normal">
                 <IconWhatsapp size={18} />
                 Enviar consulta por WhatsApp
               </Button>
