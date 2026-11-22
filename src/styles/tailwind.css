@@ -20,8 +20,8 @@
 /* ---- Paleta cruda: la fuente de verdad de cada tema ---------------- */
 :root,
 [data-theme='light'] {
-  --k-ground: #f4f4f6;
-  --k-surface: #ffffff;
+  --k-ground: #ffffff;
+  --k-surface: #f7f7f8;
   --k-raised: #fafafb;
   --k-ink: #141416;
   --k-ink-2: rgb(20 20 22 / 0.72);
@@ -32,6 +32,8 @@
   --k-invert: #141416;
   --k-on-invert: #ffffff;
   --k-shadow: rgb(20 20 22 / 0.1);
+  /* Fondo de las fotos de producto: gris muy claro, sin bordes ni sombras. */
+  --k-tile: #f3f3f3;
 }
 
 [data-theme='dark'] {
@@ -47,6 +49,7 @@
   --k-invert: #ffffff;
   --k-on-invert: #000000;
   --k-shadow: rgb(0 0 0 / 0.5);
+  --k-tile: #111113;
 }
 
 /* ---- Tokens de Tailwind -------------------------------------------
@@ -68,6 +71,7 @@
   --color-hover: var(--k-hover);
   --color-invert: var(--k-invert);
   --color-on-invert: var(--k-on-invert);
+  --color-tile: var(--k-tile);
 
   /* Semánticos: no cambian con el tema. */
   --color-whatsapp: #25d366;

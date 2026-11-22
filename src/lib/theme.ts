@@ -4,7 +4,7 @@ export type Theme = 'dark' | 'light';
 
 export const THEME_STORAGE_KEY = 'bykoda-theme';
 
-const THEME_COLOR_META = { dark: '#000000', light: '#f4f4f6' };
+const THEME_COLOR_META = { dark: '#000000', light: '#ffffff' };
 
 export function getSystemTheme(): Theme {
   if (typeof window === 'undefined') return 'dark';

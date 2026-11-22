@@ -41,3 +41,14 @@ export function SectionHeading({
     </Revelar>
   );
 }
+
+/** Título de sección de tienda: chico, centrado y en mayúsculas, para no competir con las fotos. */
+export function TituloTienda({ id, children, className }: { id?: string; children: ReactNode; className?: string }) {
+  return (
+    <Revelar className={cn('mb-8 text-center md:mb-10', className)}>
+      <h2 id={id} className="text-[0.82rem] font-semibold tracking-[0.24em] text-ink-2 uppercase md:text-[0.9rem]">
+        {children}
+      </h2>
+    </Revelar>
+  );
+}

@@ -31,9 +31,9 @@ export function HomePage() {
   return (
     <>
       <HeroHome />
-      <Marquesina />
-      <Categorias />
       <Novedades />
+      <Categorias />
+      <Marquesina />
       <BandaCalle />
       <Garantias />
       <Testimonios />
