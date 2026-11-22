@@ -9,22 +9,36 @@ import { useToastStore } from '@/store/toast';
 import { cn } from '@/lib/cn';
 import { IconCorazon } from './icons';
 import { ImagenProducto } from './ImagenProducto';
-import { Badge } from './ui';
 
 export function ProductoSkeleton() {
   return (
     <div aria-hidden="true" className="grid gap-3">
-      <div className="aspect-3/4 animate-pulse rounded-xl bg-hover" />
-      <div className="h-3 w-1/3 animate-pulse rounded bg-hover" />
-      <div className="h-4 w-2/3 animate-pulse rounded bg-hover" />
+      <div className="aspect-3/4 animate-pulse bg-tile" />
+      <div className="h-3 w-2/3 animate-pulse bg-hover" />
+      <div className="h-3 w-1/3 animate-pulse bg-hover" />
     </div>
   );
 }
 
+/** Etiqueta vertical pegada al borde izquierdo de la foto. */
+function Cinta({ children, className }: { children: string; className: string }) {
+  return (
+    <span
+      className={cn(
+        'rotate-180 px-1 py-2.5 text-[0.58rem] leading-none font-semibold tracking-[0.12em] uppercase [writing-mode:vertical-rl]',
+        className,
+      )}
+    >
+      {children}
+    </span>
+  );
+}
+
 /**
- * Card minimalista: imagen, nombre y precio. Toda la card es un enlace a la
- * ficha — la elección de talle y cantidad vive allá, donde el cliente ve la
- * guía de talles y el detalle de la tela antes de decidir.
+ * Card de tienda: foto sobre fondo gris claro, sin bordes, y debajo el nombre
+ * en mayúsculas y el precio. Toda la card es un enlace a la ficha — la elección
+ * de talle y cantidad vive allá, donde el cliente ve la guía de talles y el
+ * detalle de la tela antes de decidir.
  */
 export function ProductCard({ producto: p, prioridad = false }: { producto: Producto; prioridad?: boolean }) {
   const favs = useFavoritesStore((s) => s.favs);
@@ -59,11 +73,11 @@ export function ProductCard({ producto: p, prioridad = false }: { producto: Prod
     <article className="group/card relative flex flex-col">
       <Link
         to={`/producto/${encodeURIComponent(p.slug)}`}
-        className="flex flex-col gap-3 rounded-xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-line-strong"
+        className="flex flex-col gap-3 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-line-strong"
       >
         <div
           className={cn(
-            'relative aspect-3/4 overflow-hidden rounded-xl bg-hover',
+            'relative aspect-3/4 overflow-hidden bg-tile',
             sinStock && 'opacity-60 grayscale',
           )}
         >
@@ -93,12 +107,12 @@ export function ProductCard({ producto: p, prioridad = false }: { producto: Prod
             />
           )}
 
-          <div className="absolute top-2.5 left-2.5 z-[2] flex flex-col items-start gap-1.5">
-            {sinStock && <Badge tono="agotado">Sin stock</Badge>}
+          <div className="absolute top-0 left-0 z-[2] flex items-start gap-px">
+            {sinStock && <Cinta className="bg-invert text-on-invert">Sin stock</Cinta>}
             {!sinStock && (quedan !== null || p.stock === 'ultimas') && (
-              <Badge tono="ultimas">{quedan !== null ? `Quedan ${quedan}` : 'Últimas'}</Badge>
+              <Cinta className="bg-invert text-on-invert">{quedan !== null ? `Quedan ${quedan}` : 'Últimas'}</Cinta>
             )}
-            {!sinStock && descuento > 0 && <Badge tono="oferta">−{descuento}%</Badge>}
+            {!sinStock && descuento > 0 && <Cinta className="bg-sale text-white">{`${descuento}% off`}</Cinta>}
           </div>
 
           <span className="absolute inset-x-0 bottom-0 z-[2] hidden translate-y-full bg-invert py-2.5 text-center text-[0.66rem] font-semibold tracking-[0.18em] text-on-invert uppercase transition-transform duration-300 ease-(--ease-suave) group-hover/card:translate-y-0 sm:block">
@@ -106,21 +120,23 @@ export function ProductCard({ producto: p, prioridad = false }: { producto: Prod
           </span>
         </div>
 
-        <div className="grid gap-1">
-          <span className="eyebrow">{etiquetaProducto(p)}</span>
-          <h3 className="line-clamp-2 text-[0.88rem] leading-snug font-medium text-ink">{nombre}</h3>
-          <p className="flex items-baseline gap-2">
+        <div className="grid gap-1.5 px-0.5">
+          <h3 className="line-clamp-2 text-[0.7rem] leading-snug font-semibold tracking-[0.06em] text-ink-2 uppercase">
+            <span className="sr-only">{etiquetaProducto(p)}: </span>
+            {nombre}
+          </h3>
+          <p className="flex flex-wrap items-baseline gap-x-2">
             {precio > 0 ? (
               <>
-                <span className="text-[0.95rem] font-bold text-ink tabular-nums">{fmtMoneda(precio)}</span>
+                <span className="text-[0.9rem] font-semibold text-ink tabular-nums">{fmtMoneda(precio)}</span>
                 {descuento > 0 && !variante && (
-                  <span className="text-[0.78rem] text-ink-3 tabular-nums line-through">
+                  <span className="text-[0.75rem] text-ink-3 tabular-nums line-through">
                     {fmtMoneda(p.precio_original as number)}
                   </span>
                 )}
               </>
             ) : (
-              <span className="text-[0.95rem] font-bold text-ink">Consultar</span>
+              <span className="text-[0.9rem] font-semibold text-ink">Consultar</span>
             )}
           </p>
         </div>

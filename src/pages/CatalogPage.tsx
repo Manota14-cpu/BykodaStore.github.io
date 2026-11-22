@@ -292,7 +292,7 @@ export function CatalogPage() {
               <Button onClick={reintentar}>Reintentar</Button>
             </div>
           ) : cargando ? (
-            <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 xl:grid-cols-4 xl:gap-x-5">
+            <div className="grid grid-cols-2 gap-x-3 gap-y-9 sm:grid-cols-3 sm:gap-x-4 xl:grid-cols-4">
               {Array.from({ length: 8 }, (_, i) => (
                 <ProductoSkeleton key={i} />
               ))}
@@ -305,7 +305,7 @@ export function CatalogPage() {
               </Button>
             </div>
           ) : (
-            <m.ul layout className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 xl:grid-cols-4 xl:gap-x-5">
+            <m.ul layout className="grid grid-cols-2 gap-x-3 gap-y-9 sm:grid-cols-3 sm:gap-x-4 xl:grid-cols-4">
               <AnimatePresence mode="popLayout" initial={false}>
                 {visibles.map((p, i) => (
                   <m.li
