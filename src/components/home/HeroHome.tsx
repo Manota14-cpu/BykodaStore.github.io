@@ -67,7 +67,7 @@ export function HeroHome() {
               Ver catálogo
             </ButtonLink>
             <ButtonLink
-              to="/info#faq"
+              to="/info/como-comprar"
               tamano="lg"
               variante="secundario"
               className="border-white/30 text-white hover:border-white/60 hover:bg-white/10"

@@ -1,6 +1,7 @@
-import { describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import type { CartItem, Cupon } from '../types';
 import {
+  abrirEnPestanaNueva,
   calcularTotales,
   construirMensajeConsulta,
   construirMensajePedido,
@@ -153,5 +154,20 @@ describe('construirMensajeConsulta', () => {
     expect(msg).toContain('👤 *Nombre:* Lucas');
     expect(msg).toContain('📌 *Tema:* Guía de talles');
     expect(msg).toContain('¿Hay XL?');
+  });
+});
+
+describe('abrirEnPestanaNueva', () => {
+  afterEach(() => vi.unstubAllGlobals());
+
+  it('abre una pestaña nueva y no toca la actual', () => {
+    const ventana = { opener: {} as unknown };
+    const open = vi.fn(() => ventana);
+    vi.stubGlobal('open', open);
+    const antes = window.location.href;
+    abrirEnPestanaNueva('https://wa.me/123');
+    expect(open).toHaveBeenCalledWith('https://wa.me/123', '_blank');
+    expect(ventana.opener).toBeNull();
+    expect(window.location.href).toBe(antes);
   });
 });
