@@ -137,16 +137,15 @@ animaciones usan Motion y respetan "reducir movimiento" del sistema.
 
 ## Videos
 
-El hero de la home es una imagen fija clara: tres figuras recortadas sobre gris
-([`public/imagenes/hero-figuras.webp`](public/imagenes/hero-figuras.webp), con fondo
-transparente). Se armó recortando las fotos de estudio `chat1`–`chat3` con un modelo de
-segmentación (BiRefNet) y alineándolas por los pies.
+El hero de la home es el logo de KODA (`public/imagenes/logo-recortado.webp`, el mismo logo
+sin margen transparente, invertido a negro con CSS) grande y centrado sobre fondo claro, con el lema abajo.
 
 El video de la banda "calle" se arma como proyecto HyperFrames en `videos/` y se
 renderiza a MP4 en `public/videos/`. Mientras no esté, se muestra el póster. Los
-proyectos del hero viejo (sobre negro) quedan en `videos/` como referencia. Al tenerlos, activá `videosListos` en
-[`src/config/media.ts`](src/config/media.ts). No se reproducen con "reducir
-movimiento" ni con ahorro de datos, y tienen botón de pausa.
+proyectos del hero viejo (sobre negro) quedan en `videos/` como referencia. Cuando el
+video de la calle esté listo, activá `videosListos` en
+[`src/config/media.ts`](src/config/media.ts). No se reproduce con "reducir movimiento" ni
+con ahorro de datos, y tiene botón de pausa.
 
 ## Créditos y licencia
 

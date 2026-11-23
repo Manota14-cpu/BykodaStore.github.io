@@ -119,12 +119,12 @@ export function Header() {
         <div className="area-pagina flex h-16 items-center justify-between gap-6">
           <Link to="/" aria-label="BYKODA — inicio" className="shrink-0">
             <img
-              src="/imagenes/logo.webp"
+              src="/imagenes/logo-recortado.webp"
               alt="BYKODA"
-              width="112"
-              height="30"
+              width="1294"
+              height="756"
               /* El logo es blanco sobre transparente: se invierte para el fondo blanco. */
-              className="h-8 w-auto invert md:h-9"
+              className="h-8 w-auto invert md:h-10"
             />
           </Link>
 

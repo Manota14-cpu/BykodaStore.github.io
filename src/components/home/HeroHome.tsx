@@ -2,88 +2,73 @@ import * as m from 'motion/react-m';
 import { ButtonLink } from '../ui';
 import { EASE_SUAVE } from '../motion/curvas';
 
-const LINEAS = ['Vestí tu', 'actitud.'];
-
 /**
- * Hero claro: tres figuras recortadas sobre el mismo gris de las fotos de
- * producto, paradas sobre el borde inferior. El texto sube línea por línea
- * apenas carga la página. En celular las figuras van arriba y el texto abajo.
+ * Hero: el logo de KODA grande y centrado, en negro sobre blanco, con el lema
+ * abajo. `logo-recortado.webp` es el mismo logo recortado sin el margen transparente;
+ * es blanco con detalles negros y `invert` lo pasa a negro, como en el encabezado.
  */
 export function HeroHome() {
   return (
-    <section aria-labelledby="titulo-hero" className="overflow-hidden border-b border-line bg-tile">
-      <div className="area-pagina grid grid-cols-[minmax(0,1fr)] items-end gap-2 pt-6 md:min-h-[min(80svh,46rem)] md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] md:gap-10 md:pt-0">
-        <div className="order-2 pb-10 md:order-1 md:self-center md:pb-0">
-          <m.p
-            className="inline-flex items-center gap-2.5 border border-line-strong px-3.5 py-1.5 text-[0.62rem] font-semibold tracking-[0.3em] text-ink uppercase"
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: EASE_SUAVE, delay: 0.1 }}
-          >
-            <span className="size-1.5 rounded-full bg-ink" aria-hidden="true" />
-            Drop 2026 · Ediciones limitadas
-          </m.p>
-
-          <h1
-            id="titulo-hero"
-            className="mt-5 titulo-display text-[clamp(3.6rem,9vw,8rem)] leading-[0.86] text-ink uppercase"
-          >
-            <span className="sr-only">BYKODA, streetwear argentino: </span>
-            {/* El margen de arriba deja lugar a la tilde de "Vestí", que la máscara recortaba. */}
-            {LINEAS.map((linea, i) => (
-              <span
-                key={linea}
-                className="-mt-[0.12em] block overflow-hidden pt-[0.12em] pb-[0.04em]"
-              >
-                <m.span
-                  className="block"
-                  initial={{ y: '105%' }}
-                  animate={{ y: 0 }}
-                  transition={{ duration: 1, ease: EASE_SUAVE, delay: 0.2 + i * 0.12 }}
-                >
-                  {linea}
-                </m.span>
-              </span>
-            ))}
-          </h1>
-
-          <m.div
-            className="mt-6 flex max-w-xl flex-col gap-7"
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: EASE_SUAVE, delay: 0.55 }}
-          >
-            <p className="max-w-[40ch] text-[clamp(0.95rem,1.4vw,1.05rem)] leading-relaxed text-ink-2">
-              Streetwear argentino en drops chicos. Cuando una prenda se agota, no vuelve.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <ButtonLink to="/catalogo" tamano="lg">
-                Ver catálogo
-              </ButtonLink>
-              <ButtonLink
-                to="/info/como-comprar"
-                tamano="lg"
-                variante="secundario"
-                className="bg-ground"
-              >
-                Cómo comprar
-              </ButtonLink>
-            </div>
-          </m.div>
-        </div>
-
-        <m.img
-          src="/imagenes/hero-figuras.webp"
-          alt="Tres modelos con prendas de BYKODA: campera con capucha y jean baggy, campera de carreras roja y blanca, y buzo negro con pantalón estampado"
-          width={962}
-          height={916}
-          fetchPriority="high"
-          decoding="async"
-          className="order-1 mx-auto w-full max-w-[24rem] self-end md:order-2 md:max-w-[44rem] md:pt-8"
-          initial={{ opacity: 0, y: 24 }}
+    <section
+      aria-labelledby="titulo-hero"
+      className="relative overflow-hidden border-b border-line bg-[radial-gradient(ellipse_at_center,var(--color-ground)_35%,var(--color-tile)_100%)]"
+    >
+      <div className="area-pagina flex min-h-[min(74svh,42rem)] flex-col items-center justify-center py-[clamp(3rem,8vh,5rem)] text-center">
+        <m.p
+          className="inline-flex items-center gap-2.5 border border-line-strong px-3.5 py-1.5 text-[0.62rem] font-semibold tracking-[0.3em] text-ink uppercase"
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: EASE_SUAVE, delay: 0.15 }}
-        />
+          transition={{ duration: 0.7, ease: EASE_SUAVE, delay: 0.1 }}
+        >
+          <span className="size-1.5 rounded-full bg-ink" aria-hidden="true" />
+          Drop 2026 · Ediciones limitadas
+        </m.p>
+
+        <h1 id="titulo-hero" className="mt-8 w-full">
+          <span className="sr-only">BYKODA — Vestí tu actitud.</span>
+          <m.img
+            src="/imagenes/logo-recortado.webp"
+            alt=""
+            width={1294}
+            height={756}
+            fetchPriority="high"
+            decoding="async"
+            className="mx-auto w-[min(100%,44rem)] invert"
+            initial={{ opacity: 0, scale: 0.94 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.1, ease: EASE_SUAVE, delay: 0.15 }}
+          />
+        </h1>
+
+        <m.div
+          className="mt-8 flex flex-col items-center gap-6"
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: EASE_SUAVE, delay: 0.5 }}
+        >
+          <p
+            aria-hidden="true"
+            className="titulo-display text-[clamp(2rem,4.4vw,3.2rem)] leading-none text-ink uppercase"
+          >
+            Vestí tu actitud.
+          </p>
+          <p className="max-w-[44ch] text-[clamp(0.92rem,1.3vw,1rem)] leading-relaxed text-ink-2">
+            Streetwear argentino en drops chicos. Cuando una prenda se agota, no vuelve.
+          </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            <ButtonLink to="/catalogo" tamano="lg">
+              Ver catálogo
+            </ButtonLink>
+            <ButtonLink
+              to="/info/como-comprar"
+              tamano="lg"
+              variante="secundario"
+              className="bg-ground"
+            >
+              Cómo comprar
+            </ButtonLink>
+          </div>
+        </m.div>
       </div>
     </section>
   );
