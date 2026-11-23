@@ -271,7 +271,12 @@ export function ProductPage() {
           <li>Preparación del pedido: 1 a 3 días hábiles desde la confirmación.</li>
           <li>Cambio de talle sin cargo dentro de los 7 días de recibido.</li>
           <li>
-            Más detalles en <Link to="/info#faq">preguntas frecuentes</Link>.
+            Arrepentimiento: 10 días corridos para cancelar la compra, con la devolución a nuestro cargo (
+            <Link to="/arrepentimiento">Botón de arrepentimiento</Link>).
+          </li>
+          <li>
+            Más detalles en <Link to="/info/envios">Envíos</Link> y{' '}
+            <Link to="/info/cambios-y-devoluciones">Cambios y devoluciones</Link>.
           </li>
         </ul>
       ),

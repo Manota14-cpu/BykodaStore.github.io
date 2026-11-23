@@ -62,6 +62,13 @@ Antes de dar algo por terminado: `npm test && npm run lint && npm run build`.
 - **Newsletter**: Google Form configurado en `src/config/newsletter.ts`. Sin configurar, va por WhatsApp.
 - **Reseñas**: solo reales, en `TESTIMONIOS` (`src/components/home/Secciones.tsx`). Vacía = sección oculta.
 - **Textos**: no decir que BYKODA diseña, fabrica o produce mientras no sea así.
+- **Ayuda y legales**: `/info` es el centro de ayuda; cada sección es `/info/<slug>`
+  (`src/pages/ayuda/`). Términos y privacidad en `src/pages/ayuda/legales.tsx`; datos del
+  titular (razón social, CUIT, domicilio) en `src/config/legal.ts`.
+- **Obligatorio por ley (no sacar)**: link "Botón de arrepentimiento" visible en la barra de
+  arriba (Disp. 954/2025) → `/arrepentimiento`; link "Defensa de las y los Consumidores" al
+  formulario de la Ventanilla Federal Única en el pie (Disp. 890/2025). Arrepentimiento: 10 días
+  corridos y la devolución la paga la tienda (art. 34, Ley 24.240). Garantía legal: 6 meses.
 - **Videos de la home**: proyectos HyperFrames en `videos/`. Están apagados
   (`videosListos: false` en `src/config/media.ts`), así que se muestran los pósters.
 - **Catálogo anterior**: 71 prendas archivadas en `catalogo-anterior/`. No se publica.

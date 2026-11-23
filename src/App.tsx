@@ -7,14 +7,26 @@ import { Layout } from '@/components/Layout';
 import { HomePage } from '@/pages/HomePage';
 
 // Solo la home entra en el bundle inicial; el resto se carga al navegar.
-const CatalogPage = lazy(() => import('@/pages/CatalogPage').then((m) => ({ default: m.CatalogPage })));
-const ProductPage = lazy(() => import('@/pages/ProductPage').then((m) => ({ default: m.ProductPage })));
+const CatalogPage = lazy(() =>
+  import('@/pages/CatalogPage').then((m) => ({ default: m.CatalogPage })),
+);
+const ProductPage = lazy(() =>
+  import('@/pages/ProductPage').then((m) => ({ default: m.ProductPage })),
+);
 const CartPage = lazy(() => import('@/pages/CartPage').then((m) => ({ default: m.CartPage })));
 const InfoPage = lazy(() => import('@/pages/InfoPage').then((m) => ({ default: m.InfoPage })));
-const NotFoundPage = lazy(() => import('@/pages/NotFoundPage').then((m) => ({ default: m.NotFoundPage })));
+const SeccionAyudaPage = lazy(() =>
+  import('@/pages/SeccionAyudaPage').then((m) => ({ default: m.SeccionAyudaPage })),
+);
+const ArrepentimientoPage = lazy(() =>
+  import('@/pages/ArrepentimientoPage').then((m) => ({ default: m.ArrepentimientoPage })),
+);
+const NotFoundPage = lazy(() =>
+  import('@/pages/NotFoundPage').then((m) => ({ default: m.NotFoundPage })),
+);
 
 /**
- * Al navegar: arriba de todo, o a la sección del ancla (`/info#faq`). Si la
+ * Al navegar: arriba de todo, o a la sección del ancla (`/pagina#seccion`). Si la
  * página es diferida, la sección todavía no existe cuando cambia la ruta, así
  * que se espera a que aparezca (hasta 3 s).
  */
@@ -63,10 +75,17 @@ export default function App() {
             <Route path="/producto/:id" element={<ProductPage />} />
             <Route path="/carrito" element={<CartPage />} />
             <Route path="/info" element={<InfoPage />} />
-            {/* Rutas viejas: FAQs, nosotros y contacto viven en /info. */}
-            <Route path="/faqs" element={<Navigate to="/info#faq" replace />} />
-            <Route path="/nosotros" element={<Navigate to="/info#nosotros" replace />} />
-            <Route path="/contacto" element={<Navigate to="/info#contacto" replace />} />
+            <Route path="/info/:seccion" element={<SeccionAyudaPage />} />
+            <Route path="/arrepentimiento" element={<ArrepentimientoPage />} />
+            {/* Rutas viejas o cortas: llevan a la sección del centro de ayuda. */}
+            <Route path="/faqs" element={<Navigate to="/info/preguntas-frecuentes" replace />} />
+            <Route path="/nosotros" element={<Navigate to="/info/nosotros" replace />} />
+            <Route path="/contacto" element={<Navigate to="/info/contacto" replace />} />
+            <Route
+              path="/terminos"
+              element={<Navigate to="/info/terminos-y-condiciones" replace />}
+            />
+            <Route path="/privacidad" element={<Navigate to="/info/privacidad" replace />} />
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>

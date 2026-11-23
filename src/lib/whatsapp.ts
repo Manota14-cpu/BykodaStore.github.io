@@ -170,3 +170,15 @@ export function construirURLConsultaWhatsApp(
   const texto = construirMensajeConsulta(nombre, telefono, tema, mensaje);
   return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(texto)}`;
 }
+
+/**
+ * Abre WhatsApp (u otro link) en una pestaña nueva. Solo si el navegador bloquea
+ * la ventana, usa la pestaña actual. Ojo: `window.open(url, '_blank', 'noopener')`
+ * devuelve siempre null aunque abra la pestaña, así que no sirve para detectar
+ * el bloqueo; por eso se corta el `opener` a mano.
+ */
+export function abrirEnPestanaNueva(url: string) {
+  const ventana = window.open(url, '_blank');
+  if (ventana) ventana.opener = null;
+  else window.location.href = url;
+}

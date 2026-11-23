@@ -3,10 +3,22 @@ import { Link } from 'react-router-dom';
 import { useToastStore } from '@/store/toast';
 import { WA_NUMBER, WA_TEL_VISIBLE } from '@/lib/whatsapp';
 import { ESTUDIO, MARCA, rangoCopyright } from '@/lib/creditos';
-import { EMAIL_RE, newsletterConectado, suscribirEmail, urlSuscripcionWhatsApp } from '@/lib/newsletter';
+import {
+  EMAIL_RE,
+  newsletterConectado,
+  suscribirEmail,
+  urlSuscripcionWhatsApp,
+} from '@/lib/newsletter';
+import { LEGAL, URL_RECLAMOS_CONSUMIDOR } from '@/config/legal';
 import { Button, Input } from './ui';
 
-const EMAIL = 'admin@bykoda.store';
+const EMAIL = LEGAL.email;
+
+const LEGALES = [
+  { to: '/info/terminos-y-condiciones', label: 'Términos y condiciones' },
+  { to: '/info/privacidad', label: 'Política de privacidad' },
+  { to: '/arrepentimiento', label: 'Botón de arrepentimiento' },
+];
 
 const COLUMNAS = [
   {
@@ -22,11 +34,12 @@ const COLUMNAS = [
   {
     titulo: 'Ayuda',
     links: [
-      { to: '/info#nosotros', label: 'Nosotros' },
-      { to: '/info#faq', label: 'Cómo comprar' },
-      { to: '/info#talles', label: 'Guía de talles' },
-      { to: '/info#faq', label: 'Envíos y cambios' },
-      { to: '/info#contacto', label: 'Contacto' },
+      { to: '/info/como-comprar', label: 'Cómo comprar' },
+      { to: '/info/envios', label: 'Envíos' },
+      { to: '/info/cambios-y-devoluciones', label: 'Cambios y devoluciones' },
+      { to: '/info/guia-de-talles', label: 'Guía de talles' },
+      { to: '/info/preguntas-frecuentes', label: 'Preguntas frecuentes' },
+      { to: '/info/contacto', label: 'Contacto' },
     ],
   },
 ];
@@ -78,7 +91,7 @@ export function Footer() {
             Más que ropa, una forma de expresarte.
           </p>
 
-          <h3 className="eyebrow mt-8">Unite a BYKODA</h3>
+          <h3 className="mt-8 eyebrow">Unite a BYKODA</h3>
           <p className="mt-2 text-sm text-ink-2">Enterate primero de cada drop.</p>
           <form onSubmit={handleNewsletter} noValidate className="mt-3 flex max-w-sm gap-2">
             <label htmlFor="footer-email" className="sr-only">
@@ -145,7 +158,14 @@ export function Footer() {
               aria-label="Instagram de BYKODA"
               className="grid size-10 place-items-center rounded-full border border-line transition-colors hover:border-line-strong hover:bg-hover"
             >
-              <img src="/imagenes/icon-instagram.webp" alt="" width="20" height="20" loading="lazy" className="size-5 invert" />
+              <img
+                src="/imagenes/icon-instagram.webp"
+                alt=""
+                width="20"
+                height="20"
+                loading="lazy"
+                className="size-5 invert"
+              />
             </a>
             <a
               href="https://www.tiktok.com/@bykoda.store?lang=es"
@@ -154,16 +174,61 @@ export function Footer() {
               aria-label="TikTok de BYKODA"
               className="grid size-10 place-items-center rounded-full border border-line transition-colors hover:border-line-strong hover:bg-hover"
             >
-              <img src="/imagenes/logotiktok.webp" alt="" width="20" height="20" loading="lazy" className="size-5 invert" />
+              <img
+                src="/imagenes/logotiktok.webp"
+                alt=""
+                width="20"
+                height="20"
+                loading="lazy"
+                className="size-5 invert"
+              />
             </a>
           </div>
         </div>
       </div>
 
       <div className="border-t border-line">
-        <div className="area-pagina flex flex-col items-center justify-between gap-2 py-5 text-xs text-ink-3 sm:flex-row">
+        <div className="area-pagina flex flex-col gap-4 py-6 text-xs text-ink-2 md:flex-row md:items-center md:justify-between">
+          <ul className="flex flex-wrap gap-x-5 gap-y-2">
+            {LEGALES.map((l) => (
+              <li key={l.to}>
+                <Link to={l.to} className="transition-colors hover:text-ink">
+                  {l.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          {/* Disposición 890/2025: enlace al formulario de la Ventanilla Federal Única de Reclamos. */}
+          <a
+            href={URL_RECLAMOS_CONSUMIDOR}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold text-ink underline underline-offset-4"
+          >
+            Defensa de las y los Consumidores. Para reclamos ingrese aquí
+          </a>
+        </div>
+      </div>
+
+      <div className="border-t border-line">
+        <div className="area-pagina flex flex-col items-center justify-between gap-2 py-5 text-center text-xs text-ink-3 sm:flex-row sm:text-left">
           <p>
             © {rangoCopyright()} {MARCA} — Todos los derechos reservados
+            {LEGAL.titular && ` · ${LEGAL.titular}`}
+            {LEGAL.cuit && ` · CUIT ${LEGAL.cuit}`}
+            {LEGAL.dataFiscalUrl && (
+              <>
+                {' · '}
+                <a
+                  href={LEGAL.dataFiscalUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline underline-offset-4"
+                >
+                  Data fiscal
+                </a>
+              </>
+            )}
           </p>
           <p>
             Diseño y desarrollo por{' '}

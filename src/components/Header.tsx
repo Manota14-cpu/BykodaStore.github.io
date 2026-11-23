@@ -17,21 +17,27 @@ const ANUNCIOS = [
 
 export function AnnouncementBar() {
   return (
-    <div
-      aria-label="Anuncios"
-      className="overflow-hidden border-b border-line bg-surface py-2 text-ink-2"
-    >
-      <div className="flex w-max animate-[marquee_38s_linear_infinite] gap-16 pr-16">
-        {[...ANUNCIOS, ...ANUNCIOS].map((texto, i) => (
-          <span
-            key={i}
-            aria-hidden={i >= ANUNCIOS.length}
-            className="text-[0.63rem] font-semibold tracking-[0.2em] whitespace-nowrap uppercase"
-          >
-            {texto}
-          </span>
-        ))}
+    <div className="flex items-stretch border-b border-line bg-surface text-ink-2">
+      <div aria-label="Anuncios" className="min-w-0 flex-1 overflow-hidden py-2">
+        <div className="flex w-max animate-[marquee_38s_linear_infinite] gap-16 pr-16">
+          {[...ANUNCIOS, ...ANUNCIOS].map((texto, i) => (
+            <span
+              key={i}
+              aria-hidden={i >= ANUNCIOS.length}
+              className="text-[0.63rem] font-semibold tracking-[0.2em] whitespace-nowrap uppercase"
+            >
+              {texto}
+            </span>
+          ))}
+        </div>
       </div>
+      {/* Disposición 954/2025: a simple vista y en el primer acceso, con este nombre. */}
+      <Link
+        to="/arrepentimiento"
+        className="flex shrink-0 items-center border-l border-line bg-ground px-3 text-[0.6rem] font-semibold tracking-[0.08em] whitespace-nowrap text-ink uppercase underline-offset-2 hover:underline sm:px-4 sm:tracking-[0.14em]"
+      >
+        Botón de arrepentimiento
+      </Link>
     </div>
   );
 }

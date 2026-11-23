@@ -20,7 +20,7 @@ export function NotFoundPage() {
         </p>
         <div className="mt-5 flex flex-wrap justify-center gap-3">
           <ButtonLink to="/catalogo">Ver catálogo</ButtonLink>
-          <ButtonLink to="/info#contacto" variante="secundario">
+          <ButtonLink to="/info/contacto" variante="secundario">
             Escribinos
           </ButtonLink>
         </div>
