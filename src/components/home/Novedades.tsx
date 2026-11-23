@@ -14,7 +14,9 @@ const CANTIDAD = 8;
  */
 export function Novedades() {
   const { productos, cargando } = useCatalogo();
-  const lista = productos.filter((p) => p.imagenes.length > 0 && p.stock !== 'sin-stock').slice(0, CANTIDAD);
+  const lista = productos
+    .filter((p) => p.imagenes.length > 0 && p.stock !== 'sin-stock')
+    .slice(0, CANTIDAD);
 
   // Sin prendas con foto todavía, la sección no aparece (en vez de quedar vacía).
   if (!cargando && lista.length === 0) return null;
@@ -36,9 +38,10 @@ export function Novedades() {
                 <ProductoSkeleton />
               </li>
             ))
-          : lista.map((p, i) => (
+          : lista.map((p) => (
               <m.li key={p.id} variants={variantesItem}>
-                <ProductCard producto={p} prioridad={i < 4} />
+                {/* Debajo del hero: carga diferida, para no competir con la foto principal. */}
+                <ProductCard producto={p} />
               </m.li>
             ))}
       </m.ul>

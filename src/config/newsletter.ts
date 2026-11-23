@@ -13,7 +13,11 @@
  * Mientras esté vacío, el mail se manda a la tienda por WhatsApp para no perderlo.
  */
 export const NEWSLETTER = {
-  formulario:
-    'https://docs.google.com/forms/d/e/1FAIpQLSe1dBNECSvjHpv66s6w9udNXSvugd2pfYZMImNSBH5J2Wb0gw/formResponse',
-  campoEmail: 'entry.1673791784',
+  // Desconectado el 23/11/2026: el formulario "Lista BYKODA"
+  // (1FAIpQLSe1dBNECSvjHpv66s6w9udNXSvugd2pfYZMImNSBH5J2Wb0gw, campo entry.1673791784)
+  // pide iniciar sesión en Google para responder y rechaza los envíos de la web,
+  // que igual mostraba "¡Listo!". Antes de volver a conectarlo, probar un envío en
+  // una ventana de incógnito: tiene que dejar enviar sin cuenta.
+  formulario: '',
+  campoEmail: '',
 };

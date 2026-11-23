@@ -86,7 +86,11 @@ export function Testimonios() {
   if (TESTIMONIOS.length === 0) return null;
   return (
     <section aria-labelledby="titulo-resenas" className="area-pagina py-[clamp(4rem,10vw,8rem)]">
-      <SectionHeading id="titulo-resenas" eyebrow="Reseñas" titulo="Lo que dicen quienes compraron" />
+      <SectionHeading
+        id="titulo-resenas"
+        eyebrow="Reseñas"
+        titulo="Lo que dicen quienes compraron"
+      />
       <RevelarGrupo className="grid gap-5 md:grid-cols-3">
         {TESTIMONIOS.map((t) => (
           <RevelarItem key={t.nombre}>
@@ -94,12 +98,21 @@ export function Testimonios() {
               <div>
                 <div className="flex gap-1 text-ink" aria-label="5 de 5 estrellas" role="img">
                   {Array.from({ length: 5 }, (_, i) => (
-                    <svg key={i} width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <svg
+                      key={i}
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
                       <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                     </svg>
                   ))}
                 </div>
-                <blockquote className="mt-5 text-[1.02rem] leading-relaxed text-ink">“{t.texto}”</blockquote>
+                <blockquote className="mt-5 text-[1.02rem] leading-relaxed text-ink">
+                  “{t.texto}”
+                </blockquote>
               </div>
               <figcaption className="flex items-center gap-3">
                 <span className="grid size-10 place-items-center rounded-full bg-invert text-xs font-bold text-on-invert">
@@ -144,7 +157,7 @@ export function Instagram() {
               className="group relative block aspect-square overflow-hidden rounded-xl bg-black"
             >
               <img
-                src={`/imagenes/${img}.webp`}
+                src={`/imagenes/${img}-640.webp`}
                 alt=""
                 loading="lazy"
                 decoding="async"
@@ -173,7 +186,10 @@ export function CtaFinal() {
       <div className="area-pagina flex flex-col items-start justify-between gap-8 py-[clamp(4rem,9vw,7rem)] md:flex-row md:items-end">
         <Revelar>
           <p className="eyebrow">Ediciones limitadas</p>
-          <h2 id="titulo-cta" className="titulo-display mt-3 max-w-[14ch] text-[clamp(3rem,7vw,6rem)] uppercase">
+          <h2
+            id="titulo-cta"
+            className="mt-3 max-w-[14ch] titulo-display text-[clamp(3rem,7vw,6rem)] uppercase"
+          >
             No te quedes sin el tuyo
           </h2>
         </Revelar>

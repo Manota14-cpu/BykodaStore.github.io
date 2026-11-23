@@ -40,21 +40,25 @@
     />
     <meta name="twitter:image" content="https://www.bykoda.store/imagenes/og-bykoda.jpg" />
 
-    <link rel="icon" href="/imagenes/logo.png" type="image/png" />
-    <link rel="apple-touch-icon" href="/imagenes/logo.png" />
-    <!-- Logo recortado: va en el encabezado y en el hero. -->
-    <link rel="preload" as="image" href="/imagenes/logo-recortado.webp" />
+    <link rel="icon" href="/imagenes/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/imagenes/icono-180.png" />
+    <!-- Logo chico del encabezado. -->
+    <link rel="preload" as="image" href="/imagenes/logo-mini.webp" />
     <!-- Foto del hero: es el LCP de la home. -->
-    <link rel="preload" as="image" href="/imagenes/hero-koda.webp" fetchpriority="high" />
+    <link
+      rel="preload"
+      as="image"
+      href="/imagenes/hero-koda.webp"
+      imagesrcset="/imagenes/hero-koda-900.webp 900w, /imagenes/hero-koda.webp 1672w"
+      imagesizes="100vw"
+      fetchpriority="high"
+    />
     <!-- El catálogo sale de la plataforma: abrir la conexión antes ahorra un RTT. -->
     <link rel="preconnect" href="https://visual-app-licencias.visual-app-licencias.workers.dev" crossorigin />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;500;700&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Tipografías propias (public/fonts): se precargan para no esperar al CSS. -->
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/montserrat-latin-variable.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/bebas-neue-latin.woff2" crossorigin />
   </head>
   <body>
     <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>

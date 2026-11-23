@@ -130,7 +130,8 @@ catalogo-anterior/  Prendas y fotos de antes de Visual App (archivo, no se publi
 
 ## Estilos y animación
 
-Tailwind CSS v4, sin hojas por pantalla. Los colores son tokens de
+Tailwind CSS v4, sin hojas por pantalla. Las tipografías (Bebas Neue y Montserrat) se
+sirven desde `public/fonts`, sin Google Fonts. Los colores son tokens de
 [`src/styles/tailwind.css`](src/styles/tailwind.css). El sitio tiene un solo tema,
 claro (fondo blanco); las variantes de botones y badges usan `class-variance-authority`. Las
 animaciones usan Motion y respetan "reducir movimiento" del sistema.

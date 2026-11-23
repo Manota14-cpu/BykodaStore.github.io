@@ -18,20 +18,25 @@ export function PlaceholderProducto({ nombre, className }: { nombre: string; cla
       )}
     >
       <img
-        src="/imagenes/logo.webp"
+        src="/imagenes/logo-mini.webp"
         alt=""
+        width={240}
+        height={140}
         aria-hidden="true"
         className="w-1/2 max-w-40 opacity-[0.13] invert"
       />
       {/* En miniaturas (carrito, drawer) el aviso no entra: queda solo el logo. */}
-      <span className="eyebrow absolute inset-x-0 bottom-4 px-2 text-center text-balance @max-[9rem]:hidden">
+      <span className="absolute inset-x-0 bottom-4 px-2 text-center eyebrow text-balance @max-[9rem]:hidden">
         Foto próximamente
       </span>
     </div>
   );
 }
 
-type PropsImagen = Omit<ImgHTMLAttributes<HTMLImageElement>, 'src' | 'alt' | 'onLoad' | 'onError'> & {
+type PropsImagen = Omit<
+  ImgHTMLAttributes<HTMLImageElement>,
+  'src' | 'alt' | 'onLoad' | 'onError'
+> & {
   src?: string;
   alt: string;
 };

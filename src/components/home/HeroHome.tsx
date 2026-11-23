@@ -3,7 +3,10 @@ import * as m from 'motion/react-m';
 import { WA_TEL_VISIBLE } from '@/lib/whatsapp';
 import { EASE_SUAVE } from '../motion/curvas';
 
-/** Foto del hero. Para cambiarla, reemplazá el archivo o esta ruta (horizontal, 1600 px o más). */
+/**
+ * Foto del hero. Para cambiarla, reemplazá el archivo o esta ruta (horizontal, 1600 px o
+ * más) y generá al lado una versión de 900 px de ancho con el sufijo `-900`, para celular.
+ */
 const FOTO = '/imagenes/hero-koda.webp';
 
 /** Bloques de datos arriba a la derecha: "ETIQUETA / DATO" y una línea de detalle. */
@@ -27,6 +30,8 @@ export function HeroHome() {
     >
       <m.img
         src={FOTO}
+        srcSet={`${FOTO.replace('.webp', '-900.webp')} 900w, ${FOTO} 1672w`}
+        sizes="100vw"
         alt="Chico de espaldas con una remera blanca de BYKODA con el logo KODA en la espalda, contra una pared de ladrillos"
         width={1672}
         height={941}

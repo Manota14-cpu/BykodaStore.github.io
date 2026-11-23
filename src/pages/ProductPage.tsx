@@ -59,7 +59,9 @@ export function ProductPage() {
   const relacionados = useMemo(() => {
     if (!producto) return [];
     const otros = productos.filter((p) => p.slug !== producto.slug && p.imagenes.length > 0);
-    const misma = otros.filter((p) => producto.subcategoria && p.subcategoria === producto.subcategoria);
+    const misma = otros.filter(
+      (p) => producto.subcategoria && p.subcategoria === producto.subcategoria,
+    );
     const resto = otros.filter((p) => p.categoria === producto.categoria && !misma.includes(p));
     return [...misma, ...resto].slice(0, 4);
   }, [productos, producto]);
@@ -77,18 +79,24 @@ export function ProductPage() {
   const opcion =
     opciones?.find(
       (o) =>
-        (colores.length === 0 || o.color === colorElegido) && (talles.length === 0 || o.talle === talleElegido),
+        (colores.length === 0 || o.color === colorElegido) &&
+        (talles.length === 0 || o.talle === talleElegido),
     ) ?? null;
   /** Si hay stock de ese talle y ese color (null = cualquiera). */
   const hayStock = (t: string | null, c: string | null) =>
     !opciones ||
-    opciones.some((o) => o.stock !== 'sin-stock' && (t === null || o.talle === t) && (c === null || o.color === c));
+    opciones.some(
+      (o) =>
+        o.stock !== 'sin-stock' && (t === null || o.talle === t) && (c === null || o.color === c),
+    );
   const fotosColor =
     opciones && colorElegido
       ? [...new Set(opciones.filter((o) => o.color === colorElegido).flatMap((o) => o.imagenes))]
       : [];
 
-  const imgs = (variante?.imgs.length ? variante.imgs : fotosColor.length ? fotosColor : producto?.imagenes) ?? [];
+  const imgs =
+    (variante?.imgs.length ? variante.imgs : fotosColor.length ? fotosColor : producto?.imagenes) ??
+    [];
   const imgActual = imgs[Math.min(imgIdx, Math.max(0, imgs.length - 1))];
   const precio = opcion
     ? opcion.precio
@@ -103,7 +111,8 @@ export function ProductPage() {
 
   useSEO({
     title: producto ? `${producto.nombre} | BYKODA` : 'Producto | BYKODA',
-    description: producto?.descripcion || `Comprá ${producto?.nombre ?? 'este producto'} en BYKODA.`,
+    description:
+      producto?.descripcion || `Comprá ${producto?.nombre ?? 'este producto'} en BYKODA.`,
     canonical: `/producto/${producto?.slug ?? slug ?? ''}`,
     image: producto?.imagenes[0] ? absoluteImage(producto.imagenes[0]) : undefined,
     type: 'product',
@@ -146,7 +155,9 @@ export function ProductPage() {
           <div className="grid justify-items-center gap-4">
             <p className="eyebrow">404</p>
             <h1 className="titulo-display text-5xl text-ink">Producto no encontrado</h1>
-            <p className="max-w-[40ch] text-ink-2">Puede que se haya agotado o que el link esté desactualizado.</p>
+            <p className="max-w-[40ch] text-ink-2">
+              Puede que se haya agotado o que el link esté desactualizado.
+            </p>
             <ButtonLink to="/catalogo" className="mt-2">
               Ver catálogo
             </ButtonLink>
@@ -166,21 +177,29 @@ export function ProductPage() {
   const tope = Math.max(1, Math.min(MAXIMO_POR_PEDIDO, unidades ?? MAXIMO_POR_PEDIDO));
   // Al cambiar a una combinación con menos stock, la cantidad no la pasa.
   const cant = Math.min(cantidad, tope);
-  const quedan = !sinStock && typeof unidades === 'number' && unidades <= UMBRAL_ULTIMAS ? unidades : null;
+  const quedan =
+    !sinStock && typeof unidades === 'number' && unidades <= UMBRAL_ULTIMAS ? unidades : null;
   const urlProducto = `${SITE_URL}/producto/${p.slug}`;
-  const detalle = [colores.length > 0 ? colorElegido : null, talleElegido].filter(Boolean).join(' · ');
-  const nombreConsulta = colores.length > 0 && colorElegido ? `${nombre} (${colorElegido})` : nombre;
+  const detalle = [colores.length > 0 ? colorElegido : null, talleElegido]
+    .filter(Boolean)
+    .join(' · ');
+  const nombreConsulta =
+    colores.length > 0 && colorElegido ? `${nombre} (${colorElegido})` : nombre;
 
   function agregar(): boolean {
     if (sinStock) return false;
     if (colores.length > 0 && !colorElegido) {
       setFaltaColor(true);
-      document.getElementById('ficha-colores')?.scrollIntoView({ block: 'center', behavior: 'smooth' });
+      document
+        .getElementById('ficha-colores')
+        ?.scrollIntoView({ block: 'center', behavior: 'smooth' });
       return false;
     }
     if (llevaTalle && !talleElegido) {
       setFaltaTalle(true);
-      document.getElementById('ficha-talles')?.scrollIntoView({ block: 'center', behavior: 'smooth' });
+      document
+        .getElementById('ficha-talles')
+        ?.scrollIntoView({ block: 'center', behavior: 'smooth' });
       return false;
     }
     if (opciones && !opcion) {
@@ -253,7 +272,9 @@ export function ProductPage() {
             titulo: 'Guía de talles',
             contenido: (
               <>
-                <p className="text-xs text-ink-3">Medidas en centímetros, tomadas sobre la prenda.</p>
+                <p className="text-xs text-ink-3">
+                  Medidas en centímetros, tomadas sobre la prenda.
+                </p>
                 <div className="my-3">
                   <TallesTable tabla={tablaParaCategoria(p.categoria)} />
                 </div>
@@ -271,8 +292,8 @@ export function ProductPage() {
           <li>Preparación del pedido: 1 a 3 días hábiles desde la confirmación.</li>
           <li>Cambio de talle sin cargo dentro de los 7 días de recibido.</li>
           <li>
-            Arrepentimiento: 10 días corridos para cancelar la compra, con la devolución a nuestro cargo (
-            <Link to="/arrepentimiento">Botón de arrepentimiento</Link>).
+            Arrepentimiento: 10 días corridos para cancelar la compra, con la devolución a nuestro
+            cargo (<Link to="/arrepentimiento">Botón de arrepentimiento</Link>).
           </li>
           <li>
             Más detalles en <Link to="/info/envios">Envíos</Link> y{' '}
@@ -285,7 +306,10 @@ export function ProductPage() {
 
   return (
     <div className="area-pagina pt-[clamp(1.5rem,4vw,2.5rem)] pb-[clamp(4rem,9vw,7rem)]">
-      <nav aria-label="Ruta de navegación" className="mb-7 flex flex-wrap items-center gap-2 text-xs text-ink-3">
+      <nav
+        aria-label="Ruta de navegación"
+        className="mb-7 flex flex-wrap items-center gap-2 text-xs text-ink-3"
+      >
         <Link to="/" className="transition-colors hover:text-ink">
           Inicio
         </Link>
@@ -294,7 +318,10 @@ export function ProductPage() {
           Catálogo
         </Link>
         <span aria-hidden="true">/</span>
-        <Link to={`/catalogo#cat=${p.subcategoria ?? p.categoria}`} className="transition-colors hover:text-ink">
+        <Link
+          to={`/catalogo#cat=${p.subcategoria ?? p.categoria}`}
+          className="transition-colors hover:text-ink"
+        >
           {etiquetaProducto(p)}
         </Link>
         <span aria-hidden="true">/</span>
@@ -333,7 +360,9 @@ export function ProductPage() {
             <div className="absolute top-4 left-4 flex flex-col items-start gap-1.5">
               {sinStock && <Badge tono="agotado">Sin stock</Badge>}
               {!sinStock && (quedan !== null || stock === 'ultimas') && (
-                <Badge tono="ultimas">{quedan !== null ? `Quedan ${quedan}` : 'Últimas unidades'}</Badge>
+                <Badge tono="ultimas">
+                  {quedan !== null ? `Quedan ${quedan}` : 'Últimas unidades'}
+                </Badge>
               )}
             </div>
           </div>
@@ -368,19 +397,27 @@ export function ProductPage() {
         >
           <div>
             <p className="eyebrow">{etiquetaProducto(p)}</p>
-            <h1 className="titulo-display mt-2 text-[clamp(2.4rem,4.6vw,3.6rem)] text-ink uppercase">{nombre}</h1>
+            <h1 className="mt-2 titulo-display text-[clamp(2.4rem,4.6vw,3.6rem)] text-ink uppercase">
+              {nombre}
+            </h1>
             <div className="mt-4 flex flex-wrap items-baseline gap-3">
               <span className="text-2xl font-bold text-ink tabular-nums">
                 {precio > 0 ? fmtMoneda(precio) : 'Consultar precio'}
               </span>
               {descuento > 0 && !variante && (
                 <>
-                  <span className="text-ink-3 tabular-nums line-through">{fmtMoneda(p.precio_original as number)}</span>
+                  <span className="text-ink-3 tabular-nums line-through">
+                    {fmtMoneda(p.precio_original as number)}
+                  </span>
                   <Badge tono="oferta">−{descuento}%</Badge>
                 </>
               )}
             </div>
-            {p.descripcion && <p className="mt-4 max-w-[52ch] text-[0.95rem] leading-relaxed text-ink-2">{p.descripcion}</p>}
+            {p.descripcion && (
+              <p className="mt-4 max-w-[52ch] text-[0.95rem] leading-relaxed text-ink-2">
+                {p.descripcion}
+              </p>
+            )}
           </div>
 
           {variantes && variantes.length > 1 && (
@@ -416,7 +453,9 @@ export function ProductPage() {
             <div id="ficha-colores" className="grid gap-3 border-t border-line pt-6">
               <div className="flex items-baseline justify-between">
                 <span className="eyebrow">Color</span>
-                {colorElegido && <span className="text-sm font-semibold text-ink">{colorElegido}</span>}
+                {colorElegido && (
+                  <span className="text-sm font-semibold text-ink">{colorElegido}</span>
+                )}
               </div>
               <div role="group" aria-label="Elegí el color" className="flex flex-wrap gap-2">
                 {colores.map((c) => {
@@ -441,7 +480,8 @@ export function ProductPage() {
                         colorElegido === c
                           ? 'border-invert bg-invert text-on-invert'
                           : 'border-line text-ink-2 hover:border-line-strong hover:text-ink',
-                        agotado && 'cursor-not-allowed text-ink-3 line-through opacity-50 hover:border-line hover:text-ink-3',
+                        agotado &&
+                          'cursor-not-allowed text-ink-3 line-through opacity-50 hover:border-line hover:text-ink-3',
                         faltaColor && 'border-alerta/60',
                       )}
                     >
@@ -470,7 +510,10 @@ export function ProductPage() {
             <div id="ficha-talles" className="grid gap-3 border-t border-line pt-6">
               <div className="flex items-baseline justify-between">
                 <span className="eyebrow">Talle</span>
-                <a href="#ficha-info" className="text-xs text-ink-2 underline underline-offset-4 hover:text-ink">
+                <a
+                  href="#ficha-info"
+                  className="text-xs text-ink-2 underline underline-offset-4 hover:text-ink"
+                >
                   Ver guía de talles
                 </a>
               </div>
@@ -494,7 +537,8 @@ export function ProductPage() {
                         talleElegido === t
                           ? 'border-invert bg-invert text-on-invert'
                           : 'border-line text-ink-2 hover:border-line-strong hover:text-ink',
-                        agotado && 'cursor-not-allowed text-ink-3 line-through opacity-50 hover:border-line hover:text-ink-3',
+                        agotado &&
+                          'cursor-not-allowed text-ink-3 line-through opacity-50 hover:border-line hover:text-ink-3',
                         faltaTalle && 'border-alerta/60',
                       )}
                     >
@@ -521,7 +565,11 @@ export function ProductPage() {
 
           <div className="grid gap-3 border-t border-line pt-6">
             <div className="flex gap-3">
-              <div role="group" aria-label="Cantidad" className="flex shrink-0 items-center overflow-hidden rounded-lg border border-line">
+              <div
+                role="group"
+                aria-label="Cantidad"
+                className="flex shrink-0 items-center overflow-hidden rounded-lg border border-line"
+              >
                 <button
                   type="button"
                   aria-label="Quitar una unidad"
@@ -531,7 +579,10 @@ export function ProductPage() {
                 >
                   −
                 </button>
-                <span aria-live="polite" className="min-w-8 text-center text-sm font-semibold text-ink tabular-nums">
+                <span
+                  aria-live="polite"
+                  className="min-w-8 text-center text-sm font-semibold text-ink tabular-nums"
+                >
                   {cant}
                 </span>
                 <button
@@ -554,14 +605,26 @@ export function ProductPage() {
                 {sinStock ? 'Sin stock' : 'Agregar al carrito'}
               </Button>
             </div>
-            <Button tamano="lg" ancho="completo" className="h-12" onClick={comprarAhora} disabled={sinStock}>
+            <Button
+              tamano="lg"
+              ancho="completo"
+              className="h-12"
+              onClick={comprarAhora}
+              disabled={sinStock}
+            >
               Comprar ahora
             </Button>
           </div>
 
           <div className="flex flex-wrap gap-x-6 gap-y-3">
             <a
-              href={construirURLConsultaProducto({ nombre: nombreConsulta, precio, talle: talleElegido, cantidad: cant, url: urlProducto })}
+              href={construirURLConsultaProducto({
+                nombre: nombreConsulta,
+                precio,
+                talle: talleElegido,
+                cantidad: cant,
+                url: urlProducto,
+              })}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-sm text-ink-2 transition-colors hover:text-ink"
@@ -576,7 +639,10 @@ export function ProductPage() {
                 const accion = toggleFav(p.id);
                 showToast(accion === 'added' ? 'Agregado a favoritos' : 'Quitado de favoritos');
               }}
-              className={cn('inline-flex items-center gap-2 text-sm transition-colors', esFavorito ? 'text-fav' : 'text-ink-2 hover:text-ink')}
+              className={cn(
+                'inline-flex items-center gap-2 text-sm transition-colors',
+                esFavorito ? 'text-fav' : 'text-ink-2 hover:text-ink',
+              )}
             >
               <IconCorazon lleno={esFavorito} size={16} />
               {esFavorito ? 'En favoritos' : 'Guardar'}
@@ -592,7 +658,16 @@ export function ProductPage() {
                 : 'Coordinás pago y envío por WhatsApp, sin datos de tarjeta',
             ].map((g) => (
               <li key={g} className="flex items-start gap-2.5">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="mt-0.5 shrink-0 text-exito" aria-hidden="true">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  className="mt-0.5 shrink-0 text-exito"
+                  aria-hidden="true"
+                >
                   <path d="M20 6 9 17l-5-5" />
                 </svg>
                 {g}
@@ -601,12 +676,19 @@ export function ProductPage() {
           </ul>
 
           <div id="ficha-info" className="scroll-mt-28">
+            <h2 className="sr-only">Detalles de la prenda</h2>
             <Accordion items={secciones} inicial={0} />
             {!tieneFicha && (
               <p className="mt-4 text-sm text-ink-2">
                 ¿Dudas con la tela o el calce?{' '}
                 <ButtonExterno
-                  href={construirURLConsultaProducto({ nombre: nombreConsulta, precio, talle: talleElegido, cantidad: cant, url: urlProducto })}
+                  href={construirURLConsultaProducto({
+                    nombre: nombreConsulta,
+                    precio,
+                    talle: talleElegido,
+                    cantidad: cant,
+                    url: urlProducto,
+                  })}
                   variante="fantasma"
                   tamano="sm"
                   className="inline-flex h-auto px-0 align-baseline text-ink underline underline-offset-4"
@@ -621,9 +703,15 @@ export function ProductPage() {
       </div>
 
       {relacionados.length > 0 && (
-        <section aria-labelledby="titulo-relacionados" className="mt-[clamp(4rem,9vw,7rem)] border-t border-line pt-[clamp(2.5rem,5vw,4rem)]">
+        <section
+          aria-labelledby="titulo-relacionados"
+          className="mt-[clamp(4rem,9vw,7rem)] border-t border-line pt-[clamp(2.5rem,5vw,4rem)]"
+        >
           <Revelar>
-            <h2 id="titulo-relacionados" className="titulo-display mb-8 text-[clamp(2rem,4vw,3rem)] text-ink uppercase">
+            <h2
+              id="titulo-relacionados"
+              className="mb-8 titulo-display text-[clamp(2rem,4vw,3rem)] text-ink uppercase"
+            >
               También te puede gustar
             </h2>
           </Revelar>
