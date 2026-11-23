@@ -137,8 +137,11 @@ animaciones usan Motion y respetan "reducir movimiento" del sistema.
 
 ## Videos
 
-El hero de la home es el logo de KODA (`public/imagenes/logo-recortado.webp`, el mismo logo
-sin margen transparente, invertido a negro con CSS) grande y centrado sobre fondo claro, con el lema abajo.
+El hero de la home es editorial: una foto a pantalla completa (`FOTO` en
+[`src/components/home/HeroHome.tsx`](src/components/home/HeroHome.tsx), hoy
+`public/imagenes/chat6.webp`), el logo en blanco arriba a la izquierda, datos chicos
+arriba a la derecha y "Vestí tu actitud." abajo. Para cambiar la foto alcanza con
+reemplazar esa ruta: conviene una foto vertical de al menos 1600 px de ancho.
 
 El video de la banda "calle" se arma como proyecto HyperFrames en `videos/` y se
 renderiza a MP4 en `public/videos/`. Mientras no esté, se muestra el póster. Los
