@@ -70,7 +70,7 @@ const enlaceNav = ({ isActive }: { isActive: boolean }) =>
   );
 
 const botonIcono =
-  'grid size-10 place-items-center rounded-full border border-line text-ink transition-colors duration-300 hover:border-line-strong hover:bg-hover';
+  'grid size-10 place-items-center rounded-full text-ink transition-colors duration-300 hover:bg-hover';
 
 export function Header() {
   const [menuAbierto, setMenuAbierto] = useState(false);
@@ -116,7 +116,40 @@ export function Header() {
           scrolleado && 'shadow-[0_4px_30px_var(--k-shadow)]',
         )}
       >
-        <div className="area-pagina flex h-16 items-center justify-between gap-6">
+        {/* Celular: menú a la izquierda, logo al centro y carrito a la derecha. Escritorio: logo, navegación y carrito. */}
+        <div className="area-pagina grid h-16 grid-cols-[1fr_auto_1fr] items-center gap-4 md:flex md:justify-between md:gap-6">
+          <div className="md:hidden">
+            <button
+              type="button"
+              aria-label={menuAbierto ? 'Cerrar menú' : 'Abrir menú'}
+              aria-expanded={menuAbierto}
+              aria-controls="nav-movil"
+              onClick={() => setMenuAbierto((v) => !v)}
+              className={cn(botonIcono, '-ml-2')}
+            >
+              <span className="grid w-5 gap-[4px]">
+                <span
+                  className={cn(
+                    'h-px w-full bg-current transition-transform duration-300 ease-(--ease-suave)',
+                    menuAbierto && 'translate-y-[5px] rotate-45',
+                  )}
+                />
+                <span
+                  className={cn(
+                    'h-px w-full bg-current transition-opacity duration-300',
+                    menuAbierto && 'opacity-0',
+                  )}
+                />
+                <span
+                  className={cn(
+                    'h-px w-full bg-current transition-transform duration-300 ease-(--ease-suave)',
+                    menuAbierto && '-translate-y-[5px] -rotate-45',
+                  )}
+                />
+              </span>
+            </button>
+          </div>
+
           <Link to="/" aria-label="BYKODA — inicio" className="shrink-0">
             <img
               src="/imagenes/logo-recortado.webp"
@@ -124,7 +157,7 @@ export function Header() {
               width="1294"
               height="756"
               /* El logo es blanco sobre transparente: se invierte para el fondo blanco. */
-              className="h-8 w-auto invert md:h-10"
+              className="h-9 w-auto invert md:h-10"
             />
           </Link>
 
@@ -136,7 +169,7 @@ export function Header() {
             ))}
           </nav>
 
-          <div className="flex shrink-0 items-center gap-2">
+          <div className="flex shrink-0 items-center gap-2 justify-self-end">
             <Link
               to="/carrito"
               aria-label={`Carrito, ${cantidad} ${cantidad === 1 ? 'artículo' : 'artículos'}`}
@@ -154,36 +187,6 @@ export function Header() {
                 </span>
               )}
             </Link>
-
-            <button
-              type="button"
-              aria-label={menuAbierto ? 'Cerrar menú' : 'Abrir menú'}
-              aria-expanded={menuAbierto}
-              aria-controls="nav-movil"
-              onClick={() => setMenuAbierto((v) => !v)}
-              className={cn(botonIcono, 'md:hidden')}
-            >
-              <span className="grid w-4 gap-[3px]">
-                <span
-                  className={cn(
-                    'h-px w-full bg-current transition-transform duration-300 ease-(--ease-suave)',
-                    menuAbierto && 'translate-y-[4px] rotate-45',
-                  )}
-                />
-                <span
-                  className={cn(
-                    'h-px w-full bg-current transition-opacity duration-300',
-                    menuAbierto && 'opacity-0',
-                  )}
-                />
-                <span
-                  className={cn(
-                    'h-px w-full bg-current transition-transform duration-300 ease-(--ease-suave)',
-                    menuAbierto && '-translate-y-[4px] -rotate-45',
-                  )}
-                />
-              </span>
-            </button>
           </div>
         </div>
       </header>
