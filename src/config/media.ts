@@ -1,5 +1,6 @@
 /**
- * Videos de ambiente del sitio. Las fuentes editables están en `videos/`
+ * Videos de ambiente del sitio (hoy, solo la banda "la calle" de la home; el hero
+ * pasó a ser una imagen fija clara, `public/imagenes/hero-figuras.webp`). Las fuentes editables están en `videos/`
  * (proyectos HyperFrames); se renderizan a MP4 y se copian a `public/videos/`.
  *
  * Mientras `videosListos` sea false, el sitio muestra solo los pósters (el
@@ -7,12 +8,6 @@
  */
 export const MEDIA = {
   videosListos: false as boolean,
-  hero: {
-    escritorio: '/videos/hero.mp4',
-    movil: '/videos/hero-movil.mp4',
-    poster: '/videos/hero-poster.webp',
-    posterMovil: '/videos/hero-movil-poster.webp',
-  },
   calle: {
     video: '/videos/calle.mp4',
     poster: '/videos/calle-poster.webp',

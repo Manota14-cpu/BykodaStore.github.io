@@ -23,8 +23,8 @@ por WhatsApp. Se está **reabriendo** con un grupo de amigos (noviembre 2026).
 - Frases cortas y seguras. Lema: **"Vestí tu actitud."** Frase que lo resume: "Cuando una
   prenda se agota, no vuelve."
 - Estética: sitio blanco, estilo tienda (fotos sobre gris claro, esquinas rectas, nombres en
-  mayúsculas chicas). El negro queda para el hero y las fotos: una figura bajo un foco, la
-  calle mojada. Tipografías Bebas Neue (títulos, en mayúsculas) y Montserrat (texto).
+  mayúsculas chicas). El hero también es claro: figuras recortadas sobre gris
+  (`public/imagenes/hero-figuras.webp`), sin fondos negros. Las fotos de la calle mojada siguen. Tipografías Bebas Neue (títulos, en mayúsculas) y Montserrat (texto).
 - **No hay modo oscuro**: un solo tema claro, con los colores en `src/styles/tailwind.css`.
 - Ideas que se repiten: ediciones limitadas, materiales pesados (denim rígido, frisa
   perchada), trato con una persona real, envíos a todo el país.
@@ -69,8 +69,9 @@ Antes de dar algo por terminado: `npm test && npm run lint && npm run build`.
   arriba (Disp. 954/2025) → `/arrepentimiento`; link "Defensa de las y los Consumidores" al
   formulario de la Ventanilla Federal Única en el pie (Disp. 890/2025). Arrepentimiento: 10 días
   corridos y la devolución la paga la tienda (art. 34, Ley 24.240). Garantía legal: 6 meses.
-- **Videos de la home**: proyectos HyperFrames en `videos/`. Están apagados
-  (`videosListos: false` en `src/config/media.ts`), así que se muestran los pósters.
+- **Video de la banda "calle"**: proyecto HyperFrames en `videos/`. Está apagado
+  (`videosListos: false` en `src/config/media.ts`), así que se muestra el póster. El hero
+  ya no usa video.
 - **Catálogo anterior**: 71 prendas archivadas en `catalogo-anterior/`. No se publica.
 - **Deploy**: push a `main` → GitHub Actions (lint, tests, build) → GitHub Pages. También
   hay un `vercel.json`. Falta confirmar cuál de los dos sirve hoy el dominio.
