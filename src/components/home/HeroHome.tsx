@@ -3,8 +3,8 @@ import * as m from 'motion/react-m';
 import { WA_TEL_VISIBLE } from '@/lib/whatsapp';
 import { EASE_SUAVE } from '../motion/curvas';
 
-/** Foto del hero. Para cambiarla, reemplazá el archivo o esta ruta (vertical, 2:3 o más alta). */
-const FOTO = '/imagenes/chat6.webp';
+/** Foto del hero. Para cambiarla, reemplazá el archivo o esta ruta (horizontal, 1600 px o más). */
+const FOTO = '/imagenes/hero-koda.webp';
 
 /** Bloques de datos arriba a la derecha: "ETIQUETA / DATO" y una línea de detalle. */
 const DATOS = [
@@ -23,23 +23,23 @@ export function HeroHome() {
   return (
     <section
       aria-labelledby="titulo-hero"
-      className="relative isolate h-[min(82svh,52rem)] min-h-[32rem] overflow-hidden bg-black text-white"
+      className="relative isolate h-[min(68svh,40rem)] min-h-[30rem] overflow-hidden bg-black text-white md:h-[min(82svh,52rem)] md:min-h-[32rem]"
     >
       <m.img
         src={FOTO}
-        alt="Buzo negro de BYKODA con el estampado Angels of Hell en la espalda, en una calle mojada al atardecer"
-        width={1024}
-        height={1536}
+        alt="Chico de espaldas con una remera blanca de BYKODA con el logo KODA en la espalda, contra una pared de ladrillos"
+        width={1672}
+        height={941}
         fetchPriority="high"
         decoding="async"
-        className="absolute inset-0 -z-10 size-full object-cover object-[50%_38%]"
+        className="absolute inset-0 -z-10 size-full object-cover object-[72%_55%] md:object-[50%_78%]"
         initial={{ opacity: 0, scale: 1.04 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.4, ease: EASE_SUAVE }}
       />
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,rgb(0_0_0/0.55)_0%,transparent_32%,transparent_58%,rgb(0_0_0/0.7)_100%)]"
+        className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,rgb(0_0_0/0.45)_0%,transparent_30%,transparent_55%,rgb(0_0_0/0.65)_100%),linear-gradient(to_right,rgb(0_0_0/0.45)_0%,transparent_50%)]"
       />
 
       <div className="area-pagina flex h-full flex-col justify-between py-[clamp(1.5rem,4vw,3rem)]">
