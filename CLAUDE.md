@@ -62,7 +62,8 @@ Antes de dar algo por terminado: `npm test && npm run lint && npm run build`.
   WhatsApp con el detalle. Opcional: Mercado Pago, si está conectado en Visual App.
 - **Cupones**: `public/cupones.json` guarda solo el hash de cada código (`npm run cupon`).
   Al cambiarlos, subí `VERSION` en `src/api/local.ts`. Los códigos reales van en el repo privado.
-- **Newsletter**: Google Form configurado en `src/config/newsletter.ts`. Sin configurar, va por WhatsApp.
+- **Newsletter**: Google Form en `src/config/newsletter.ts`. Hoy está desconectado (el formulario pedía
+  iniciar sesión y perdía los mails), así que el mail llega a la tienda por WhatsApp.
 - **Reseñas**: solo reales, en `TESTIMONIOS` (`src/components/home/Secciones.tsx`). Vacía = sección oculta.
 - **Textos**: no decir que BYKODA diseña, fabrica o produce mientras no sea así.
 - **Ayuda y legales**: `/info` es el centro de ayuda; cada sección es `/info/<slug>`
@@ -78,6 +79,20 @@ Antes de dar algo por terminado: `npm test && npm run lint && npm run build`.
 - **Catálogo anterior**: 71 prendas archivadas en `catalogo-anterior/`. No se publica.
 - **Deploy**: push a `main` → GitHub Actions (lint, tests, build) → GitHub Pages, que sirve
   bykoda.store (confirmado: responde `server: GitHub.com`). No hay Vercel.
+
+## Imágenes y tipografías (rendimiento)
+
+- Logos: `logo.webp` es el original en alta (no se carga en la web; sirve para generar
+  versiones). `logo-mini.webp` (240 px, encabezado, pie y "foto próximamente") y
+  `logo-recortado.webp` (560 px, hero). Íconos: `favicon-32.png`, `icono-180.png`
+  (iPhone), `icono-512.png` (datos de Google).
+- Fotos grandes con versión chica al lado: `hero-koda-900.webp` (celular) y
+  `chatN-640.webp` (grillas). Si se agrega una foto, generar también su versión chica.
+- Tipografías servidas desde `public/fonts` (Bebas Neue y Montserrat variable 300–700),
+  declaradas en `src/styles/tailwind.css`. No se piden a Google Fonts.
+- Gris secundario (`ink-3`) al 62%: contraste ≥ 4,5:1. No bajarlo.
+- Lighthouse celular (23/11/2026): home 91, ficha 76, catálogo 75 de rendimiento;
+  accesibilidad, buenas prácticas y SEO en 100.
 
 ## Reglas de trabajo
 

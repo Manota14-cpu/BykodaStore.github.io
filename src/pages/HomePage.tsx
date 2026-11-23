@@ -19,7 +19,7 @@ export function HomePage() {
       '@type': 'Store',
       name: 'BYKODA',
       url: 'https://www.bykoda.store/',
-      logo: 'https://www.bykoda.store/imagenes/logo.png',
+      logo: 'https://www.bykoda.store/imagenes/icono-512.png',
       email: 'admin@bykoda.store',
       telephone: '+54 3492 301-333',
       sameAs: ['https://www.instagram.com/__bykoda/'],

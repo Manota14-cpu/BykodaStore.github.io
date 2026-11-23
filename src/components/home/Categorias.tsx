@@ -7,9 +7,9 @@ import { VIEWPORT, variantesGrupo, variantesItem } from '../motion/curvas';
 
 /** Foto de ambiente para las categorías principales. El resto usa la foto de una de sus prendas. */
 const FOTOS: Record<string, { img: string; label: string }> = {
-  remera: { img: '/imagenes/chat8.webp', label: 'remeras' },
-  buzo: { img: '/imagenes/chat6.webp', label: 'buzos' },
-  pantalon: { img: '/imagenes/chat7.webp', label: 'pantalones' },
+  remera: { img: '/imagenes/chat8-640.webp', label: 'remeras' },
+  buzo: { img: '/imagenes/chat6-640.webp', label: 'buzos' },
+  pantalon: { img: '/imagenes/chat7-640.webp', label: 'pantalones' },
 };
 
 /** Cuántas columnas usa la grilla en escritorio según la cantidad de categorías. */

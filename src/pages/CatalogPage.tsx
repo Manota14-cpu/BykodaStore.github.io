@@ -27,7 +27,9 @@ const TALLES_ESTANDAR = ['S', 'M', 'L', 'XL', 'XXL'];
 /** Talles que se pueden comprar: en una prenda con variantes, solo los que tienen stock. */
 function tallesDisponibles(p: Producto): string[] {
   if (p.opciones?.length) {
-    return [...new Set(p.opciones.flatMap((o) => (o.talle && o.stock !== 'sin-stock' ? [o.talle] : [])))];
+    return [
+      ...new Set(p.opciones.flatMap((o) => (o.talle && o.stock !== 'sin-stock' ? [o.talle] : []))),
+    ];
   }
   return p.talles ?? TALLES_ESTANDAR;
 }
@@ -49,7 +51,8 @@ function aplicarFiltros(
   const q = normalizarTexto(f.busqueda.trim());
   return productos.filter((p) => {
     if (excepto !== 'categoria' && !perteneceACategoria(p, f.categoria)) return false;
-    if (excepto !== 'subcategoria' && f.subcategoria && p.subcategoria !== f.subcategoria) return false;
+    if (excepto !== 'subcategoria' && f.subcategoria && p.subcategoria !== f.subcategoria)
+      return false;
     if (f.talles.length > 0 && (p.talles ?? TALLES_ESTANDAR).length > 0) {
       const talles = tallesDisponibles(p);
       if (!f.talles.some((t) => talles.includes(t))) return false;
@@ -57,7 +60,9 @@ function aplicarFiltros(
     if (Number.isFinite(f.precioMax) && precioEfectivo(p) > f.precioMax) return false;
     if (f.soloOfertas && !(p.precio_original && p.precio_original > p.precio)) return false;
     if (q) {
-      const texto = normalizarTexto(`${p.nombre} ${p.categoriaLabel} ${p.subcategoria ?? ''} ${p.tela ?? ''}`);
+      const texto = normalizarTexto(
+        `${p.nombre} ${p.categoriaLabel} ${p.subcategoria ?? ''} ${p.tela ?? ''}`,
+      );
       if (!texto.includes(q)) return false;
     }
     return true;
@@ -143,25 +148,41 @@ export function CatalogPage() {
     };
   }, [productos, filtros]);
 
-  const visibles = useMemo(() => ordenar(aplicarFiltros(productos, filtros), orden), [productos, filtros, orden]);
+  const visibles = useMemo(
+    () => ordenar(aplicarFiltros(productos, filtros), orden),
+    [productos, filtros, orden],
+  );
 
   const chips = useMemo(() => {
     const lista: { label: string; limpiar: Partial<FiltrosCatalogo> }[] = [];
     const nodo = menu.find((n) => n.key === filtros.categoria);
     if (filtros.categoria !== TODAS_LAS_CATEGORIAS && nodo) {
-      lista.push({ label: nodo.label, limpiar: { categoria: TODAS_LAS_CATEGORIAS, subcategoria: null } });
+      lista.push({
+        label: nodo.label,
+        limpiar: { categoria: TODAS_LAS_CATEGORIAS, subcategoria: null },
+      });
     }
     if (filtros.subcategoria) {
-      lista.push({ label: etiquetaSubcategoria(filtros.subcategoria), limpiar: { subcategoria: null } });
+      lista.push({
+        label: etiquetaSubcategoria(filtros.subcategoria),
+        limpiar: { subcategoria: null },
+      });
     }
     for (const t of filtros.talles) {
-      lista.push({ label: `Talle ${t}`, limpiar: { talles: filtros.talles.filter((x) => x !== t) } });
+      lista.push({
+        label: `Talle ${t}`,
+        limpiar: { talles: filtros.talles.filter((x) => x !== t) },
+      });
     }
     if (Number.isFinite(filtros.precioMax)) {
-      lista.push({ label: `Hasta $${filtros.precioMax.toLocaleString('es-AR')}`, limpiar: { precioMax: Infinity } });
+      lista.push({
+        label: `Hasta $${filtros.precioMax.toLocaleString('es-AR')}`,
+        limpiar: { precioMax: Infinity },
+      });
     }
     if (filtros.soloOfertas) lista.push({ label: 'Solo ofertas', limpiar: { soloOfertas: false } });
-    if (filtros.busqueda.trim()) lista.push({ label: `"${filtros.busqueda.trim()}"`, limpiar: { busqueda: '' } });
+    if (filtros.busqueda.trim())
+      lista.push({ label: `"${filtros.busqueda.trim()}"`, limpiar: { busqueda: '' } });
     return lista;
   }, [filtros, menu]);
 
@@ -184,7 +205,9 @@ export function CatalogPage() {
       <header className="mb-[clamp(2rem,4vw,3rem)] flex flex-wrap items-end justify-between gap-6">
         <div>
           <p className="eyebrow">Tienda</p>
-          <h1 className="titulo-display mt-2 text-[clamp(3rem,8vw,5.5rem)] text-ink uppercase">Catálogo</h1>
+          <h1 className="mt-2 titulo-display text-[clamp(3rem,8vw,5.5rem)] text-ink uppercase">
+            Catálogo
+          </h1>
           <p className="mt-3 max-w-[56ch] text-[0.95rem] leading-relaxed text-ink-2">
             Todas las prendas, filtrables por categoría, talle y precio. Elegí una para ver la ficha
             completa con tela y guía de talles.
@@ -194,7 +217,10 @@ export function CatalogPage() {
       </header>
 
       <div className="grid items-start gap-10 lg:grid-cols-[15.5rem_minmax(0,1fr)] lg:gap-12">
-        <aside aria-label="Filtros del catálogo" className="sticky top-24 hidden max-h-[calc(100vh-7rem)] overflow-y-auto pr-2 [scrollbar-width:thin] lg:block">
+        <aside
+          aria-label="Filtros del catálogo"
+          className="sticky top-24 hidden max-h-[calc(100vh-7rem)] [scrollbar-width:thin] overflow-y-auto pr-2 lg:block"
+        >
           {panelFiltros}
         </aside>
 
@@ -226,7 +252,15 @@ export function CatalogPage() {
             </div>
 
             <Button variante="secundario" className="lg:hidden" onClick={() => setDrawer(true)}>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                aria-hidden="true"
+              >
                 <path d="M4 6h16M7 12h10M10 18h4" />
               </svg>
               Filtros
@@ -239,7 +273,11 @@ export function CatalogPage() {
 
             <label className="flex-1 sm:flex-none">
               <span className="sr-only">Ordenar productos</span>
-              <Select value={orden} onChange={(e) => setOrden(e.target.value as Orden)} className="py-2.5 text-[0.82rem]">
+              <Select
+                value={orden}
+                onChange={(e) => setOrden(e.target.value as Orden)}
+                className="py-2.5 text-[0.82rem]"
+              >
                 {OPCIONES_ORDEN.map((o) => (
                   <option key={o.value} value={o.value}>
                     {o.label}
@@ -282,8 +320,10 @@ export function CatalogPage() {
             )}
           </AnimatePresence>
 
-          <p aria-live="polite" className="eyebrow mb-5">
-            {cargando ? 'Cargando catálogo…' : `${visibles.length} ${visibles.length === 1 ? 'prenda' : 'prendas'}`}
+          <p aria-live="polite" className="mb-5 eyebrow">
+            {cargando
+              ? 'Cargando catálogo…'
+              : `${visibles.length} ${visibles.length === 1 ? 'prenda' : 'prendas'}`}
           </p>
 
           {error ? (
@@ -305,22 +345,32 @@ export function CatalogPage() {
               </Button>
             </div>
           ) : (
-            <m.ul layout className="grid grid-cols-2 gap-x-3 gap-y-9 sm:grid-cols-3 sm:gap-x-4 xl:grid-cols-4">
-              <AnimatePresence mode="popLayout" initial={false}>
-                {visibles.map((p, i) => (
-                  <m.li
-                    key={p.id}
-                    layout
-                    initial={{ opacity: 0, y: 16 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 0.96 }}
-                    transition={{ duration: 0.45, ease: EASE_SUAVE, delay: Math.min(i, 8) * 0.03 }}
-                  >
-                    <ProductCard producto={p} prioridad={i < 4} />
-                  </m.li>
-                ))}
-              </AnimatePresence>
-            </m.ul>
+            <>
+              <h2 className="sr-only">Prendas</h2>
+              <m.ul
+                layout
+                className="grid grid-cols-2 gap-x-3 gap-y-9 sm:grid-cols-3 sm:gap-x-4 xl:grid-cols-4"
+              >
+                <AnimatePresence mode="popLayout" initial={false}>
+                  {visibles.map((p, i) => (
+                    <m.li
+                      key={p.id}
+                      layout
+                      initial={{ opacity: 0, y: 16 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, scale: 0.96 }}
+                      transition={{
+                        duration: 0.45,
+                        ease: EASE_SUAVE,
+                        delay: Math.min(i, 8) * 0.03,
+                      }}
+                    >
+                      <ProductCard producto={p} prioridad={i < 4} />
+                    </m.li>
+                  ))}
+                </AnimatePresence>
+              </m.ul>
+            </>
           )}
         </section>
       </div>

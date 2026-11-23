@@ -152,10 +152,10 @@ export function Header() {
 
           <Link to="/" aria-label="BYKODA — inicio" className="shrink-0">
             <img
-              src="/imagenes/logo-recortado.webp"
+              src="/imagenes/logo-mini.webp"
               alt="BYKODA"
-              width="1294"
-              height="756"
+              width="240"
+              height="140"
               /* El logo es blanco sobre transparente: se invierte para el fondo blanco. */
               className="h-9 w-auto invert md:h-10"
             />

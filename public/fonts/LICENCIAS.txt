@@ -1,0 +1,7 @@
+Tipografías servidas desde el propio sitio (subconjunto "latin", descargado de Google Fonts):
+
+- Bebas Neue — Copyright 2010 The Bebas Neue Project Authors (Dharma Type).
+- Montserrat (variable, 300–700) — Copyright 2011 The Montserrat Project Authors.
+
+Ambas se distribuyen bajo la SIL Open Font License 1.1:
+https://openfontlicense.org/open-font-license-official-text/

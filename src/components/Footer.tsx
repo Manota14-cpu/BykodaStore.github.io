@@ -81,15 +81,17 @@ export function Footer() {
     }
   }
 
+  // En celular, el espacio final (pb-36) deja ver el pie por encima de la barra
+  // inferior y del botón de WhatsApp, que si no tapaban el link de reclamos.
   return (
-    <footer className="border-t border-line bg-surface">
+    <footer className="border-t border-line bg-surface pb-36 md:pb-0">
       <div className="area-pagina grid gap-12 py-16 md:grid-cols-[1.4fr_1fr_1fr_1fr] md:gap-10">
         <div>
           <img
-            src="/imagenes/logo.webp"
+            src="/imagenes/logo-mini.webp"
             alt="BYKODA"
-            width="132"
-            height="36"
+            width="240"
+            height="140"
             loading="lazy"
             className="h-8 w-auto invert"
           />
@@ -170,7 +172,7 @@ export function Footer() {
                 width="20"
                 height="20"
                 loading="lazy"
-                className="size-5 invert"
+                className="size-5 object-contain invert"
               />
             </a>
             <a
@@ -186,7 +188,7 @@ export function Footer() {
                 width="20"
                 height="20"
                 loading="lazy"
-                className="size-5 invert"
+                className="size-5 object-contain invert"
               />
             </a>
           </div>

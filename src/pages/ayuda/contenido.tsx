@@ -268,7 +268,7 @@ export function Nosotros() {
         </div>
       </div>
       <img
-        src="/imagenes/chat4.webp"
+        src="/imagenes/chat4-640.webp"
         alt="Modelo con campera de BYKODA bajo un foco sobre fondo negro"
         loading="lazy"
         decoding="async"

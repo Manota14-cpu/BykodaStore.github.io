@@ -40,7 +40,13 @@ function Cinta({ children, className }: { children: string; className: string })
  * de talle y cantidad vive allá, donde el cliente ve la guía de talles y el
  * detalle de la tela antes de decidir.
  */
-export function ProductCard({ producto: p, prioridad = false }: { producto: Producto; prioridad?: boolean }) {
+export function ProductCard({
+  producto: p,
+  prioridad = false,
+}: {
+  producto: Producto;
+  prioridad?: boolean;
+}) {
   const favs = useFavoritesStore((s) => s.favs);
   const toggleFav = useFavoritesStore((s) => s.toggle);
   const showToast = useToastStore((s) => s.showToast);
@@ -87,6 +93,7 @@ export function ProductCard({ producto: p, prioridad = false }: { producto: Prod
             width={600}
             height={800}
             loading={prioridad ? 'eager' : 'lazy'}
+            fetchPriority={prioridad ? 'high' : 'auto'}
             decoding="async"
             className={cn(
               'absolute inset-0 size-full object-cover transition-[opacity,transform] duration-700 ease-(--ease-suave)',
@@ -110,9 +117,13 @@ export function ProductCard({ producto: p, prioridad = false }: { producto: Prod
           <div className="absolute top-0 left-0 z-[2] flex items-start gap-px">
             {sinStock && <Cinta className="bg-invert text-on-invert">Sin stock</Cinta>}
             {!sinStock && (quedan !== null || p.stock === 'ultimas') && (
-              <Cinta className="bg-invert text-on-invert">{quedan !== null ? `Quedan ${quedan}` : 'Últimas'}</Cinta>
+              <Cinta className="bg-invert text-on-invert">
+                {quedan !== null ? `Quedan ${quedan}` : 'Últimas'}
+              </Cinta>
             )}
-            {!sinStock && descuento > 0 && <Cinta className="bg-sale text-white">{`${descuento}% off`}</Cinta>}
+            {!sinStock && descuento > 0 && (
+              <Cinta className="bg-sale text-white">{`${descuento}% off`}</Cinta>
+            )}
           </div>
 
           <span className="absolute inset-x-0 bottom-0 z-[2] hidden translate-y-full bg-invert py-2.5 text-center text-[0.66rem] font-semibold tracking-[0.18em] text-on-invert uppercase transition-transform duration-300 ease-(--ease-suave) group-hover/card:translate-y-0 sm:block">
@@ -128,7 +139,9 @@ export function ProductCard({ producto: p, prioridad = false }: { producto: Prod
           <p className="flex flex-wrap items-baseline gap-x-2">
             {precio > 0 ? (
               <>
-                <span className="text-[0.9rem] font-semibold text-ink tabular-nums">{fmtMoneda(precio)}</span>
+                <span className="text-[0.9rem] font-semibold text-ink tabular-nums">
+                  {fmtMoneda(precio)}
+                </span>
                 {descuento > 0 && !variante && (
                   <span className="text-[0.75rem] text-ink-3 tabular-nums line-through">
                     {fmtMoneda(p.precio_original as number)}
