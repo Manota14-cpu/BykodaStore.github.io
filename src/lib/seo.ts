@@ -5,7 +5,7 @@ export const SITE_URL = 'https://www.bykoda.store';
 export const SITE_NAME = 'BYKODA';
 export const DEFAULT_DESC =
   'Ropa y accesorios urbanos. Remeras, buzos y pantalones BYKODA. Pedido fácil por WhatsApp.';
-export const DEFAULT_OG_IMAGE = SITE_URL + '/imagenes/og-cover.jpg';
+export const DEFAULT_OG_IMAGE = SITE_URL + '/imagenes/og-bykoda.jpg';
 
 export function absoluteImage(src?: string | null): string {
   if (!src) return DEFAULT_OG_IMAGE;

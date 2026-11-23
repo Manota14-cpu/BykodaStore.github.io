@@ -12,7 +12,8 @@ BYKODA (también "Koda") es una marca de streetwear argentino de Rafaela, Santa 
 Vende ediciones limitadas en drops chicos que no se reponen. El trato es directo
 por WhatsApp. Se está **reabriendo** con un grupo de amigos (noviembre 2026).
 
-- Sitio: https://www.bykoda.store (dominio en `public/CNAME`)
+- Sitio: https://www.bykoda.store (dominio en `public/CNAME`). Imagen para compartir:
+  `public/imagenes/og-bykoda.jpg` (si se cambia, usar un nombre nuevo: las redes la cachean).
 - Instagram: [@__bykoda](https://www.instagram.com/__bykoda/) · TikTok: @bykoda.store
 - WhatsApp de la tienda: +54 3492 301-333 (`src/lib/whatsapp.ts`)
 - Mail público: admin@bykoda.store
@@ -55,7 +56,8 @@ Antes de dar algo por terminado: `npm test && npm run lint && npm run build`.
 - **Catálogo**: se administra en **Visual App** (tienda `bykoda`). El sitio lee
   `…workers.dev/tienda/bykoda/productos.json` cada 30 s. Precios, stock, talles, colores
   y fotos se cambian en el panel, sin tocar código. Si la app está vacía, el sitio
-  también.
+  también. Las categorías de la home y del pie salen del catálogo: solo aparecen las
+  que tienen prendas (`categoriasConProductos` en `src/lib/catalogo.ts`).
 - **Compra**: carrito → formulario → el pedido se registra en Visual App → se abre
   WhatsApp con el detalle. Opcional: Mercado Pago, si está conectado en Visual App.
 - **Cupones**: `public/cupones.json` guarda solo el hash de cada código (`npm run cupon`).
@@ -74,8 +76,8 @@ Antes de dar algo por terminado: `npm test && npm run lint && npm run build`.
   (`videosListos: false` en `src/config/media.ts`), así que se muestra el póster. El hero
   ya no usa video.
 - **Catálogo anterior**: 71 prendas archivadas en `catalogo-anterior/`. No se publica.
-- **Deploy**: push a `main` → GitHub Actions (lint, tests, build) → GitHub Pages. También
-  hay un `vercel.json`. Falta confirmar cuál de los dos sirve hoy el dominio.
+- **Deploy**: push a `main` → GitHub Actions (lint, tests, build) → GitHub Pages, que sirve
+  bykoda.store (confirmado: responde `server: GitHub.com`). No hay Vercel.
 
 ## Reglas de trabajo
 

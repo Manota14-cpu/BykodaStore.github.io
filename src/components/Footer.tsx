@@ -10,6 +10,8 @@ import {
   urlSuscripcionWhatsApp,
 } from '@/lib/newsletter';
 import { LEGAL, URL_RECLAMOS_CONSUMIDOR } from '@/config/legal';
+import { useCatalogo } from '@/hooks/useCatalogo';
+import { categoriasConProductos } from '@/lib/catalogo';
 import { Button, Input } from './ui';
 
 const EMAIL = LEGAL.email;
@@ -20,32 +22,36 @@ const LEGALES = [
   { to: '/arrepentimiento', label: 'Botón de arrepentimiento' },
 ];
 
-const COLUMNAS = [
-  {
-    titulo: 'Tienda',
-    links: [
-      { to: '/catalogo', label: 'Catálogo completo' },
-      { to: '/catalogo#cat=jean-baggy', label: 'Jeans baggy' },
-      { to: '/catalogo#cat=remera', label: 'Remeras' },
-      { to: '/catalogo#cat=hoodie', label: 'Hoodies' },
-      { to: '/carrito', label: 'Mi carrito' },
-    ],
-  },
-  {
-    titulo: 'Ayuda',
-    links: [
-      { to: '/info/como-comprar', label: 'Cómo comprar' },
-      { to: '/info/envios', label: 'Envíos' },
-      { to: '/info/cambios-y-devoluciones', label: 'Cambios y devoluciones' },
-      { to: '/info/guia-de-talles', label: 'Guía de talles' },
-      { to: '/info/preguntas-frecuentes', label: 'Preguntas frecuentes' },
-      { to: '/info/contacto', label: 'Contacto' },
-    ],
-  },
-];
+const AYUDA = {
+  titulo: 'Ayuda',
+  links: [
+    { to: '/info/como-comprar', label: 'Cómo comprar' },
+    { to: '/info/envios', label: 'Envíos' },
+    { to: '/info/cambios-y-devoluciones', label: 'Cambios y devoluciones' },
+    { to: '/info/guia-de-talles', label: 'Guía de talles' },
+    { to: '/info/preguntas-frecuentes', label: 'Preguntas frecuentes' },
+    { to: '/info/contacto', label: 'Contacto' },
+  ],
+};
 
 export function Footer() {
   const showToast = useToastStore((s) => s.showToast);
+  const { productos } = useCatalogo();
+  // La columna Tienda lista solo las categorías que hoy tienen prendas.
+  const columnas = [
+    {
+      titulo: 'Tienda',
+      links: [
+        { to: '/catalogo', label: 'Catálogo completo' },
+        ...categoriasConProductos(productos).map((c) => ({
+          to: `/catalogo#cat=${c.key}`,
+          label: c.label,
+        })),
+        { to: '/carrito', label: 'Mi carrito' },
+      ],
+    },
+    AYUDA,
+  ];
   const [email, setEmail] = useState('');
 
   const [enviando, setEnviando] = useState(false);
@@ -113,7 +119,7 @@ export function Footer() {
           </form>
         </div>
 
-        {COLUMNAS.map((col) => (
+        {columnas.map((col) => (
           <nav key={col.titulo} aria-label={col.titulo}>
             <h4 className="eyebrow">{col.titulo}</h4>
             <ul className="mt-4 grid gap-2.5">

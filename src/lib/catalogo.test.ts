@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import type { Producto } from '../types';
 import {
   ARBOL_CATALOGO,
+  categoriasConProductos,
   etiquetaSubcategoria,
   leerHashCategoria,
   normalizarTexto,
@@ -103,5 +104,28 @@ describe('ARBOL_CATALOGO', () => {
     const subcategorias = ARBOL_CATALOGO.flatMap((n) => n.hijos.map((h) => h.key));
     const colisiones = categorias.filter((c) => subcategorias.includes(c as never));
     expect(colisiones).toContain('remera');
+  });
+});
+
+describe('categoriasConProductos', () => {
+  it('devuelve solo las categorías con prendas, en el orden del menú', () => {
+    const lista = categoriasConProductos([
+      producto({ categoria: 'pantalon', categoriaLabel: 'Pantalones' }),
+      producto({ categoria: 'remera', categoriaLabel: 'Remeras' }),
+      producto({ categoria: 'remera', categoriaLabel: 'Remeras' }),
+    ]);
+    expect(lista).toEqual([
+      { key: 'remera', label: 'Remeras' },
+      { key: 'pantalon', label: 'Pantalones' },
+    ]);
+  });
+
+  it('suma al final las categorías nuevas de la plataforma', () => {
+    const lista = categoriasConProductos([producto({ categoria: 'gorros', categoriaLabel: 'Gorros' })]);
+    expect(lista).toEqual([{ key: 'gorros', label: 'Gorros' }]);
+  });
+
+  it('sin productos, no hay categorías', () => {
+    expect(categoriasConProductos([])).toEqual([]);
   });
 });

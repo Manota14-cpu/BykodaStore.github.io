@@ -215,3 +215,12 @@ export function construirMenu(
     ...nuevas.map(([key, label]) => ({ key, label, cantidad: contarCategoria(key), hijos: [] })),
   ];
 }
+
+/** Categorías que tienen al menos una prenda, en el orden del menú: `{ key, label }`. */
+export function categoriasConProductos(productos: Producto[]): { key: string; label: string }[] {
+  return construirMenu(
+    productos,
+    () => 0,
+    () => 0,
+  ).map(({ key, label }) => ({ key, label }));
+}

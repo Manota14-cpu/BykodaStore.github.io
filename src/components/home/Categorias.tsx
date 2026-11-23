@@ -1,18 +1,44 @@
 import { Link } from 'react-router-dom';
 import * as m from 'motion/react-m';
+import { useCatalogo } from '@/hooks/useCatalogo';
+import { categoriasConProductos } from '@/lib/catalogo';
+import { cn } from '@/lib/cn';
 import { VIEWPORT, variantesGrupo, variantesItem } from '../motion/curvas';
 
-const CATEGORIAS = [
-  { key: 'remera', label: 'remeras', img: '/imagenes/chat8.webp' },
-  { key: 'buzo', label: 'buzos', img: '/imagenes/chat6.webp' },
-  { key: 'pantalon', label: 'pantalones', img: '/imagenes/chat7.webp' },
-];
+/** Foto de ambiente para las categorías principales. El resto usa la foto de una de sus prendas. */
+const FOTOS: Record<string, { img: string; label: string }> = {
+  remera: { img: '/imagenes/chat8.webp', label: 'remeras' },
+  buzo: { img: '/imagenes/chat6.webp', label: 'buzos' },
+  pantalon: { img: '/imagenes/chat7.webp', label: 'pantalones' },
+};
+
+/** Cuántas columnas usa la grilla en escritorio según la cantidad de categorías. */
+const COLUMNAS: Record<number, string> = {
+  2: 'md:grid-cols-2',
+  3: 'md:grid-cols-3',
+  4: 'md:grid-cols-4',
+};
 
 /**
- * Tres fotos de punta a punta de la pantalla, sin bordes ni separación, con el
- * nombre de la categoría abajo. En celular se deslizan de a una.
+ * Fotos de punta a punta de la pantalla, sin bordes ni separación, con el
+ * nombre de la categoría abajo. Solo aparecen las categorías que tienen
+ * prendas; con menos de dos, la sección no se muestra. En celular se deslizan.
  */
 export function Categorias() {
+  const { productos, cargando } = useCatalogo();
+  const categorias = categoriasConProductos(productos)
+    .map((c) => ({
+      key: c.key,
+      label: FOTOS[c.key]?.label ?? c.label.toLowerCase(),
+      img:
+        FOTOS[c.key]?.img ??
+        productos.find((p) => p.categoria === c.key && p.imagenes.length > 0)?.imagenes[0],
+    }))
+    .filter((c): c is { key: string; label: string; img: string } => Boolean(c.img))
+    .slice(0, 4);
+
+  if (cargando || categorias.length < 2) return null;
+
   return (
     <section aria-labelledby="titulo-categorias" className="pb-[clamp(3rem,7vw,5.5rem)]">
       <h2 id="titulo-categorias" className="sr-only">
@@ -23,10 +49,17 @@ export function Categorias() {
         initial="oculto"
         whileInView="visible"
         viewport={VIEWPORT}
-        className="flex snap-x snap-mandatory overflow-x-auto [scrollbar-width:none] md:grid md:grid-cols-3 md:overflow-visible"
+        className={cn(
+          'flex snap-x snap-mandatory [scrollbar-width:none] overflow-x-auto md:grid md:overflow-visible',
+          COLUMNAS[categorias.length],
+        )}
       >
-        {CATEGORIAS.map((cat) => (
-          <m.li key={cat.key} variants={variantesItem} className="w-[88%] shrink-0 snap-start md:w-auto">
+        {categorias.map((cat) => (
+          <m.li
+            key={cat.key}
+            variants={variantesItem}
+            className="w-[88%] shrink-0 snap-start md:w-auto"
+          >
             <Link
               to={`/catalogo#cat=${cat.key}`}
               className="group relative block aspect-3/4 overflow-hidden bg-black text-white md:aspect-[4/5]"
