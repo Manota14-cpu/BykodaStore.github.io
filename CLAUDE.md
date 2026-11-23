@@ -23,8 +23,9 @@ por WhatsApp. Se está **reabriendo** con un grupo de amigos (noviembre 2026).
 - Frases cortas y seguras. Lema: **"Vestí tu actitud."** Frase que lo resume: "Cuando una
   prenda se agota, no vuelve."
 - Estética: sitio blanco, estilo tienda (fotos sobre gris claro, esquinas rectas, nombres en
-  mayúsculas chicas). El hero es el logo de KODA grande, en negro sobre
-  blanco, con "Vestí tu actitud." abajo; sin fondos negros. Las fotos de la calle mojada siguen. Tipografías Bebas Neue (títulos, en mayúsculas) y Montserrat (texto).
+  mayúsculas chicas). El hero es editorial, estilo Tussy: una foto a pantalla
+  completa (hoy `hero-koda.webp`, se cambia en `FOTO` de `HeroHome.tsx`), el logo en blanco
+  arriba a la izquierda, datos chicos arriba a la derecha y el lema abajo. Las fotos de la calle mojada siguen. Tipografías Bebas Neue (títulos, en mayúsculas) y Montserrat (texto).
 - **No hay modo oscuro**: un solo tema claro, con los colores en `src/styles/tailwind.css`.
 - Ideas que se repiten: ediciones limitadas, materiales pesados (denim rígido, frisa
   perchada), trato con una persona real, envíos a todo el país.
